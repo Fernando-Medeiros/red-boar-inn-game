@@ -1,0 +1,49 @@
+{
+  "armors": [
+    {
+      "name": "robe",
+      "defense": 1,
+      "resistance": 2,
+      "value": 2,
+      "description": "..."
+    }
+  ],
+  "accessories": [
+    {
+      "name": "wooden ring",
+      "type": "ring",
+      "value": 5,
+      "health": 2,
+      "energy": 2,
+      "description": "..."
+    }
+  ],
+  "consumables": [
+    {
+      "name": "apple",
+      "type": "health",
+      "restore": 2,
+      "total": 1,
+      "value": 1,
+      "description": "..."
+    }
+  ],
+  "materials": [
+    {
+      "name": "bone",
+      "type": "craft",
+      "total": 1,
+      "value": 1,
+      "description": "..."
+    }
+  ],
+  "weapons": [
+    {
+      "name": "wooden sword",
+      "attack": 2,
+      "magic": 1,
+      "value": 1,
+      "description": "..."
+    }
+  ]
+}
