@@ -1,9 +1,18 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import HeaderComponent from "./components/global/header/header.main.comp.vue";
+import FooterComponent from "./components/global/footer/footer.main.comp.vue";
+
+export default defineComponent({
+  name: "APP",
+  components: { HeaderComponent, FooterComponent },
+});
+</script>
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <HeaderComponent />
   <router-view />
+  <FooterComponent />
 </template>
 
 <style>
@@ -12,15 +21,16 @@
   padding: 0;
   font-family: "Public Sans", sans-serif;
 }
+html {
+  background-color: #222222;
+}
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  background-color: #f2f2f2;
+  color: #e8e8e8;
 }
 .main-container {
   margin: auto;
-  width: 100%;
-  max-width: 1420px;
+  max-width: 1000px;
 }
 </style>
