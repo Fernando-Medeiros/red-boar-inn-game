@@ -31,10 +31,6 @@ export default defineComponent({
           </a>
         </div>
 
-        <router-link to="/">
-          <img class="image-logo" src="@/assets/logo.png" alt="logo" />
-        </router-link>
-
         <div class="contact">
           <div>
             <a href="https://github.com/Fernando-Medeiros">
@@ -62,7 +58,14 @@ export default defineComponent({
         </div>
       </div>
     </div>
-    <p class="copy" translate="no">Red-Boar-Inn - 2023</p>
+
+    <p class="copy" translate="no">
+      <router-link to="/">
+        <img class="image-logo" src="@/assets/logo.png" alt="logo" />
+      </router-link>
+
+      Red-Boar-Inn - 2023
+    </p>
   </footer>
 </template>
 
@@ -72,22 +75,17 @@ export default defineComponent({
   background-color: #222222;
 }
 .container {
-  width: 100%;
-  display: grid;
-  padding: 0.5rem 0;
-  justify-items: center;
+  display: flex;
+  max-width: 100%;
+  padding: 1rem;
   justify-content: space-between;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 .image-logo {
-  width: 2.5rem;
-  height: 2.5rem;
-  transition: all 1s;
+  width: 1.2rem;
+  height: 1.2rem;
 }
-.image-logo:hover {
-  transition: all 1s;
-  transform: scale(1.1);
-}
+
 .routes {
   display: grid;
   gap: 0.9rem;
@@ -112,7 +110,7 @@ export default defineComponent({
 }
 .copy {
   width: 100%;
-  padding: 5px 0;
+  padding: 1rem 0;
   text-align: center;
 }
 @media (max-width: 780px) {
