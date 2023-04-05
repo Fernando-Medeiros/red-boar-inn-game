@@ -2,33 +2,34 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "HomeButtonComponent",
+  name: "RegisterButtonComponent",
   data() {
     return {
-      button: "Registre-se",
+      pathToRegister: "/",
+      buttonInfo: "Registre-se",
     };
   },
 });
 </script>
 
 <template>
-  <div class="register">
+  <div class="container-register-button">
     <img class="icon-register" src="@/assets/icons/guild.png" alt="register" />
 
-    <router-link to="/">
+    <router-link :to="pathToRegister">
       <button class="btn-register">
-        <p>{{ button }}</p>
+        <p>{{ buttonInfo }}</p>
       </button>
     </router-link>
   </div>
 </template>
 
 <style scoped>
-.register {
+.container-register-button {
+  z-index: 1;
   display: grid;
   gap: 1rem;
-  margin: 5px;
-  width: min-content;
+  margin: 10px;
   justify-items: center;
 }
 .icon-register {

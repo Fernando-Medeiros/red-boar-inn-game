@@ -34,6 +34,8 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: auto;
 }
 .sprite {
   z-index: 1;
