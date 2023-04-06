@@ -4,7 +4,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "InputTextComponent",
   props: {
-    placeholder: String,
+    placeholder: { type: String, required: true },
   },
   data() {
     return {

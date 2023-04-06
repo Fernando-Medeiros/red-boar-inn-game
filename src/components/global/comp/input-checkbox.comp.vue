@@ -5,7 +5,7 @@ export default defineComponent({
   name: "InputCheckBoxComponent",
   emits: ["emitContent"],
   props: {
-    label: String,
+    label: { type: String, required: true },
   },
 });
 </script>

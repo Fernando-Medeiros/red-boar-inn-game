@@ -4,13 +4,14 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "SpriteComponent",
   props: {
-    spriteName: String,
-    spriteGender: String,
-    rotateY: Boolean,
+    spriteName: { type: String, required: true },
+    spriteGender: { type: String, required: true },
+    rotateY: { type: Boolean, required: true, default: false },
   },
   mounted() {
     if (this.rotateY) {
       const sprite = document.getElementById(`${this.spriteName}`);
+
       sprite ? (sprite.style.transform = "rotateY(180deg)") : null;
     }
   },

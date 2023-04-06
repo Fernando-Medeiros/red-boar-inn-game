@@ -4,7 +4,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "InputSubmitComponent",
   props: {
-    placeholder: String,
+    placeholder: { type: String, required: true },
   },
 });
 </script>
@@ -48,11 +48,6 @@ export default defineComponent({
 }
 
 @media (max-width: 780px) {
-  .input-submit {
-    width: 115px;
-    height: 38px;
-    padding: 10px;
-  }
   .input-submit-text {
     font-size: 16px;
   }
