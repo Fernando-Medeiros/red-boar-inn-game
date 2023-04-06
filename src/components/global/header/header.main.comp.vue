@@ -31,7 +31,7 @@ export default defineComponent({
             {{ route.name }}
           </router-link>
 
-          <router-link to="/">
+          <router-link to="/acessar">
             <button class="btn-login"><p>Acessar</p></button>
           </router-link>
         </nav>
