@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import SpriteComponent from "@/components/global/comp/sprite.comp.vue";
+import BannerTitleComponent from "@/components/global/composition/banner-title.comp.vue";
+import BannerSpritesComponent from "@/components/global/composition/banner-sprites.comp.vue";
 import InputTextComponent from "@/components/global/comp/input-text.comp.vue";
 import InputSubmitComponent from "@/components/global/comp/input-submit.comp.vue";
 import InputCheckBoxComponent from "@/components/global/comp/input-checkbox.comp.vue";
@@ -13,7 +14,8 @@ const randomTitleTips = () =>
 export default defineComponent({
   name: "LoginMainComponent",
   components: {
-    SpriteComponent,
+    BannerTitleComponent,
+    BannerSpritesComponent,
     InputTextComponent,
     InputSubmitComponent,
     InputCheckBoxComponent,
@@ -25,6 +27,16 @@ export default defineComponent({
         email: "",
         password: "",
         remember: false,
+      },
+      spriteLeft: {
+        name: "peasant",
+        gender: "woman",
+        rotateY: true,
+      },
+      spriteRight: {
+        name: "peasant",
+        gender: "man",
+        rotateY: false,
       },
     };
   },
@@ -46,20 +58,15 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="background">
-    <h1 class="title main-container">
-      {{ title }}
-    </h1>
+  <div class="view-container">
+    <BannerTitleComponent :title="title" />
 
-    <span class="background-banner"></span>
+    <BannerSpritesComponent
+      :sprite-left="spriteLeft"
+      :sprite-right="spriteRight"
+    />
 
-    <div class="container-banner main-container">
-      <SpriteComponent
-        :rotate-y="true"
-        :sprite-name="'peasant'"
-        :sprite-gender="'woman'"
-      />
-
+    <div class="main-container">
       <form class="form-login" method="" @submit.prevent="login">
         <InputTextComponent
           :placeholder="'digite o seu email ...'"
@@ -78,53 +85,23 @@ export default defineComponent({
 
         <InputSubmitComponent :placeholder="'Acessar'" />
       </form>
-
-      <SpriteComponent
-        :rotate-y="false"
-        :sprite-name="'peasant'"
-        :sprite-gender="'man'"
-      />
     </div>
   </div>
 </template>
 
 <style scoped>
-.background {
-  background-image: linear-gradient(#2222225b, #2222225b, #222222c0),
-    url("@/assets/pictures/img3.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+.view-container {
+  margin-bottom: 20px;
 }
-.title {
-  font-size: 32px;
-  font-weight: 400;
-  text-align: center;
-  padding-top: 3rem;
-  padding-bottom: 5rem;
-  color: white;
-}
-
-.background-banner {
-  z-index: 0;
-  position: absolute;
-  width: 100%;
-  height: 260px;
-  background-color: #222222;
-}
-.container-banner {
-  display: grid;
-  padding-bottom: 5rem;
-  grid-template-columns: 0.2fr 1fr 0.2fr;
-}
-
 .form-login {
   z-index: 1;
   display: grid;
-  width: fit-content;
-  justify-self: center;
+  justify-content: center;
   gap: 1.4rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  border-radius: 5px;
+  background: linear-gradient(#282828, #323232c0);
 }
 .form-options {
   display: flex;
@@ -138,16 +115,6 @@ export default defineComponent({
   color: burlywood;
 }
 @media (max-width: 780px) {
-  .background {
-    background-position: center;
-  }
-  .title {
-    font-size: 24px;
-    padding-bottom: 3rem;
-  }
-  .background-banner {
-    height: 290px;
-  }
   .form-login {
     margin-top: 4rem;
   }

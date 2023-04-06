@@ -13,11 +13,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="container-register-button">
-    <img class="icon-register" src="@/assets/icons/guild.png" alt="register" />
+  <div class="register-container">
+    <img class="register-icon" src="@/assets/icons/guild.png" alt="register" />
 
     <router-link :to="pathToRegister">
-      <button class="btn-register">
+      <button class="register-button">
         <p>{{ buttonInfo }}</p>
       </button>
     </router-link>
@@ -25,35 +25,36 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.container-register-button {
-  z-index: 1;
+.register-container {
   display: grid;
   gap: 1rem;
-  margin: 10px;
+  width: 100%;
+  margin: auto;
   justify-items: center;
 }
-.icon-register {
-  width: 150px;
-  height: 150px;
+.register-icon {
+  width: 200px;
+  height: 200px;
   border-radius: 10px;
   background-color: #e5e5e5;
 }
-.btn-register {
-  width: 150px;
-  height: 32px;
+.register-button {
+  width: 200px;
+  height: 42px;
+  cursor: pointer;
+  border-radius: 7px;
   background-color: #e5e5e5;
   box-shadow: inset 0px 3px 6px 1px rgba(0, 0, 0, 0.25);
-  border-radius: 3px;
-  cursor: pointer;
 }
-.btn-register p {
+.register-button p {
   font-size: 16px;
   font-weight: bolder;
 }
-.btn-register:hover {
+.register-button:hover {
   background-color: white;
+  box-shadow: inset 0px 3px 6px 1px rgba(0, 0, 0, 0.25);
+  transition: all 1s;
 }
-
 @media (max-width: 780px) {
 }
 </style>

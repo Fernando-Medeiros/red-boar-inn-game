@@ -37,7 +37,7 @@ export default defineComponent({
   border-radius: 0.5rem;
 }
 .container-article div {
-  padding: 10px;
+  padding: 16px;
 }
 .title-article {
   font-size: 20px;
@@ -47,10 +47,9 @@ export default defineComponent({
 }
 .content-article {
   padding: 10px;
-  font-size: 14px;
-  word-break: keep-all;
   text-indent: 10px;
   text-align: justify;
+  word-break: keep-all;
 }
 .credits-article {
   display: flex;
@@ -66,6 +65,12 @@ export default defineComponent({
   color: burlywood;
 }
 @media (max-width: 780px) {
+  .container-article div {
+    padding: 5px;
+  }
+  .content-article {
+    font-size: 14px;
+  }
   .credits-article {
     display: grid;
   }
