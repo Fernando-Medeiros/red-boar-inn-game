@@ -6,13 +6,22 @@ import FooterComponent from "./components/global/footer/footer.main.comp.vue";
 export default defineComponent({
   name: "APP",
   components: { HeaderComponent, FooterComponent },
+  data() {
+    return {
+      loginPath: "/acessar",
+      routes: [
+        { path: "/atualizacoes", name: "Atualizações" },
+        { path: "/sobre", name: "Sobre" },
+      ],
+    };
+  },
 });
 </script>
 
 <template>
-  <HeaderComponent />
+  <HeaderComponent :routes="routes" :login-path="loginPath" />
   <router-view />
-  <FooterComponent />
+  <FooterComponent :routes="routes" />
 </template>
 
 <style>

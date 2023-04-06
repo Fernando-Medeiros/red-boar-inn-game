@@ -1,28 +1,27 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "HeaderMainComponent",
-  data() {
-    return {
-      routes: [
-        { path: "/atualizacoes", name: "Atualizações" },
-        { path: "/sobre", name: "Sobre" },
-      ],
-    };
+  props: {
+    loginPath: { type: String, required: true },
+    routes: {
+      type: Array as PropType<{ path: string; name: string }[]>,
+      required: true,
+    },
   },
 });
 </script>
 
 <template>
-  <header class="background">
+  <header class="header-background">
     <div class="main-container">
-      <nav class="container">
+      <nav class="header-container">
         <router-link to="/">
           <img class="image-logo" src="@/assets/logo.png" alt="logo" />
         </router-link>
 
-        <nav class="routes">
+        <nav class="header-routes">
           <router-link
             v-for="route in routes"
             :key="route.path"
@@ -31,7 +30,7 @@ export default defineComponent({
             {{ route.name }}
           </router-link>
 
-          <router-link to="/acessar">
+          <router-link :to="loginPath">
             <button class="btn-login"><p>Acessar</p></button>
           </router-link>
         </nav>
@@ -41,12 +40,12 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.background {
+.header-background {
   width: 100%;
   height: auto;
   background-color: #222222;
 }
-.container {
+.header-container {
   width: 100%;
   display: flex;
   padding: 0.5rem 0;
@@ -63,20 +62,23 @@ export default defineComponent({
   transition: all 1s;
   transform: scale(1.1);
 }
-.routes {
+.header-routes {
   width: auto;
   display: flex;
   margin: 5px;
   align-items: center;
 }
-.routes a {
+.header-routes a {
   color: #e8e8e8;
   text-decoration: none;
   margin-left: 2.5rem;
 }
-.routes a:hover {
+.header-routes a:hover {
   text-decoration: underline 2px;
   transition: all 1s;
+}
+.header-routes a.router-link-exact-active {
+  color: burlywood;
 }
 .btn-login {
   height: 32px;
@@ -101,7 +103,7 @@ export default defineComponent({
     width: 2rem;
     height: 2rem;
   }
-  .routes a {
+  .header-routes a {
     margin-left: 1rem;
   }
 }
