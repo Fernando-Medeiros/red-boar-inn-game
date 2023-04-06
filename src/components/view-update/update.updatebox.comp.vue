@@ -47,6 +47,7 @@ export default defineComponent({
   display: grid;
   gap: 20px;
   padding: 10px;
+  justify-self: center;
   border-radius: 0.5rem;
   background-color: #222222;
 }

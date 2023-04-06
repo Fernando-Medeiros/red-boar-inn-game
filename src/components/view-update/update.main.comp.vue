@@ -68,7 +68,7 @@ export default defineComponent({
 .container-banner {
   display: grid;
   padding-bottom: 5rem;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 0.2fr 1fr 0.2fr;
 }
 
 @media (max-width: 780px) {

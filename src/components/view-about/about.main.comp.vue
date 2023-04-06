@@ -127,7 +127,7 @@ export default defineComponent({
   font-weight: 400;
   text-align: center;
   padding-top: 3rem;
-  padding-bottom: 5rem;
+  padding-bottom: 3rem;
   color: white;
 }
 .background-banner {
