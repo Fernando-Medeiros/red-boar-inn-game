@@ -53,7 +53,7 @@ export default defineComponent({
   }
   .input-text {
     font-size: 14px;
-    width: 225px;
+    width: 300px;
   }
 }
 </style>
