@@ -5,7 +5,7 @@ export default defineComponent({
   name: "RegisterButtonComponent",
   data() {
     return {
-      pathToRegister: "/",
+      pathToRegister: "/registrar",
       buttonInfo: "Registre-se",
     };
   },

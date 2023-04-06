@@ -84,6 +84,8 @@ export default defineComponent({
   border-radius: 4px;
   background-color: transparent;
   border: 1px solid #d9d9d9;
+  box-shadow: 0px 1px 10px 1px rgba(255, 190, 64, 0.5);
+  border-radius: 4px;
   cursor: pointer;
 }
 .btn-login p {

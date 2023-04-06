@@ -27,10 +27,12 @@ export default defineComponent({
   justify-content: center;
 }
 .input-submit {
-  width: 200px;
-  height: 38px;
-  border-radius: 0.5rem;
+  width: 180px;
+  height: 30px;
   align-content: center;
+  border-radius: 0.5rem;
+  background: #d9d9d9;
+  border-radius: 5px;
   cursor: pointer;
 }
 .input-submit-text {

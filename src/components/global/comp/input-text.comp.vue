@@ -32,19 +32,28 @@ export default defineComponent({
 
 <style scoped>
 .input-text-container {
-  width: 100%;
-  justify-content: center;
+  max-width: 500px;
+  margin: auto;
+  margin-top: 10px;
 }
 .input-text {
-  width: 98%;
-  height: 20px;
-  padding: 10px 5px;
   font-size: 1.1rem;
-  border-radius: 0.8rem;
+  width: 500px;
+  height: 20px;
+  padding: 6px 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #d9d9d9;
 }
+
 @media (max-width: 780px) {
+  .input-text-container {
+    max-width: 100%;
+    justify-self: center;
+  }
   .input-text {
     font-size: 14px;
+    width: 225px;
   }
 }
 </style>

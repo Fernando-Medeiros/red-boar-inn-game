@@ -60,7 +60,7 @@ export default defineComponent({
         :sprite-gender="'woman'"
       />
 
-      <form class="form-login" method="" @submit="login">
+      <form class="form-login" method="" @submit.prevent="login">
         <InputTextComponent
           :placeholder="'digite o seu email ...'"
           @emit-content="emitEmail"
@@ -119,11 +119,12 @@ export default defineComponent({
 
 .form-login {
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  display: grid;
+  width: fit-content;
+  justify-self: center;
   gap: 1.4rem;
-  margin-top: 1.2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .form-options {
   display: flex;
@@ -136,7 +137,6 @@ export default defineComponent({
 .form-options a:hover {
   color: burlywood;
 }
-
 @media (max-width: 780px) {
   .background {
     background-position: center;
@@ -144,6 +144,12 @@ export default defineComponent({
   .title {
     font-size: 24px;
     padding-bottom: 3rem;
+  }
+  .background-banner {
+    height: 290px;
+  }
+  .form-login {
+    margin-top: 4rem;
   }
 }
 </style>

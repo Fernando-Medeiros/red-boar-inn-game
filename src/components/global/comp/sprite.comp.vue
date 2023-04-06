@@ -39,7 +39,7 @@ export default defineComponent({
 }
 .sprite {
   z-index: 1;
-  position: absolute;
+  position: relative;
   width: 118px;
   height: 113.28px;
   border-radius: 11px;

@@ -90,7 +90,7 @@ export default defineComponent({
 }
 @media (max-width: 780px) {
   .box {
-    max-width: 200px;
+    width: auto;
     height: auto;
     border-radius: 5px;
   }
