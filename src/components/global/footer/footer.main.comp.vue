@@ -1,60 +1,40 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
+import ContactIconComp from "./footer.contact-icon.comp.vue";
+import RoutesComp from "./footer.routes.comp.vue";
+
 export default defineComponent({
   name: "FooterMainComponent",
+  components: { ContactIconComp, RoutesComp },
+  props: {
+    routes: {
+      type: Array as PropType<{ path: string; name: string }[]>,
+      required: true,
+    },
+  },
   data() {
     return {
-      routes: [
-        { path: "/atualizacoes", name: "Atualizações" },
-        { path: "/sobre", name: "Sobre" },
-      ],
+      contact: {
+        github: "https://github.com/Fernando-Medeiros",
+        linkedin: "https://www.linkedin.com/in/fernando-de-alvarenga-medeiros",
+      },
+      info: {
+        copyright: "Red-Boar-Inn - 2023",
+      },
     };
   },
 });
 </script>
 
 <template>
-  <footer class="background">
+  <footer class="footer-background">
     <div class="main-container">
-      <div class="container">
-        <div class="routes">
-          <router-link
-            v-for="route in routes"
-            :key="route.path"
-            :to="route.path"
-          >
-            {{ route.name }}
-          </router-link>
-
-          <a href="https://github.com/Fernando-Medeiros" target="_blank">
-            <p>Participe do projeto</p>
-          </a>
-        </div>
+      <div class="footer-container">
+        <RoutesComp :routes="routes" :github="contact.github" />
 
         <div class="contact">
-          <div>
-            <a href="https://github.com/Fernando-Medeiros">
-              <img
-                class="image-contact"
-                src="@/../public/github.png"
-                alt="github"
-                target="_blank"
-              />
-            </a>
-          </div>
-
-          <div>
-            <a
-              href="https://www.linkedin.com/in/fernando-de-alvarenga-medeiros/"
-            >
-              <img
-                class="image-contact"
-                src="@/../public/linkedin.png"
-                alt="linkedin"
-                target="_blank"
-              />
-            </a>
-          </div>
+          <ContactIconComp :icon-name="'github'" :link="contact.github" />
+          <ContactIconComp :icon-name="'linkedin'" :link="contact.linkedin" />
         </div>
       </div>
     </div>
@@ -64,17 +44,17 @@ export default defineComponent({
         <img class="image-logo" src="@/assets/logo.png" alt="logo" />
       </router-link>
 
-      Red-Boar-Inn - 2023
+      {{ info.copyright }}
     </p>
   </footer>
 </template>
 
 <style scoped>
-.background {
+.footer-background {
   width: 100%;
   background-color: #222222;
 }
-.container {
+.footer-container {
   display: flex;
   max-width: 100%;
   padding: 1rem;
@@ -85,28 +65,9 @@ export default defineComponent({
   width: 1.2rem;
   height: 1.2rem;
 }
-
-.routes {
-  display: grid;
-  gap: 0.9rem;
-  margin: 5px;
-}
-.routes a {
-  color: #e8e8e8;
-  text-decoration: none;
-}
-.routes a:hover {
-  text-decoration: underline 2px;
-  transition: all 1s;
-}
-
 .contact {
   display: grid;
   gap: 0.9rem;
-}
-.image-contact {
-  width: 2rem;
-  height: 2rem;
 }
 .copy {
   width: 100%;
