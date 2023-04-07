@@ -1,17 +1,21 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import BannerTitleComponent from "@/components/global/composition/banner-title.comp.vue";
-import BannerSpritesComponent from "@/components/global/composition/banner-sprites.comp.vue";
-import InputTextComponent from "@/components/global/comp/input-text.comp.vue";
-import InputSubmitComponent from "@/components/global/comp/input-submit.comp.vue";
+import BannerTitle from "@/components/global/composition/banner-title.comp.vue";
+import BannerSprites from "@/components/global/composition/banner-sprites.comp.vue";
+import InputName from "@/components/global/comp/input-name.comp.vue";
+import InputEmail from "@/components/global/comp/input-email.comp.vue";
+import InputPassword from "@/components/global/comp/input-password.comp.vue";
+import InputSubmit from "@/components/global/comp/input-submit.comp.vue";
 
 export default defineComponent({
   name: "RegisterMainComponent",
   components: {
-    BannerTitleComponent,
-    BannerSpritesComponent,
-    InputTextComponent,
-    InputSubmitComponent,
+    BannerTitle,
+    BannerSprites,
+    InputEmail,
+    InputPassword,
+    InputName,
+    InputSubmit,
   },
   data() {
     return {
@@ -32,6 +36,29 @@ export default defineComponent({
         name: "peasant",
         gender: "man",
         rotateY: false,
+      },
+      inputFirstName: {
+        label: "Nome*",
+        placeholder: "Example",
+      },
+      inputLastName: {
+        label: "Sobrenome*",
+        placeholder: "Example ou  Example Example",
+      },
+      inputEmail: {
+        label: "Email*",
+        placeholder: "example@email.com",
+      },
+      inputPassword: {
+        label: "Senha*",
+        placeholder: "Example@01",
+      },
+      inputPasswordConfirm: {
+        label: "Confirme a senha*",
+        placeholder: "Example@01",
+      },
+      inputSubmit: {
+        placeholder: "Registrar",
       },
     };
   },
@@ -60,41 +87,43 @@ export default defineComponent({
 
 <template>
   <div class="view-container">
-    <BannerTitleComponent :title="title" />
+    <BannerTitle :title="title" />
 
-    <BannerSpritesComponent
-      :sprite-left="spriteLeft"
-      :sprite-right="spriteRight"
-    />
+    <BannerSprites :sprite-left="spriteLeft" :sprite-right="spriteRight" />
 
     <div class="main-container">
       <form class="form-login" method="" @submit.prevent="register">
-        <InputTextComponent
-          :placeholder="'digite o seu nome ...'"
+        <InputName
+          :label="inputFirstName.label"
+          :placeholder="inputFirstName.placeholder"
           @emit-content="emitFirstName"
         />
 
-        <InputTextComponent
-          :placeholder="'digite o seu sobrenome ...'"
+        <InputName
+          :label="inputLastName.label"
+          :placeholder="inputLastName.placeholder"
           @emit-content="emitLastName"
         />
 
-        <InputTextComponent
-          :placeholder="'digite o seu email ...'"
+        <InputEmail
+          :label="inputEmail.label"
+          :placeholder="inputEmail.placeholder"
           @emit-content="emitEmail"
         />
 
-        <InputTextComponent
-          :placeholder="'digite a sua senha ...'"
+        <InputPassword
+          :label="inputPassword.label"
+          :placeholder="inputPassword.placeholder"
           @emit-content="emitPassword"
         />
 
-        <InputTextComponent
-          :placeholder="'confirme a senha ...'"
+        <InputPassword
+          :label="inputPasswordConfirm.label"
+          :placeholder="inputPasswordConfirm.placeholder"
           @emit-content="emitConfirmPassword"
         />
 
-        <InputSubmitComponent :placeholder="'Registrar'" />
+        <InputSubmit :placeholder="inputSubmit.placeholder" />
       </form>
     </div>
   </div>

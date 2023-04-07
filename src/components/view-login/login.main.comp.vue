@@ -1,10 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import BannerTitleComponent from "@/components/global/composition/banner-title.comp.vue";
-import BannerSpritesComponent from "@/components/global/composition/banner-sprites.comp.vue";
-import InputTextComponent from "@/components/global/comp/input-text.comp.vue";
-import InputSubmitComponent from "@/components/global/comp/input-submit.comp.vue";
-import InputCheckBoxComponent from "@/components/global/comp/input-checkbox.comp.vue";
+import BannerTitle from "@/components/global/composition/banner-title.comp.vue";
+import BannerSprites from "@/components/global/composition/banner-sprites.comp.vue";
+import InputEmail from "@/components/global/comp/input-email.comp.vue";
+import InputPassword from "@/components/global/comp/input-password.comp.vue";
+import InputSubmit from "@/components/global/comp/input-submit.comp.vue";
+import InputCheckBox from "@/components/global/comp/input-checkbox.comp.vue";
 
 import utils from "@/../utils.json";
 
@@ -14,11 +15,12 @@ const randomTitleTips = () =>
 export default defineComponent({
   name: "LoginMainComponent",
   components: {
-    BannerTitleComponent,
-    BannerSpritesComponent,
-    InputTextComponent,
-    InputSubmitComponent,
-    InputCheckBoxComponent,
+    BannerTitle,
+    BannerSprites,
+    InputEmail,
+    InputPassword,
+    InputSubmit,
+    InputCheckBox,
   },
   data() {
     return {
@@ -37,6 +39,20 @@ export default defineComponent({
         name: "peasant",
         gender: "man",
         rotateY: false,
+      },
+      inputEmail: {
+        label: "Email",
+        placeholder: "example@email.com",
+      },
+      inputPassword: {
+        label: "Senha",
+        placeholder: "Example@01",
+      },
+      inputCheckbox: {
+        label: "lembrar",
+      },
+      inputSubmit: {
+        placeholder: "Acessar",
       },
     };
   },
@@ -59,31 +75,30 @@ export default defineComponent({
 
 <template>
   <div class="view-container">
-    <BannerTitleComponent :title="title" />
+    <BannerTitle :title="title" />
 
-    <BannerSpritesComponent
-      :sprite-left="spriteLeft"
-      :sprite-right="spriteRight"
-    />
+    <BannerSprites :sprite-left="spriteLeft" :sprite-right="spriteRight" />
 
     <div class="main-container">
       <form class="form-login" method="" @submit.prevent="login">
-        <InputTextComponent
-          :placeholder="'digite o seu email ...'"
+        <InputEmail
+          :label="inputEmail.label"
+          :placeholder="inputEmail.placeholder"
           @emit-content="emitEmail"
         />
 
-        <InputTextComponent
-          :placeholder="'digite a sua senha ...'"
+        <InputPassword
+          :label="inputPassword.label"
+          :placeholder="inputPassword.placeholder"
           @emit-content="emitPassword"
         />
 
         <div class="form-options">
-          <InputCheckBoxComponent :label="'lembrar'" @click="clickRemeber" />
+          <InputCheckBox :label="inputCheckbox.label" @click="clickRemeber" />
           <a href="">recuperar a senha</a>
         </div>
 
-        <InputSubmitComponent :placeholder="'Acessar'" />
+        <InputSubmit :placeholder="inputSubmit.placeholder" />
       </form>
     </div>
   </div>
@@ -97,7 +112,7 @@ export default defineComponent({
   z-index: 1;
   display: grid;
   justify-content: center;
-  gap: 1.4rem;
+  gap: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   border-radius: 5px;
@@ -115,8 +130,5 @@ export default defineComponent({
   color: burlywood;
 }
 @media (max-width: 780px) {
-  .form-login {
-    margin-top: 4rem;
-  }
 }
 </style>
