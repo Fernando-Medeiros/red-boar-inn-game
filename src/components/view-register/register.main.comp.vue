@@ -2,10 +2,10 @@
 import { defineComponent } from "vue";
 import BannerTitle from "@/components/global/composition/banner-title.comp.vue";
 import BannerSprites from "@/components/global/composition/banner-sprites.comp.vue";
-import InputName from "@/components/global/comp/input-name.comp.vue";
-import InputEmail from "@/components/global/comp/input-email.comp.vue";
-import InputPassword from "@/components/global/comp/input-password.comp.vue";
-import InputSubmit from "@/components/global/comp/input-submit.comp.vue";
+import InputName from "@/components/global/input/input-name.comp.vue";
+import InputEmail from "@/components/global/input/input-email.comp.vue";
+import InputPassword from "@/components/global/input/input-password.comp.vue";
+import InputSubmit from "@/components/global/input/input-submit.comp.vue";
 
 export default defineComponent({
   name: "RegisterMainComponent",

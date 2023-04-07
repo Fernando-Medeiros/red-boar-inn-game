@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import SpriteComponent from "../comp/sprite.comp.vue";
+import SpriteComponent from "../sprite/sprite.comp.vue";
 
 export default defineComponent({
   name: "BannerSpritesComponent",
