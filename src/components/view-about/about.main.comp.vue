@@ -1,18 +1,18 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import BannerTitleComponent from "@/components/global/composition/banner-title.comp.vue";
-import BannerSpritesComponent from "@/components/global/composition/banner-sprites.comp.vue";
+import BannerTitle from "@/components/global/composition/banner-title.comp.vue";
+import BannerSprites from "@/components/global/composition/banner-sprites.comp.vue";
 import InfoComponent from "./about.info.comp.vue";
 
-import utils from "@/../utils.json";
+import { articles as AboutSetupArticles } from "@/../setup/utils.json";
 
 export default defineComponent({
   name: "AboutMainComponent",
-  components: { BannerTitleComponent, BannerSpritesComponent, InfoComponent },
+  components: { BannerTitle, BannerSprites, InfoComponent },
   data() {
     return {
       title: "Red Boar Inn",
-      articles: utils.articles,
+      articles: AboutSetupArticles,
       spriteLeft: {
         name: "merchant",
         gender: "woman",
@@ -30,12 +30,9 @@ export default defineComponent({
 
 <template>
   <div class="view-container">
-    <BannerTitleComponent :title="title" />
+    <BannerTitle :title="title" />
 
-    <BannerSpritesComponent
-      :sprite-left="spriteLeft"
-      :sprite-right="spriteRight"
-    />
+    <BannerSprites :sprite-left="spriteLeft" :sprite-right="spriteRight" />
 
     <div class="main-container">
       <div class="about-container">

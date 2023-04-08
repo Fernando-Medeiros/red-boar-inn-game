@@ -1,15 +1,15 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import BannerTitleComponent from "@/components/global/composition/banner-title.comp.vue";
-import BannerSpritesComponent from "@/components/global/composition/banner-sprites.comp.vue";
-import RegisterButtonComponent from "./home.register-button.comp.vue";
+import BannerTitle from "@/components/global/composition/banner-title.comp.vue";
+import BannerSprites from "@/components/global/composition/banner-sprites.comp.vue";
+import RegisterButton from "./home.register-button.comp.vue";
 
 export default defineComponent({
   name: "HomeMainComponent",
   components: {
-    BannerTitleComponent,
-    BannerSpritesComponent,
-    RegisterButtonComponent,
+    BannerTitle,
+    BannerSprites,
+    RegisterButton,
   },
   data() {
     return {
@@ -31,15 +31,12 @@ export default defineComponent({
 
 <template>
   <div class="view-container">
-    <BannerTitleComponent :title="title" />
+    <BannerTitle :title="title" />
 
-    <BannerSpritesComponent
-      :sprite-left="spriteLeft"
-      :sprite-right="spriteRight"
-    />
+    <BannerSprites :sprite-left="spriteLeft" :sprite-right="spriteRight" />
 
     <div class="main-container">
-      <RegisterButtonComponent />
+      <RegisterButton />
     </div>
   </div>
 </template>

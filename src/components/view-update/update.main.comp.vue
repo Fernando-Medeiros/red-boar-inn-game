@@ -1,15 +1,15 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import BannerTitleComponent from "@/components/global/composition/banner-title.comp.vue";
-import BannerSpritesComponent from "@/components/global/composition/banner-sprites.comp.vue";
-import UpdatePreviewComponent from "./update.preview.comp.vue";
+import BannerTitle from "@/components/global/composition/banner-title.comp.vue";
+import BannerSprites from "@/components/global/composition/banner-sprites.comp.vue";
+import UpdatePreview from "./update.preview.comp.vue";
 
 export default defineComponent({
   name: "UpdateMainComponent",
   components: {
-    BannerTitleComponent,
-    BannerSpritesComponent,
-    UpdatePreviewComponent,
+    BannerTitle,
+    BannerSprites,
+    UpdatePreview,
   },
   data() {
     return {
@@ -31,16 +31,13 @@ export default defineComponent({
 
 <template>
   <div class="view-container">
-    <BannerTitleComponent :title="title" />
+    <BannerTitle :title="title" />
 
-    <BannerSpritesComponent
-      :sprite-left="spriteLeft"
-      :sprite-right="spriteRight"
-    />
+    <BannerSprites :sprite-left="spriteLeft" :sprite-right="spriteRight" />
 
     <div class="main-container">
       <div class="updates-container">
-        <UpdatePreviewComponent />
+        <UpdatePreview />
       </div>
     </div>
   </div>

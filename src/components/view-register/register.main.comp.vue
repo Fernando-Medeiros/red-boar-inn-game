@@ -7,6 +7,8 @@ import InputEmail from "@/components/global/input/input-email.comp.vue";
 import InputPassword from "@/components/global/input/input-password.comp.vue";
 import InputSubmit from "@/components/global/input/input-submit.comp.vue";
 
+import { register as RegisterSetupInputs } from "@/../setup/forms.json";
+
 export default defineComponent({
   name: "RegisterMainComponent",
   components: {
@@ -37,29 +39,7 @@ export default defineComponent({
         gender: "man",
         rotateY: false,
       },
-      inputFirstName: {
-        label: "Nome*",
-        placeholder: "Example",
-      },
-      inputLastName: {
-        label: "Sobrenome*",
-        placeholder: "Example ou  Example Example",
-      },
-      inputEmail: {
-        label: "Email*",
-        placeholder: "example@email.com",
-      },
-      inputPassword: {
-        label: "Senha*",
-        placeholder: "Example@01",
-      },
-      inputPasswordConfirm: {
-        label: "Confirme a senha*",
-        placeholder: "Example@01",
-      },
-      inputSubmit: {
-        placeholder: "Registrar",
-      },
+      ...RegisterSetupInputs,
     };
   },
   methods: {

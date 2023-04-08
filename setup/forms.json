@@ -1,0 +1,44 @@
+{
+  "login": {
+    "inputEmail": {
+      "label": "Email",
+      "placeholder": "example@email.com"
+    },
+    "inputPassword": {
+      "label": "Senha",
+      "placeholder": "Example@01"
+    },
+    "inputCheckbox": {
+      "label": "lembrar"
+    },
+    "inputSubmit": {
+      "placeholder": "Acessar"
+    },
+    "labelRecover": "recuperar a senha"
+  },
+  "register": {
+    "inputFirstName": {
+      "label": "Nome*",
+      "placeholder": "Example"
+    },
+    "inputLastName": {
+      "label": "Sobrenome*",
+      "placeholder": "Example ou  Example Example"
+    },
+    "inputEmail": {
+      "label": "Email*",
+      "placeholder": "example@email.com"
+    },
+    "inputPassword": {
+      "label": "Senha*",
+      "placeholder": "Example@01"
+    },
+    "inputPasswordConfirm": {
+      "label": "Confirme a senha*",
+      "placeholder": "Example@01"
+    },
+    "inputSubmit": {
+      "placeholder": "Registrar"
+    }
+  }
+}

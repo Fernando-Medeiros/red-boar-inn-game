@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import updates from "@/../updates.json";
+import updates from "@/../setup/updates.json";
 
 export default defineComponent({
   name: "UpdatePreviewComponent",
@@ -38,7 +38,14 @@ export default defineComponent({
     </div>
 
     <span class="updates-preview-hidden" :id="update.version.toString()">
-      {{ update.description }}
+      <ul>
+        <li
+          v-for="updateDescription in update.description"
+          :key="updateDescription"
+        >
+          {{ updateDescription }}
+        </li>
+      </ul>
     </span>
   </div>
 </template>
@@ -79,6 +86,10 @@ export default defineComponent({
   padding-left: 10px;
   margin-top: 10px;
   border-top: 1px solid #222222;
+}
+.updates-preview-hidden li {
+  margin-top: 5px;
+  list-style: none;
 }
 @media (max-width: 780px) {
   .updates-container {

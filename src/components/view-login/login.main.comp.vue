@@ -7,10 +7,11 @@ import InputPassword from "@/components/global/input/input-password.comp.vue";
 import InputSubmit from "@/components/global/input/input-submit.comp.vue";
 import InputCheckBox from "@/components/global/input/input-checkbox.comp.vue";
 
-import utils from "@/../utils.json";
+import { logintips as TitleTips } from "@/../setup/utils.json";
+import { login as LoginSetupInputs } from "@/../setup/forms.json";
 
 const randomTitleTips = () =>
-  utils["login-tips"][Math.floor(Math.random() * utils["login-tips"].length)];
+  TitleTips[Math.floor(Math.random() * TitleTips.length)];
 
 export default defineComponent({
   name: "LoginMainComponent",
@@ -40,20 +41,7 @@ export default defineComponent({
         gender: "man",
         rotateY: false,
       },
-      inputEmail: {
-        label: "Email",
-        placeholder: "example@email.com",
-      },
-      inputPassword: {
-        label: "Senha",
-        placeholder: "Example@01",
-      },
-      inputCheckbox: {
-        label: "lembrar",
-      },
-      inputSubmit: {
-        placeholder: "Acessar",
-      },
+      ...LoginSetupInputs,
     };
   },
   methods: {
@@ -95,7 +83,7 @@ export default defineComponent({
 
         <div class="form-options">
           <InputCheckBox :label="inputCheckbox.label" @click="clickRemeber" />
-          <a href="">recuperar a senha</a>
+          <a href="">{{ labelRecover }}</a>
         </div>
 
         <InputSubmit :placeholder="inputSubmit.placeholder" />
