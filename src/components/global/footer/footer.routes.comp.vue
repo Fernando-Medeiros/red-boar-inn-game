@@ -8,7 +8,6 @@ export default defineComponent({
       type: Array as PropType<{ path: string; name: string }[]>,
       required: true,
     },
-    github: { type: String, required: true },
   },
 });
 </script>
@@ -18,10 +17,6 @@ export default defineComponent({
     <router-link v-for="route in routes" :key="route.path" :to="route.path">
       {{ route.name }}
     </router-link>
-
-    <a :href="github" target="_blank">
-      <p>Participe do projeto</p>
-    </a>
   </div>
 </template>
 

@@ -1,0 +1,144 @@
+{
+  "br": {
+    "title": "Red Boar Inn",
+    "articles": [
+      {
+        "title": "Projeto",
+        "content": [
+          "Bem-vindo(a) ao Red Boar Inn, um jogo MMO RPG simples e divertido!",
+          "Em nosso mundo, o objetivo é criar um ambiente livre e colaborativo onde os jogadores possam explorar, lutar e interagir uns com os outros.",
+          "Com gráficos envolventes e uma jogabilidade intuitiva, você pode criar seu próprio personagem e mergulhar em um mundo repleto de aventuras emocionantes.",
+          "No Red Boar Inn, você pode formar alianças com outros jogadores, coletar recursos valiosos e construir sua própria história.",
+          "Explore masmorras, lute contra chefes poderosos e experimente um sistema de combate estratégico.",
+          "Com cada nível que você avança, desbloqueia novas habilidades e equipamentos para personalizar seu personagem.",
+          "O mundo aberto do Red Boar Inn permite que você viaje por terras desconhecidas, converse com NPCs interessantes e desenvolva sua própria história.",
+          "Com um sistema de comércio dinâmico, você pode comprar e vender itens para outros jogadores, construir seu próprio negócio e se tornar uma das figuras mais influentes do mundo.",
+          "Venha se juntar a nós no Red Boar Inn e comece sua jornada hoje mesmo!"
+        ]
+      },
+      {
+        "title": "Termos de Serviço",
+        "content": [
+          "Red Boar Inn é um RPG on-line baseado em texto, massivamente multiplayer e leve.",
+          "Ao jogar, você concorda em respeitar as regras e as diretrizes estabelecidas pelos nossos Termos de Uso.",
+          "Você reconhece que é responsável por qualquer conteúdo gerado por você, incluindo mensagens enviadas em bate-papo ou fóruns.",
+          "Você não pode usar cheats, exploits ou outros meios não autorizados para obter vantagens no jogo.",
+          "Reservamos o direito de banir contas que violarem nossos Termos de Uso sem aviso prévio. O jogo é oferecido 'como está', sem garantias ou representações de qualquer tipo.",
+          "Não somos responsáveis por perdas ou danos decorrentes do uso do jogo ou de sua incapacidade de usá-lo. Aproveite o jogo!`"
+        ]
+      },
+      {
+        "title": "Segurança dos Dados",
+        "content": [
+          "A privacidade e segurança de seus dados são muito importantes para nós.",
+          "Ao jogar nosso jogo de RPG online no navegador, coletamos e usamos suas informações pessoais apenas para melhorar sua experiência de jogo.",
+          "Não compartilharemos suas informações com terceiros sem seu consentimento explícito, exceto quando exigido por lei ou em casos de abuso ou fraude.",
+          "Utilizamos medidas de segurança apropriadas para proteger seus dados contra perda, acesso não autorizado ou divulgação.",
+          "Se você tiver dúvidas ou preocupações sobre a segurança de seus dados, entre em contato conosco imediatamente.",
+          "Reservamos o direito de atualizar nossa Política de Segurança de Dados periodicamente, e notificaremos você caso ocorram mudanças significativas.",
+          "Ao jogar nosso jogo, você concorda com nossa Política de Segurança de Dados.`"
+        ]
+      },
+      {
+        "title": "Colaboração",
+        "content": [
+          "O Red Boar Inn está animado em anunciar que estamos abrindo nosso projeto para colaborações futuras de desenvolvedores.",
+          "Nosso jogo é de código aberto e estamos procurando colaboradores talentosos para contribuir com novos recursos, correções de bugs e melhorias gerais.",
+          "Junte-se à nossa equipe e ajude-nos a criar um mundo ainda mais emocionante e interativo!"
+        ]
+      },
+      {
+        "title": "Créditos",
+        "content": [
+          "Agradecemos a todos os fornecedores de assets gratuitos, imagens e sprites que nos permitiram criar o Red Boar Inn.",
+          "Sem sua generosidade, não teríamos sido capazes de criar um jogo tão visualmente atraente e cativante."
+        ],
+        "links": [
+          {
+            "name": "liuzishan",
+            "link": "https://www.freepik.com/author/liuzishan"
+          },
+          {
+            "name": "ionicons",
+            "link": "https://ionic.io/ionicons"
+          },
+          {
+            "name": "Hypnos_art",
+            "link": "https://twitter.com/Hypnos_art?s=09"
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Red Boar Inn",
+    "articles": [
+      {
+        "title": "Project",
+        "content": [
+          "Welcome to Red Boar Inn, a simple and fun MMO RPG game!",
+          "In our world, the goal is to create a free and collaborative environment where players can explore, fight and interact with each other.",
+          "With immersive graphics and intuitive gameplay, you can create your own character and immerse yourself in a world full of exciting adventures.",
+          "At Red Boar Inn, you can form alliances with other players, collect valuable resources and build your own story.",
+          "Explore dungeons, fight powerful bosses and experience a strategic combat system.",
+          "With each level you advance, you unlock new skills and equipment to customize your character.",
+          "Red Boar Inn's open world allows you to travel through uncharted lands, chat with interesting NPCs and develop your own story.",
+          "With a dynamic trading system, you can buy and sell items for other players, build your own business and become one of the most influential figures in the world.",
+          "Come join us at the Red Boar Inn and begin your journey today!"
+        ]
+      },
+      {
+        "title": "Service Terms",
+        "content": [
+          "Red Boar Inn is a lightweight, massively multiplayer, text-based online RPG.",
+          "By playing, you agree to abide by the rules and guidelines set forth in our Terms of Use.",
+          "You acknowledge that you are responsible for any content generated by you, including messages sent in chat or forums.",
+          "You may not use cheats, exploits or other unauthorized means to gain game advantage.",
+          "We reserve the right to ban accounts that violate our Terms of Use without notice. The game is provided 'as is', without warranties or representations of any kind.",
+          "We are not responsible for loss or damage arising from your use of the game or your inability to use it. Enjoy the game!`"
+        ]
+      },
+      {
+        "title": "Data Security",
+        "content": [
+          "The privacy and security of your data is very important to us.",
+          "When playing our online browser roleplaying game, we collect and use your personal information only to improve your gaming experience.",
+          "We will not share your information with third parties without your explicit consent, except as required by law or in cases of abuse or fraud.",
+          "We use appropriate security measures to protect your data from loss, unauthorized access or disclosure.",
+          "If you have questions or concerns about the security of your data, please contact us immediately.",
+          "We reserve the right to update our Data Security Policy periodically, and will notify you if significant changes occur.",
+          "By playing our game, you agree to our Data Security Policy.`"
+        ]
+      },
+      {
+        "title": "Collaboration",
+        "content": [
+          "The Red Boar Inn is excited to announce that we are opening up our project to future developer collaborations.",
+          "Our game is open source and we are looking for talented contributors to contribute new features, bug fixes and general improvements.",
+          "Join our team and help us create an even more exciting and interactive world!"
+        ]
+      },
+      {
+        "title": "Credits",
+        "content": [
+          "Thanks to all the free asset, image and sprite providers that allowed us to create the Red Boar Inn.",
+          "Without your generosity, we would not have been able to create such a visually appealing and captivating game."
+        ],
+        "links": [
+          {
+            "name": "liuzishan",
+            "link": "https://www.freepik.com/author/liuzishan"
+          },
+          {
+            "name": "ionicons",
+            "link": "https://ionic.io/ionicons"
+          },
+          {
+            "name": "Hypnos_art",
+            "link": "https://twitter.com/Hypnos_art?s=09"
+          }
+        ]
+      }
+    ]
+  }
+}

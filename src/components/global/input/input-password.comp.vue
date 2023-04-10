@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { PasswordRegex } from "@/core/validators/regex.validators";
+import { PasswordRegex } from "core/validators/regex.validators";
 
 export default defineComponent({
   name: "InputPasswordComponent",

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { NameRegex } from "@/core/validators/regex.validators";
+import { NameRegex } from "core/validators/regex.validators";
 
 export default defineComponent({
   name: "InputNameComponent",

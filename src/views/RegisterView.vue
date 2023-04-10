@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import RegisterMainComponent from "@/components/view-register/register.main.comp.vue";
+import RegisterMainComponent from "comp/view-register/register.main.comp.vue";
 
 export default defineComponent({
   name: "RegisterView",

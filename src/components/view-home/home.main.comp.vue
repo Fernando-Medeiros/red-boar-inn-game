@@ -1,7 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import BannerTitle from "@/components/global/composition/banner-title.comp.vue";
-import BannerSprites from "@/components/global/composition/banner-sprites.comp.vue";
+import { LocalStorage } from "core/middlewares/language";
+import SetupHome from "setup/page.home.json";
+
+import BannerTitle from "comp/global/composition/banner-title.comp.vue";
+import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
 import RegisterButton from "./home.register-button.comp.vue";
 
 export default defineComponent({
@@ -13,7 +16,9 @@ export default defineComponent({
   },
   data() {
     return {
-      title: "Comece a explorar um mundo de masmorras e aventuras!",
+      title: "",
+      pathToRegister: "/register",
+      label: "",
       spriteLeft: {
         name: "mage",
         gender: "woman",
@@ -26,6 +31,11 @@ export default defineComponent({
       },
     };
   },
+  mounted() {
+    const setup = SetupHome[LocalStorage.getLanguage()];
+    this.title = setup.title;
+    this.label = setup.buttonLabel;
+  },
 });
 </script>
 
@@ -36,7 +46,7 @@ export default defineComponent({
     <BannerSprites :sprite-left="spriteLeft" :sprite-right="spriteRight" />
 
     <div class="main-container">
-      <RegisterButton />
+      <RegisterButton :path-to-register="pathToRegister" :label="label" />
     </div>
   </div>
 </template>

@@ -1,0 +1,14 @@
+{
+  "header": {
+    "br": {
+      "buttonLoginLabel": "Acessar"
+    },
+    "en": {
+      "buttonLoginLabel": "Access"
+    }
+  },
+  "footer": {
+    "br": {},
+    "en": {}
+  }
+}

@@ -3,22 +3,24 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "RegisterButtonComponent",
-  data() {
-    return {
-      pathToRegister: "/registrar",
-      buttonInfo: "Registre-se",
-    };
+  props: {
+    label: { type: String, required: true },
+    pathToRegister: { type: String, required: true },
   },
 });
 </script>
 
 <template>
   <div class="register-container">
-    <img class="register-icon" src="@/assets/icons/guild.png" alt="register" />
+    <img
+      class="register-icon"
+      :src="require('assets/icons/guild.png')"
+      alt="register"
+    />
 
     <router-link :to="pathToRegister">
       <button class="register-button">
-        <p>{{ buttonInfo }}</p>
+        <p>{{ label }}</p>
       </button>
     </router-link>
   </div>

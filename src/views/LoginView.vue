@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import LoginMainComponent from "@/components/view-login/login.main.comp.vue";
+import LoginMainComponent from "comp/view-login/login.main.comp.vue";
 
 export default defineComponent({
   name: "LoginView",

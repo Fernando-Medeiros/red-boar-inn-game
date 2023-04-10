@@ -30,7 +30,7 @@ export default defineComponent({
   <footer class="footer-background">
     <div class="main-container">
       <div class="footer-container">
-        <RoutesComp :routes="routes" :github="contact.github" />
+        <RoutesComp :routes="routes" />
 
         <div class="contact">
           <ContactIconComp :icon-name="'github'" :link="contact.github" />
@@ -41,7 +41,7 @@ export default defineComponent({
 
     <p class="copy" translate="no">
       <router-link to="/">
-        <img class="image-logo" src="@/assets/logo.png" alt="logo" />
+        <img class="image-logo" :src="require('assets/logo.png')" alt="logo" />
       </router-link>
 
       {{ info.copyright }}

@@ -1,7 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-
-import { EmailRegex } from "@/core/validators/regex.validators";
+import { EmailRegex } from "core/validators/regex.validators";
 
 export default defineComponent({
   name: "InputEmailComponent",

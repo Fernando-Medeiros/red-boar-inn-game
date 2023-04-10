@@ -1,16 +1,16 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import BannerTitle from "@/components/global/composition/banner-title.comp.vue";
-import BannerSprites from "@/components/global/composition/banner-sprites.comp.vue";
-import InputEmail from "@/components/global/input/input-email.comp.vue";
-import InputPassword from "@/components/global/input/input-password.comp.vue";
-import InputSubmit from "@/components/global/input/input-submit.comp.vue";
-import InputCheckBox from "@/components/global/input/input-checkbox.comp.vue";
+import { LocalStorage } from "core/middlewares/language";
+import SetupLogin from "setup/page.login.json";
 
-import { logintips as TitleTips } from "@/../setup/utils.json";
-import { login as LoginSetupInputs } from "@/../setup/forms.json";
+import BannerTitle from "comp/global/composition/banner-title.comp.vue";
+import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
+import InputEmail from "comp/global/input/input-email.comp.vue";
+import InputPassword from "comp/global/input/input-password.comp.vue";
+import InputSubmit from "comp/global/input/input-submit.comp.vue";
+import InputCheckBox from "comp/global/input/input-checkbox.comp.vue";
 
-const randomTitleTips = () =>
+const randomTitleTips = (TitleTips: string[]) =>
   TitleTips[Math.floor(Math.random() * TitleTips.length)];
 
 export default defineComponent({
@@ -25,7 +25,7 @@ export default defineComponent({
   },
   data() {
     return {
-      title: randomTitleTips(),
+      title: "",
       form: {
         email: "",
         password: "",
@@ -41,8 +41,12 @@ export default defineComponent({
         gender: "man",
         rotateY: false,
       },
-      ...LoginSetupInputs,
+      ...SetupLogin[LocalStorage.getLanguage()].form,
     };
+  },
+  mounted() {
+    const setup = SetupLogin[LocalStorage.getLanguage()];
+    this.title = randomTitleTips(setup.titleTips);
   },
   methods: {
     async login() {
@@ -54,7 +58,7 @@ export default defineComponent({
     emitPassword(value: string) {
       this.form.password = value;
     },
-    clickRemeber() {
+    clickRemember() {
       this.form.remember = !this.form.remember;
     },
   },
@@ -68,7 +72,12 @@ export default defineComponent({
     <BannerSprites :sprite-left="spriteLeft" :sprite-right="spriteRight" />
 
     <div class="main-container">
-      <form class="form-login" method="" @submit.prevent="login">
+      <form
+        class="form-login"
+        method=""
+        action="/character/create"
+        @submit="login"
+      >
         <InputEmail
           :label="inputEmail.label"
           :placeholder="inputEmail.placeholder"
@@ -82,7 +91,7 @@ export default defineComponent({
         />
 
         <div class="form-options">
-          <InputCheckBox :label="inputCheckbox.label" @click="clickRemeber" />
+          <InputCheckBox :label="inputCheckbox.label" @click="clickRemember" />
           <a href="">{{ labelRecover }}</a>
         </div>
 

@@ -24,7 +24,7 @@ export default defineComponent({
       class="sprite"
       :id="spriteName"
       :alt="spriteName"
-      :src="require(`@/assets/sprites/${spriteGender}/${spriteName}.png`)"
+      :src="require(`assets/sprites/${spriteGender}/${spriteName}.png`)"
     />
     <span class="sprite-background"></span>
   </div>

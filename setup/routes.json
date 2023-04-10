@@ -1,0 +1,14 @@
+{
+  "br": {
+    "routes": [
+      { "path": "/updates", "name": "Atualizações" },
+      { "path": "/about", "name": "Sobre" }
+    ]
+  },
+  "en": {
+    "routes": [
+      { "path": "/updates", "name": "Updates" },
+      { "path": "/about", "name": "About" }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "br": {
+    "title": "Atualizações",
+    "updates": {
+      "1": {
+        "version": 0.1,
+        "date": "04-04-2023",
+        "description": ["Impl -> Página inicial; Página de atualizações"]
+      },
+      "2": {
+        "version": 0.2,
+        "date": "05-04-2023",
+        "description": [
+          "Impl -> Página Sobre o projeto, termos de uso e créditos; Página de login e registro",
+          "Impl -> Página de login e registro"
+        ]
+      },
+      "3": {
+        "version": 0.3,
+        "date": "07-04-2023",
+        "description": [
+          "Impl -> Validação dos formularios de login e registro",
+          "Fix -> Design responsivo"
+        ]
+      }
+    }
+  },
+  "en": {
+    "title": "Updates",
+    "updates": {
+      "1": {
+        "version": 0.1,
+        "date": "04-04-2023",
+        "description": ["Impl -> Home Page; Updates Page"]
+      },
+      "2": {
+        "version": 0.2,
+        "date": "05-04-2023",
+        "description": [
+          "Impl -> Page About the project, terms of use and credits; Login and registration page",
+          "Impl -> Login and Registration Page"
+        ]
+      },
+      "3": {
+        "version": 0.3,
+        "date": "07-04-2023",
+        "description": [
+          "Impl -> Validation of login and registration forms",
+          "Fix -> Responsive design"
+        ]
+      }
+    }
+  }
+}

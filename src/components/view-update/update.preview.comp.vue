@@ -1,13 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import updates from "@/../setup/updates.json";
 
 export default defineComponent({
   name: "UpdatePreviewComponent",
-  data() {
-    return {
-      updates: updates,
-    };
+  props: {
+    updates: { type: Object, required: true },
   },
   methods: {
     displayUpdate(id: number | string) {

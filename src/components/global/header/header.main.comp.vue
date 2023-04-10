@@ -1,10 +1,13 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
+import LanguageButton from "./header.button-language.comp.vue";
 
 export default defineComponent({
   name: "HeaderMainComponent",
+  components: { LanguageButton },
   props: {
     loginPath: { type: String, required: true },
+    buttonLabel: { type: String, required: true },
     routes: {
       type: Array as PropType<{ path: string; name: string }[]>,
       required: true,
@@ -18,7 +21,11 @@ export default defineComponent({
     <div class="main-container">
       <nav class="header-container">
         <router-link to="/">
-          <img class="image-logo" src="@/assets/logo.png" alt="logo" />
+          <img
+            class="image-logo"
+            :src="require('assets/logo.png')"
+            alt="logo"
+          />
         </router-link>
 
         <nav class="header-routes">
@@ -30,8 +37,12 @@ export default defineComponent({
             {{ route.name }}
           </router-link>
 
+          <LanguageButton />
+
           <router-link :to="loginPath">
-            <button class="btn-login"><p>Acessar</p></button>
+            <button class="btn-login">
+              <p>{{ buttonLabel }}</p>
+            </button>
           </router-link>
         </nav>
       </nav>

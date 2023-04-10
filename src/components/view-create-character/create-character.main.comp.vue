@@ -1,39 +1,37 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { LocalStorage } from "core/middlewares/language";
-import SetupUpdates from "setup/page.updates.json";
+import SetupCreateCharacter from "setup/page.create-character.json";
 
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
-import UpdatePreview from "./update.preview.comp.vue";
+import ChoiceClass from "./create-character.class.comp.vue";
 
 export default defineComponent({
-  name: "UpdateMainComponent",
+  name: "CreateCharacterMainComponent",
   components: {
     BannerTitle,
     BannerSprites,
-    UpdatePreview,
+    ChoiceClass,
   },
   data() {
     return {
       title: "",
-      updates: {},
       spriteLeft: {
-        name: "warrior",
+        name: "thief",
         gender: "woman",
         rotateY: true,
       },
       spriteRight: {
-        name: "warrior",
+        name: "thief",
         gender: "man",
         rotateY: false,
       },
     };
   },
   mounted() {
-    const setup = SetupUpdates[LocalStorage.getLanguage()];
+    const setup = SetupCreateCharacter[LocalStorage.getLanguage()];
     this.title = setup.title;
-    this.updates = setup.updates;
   },
 });
 </script>
@@ -45,9 +43,7 @@ export default defineComponent({
     <BannerSprites :sprite-left="spriteLeft" :sprite-right="spriteRight" />
 
     <div class="main-container">
-      <div class="updates-container">
-        <UpdatePreview :updates="updates" />
-      </div>
+      <ChoiceClass />
     </div>
   </div>
 </template>
@@ -55,14 +51,6 @@ export default defineComponent({
 <style scoped>
 .view-container {
   margin-bottom: 20px;
-}
-.updates-container {
-  z-index: 1;
-  display: grid;
-  gap: 20px;
-  padding: 20px 10px;
-  justify-items: center;
-  background: linear-gradient(#282828, #323232c0);
 }
 
 @media (max-width: 780px) {

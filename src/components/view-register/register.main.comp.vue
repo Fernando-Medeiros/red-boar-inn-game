@@ -1,13 +1,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import BannerTitle from "@/components/global/composition/banner-title.comp.vue";
-import BannerSprites from "@/components/global/composition/banner-sprites.comp.vue";
-import InputName from "@/components/global/input/input-name.comp.vue";
-import InputEmail from "@/components/global/input/input-email.comp.vue";
-import InputPassword from "@/components/global/input/input-password.comp.vue";
-import InputSubmit from "@/components/global/input/input-submit.comp.vue";
+import { LocalStorage } from "core/middlewares/language";
+import SetupRegister from "setup/page.register.json";
 
-import { register as RegisterSetupInputs } from "@/../setup/forms.json";
+import BannerTitle from "comp/global/composition/banner-title.comp.vue";
+import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
+import InputName from "comp/global/input/input-name.comp.vue";
+import InputEmail from "comp/global/input/input-email.comp.vue";
+import InputPassword from "comp/global/input/input-password.comp.vue";
+import InputSubmit from "comp/global/input/input-submit.comp.vue";
 
 export default defineComponent({
   name: "RegisterMainComponent",
@@ -21,7 +22,7 @@ export default defineComponent({
   },
   data() {
     return {
-      title: "Registre-se",
+      title: "",
       form: {
         firstName: "",
         lastName: "",
@@ -39,8 +40,12 @@ export default defineComponent({
         gender: "man",
         rotateY: false,
       },
-      ...RegisterSetupInputs,
+      ...SetupRegister[LocalStorage.getLanguage()].form,
     };
+  },
+  mounted() {
+    const setup = SetupRegister[LocalStorage.getLanguage()];
+    this.title = setup.title;
   },
   methods: {
     async register() {

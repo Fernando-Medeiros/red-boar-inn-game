@@ -4,9 +4,9 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "AboutInfoComponent",
   props: {
-    title: String,
-    content: String,
-    credits: Object,
+    title: { type: String, required: true },
+    content: { type: String, required: true },
+    credits: { type: Object, required: false },
   },
 });
 </script>

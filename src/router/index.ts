@@ -8,24 +8,29 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
-    path: "/atualizacoes",
-    name: "atualizacoes",
+    path: "/updates",
+    name: "updates",
     component: () => import("../views/UpdateView.vue"),
   },
   {
-    path: "/sobre",
-    name: "sobre",
+    path: "/about",
+    name: "about",
     component: () => import("../views/AboutView.vue"),
   },
   {
-    path: "/acessar",
-    name: "acessar",
+    path: "/login",
+    name: "login",
     component: () => import("../views/LoginView.vue"),
   },
   {
-    path: "/registrar",
-    name: "registrar",
+    path: "/register",
+    name: "register",
     component: () => import("../views/RegisterView.vue"),
+  },
+  {
+    path: "/character/create",
+    name: "create-character",
+    component: () => import("../views/CreateCharacterView.vue"),
   },
 ];
 

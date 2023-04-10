@@ -1,18 +1,19 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import BannerTitle from "@/components/global/composition/banner-title.comp.vue";
-import BannerSprites from "@/components/global/composition/banner-sprites.comp.vue";
-import InfoComponent from "./about.info.comp.vue";
+import { LocalStorage } from "core/middlewares/language";
+import SetupAbout from "setup/page.about.json";
 
-import { articles as AboutSetupArticles } from "@/../setup/utils.json";
+import BannerTitle from "comp/global/composition/banner-title.comp.vue";
+import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
+import InfoComponent from "./about.info.comp.vue";
 
 export default defineComponent({
   name: "AboutMainComponent",
   components: { BannerTitle, BannerSprites, InfoComponent },
   data() {
     return {
-      title: "Red Boar Inn",
-      articles: AboutSetupArticles,
+      title: "",
+      articles: SetupAbout[LocalStorage.getLanguage()].articles,
       spriteLeft: {
         name: "merchant",
         gender: "woman",
@@ -24,6 +25,10 @@ export default defineComponent({
         rotateY: false,
       },
     };
+  },
+  mounted() {
+    const setup = SetupAbout[LocalStorage.getLanguage()];
+    this.title = setup.title;
   },
 });
 </script>
@@ -38,10 +43,10 @@ export default defineComponent({
       <div class="about-container">
         <InfoComponent
           v-for="article in articles"
-          :key="article.title"
-          :title="article.title"
-          :content="article.content.join('\n')"
-          :credits="article.links"
+          :key="article?.title"
+          :title="article?.title"
+          :content="article?.content.join('\n')"
+          :credits="article?.links"
         />
       </div>
     </div>

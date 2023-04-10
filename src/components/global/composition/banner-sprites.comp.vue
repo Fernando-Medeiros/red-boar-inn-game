@@ -2,24 +2,22 @@
 import { defineComponent, PropType } from "vue";
 import SpriteComponent from "../sprite/sprite.comp.vue";
 
+type Sprite = {
+  name: string;
+  gender: string;
+  rotateY: boolean;
+};
+
 export default defineComponent({
   name: "BannerSpritesComponent",
   components: { SpriteComponent },
   props: {
     spriteLeft: {
-      type: Object as PropType<{
-        name: string;
-        gender: string;
-        rotateY: boolean;
-      }>,
+      type: Object as PropType<Sprite>,
       required: true,
     },
     spriteRight: {
-      type: Object as PropType<{
-        name: string;
-        gender: string;
-        rotateY: boolean;
-      }>,
+      type: Object as PropType<Sprite>,
       required: true,
     },
   },
