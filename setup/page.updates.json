@@ -22,6 +22,19 @@
           "Impl -> Validação dos formularios de login e registro",
           "Fix -> Design responsivo"
         ]
+      },
+      "4": {
+        "version": 0.4,
+        "date": "09-04-2023",
+        "description": ["Impl -> Funcionalidade: tradução de idioma (br, en)"]
+      },
+      "5": {
+        "version": 0.5,
+        "date": "10-04-2023",
+        "description": [
+          "Impl -> Página de criação do personagem.",
+          "Fix -> Organização dos componentes e paginas do projeto."
+        ]
       }
     }
   },
@@ -47,6 +60,19 @@
         "description": [
           "Impl -> Validation of login and registration forms",
           "Fix -> Responsive design"
+        ]
+      },
+      "4": {
+        "version": 0.4,
+        "date": "09-04-2023",
+        "description": ["Impl -> Feature: language translation (br, en)"]
+      },
+      "5": {
+        "version": 0.5,
+        "date": "10-04-2023",
+        "description": [
+          "Impl -> Character creation page.",
+          "Fix -> Organization of project components and views."
         ]
       }
     }
