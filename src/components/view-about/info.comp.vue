@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "AboutInfoComponent",
+  name: "AboutInfo",
   props: {
     title: { type: String, required: true },
     content: { type: String, required: true },

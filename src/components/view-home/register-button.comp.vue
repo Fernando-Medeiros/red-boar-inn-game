@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "RegisterButtonComponent",
+  name: "RegisterButton",
   props: {
     label: { type: String, required: true },
     pathToRegister: { type: String, required: true },

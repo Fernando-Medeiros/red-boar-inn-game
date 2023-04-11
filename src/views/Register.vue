@@ -10,8 +10,12 @@ import InputEmail from "comp/global/input/input-email.comp.vue";
 import InputPassword from "comp/global/input/input-password.comp.vue";
 import InputSubmit from "comp/global/input/input-submit.comp.vue";
 
+function getSetup() {
+  return SetupRegister[LocalStorage.getLanguage()];
+}
+
 export default defineComponent({
-  name: "RegisterMainComponent",
+  name: "RegisterView",
   components: {
     BannerTitle,
     BannerSprites,
@@ -30,21 +34,24 @@ export default defineComponent({
         password: "",
         confirmPassword: "",
       },
-      spriteLeft: {
-        name: "peasant",
-        gender: "woman",
-        rotateY: true,
+      banner: {
+        spriteLeft: {
+          name: "peasant",
+          gender: "woman",
+          rotateY: true,
+        },
+        spriteRight: {
+          name: "peasant",
+          gender: "man",
+          rotateY: false,
+        },
       },
-      spriteRight: {
-        name: "peasant",
-        gender: "man",
-        rotateY: false,
-      },
-      ...SetupRegister[LocalStorage.getLanguage()].form,
+      ...getSetup().form,
     };
   },
   mounted() {
-    const setup = SetupRegister[LocalStorage.getLanguage()];
+    const setup = getSetup();
+
     this.title = setup.title;
   },
   methods: {
@@ -71,10 +78,13 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="view-container">
+  <div>
     <BannerTitle :title="title" />
 
-    <BannerSprites :sprite-left="spriteLeft" :sprite-right="spriteRight" />
+    <BannerSprites
+      :sprite-left="banner.spriteLeft"
+      :sprite-right="banner.spriteRight"
+    />
 
     <div class="main-container">
       <form class="form-login" method="" @submit.prevent="register">
@@ -108,7 +118,7 @@ export default defineComponent({
           @emit-content="emitConfirmPassword"
         />
 
-        <InputSubmit :placeholder="inputSubmit.placeholder" />
+        <InputSubmit :label="inputSubmit.placeholder" />
       </form>
     </div>
   </div>

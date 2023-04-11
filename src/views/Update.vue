@@ -5,10 +5,10 @@ import SetupUpdates from "setup/page.updates.json";
 
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
-import UpdatePreview from "./update.preview.comp.vue";
+import UpdatePreview from "comp/view-update/update.preview.comp.vue";
 
 export default defineComponent({
-  name: "UpdateMainComponent",
+  name: "UpdateView",
   components: {
     BannerTitle,
     BannerSprites,
@@ -18,15 +18,17 @@ export default defineComponent({
     return {
       title: "",
       updates: {},
-      spriteLeft: {
-        name: "warrior",
-        gender: "woman",
-        rotateY: true,
-      },
-      spriteRight: {
-        name: "warrior",
-        gender: "man",
-        rotateY: false,
+      banner: {
+        spriteLeft: {
+          name: "warrior",
+          gender: "woman",
+          rotateY: true,
+        },
+        spriteRight: {
+          name: "warrior",
+          gender: "man",
+          rotateY: false,
+        },
       },
     };
   },
@@ -39,10 +41,13 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="view-container">
+  <div>
     <BannerTitle :title="title" />
 
-    <BannerSprites :sprite-left="spriteLeft" :sprite-right="spriteRight" />
+    <BannerSprites
+      :sprite-left="banner.spriteLeft"
+      :sprite-right="banner.spriteRight"
+    />
 
     <div class="main-container">
       <div class="updates-container">
@@ -53,9 +58,6 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.view-container {
-  margin-bottom: 20px;
-}
 .updates-container {
   z-index: 1;
   display: grid;

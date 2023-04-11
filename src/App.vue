@@ -33,7 +33,9 @@ export default defineComponent({
     :login-path="loginPath"
     :button-label="buttonLoginLabel"
   />
-  <router-view />
+  <div class="view-container">
+    <router-view />
+  </div>
   <Footer :routes="routes" />
 </template>
 
@@ -56,11 +58,15 @@ html {
     url("assets/pictures/img3.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: top;
+  background-attachment: fixed;
 }
 .main-container {
   max-width: 1000px;
   margin: auto;
   width: 100%;
+}
+.view-container {
+  margin-bottom: 20px;
 }
 </style>

@@ -10,11 +10,15 @@ import InputPassword from "comp/global/input/input-password.comp.vue";
 import InputSubmit from "comp/global/input/input-submit.comp.vue";
 import InputCheckBox from "comp/global/input/input-checkbox.comp.vue";
 
+function getSetup() {
+  return SetupLogin[LocalStorage.getLanguage()];
+}
+
 const randomTitleTips = (TitleTips: string[]) =>
   TitleTips[Math.floor(Math.random() * TitleTips.length)];
 
 export default defineComponent({
-  name: "LoginMainComponent",
+  name: "LoginView",
   components: {
     BannerTitle,
     BannerSprites,
@@ -41,11 +45,12 @@ export default defineComponent({
         gender: "man",
         rotateY: false,
       },
-      ...SetupLogin[LocalStorage.getLanguage()].form,
+      ...getSetup().form,
     };
   },
   mounted() {
-    const setup = SetupLogin[LocalStorage.getLanguage()];
+    const setup = getSetup();
+
     this.title = randomTitleTips(setup.titleTips);
   },
   methods: {
@@ -66,7 +71,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="view-container">
+  <div>
     <BannerTitle :title="title" />
 
     <BannerSprites :sprite-left="spriteLeft" :sprite-right="spriteRight" />
@@ -95,7 +100,7 @@ export default defineComponent({
           <a href="">{{ labelRecover }}</a>
         </div>
 
-        <InputSubmit :placeholder="inputSubmit.placeholder" />
+        <InputSubmit :label="inputSubmit.placeholder" />
       </form>
     </div>
   </div>

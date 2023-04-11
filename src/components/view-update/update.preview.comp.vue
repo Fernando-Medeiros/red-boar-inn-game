@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "UpdatePreviewComponent",
+  name: "UpdatePreview",
   props: {
     updates: { type: Object, required: true },
   },
@@ -75,7 +75,6 @@ export default defineComponent({
   border-left: 2px solid #222222;
   border-right: 2px solid #222222;
 }
-
 .updates-preview-hidden {
   display: none;
   word-wrap: break-word;

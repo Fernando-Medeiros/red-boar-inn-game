@@ -5,39 +5,49 @@ import SetupAbout from "setup/page.about.json";
 
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
-import InfoComponent from "./about.info.comp.vue";
+import InfoComponent from "comp/view-about/info.comp.vue";
+
+function getSetup() {
+  return SetupAbout[LocalStorage.getLanguage()];
+}
 
 export default defineComponent({
-  name: "AboutMainComponent",
+  name: "AboutView",
   components: { BannerTitle, BannerSprites, InfoComponent },
   data() {
     return {
       title: "",
-      articles: SetupAbout[LocalStorage.getLanguage()].articles,
-      spriteLeft: {
-        name: "merchant",
-        gender: "woman",
-        rotateY: true,
-      },
-      spriteRight: {
-        name: "merchant",
-        gender: "man",
-        rotateY: false,
+      articles: getSetup().articles,
+      banner: {
+        spriteLeft: {
+          name: "merchant",
+          gender: "woman",
+          rotateY: true,
+        },
+        spriteRight: {
+          name: "merchant",
+          gender: "man",
+          rotateY: false,
+        },
       },
     };
   },
   mounted() {
-    const setup = SetupAbout[LocalStorage.getLanguage()];
+    const setup = getSetup();
+
     this.title = setup.title;
   },
 });
 </script>
 
 <template>
-  <div class="view-container">
+  <div>
     <BannerTitle :title="title" />
 
-    <BannerSprites :sprite-left="spriteLeft" :sprite-right="spriteRight" />
+    <BannerSprites
+      :sprite-left="banner.spriteLeft"
+      :sprite-right="banner.spriteRight"
+    />
 
     <div class="main-container">
       <div class="about-container">
@@ -54,9 +64,6 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.view-container {
-  margin-bottom: 20px;
-}
 .about-container {
   z-index: 1;
   display: grid;
