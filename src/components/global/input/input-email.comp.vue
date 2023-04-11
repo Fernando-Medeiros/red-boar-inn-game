@@ -3,7 +3,7 @@ import { defineComponent } from "vue";
 import { EmailRegex } from "core/validators/regex.validators";
 
 export default defineComponent({
-  name: "InputEmailComponent",
+  name: "InputEmail",
   props: {
     label: { type: String, required: true },
     placeholder: { type: String, required: true },

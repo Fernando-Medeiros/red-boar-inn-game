@@ -3,7 +3,7 @@ import { defineComponent } from "vue";
 import { PasswordRegex } from "core/validators/regex.validators";
 
 export default defineComponent({
-  name: "InputPasswordComponent",
+  name: "InputPassword",
   props: {
     label: { type: String, required: true },
     placeholder: { type: String, required: true },

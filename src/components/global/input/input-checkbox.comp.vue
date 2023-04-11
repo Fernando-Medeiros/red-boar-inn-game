@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "InputCheckBoxComponent",
+  name: "InputCheckBox",
   emits: ["emitContent"],
   props: {
     label: { type: String, required: true },

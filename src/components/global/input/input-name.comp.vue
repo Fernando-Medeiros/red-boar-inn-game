@@ -3,7 +3,7 @@ import { defineComponent } from "vue";
 import { NameRegex } from "core/validators/regex.validators";
 
 export default defineComponent({
-  name: "InputNameComponent",
+  name: "InputName",
   props: {
     label: { type: String, required: true },
     placeholder: { type: String, required: true },

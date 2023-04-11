@@ -6,7 +6,7 @@ export default defineComponent({
   props: {
     spriteName: { type: String, required: true },
     spriteGender: { type: String, required: true },
-    rotateY: { type: Boolean, required: true, default: false },
+    rotateY: { type: Boolean, required: true },
   },
   mounted() {
     if (this.rotateY) {

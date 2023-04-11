@@ -2,9 +2,9 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "InputSubmitComponent",
+  name: "InputSubmit",
   props: {
-    placeholder: { type: String, required: true },
+    label: { type: String, required: true },
   },
 });
 </script>
@@ -14,7 +14,7 @@ export default defineComponent({
     <input
       class="input-submit input-submit-text"
       type="submit"
-      :value="placeholder"
+      :value="label"
     />
   </div>
 </template>
@@ -39,7 +39,7 @@ export default defineComponent({
   font-size: 20px;
   text-align: center;
   align-self: center;
-  margin: auto;
+  /* margin: auto; */
   padding: auto;
 }
 .input-submit:hover {
