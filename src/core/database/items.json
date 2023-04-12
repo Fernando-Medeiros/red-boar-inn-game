@@ -30,6 +30,20 @@
   ],
   "materials": [
     {
+      "name": "gold",
+      "type": "trade",
+      "total": 1,
+      "value": 1,
+      "description": "..."
+    },
+    {
+      "name": "jewel",
+      "type": "trade",
+      "total": 1,
+      "value": 1,
+      "description": "..."
+    },
+    {
       "name": "bone",
       "type": "craft",
       "total": 1,
