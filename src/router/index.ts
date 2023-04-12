@@ -32,6 +32,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "create-character",
     component: () => import("../views/CreateCharacter.vue"),
   },
+  {
+    path: "/profile",
+    name: "profile",
+    component: () => import("../views/Profile.vue"),
+  },
 ];
 
 const router = createRouter({
