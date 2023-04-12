@@ -1,0 +1,46 @@
+{
+  "br": {
+    "sprite": {
+      "levelLabel": "Nível"
+    },
+
+    "barStatus": {
+      "notification": { "label": "Notificação", "icon": "notification" }
+    },
+
+    "menu": {
+      "status": { "label": "Status", "icon": "status" },
+      "skills": { "label": "Habilidades", "icon": "skills" },
+      "equipment": { "label": "Equipmentos", "icon": "equipment" },
+      "codex": { "label": "Codex", "icon": "codex" },
+      "inventory": { "label": "Inventário", "icon": "inventory" },
+      "dungeon": { "label": "Labirinto", "icon": "dungeon" },
+      "arena": { "label": "Arena", "icon": "arena" },
+      "quests": { "label": "Missões", "icon": "quests" },
+      "options": { "label": "Opções", "icon": "options" },
+      "classes": { "label": "Mudar Classe", "icon": "classes" }
+    }
+  },
+  "en": {
+    "sprite": {
+      "levelLabel": "Level"
+    },
+
+    "barStatus": {
+      "notification": { "label": "Notification", "icon": "notification" }
+    },
+
+    "menu": {
+      "status": { "label": "Status", "icon": "status" },
+      "skills": { "label": "Skills", "icon": "skills" },
+      "equipment": { "label": "Equipment", "icon": "equipment" },
+      "codex": { "label": "Codex", "icon": "codex" },
+      "inventory": { "label": "Inventory", "icon": "inventory" },
+      "dungeon": { "label": "Dungeon", "icon": "dungeon" },
+      "arena": { "label": "Arena", "icon": "arena" },
+      "quests": { "label": "Quests", "icon": "quests" },
+      "options": { "label": "Options", "icon": "options" },
+      "classes": { "label": "Class", "icon": "classes" }
+    }
+  }
+}
