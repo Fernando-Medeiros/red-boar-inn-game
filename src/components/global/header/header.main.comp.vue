@@ -3,7 +3,7 @@ import { defineComponent, PropType } from "vue";
 import LanguageButton from "./header.button-language.comp.vue";
 
 export default defineComponent({
-  name: "HeaderMainComponent",
+  name: "HeaderComponent",
   components: { LanguageButton },
   props: {
     loginPath: { type: String, required: true },

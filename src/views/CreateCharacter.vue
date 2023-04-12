@@ -1,7 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/middlewares/language";
+import { LocalStorage } from "src/core/middlewares/local-storage";
 import SetupCreateCharacter from "setup/page.create-character.json";
+
+import ExampleCharacter from "core/database/character-example.json";
 
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
@@ -69,7 +71,10 @@ export default defineComponent({
   },
   methods: {
     async createCharacter() {
-      console.log(this.form);
+      const exCharacter = ExampleCharacter;
+      exCharacter.charName = this.form.characterName;
+      exCharacter.className = this.form.currentClass;
+      LocalStorage.setCharacter(exCharacter);
     },
     emitCharacterName(name: string) {
       this.form.characterName = name;
@@ -105,9 +110,9 @@ export default defineComponent({
 
           <form
             class="form-container"
-            action=""
+            action="/profile"
             method=""
-            @submit.prevent="createCharacter"
+            @submit="createCharacter"
           >
             <InputCharacterName
               :label="inputCharacterName.label"

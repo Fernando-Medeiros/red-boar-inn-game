@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/middlewares/language";
+import { LocalStorage } from "src/core/middlewares/local-storage";
 import SetupHome from "setup/page.home.json";
 
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";

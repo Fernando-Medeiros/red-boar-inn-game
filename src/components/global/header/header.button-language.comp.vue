@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage, Languages } from "core/middlewares/language";
+import { LocalStorage, Languages } from "src/core/middlewares/local-storage";
 
 export default defineComponent({
-  name: "LanguageButtonComponent",
+  name: "LanguageButton",
   data() {
     return {
       currentLanguage: "",
@@ -51,22 +51,28 @@ export default defineComponent({
   cursor: pointer;
 }
 .current-option > img {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0 10px;
+  border-radius: 1rem;
 }
 .language-container:hover > .language-options {
   display: flex;
   flex-direction: column;
   position: fixed;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
 }
 .language-options {
   display: none;
+  padding: 0 10px;
   background-color: #222222;
 }
 .language-options > img {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
+  border-radius: 1rem;
   transition: all 1s;
 }
 .language-options > img:hover {
@@ -79,12 +85,10 @@ export default defineComponent({
     margin-left: 1rem;
   }
   .current-option > img {
-    width: 2rem;
-    height: 2rem;
+    padding: 0 3px;
   }
-  .language-options > img {
-    width: 2rem;
-    height: 2rem;
+  .language-options {
+    padding: 0 3px;
   }
 }
 </style>

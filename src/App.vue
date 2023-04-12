@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/middlewares/language";
+import { LocalStorage } from "src/core/middlewares/local-storage";
 import SetupHeaderFooter from "setup/header-footer.json";
 import SetupRoutes from "setup/routes.json";
 
