@@ -9,7 +9,7 @@ type Sprite = {
 };
 
 export default defineComponent({
-  name: "BannerSpritesComponent",
+  name: "BannerSprites",
   components: { SpriteComponent },
   props: {
     spriteLeft: {

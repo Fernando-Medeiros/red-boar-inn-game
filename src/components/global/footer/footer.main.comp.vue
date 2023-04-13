@@ -1,40 +1,38 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import ContactIconComp from "./footer.contact-icon.comp.vue";
-import RoutesComp from "./footer.routes.comp.vue";
+import IconContact from "./footer.contact-icon.comp.vue";
+import Routes from "./footer.routes.comp.vue";
 
 export default defineComponent({
-  name: "FooterMainComponent",
-  components: { ContactIconComp, RoutesComp },
+  name: "FooterComponent",
+  components: { IconContact, Routes },
   props: {
     routes: {
       type: Array as PropType<{ path: string; name: string }[]>,
       required: true,
     },
-  },
-  data() {
-    return {
-      contact: {
-        github: "https://github.com/Fernando-Medeiros",
-        linkedin: "https://www.linkedin.com/in/fernando-de-alvarenga-medeiros",
-      },
-      info: {
-        copyright: "Red-Boar-Inn - 2023",
-      },
-    };
+    contacts: {
+      type: Array as PropType<{ path: string; name: string }[]>,
+      required: true,
+    },
+    copyright: { type: String, required: true },
   },
 });
 </script>
 
 <template>
-  <footer class="footer-background">
+  <footer class="background-footer">
     <div class="main-container">
       <div class="footer-container">
-        <RoutesComp :routes="routes" />
+        <Routes :routes="routes" />
 
-        <div class="contact">
-          <ContactIconComp :icon-name="'github'" :link="contact.github" />
-          <ContactIconComp :icon-name="'linkedin'" :link="contact.linkedin" />
+        <div class="contact-icons">
+          <IconContact
+            v-for="contact in contacts"
+            :key="contact.name"
+            :icon-name="contact.name"
+            :link="contact.path"
+          />
         </div>
       </div>
     </div>
@@ -44,13 +42,13 @@ export default defineComponent({
         <img class="image-logo" :src="require('assets/logo.png')" alt="logo" />
       </router-link>
 
-      {{ info.copyright }}
+      {{ copyright }}
     </p>
   </footer>
 </template>
 
 <style scoped>
-.footer-background {
+.background-footer {
   width: 100%;
   background-color: #222222;
 }
@@ -65,7 +63,7 @@ export default defineComponent({
   width: 1.2rem;
   height: 1.2rem;
 }
-.contact {
+.contact-icons {
   display: grid;
   gap: 0.9rem;
 }

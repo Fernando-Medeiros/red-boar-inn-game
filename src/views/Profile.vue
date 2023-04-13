@@ -32,19 +32,23 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="main-container">
-    <div class="banner-status-container">
-      <div>
-        <IconStatic :name="'gold'" :label="'1'" />
-        <IconStatic :name="'jewel'" :label="'1'" />
+  <div class="background-banner">
+    <div class="main-container">
+      <div class="banner-status-container">
+        <div>
+          <IconStatic :name="'gold'" :label="'1'" />
+          <IconStatic :name="'jewel'" :label="'1'" />
+        </div>
+
+        <IconButton
+          :name="statusInfo.notification.icon"
+          :label="statusInfo.notification.label"
+        />
       </div>
-
-      <IconButton
-        :name="statusInfo.notification.icon"
-        :label="statusInfo.notification.label"
-      />
     </div>
+  </div>
 
+  <div class="main-container">
     <div class="background">
       <div class="menu-container">
         <div class="menu-top-one-icon">
@@ -129,6 +133,19 @@ export default defineComponent({
 </template>
 
 <style scoped>
+/* BANNER STATUS */
+.background-banner {
+  margin-bottom: 1rem;
+  background: linear-gradient(#282828, #323232c0);
+}
+.banner-status-container {
+  display: flex;
+  padding: 5px 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* MENU */
 .background {
   z-index: 1;
   padding: 1rem;
@@ -136,20 +153,6 @@ export default defineComponent({
   background: linear-gradient(#282828, #323232c0);
 }
 
-/* BANNER STATUS */
-.banner-status-container {
-  display: flex;
-  padding: 5px 1rem;
-  align-items: center;
-  justify-content: space-between;
-  background-image: linear-gradient(#28282878, #32323269),
-    url("assets/pictures/img4.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-/* MENU */
 .menu-container {
   display: grid;
   gap: 1rem;
@@ -189,6 +192,7 @@ export default defineComponent({
 .sprite-character > span {
   display: flex;
   gap: 1rem;
+  text-align: center;
 }
 
 @media (max-width: 780px) {

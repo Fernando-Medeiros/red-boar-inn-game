@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "BannerTitleComponent",
+  name: "BannerTitle",
   props: {
     title: { type: String, required: true },
   },
@@ -20,7 +20,7 @@ export default defineComponent({
 <style scoped>
 .title-container {
   background-image: linear-gradient(#2222225b, #2222225b, #222222c0),
-    url("assets/pictures/img3.png");
+    url("assets/pictures/img4.png");
   background-repeat: no-repeat;
   background-size: cover;
 }

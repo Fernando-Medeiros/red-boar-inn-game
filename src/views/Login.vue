@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { LocalStorage } from "src/core/middlewares/local-storage";
+import { Session } from "core/auth/session";
 import SetupLogin from "setup/page.login.json";
-
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
 import InputEmail from "comp/global/input/input-email.comp.vue";
@@ -14,8 +14,9 @@ function getSetup() {
   return SetupLogin[LocalStorage.getLanguage()];
 }
 
-const randomTitleTips = (TitleTips: string[]) =>
-  TitleTips[Math.floor(Math.random() * TitleTips.length)];
+function randomTitleTips(TitleTips: string[]) {
+  return TitleTips[Math.floor(Math.random() * TitleTips.length)];
+}
 
 export default defineComponent({
   name: "LoginView",
@@ -35,15 +36,17 @@ export default defineComponent({
         password: "",
         remember: false,
       },
-      spriteLeft: {
-        name: "peasant",
-        gender: "woman",
-        rotateY: true,
-      },
-      spriteRight: {
-        name: "peasant",
-        gender: "man",
-        rotateY: false,
+      banner: {
+        spriteLeft: {
+          name: "peasant",
+          gender: "woman",
+          rotateY: true,
+        },
+        spriteRight: {
+          name: "peasant",
+          gender: "man",
+          rotateY: false,
+        },
       },
       ...getSetup().form,
     };
@@ -55,7 +58,8 @@ export default defineComponent({
   },
   methods: {
     async login() {
-      console.log(this.form);
+      // After post api
+      Session.setSession("bearerToken");
     },
     emitEmail(value: string) {
       this.form.email = value;
@@ -74,7 +78,10 @@ export default defineComponent({
   <div>
     <BannerTitle :title="title" />
 
-    <BannerSprites :sprite-left="spriteLeft" :sprite-right="spriteRight" />
+    <BannerSprites
+      :sprite-left="banner.spriteLeft"
+      :sprite-right="banner.spriteRight"
+    />
 
     <div class="main-container">
       <form

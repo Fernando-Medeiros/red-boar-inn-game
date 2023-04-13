@@ -1,42 +1,71 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "src/core/middlewares/local-storage";
-import SetupHeaderFooter from "setup/header-footer.json";
-import SetupRoutes from "setup/routes.json";
+import { LocalStorage } from "core/middlewares/local-storage";
+import { Session } from "./core/auth/session";
+
+import SetupHeader from "setup/global.header.json";
+import SetupFooter from "setup/global.footer.json";
+import SetupRoutes from "setup/global.routes.json";
 
 import Header from "comp/global/header/header.main.comp.vue";
 import Footer from "comp/global/footer/footer.main.comp.vue";
 
+function getSetup() {
+  return LocalStorage.getLanguage();
+}
+
 export default defineComponent({
-  name: "APP",
+  name: "MainComponent",
   components: { Header, Footer },
+
   data() {
     return {
-      loginPath: "/login",
-      buttonLoginLabel: "",
+      header: {
+        loginPath: "/login",
+        loginLabel: "",
+        isAuthenticated: false,
+      },
+      footer: {
+        copyright: "",
+        contacts: [{ path: "", name: "" }],
+      },
       routes: [{ path: "", name: "" }],
     };
   },
+
   created() {
-    const setupHeader = SetupHeaderFooter.header[LocalStorage.getLanguage()];
-    const setupRoutes = SetupRoutes[LocalStorage.getLanguage()];
+    const setupHeader = SetupHeader[getSetup()];
+    const setupFooter = SetupFooter;
+    const setupRoutes = SetupRoutes[getSetup()];
 
     this.routes = setupRoutes.routes;
-    this.buttonLoginLabel = setupHeader.buttonLoginLabel;
+
+    this.header.loginLabel = setupHeader.loginLabel;
+    this.header.isAuthenticated = Session.isAuthenticated();
+
+    this.footer.copyright = setupFooter.info.copyright;
+    this.footer.contacts = setupFooter.contacts;
   },
 });
 </script>
 
 <template>
   <Header
+    v-show="header.isAuthenticated === false"
     :routes="routes"
-    :login-path="loginPath"
-    :button-label="buttonLoginLabel"
+    :login-path="header.loginPath"
+    :button-label="header.loginLabel"
   />
+
   <div class="view-container">
     <router-view />
   </div>
-  <Footer :routes="routes" />
+
+  <Footer
+    :routes="routes"
+    :contacts="footer.contacts"
+    :copyright="footer.copyright"
+  />
 </template>
 
 <style>
@@ -49,13 +78,9 @@ html {
   background-color: #222222;
 }
 #app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-#app {
   color: #e8e8e8;
   background-image: linear-gradient(#2222225b, #2222225b, #222222c0),
-    url("assets/pictures/img3.png");
+    url("assets/pictures/img2.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
