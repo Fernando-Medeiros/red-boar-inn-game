@@ -58,8 +58,12 @@ export default defineComponent({
   },
   methods: {
     async login() {
-      // After post api
+      // - verify email and password
+      // - invalid login?, send message
+      // - first login?, redirect to create character
       Session.setSession("bearerToken");
+      // - get character data and set to localStorage
+      // - redirect to profile
     },
     emitEmail(value: string) {
       this.form.email = value;

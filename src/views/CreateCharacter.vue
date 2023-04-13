@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "src/core/middlewares/local-storage";
+import { LocalStorage } from "core/middlewares/local-storage";
 import SetupCreateCharacter from "setup/page.create-character.json";
 
 import ExampleCharacter from "core/database/character-example.json";
@@ -71,18 +71,24 @@ export default defineComponent({
   },
   methods: {
     async createCharacter() {
-      const exCharacter = ExampleCharacter;
-      exCharacter.charName = this.form.characterName;
-      exCharacter.className = this.form.currentClass;
-      LocalStorage.setCharacter(exCharacter);
+      ExampleCharacter.character.charName = this.form.characterName;
+      ExampleCharacter.character.className = this.form.currentClass;
+      // - invalid character name?, send message
+      // - create a new character [post]
+      // - get character data and set to localStorage
+      LocalStorage.setCharacter(ExampleCharacter);
+      // - redirect to profile
     },
+
     emitCharacterName(name: string) {
       this.form.characterName = name;
     },
+
     activeClass(className: Classes) {
       this.form.currentClass = className;
       this.classDescription = getSetup().class[className];
     },
+
     choiceClassGender(classGender: "man" | "woman") {
       this.form.currentGender = classGender;
     },

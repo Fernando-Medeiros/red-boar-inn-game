@@ -1,18 +1,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "src/core/middlewares/local-storage";
+import { LocalStorage } from "core/middlewares/local-storage";
+import { FullCharacter } from "core/entities/full-character";
 import SetupProfile from "setup/page.profile.json";
-import character from "core/database/character-example.json";
-
 import Sprite from "comp/global/sprite/sprite.comp.vue";
 import IconButton from "comp/global/button/icon-button.comp.vue";
 import IconStatic from "comp/global/sprite/icon-static.comp.vue";
 
 function getSetup() {
   return SetupProfile[LocalStorage.getLanguage()];
-}
-function getCharacter() {
-  return LocalStorage.getCharacter<typeof character>();
 }
 
 export default defineComponent({
@@ -21,7 +17,7 @@ export default defineComponent({
 
   data() {
     return {
-      character: getCharacter(),
+      entity: new FullCharacter(),
 
       spriteInfo: getSetup().sprite,
       statusInfo: getSetup().barStatus,
@@ -36,8 +32,14 @@ export default defineComponent({
     <div class="main-container">
       <div class="banner-status-container">
         <div>
-          <IconStatic :name="'gold'" :label="'1'" />
-          <IconStatic :name="'jewel'" :label="'1'" />
+          <IconStatic
+            :name="'gold'"
+            :label="String(entity.inventory.findMaterial('gold')?.total)"
+          />
+          <IconStatic
+            :name="'jewel'"
+            :label="String(entity.inventory.findMaterial('jewel')?.total)"
+          />
         </div>
 
         <IconButton
@@ -83,16 +85,17 @@ export default defineComponent({
 
           <div class="sprite-character">
             <Sprite
-              :sprite-name="character.className"
+              :sprite-name="entity.character.getClass"
               :sprite-gender="'man'"
               :rotate-y="false"
             />
             <span>
-              <p>{{ character.charName }}</p>
+              <p>{{ entity.character.getName }}</p>
               <span>
                 <p>
-                  {{ spriteInfo.levelLabel }} - {{ character.level }} /
-                  {{ character.className }}
+                  {{ spriteInfo.levelLabel }} -
+                  {{ entity.character.getLevel }} /
+                  {{ entity.character.getClass }}
                 </p>
               </span>
             </span>

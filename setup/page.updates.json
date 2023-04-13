@@ -35,6 +35,14 @@
           "Impl -> Página de criação do personagem.",
           "Fix -> Organização dos componentes e paginas do projeto."
         ]
+      },
+      "6": {
+        "version": 0.6,
+        "date": "12-04-2023",
+        "description": [
+          "Impl -> Página de Perfil do personagem; Autenticação de Sessão",
+          "Fix -> Header; Footer"
+        ]
       }
     }
   },
@@ -73,6 +81,14 @@
         "description": [
           "Impl -> Character creation page.",
           "Fix -> Organization of project components and views."
+        ]
+      },
+      "6": {
+        "version": 0.6,
+        "date": "12-04-2023",
+        "description": [
+          "Impl -> Character Profile Page; Session Authentication",
+          "Fix -> Header; Footer"
         ]
       }
     }
