@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import LanguageButton from "./header.button-language.comp.vue";
+import LanguageButton from "../button/language-button.comp.vue";
 
 export default defineComponent({
   name: "HeaderComponent",

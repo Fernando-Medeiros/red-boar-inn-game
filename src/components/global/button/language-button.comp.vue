@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage, Languages } from "src/core/middlewares/local-storage";
+import type { LanguagesSchema } from "core/schemas/language.schema";
+import { LocalStorage } from "core/middlewares/local-storage";
 
 export default defineComponent({
   name: "LanguageButton",
@@ -15,7 +16,7 @@ export default defineComponent({
   },
   methods: {
     setLanguage(lang: string) {
-      LocalStorage.setLanguage(lang as Languages);
+      LocalStorage.setLanguage(lang as LanguagesSchema);
       location.reload();
     },
   },
@@ -66,7 +67,7 @@ export default defineComponent({
 .language-options {
   display: none;
   padding: 0 10px;
-  background-color: #222222;
+  background: linear-gradient(#282828e1, #323232a1);
 }
 .language-options > img {
   width: 2rem;

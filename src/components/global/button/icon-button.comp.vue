@@ -54,6 +54,7 @@ export default defineComponent({
   gap: 10px;
   min-width: 86px;
   justify-content: center;
+  text-align: center;
 }
 .icon-button {
   width: 3rem;
