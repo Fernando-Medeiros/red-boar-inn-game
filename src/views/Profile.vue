@@ -1,11 +1,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { LocalStorage } from "core/middlewares/local-storage";
-import { FullCharacter } from "core/entities/full-character";
+import { ManagerCharacter } from "core/entities/manager-character";
+
 import SetupProfile from "setup/page.profile.json";
+
 import Sprite from "comp/global/sprite/sprite.comp.vue";
 import IconButton from "comp/global/button/icon-button.comp.vue";
-import IconStatic from "comp/global/sprite/icon-static.comp.vue";
 
 function getSetup() {
   return SetupProfile[LocalStorage.getLanguage()];
@@ -13,50 +14,42 @@ function getSetup() {
 
 export default defineComponent({
   name: "ProfileView",
-  components: { IconStatic, Sprite, IconButton },
+  components: { Sprite, IconButton },
 
   data() {
     return {
-      entity: new FullCharacter(),
-
+      character: {
+        getName: "",
+        getClass: "",
+        getLevel: "",
+        getGender: "",
+      },
       spriteInfo: getSetup().sprite,
-      statusInfo: getSetup().barStatus,
       menuInfo: getSetup().menu,
     };
+  },
+  created() {
+    const characterData = ManagerCharacter.character();
+
+    Object.assign(this.character, {
+      getLevel: characterData.getLevel,
+      getName: characterData.getName,
+      getClass: characterData.getClass,
+      getGender: characterData.getGender,
+    });
   },
 });
 </script>
 
 <template>
-  <div class="background-banner">
+  <div class="background-game">
     <div class="main-container">
-      <div class="banner-status-container">
-        <div>
-          <IconStatic
-            :name="'gold'"
-            :label="String(entity.inventory.findMaterial('gold')?.total)"
-          />
-          <IconStatic
-            :name="'jewel'"
-            :label="String(entity.inventory.findMaterial('jewel')?.total)"
-          />
-        </div>
-
-        <IconButton
-          :name="statusInfo.notification.icon"
-          :label="statusInfo.notification.label"
-        />
-      </div>
-    </div>
-  </div>
-
-  <div class="main-container">
-    <div class="background">
       <div class="menu-container">
         <div class="menu-top-one-icon">
           <IconButton
             :name="menuInfo.status.icon"
             :label="menuInfo.status.label"
+            :to-route="'/character/status'"
           />
         </div>
 
@@ -85,17 +78,16 @@ export default defineComponent({
 
           <div class="sprite-character">
             <Sprite
-              :sprite-name="entity.character.getClass"
-              :sprite-gender="'man'"
+              :sprite-name="character.getClass"
+              :sprite-gender="character.getGender"
               :rotate-y="false"
             />
             <span>
-              <p>{{ entity.character.getName }}</p>
+              <p>{{ character.getName }}</p>
               <span>
                 <p>
-                  {{ spriteInfo.levelLabel }} -
-                  {{ entity.character.getLevel }} /
-                  {{ entity.character.getClass }}
+                  {{ spriteInfo.levelLabel }} - {{ character.getLevel }} /
+                  {{ character.getClass }}
                 </p>
               </span>
             </span>
@@ -121,6 +113,7 @@ export default defineComponent({
           <IconButton
             :name="menuInfo.options.icon"
             :label="menuInfo.options.label"
+            :to-route="'/character/options'"
           />
         </div>
 
@@ -128,6 +121,7 @@ export default defineComponent({
           <IconButton
             :name="menuInfo.classes.icon"
             :label="menuInfo.classes.label"
+            :to-route="'/character/class'"
           />
         </div>
       </div>
@@ -136,26 +130,6 @@ export default defineComponent({
 </template>
 
 <style scoped>
-/* BANNER STATUS */
-.background-banner {
-  margin-bottom: 1rem;
-  background: linear-gradient(#282828, #323232c0);
-}
-.banner-status-container {
-  display: flex;
-  padding: 5px 1rem;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* MENU */
-.background {
-  z-index: 1;
-  padding: 1rem;
-  border-radius: 5px;
-  background: linear-gradient(#282828, #323232c0);
-}
-
 .menu-container {
   display: grid;
   gap: 1rem;
@@ -186,7 +160,6 @@ export default defineComponent({
   gap: 3rem;
 }
 
-/* CHARACTER */
 .sprite-character {
   display: grid;
   gap: 1rem;

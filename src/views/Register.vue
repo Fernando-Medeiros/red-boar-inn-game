@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "src/core/middlewares/local-storage";
+import { LocalStorage } from "core/middlewares/local-storage";
 import SetupRegister from "setup/page.register.json";
 
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
@@ -27,6 +27,7 @@ export default defineComponent({
   data() {
     return {
       title: "",
+      redirectTo: "/auth/login",
       form: {
         firstName: "",
         lastName: "",
@@ -46,18 +47,18 @@ export default defineComponent({
           rotateY: false,
         },
       },
-      ...getSetup().form,
+      inputs: { ...getSetup().form },
     };
   },
-  mounted() {
-    const setup = getSetup();
-
-    this.title = setup.title;
+  created() {
+    const { title } = getSetup();
+    this.title = title;
   },
   methods: {
-    async register() {
-      console.log(this.form);
+    async registerAccount() {
+      this.$router.push({ path: this.redirectTo });
     },
+
     emitFirstName(value: string) {
       this.form.firstName = value;
     },
@@ -87,38 +88,38 @@ export default defineComponent({
     />
 
     <div class="main-container">
-      <form class="form-login" method="" @submit.prevent="register">
+      <form class="form-login" @submit.prevent="registerAccount">
         <InputName
-          :label="inputFirstName.label"
-          :placeholder="inputFirstName.placeholder"
+          :label="inputs.firstName.label"
+          :placeholder="inputs.firstName.placeholder"
           @emit-content="emitFirstName"
         />
 
         <InputName
-          :label="inputLastName.label"
-          :placeholder="inputLastName.placeholder"
+          :label="inputs.lastName.label"
+          :placeholder="inputs.lastName.placeholder"
           @emit-content="emitLastName"
         />
 
         <InputEmail
-          :label="inputEmail.label"
-          :placeholder="inputEmail.placeholder"
+          :label="inputs.email.label"
+          :placeholder="inputs.email.placeholder"
           @emit-content="emitEmail"
         />
 
         <InputPassword
-          :label="inputPassword.label"
-          :placeholder="inputPassword.placeholder"
+          :label="inputs.password.label"
+          :placeholder="inputs.password.placeholder"
           @emit-content="emitPassword"
         />
 
         <InputPassword
-          :label="inputPasswordConfirm.label"
-          :placeholder="inputPasswordConfirm.placeholder"
+          :label="inputs.confirmPassword.label"
+          :placeholder="inputs.confirmPassword.placeholder"
           @emit-content="emitConfirmPassword"
         />
 
-        <InputSubmit :label="inputSubmit.placeholder" />
+        <InputSubmit :label="inputs.submit.placeholder" />
       </form>
     </div>
   </div>

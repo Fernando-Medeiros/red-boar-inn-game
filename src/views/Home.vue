@@ -1,11 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "src/core/middlewares/local-storage";
+import { LocalStorage } from "core/middlewares/local-storage";
 import SetupHome from "setup/page.home.json";
 
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
-import RegisterButton from "src/components/view-home/register-button.comp.vue";
+import RegisterButton from "comp/view-home/register-button.comp.vue";
 
 function getSetup() {
   return SetupHome[LocalStorage.getLanguage()];
@@ -21,7 +21,7 @@ export default defineComponent({
   data() {
     return {
       title: "",
-      pathToRegister: "/register",
+      pathToRegister: "/auth/register",
       label: "",
       banner: {
         spriteLeft: {

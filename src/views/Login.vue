@@ -1,8 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "src/core/middlewares/local-storage";
+import { LocalStorage } from "core/middlewares/local-storage";
 import { Session } from "core/auth/session";
+
+import ExampleCharacter from "core/database/character-example.json";
 import SetupLogin from "setup/page.login.json";
+
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
 import InputEmail from "comp/global/input/input-email.comp.vue";
@@ -31,6 +34,7 @@ export default defineComponent({
   data() {
     return {
       title: "",
+      redirectTo: "/character/profile",
       form: {
         email: "",
         password: "",
@@ -48,29 +52,33 @@ export default defineComponent({
           rotateY: false,
         },
       },
-      ...getSetup().form,
+      inputs: { ...getSetup().form },
     };
   },
   mounted() {
-    const setup = getSetup();
-
-    this.title = randomTitleTips(setup.titleTips);
+    const { titleTips } = getSetup();
+    this.title = randomTitleTips(titleTips);
   },
   methods: {
     async login() {
-      // - verify email and password
-      // - invalid login?, send message
-      // - first login?, redirect to create character
       Session.setSession("bearerToken");
-      // - get character data and set to localStorage
-      // - redirect to profile
+      LocalStorage.setCharacter(ExampleCharacter);
+
+      this.$router.push({
+        path: this.redirectTo,
+      });
+
+      location.reload();
     },
+
     emitEmail(value: string) {
       this.form.email = value;
     },
+
     emitPassword(value: string) {
       this.form.password = value;
     },
+
     clickRemember() {
       this.form.remember = !this.form.remember;
     },
@@ -88,30 +96,28 @@ export default defineComponent({
     />
 
     <div class="main-container">
-      <form
-        class="form-login"
-        method=""
-        action="/character/create"
-        @submit="login"
-      >
+      <form class="form-login" @submit.prevent="login">
         <InputEmail
-          :label="inputEmail.label"
-          :placeholder="inputEmail.placeholder"
+          :label="inputs.email.label"
+          :placeholder="inputs.email.placeholder"
           @emit-content="emitEmail"
         />
 
         <InputPassword
-          :label="inputPassword.label"
-          :placeholder="inputPassword.placeholder"
+          :label="inputs.password.label"
+          :placeholder="inputs.password.placeholder"
           @emit-content="emitPassword"
         />
 
         <div class="form-options">
-          <InputCheckBox :label="inputCheckbox.label" @click="clickRemember" />
-          <a href="">{{ labelRecover }}</a>
+          <InputCheckBox
+            :label="inputs.checkbox.label"
+            @click="clickRemember"
+          />
+          <a :href="inputs.recover.route">{{ inputs.recover.label }}</a>
         </div>
 
-        <InputSubmit :label="inputSubmit.placeholder" />
+        <InputSubmit :label="inputs.submit.placeholder" />
       </form>
     </div>
   </div>
