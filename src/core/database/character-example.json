@@ -3,7 +3,8 @@
     "pubId": "b2cd80d6-825d-4b67-a7a5-3cface4f19b7",
     "level": 1,
     "charName": "ExampleName",
-    "className": "mage"
+    "className": "mage",
+    "gender": "man"
   },
 
   "status": {

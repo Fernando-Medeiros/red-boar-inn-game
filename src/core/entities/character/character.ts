@@ -27,6 +27,12 @@ export class Character implements ICharacter {
   set setClass(className: string) {
     this.props.className = className;
   }
+  get getGender(): string {
+    return this.props.gender;
+  }
+  set setGender(gender: string) {
+    this.props.gender = gender;
+  }
   get getCreatedAt(): object {
     return this.props.createdAt as object;
   }

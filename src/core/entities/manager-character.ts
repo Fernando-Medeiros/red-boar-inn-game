@@ -24,20 +24,34 @@ export type FullCharacterSchema = {
   equipment: PropsEquipment;
 };
 
-export class FullCharacter {
-  character: Character;
-  status: Status;
-  skills: Skills;
-  inventory: Inventory;
-  equipment: Equipment;
+export class ManagerCharacter {
+  public static character(): Character {
+    const { character } = getCharacter();
 
-  constructor() {
-    const { character, status, skills, inventory, equipment } = getCharacter();
+    return new Character(character);
+  }
 
-    this.character = new Character(character);
-    this.status = new Status(status);
-    this.skills = new Skills(skills);
-    this.inventory = new Inventory(inventory);
-    this.equipment = new Equipment(equipment);
+  public static status(): Status {
+    const { status } = getCharacter();
+
+    return new Status(status);
+  }
+
+  public static skills(): Skills {
+    const { skills } = getCharacter();
+
+    return new Skills(skills);
+  }
+
+  public static inventory(): Inventory {
+    const { inventory } = getCharacter();
+
+    return new Inventory(inventory);
+  }
+
+  public static equipment(): Equipment {
+    const { equipment } = getCharacter();
+
+    return new Equipment(equipment);
   }
 }
