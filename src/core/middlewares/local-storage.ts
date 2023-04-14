@@ -1,16 +1,16 @@
+import type { SessionSchema } from "core/schemas/session.schema";
+import type { LanguagesSchema } from "core/schemas/language.schema";
+
 const localStorage = window.localStorage;
 
-export declare type SessionSchema = { token: string };
-export declare type Languages = "br" | "en";
-
 export class LocalStorage {
-  public static getLanguage(): Languages {
+  public static getLanguage(): LanguagesSchema {
     const language = localStorage.getItem("language");
 
-    return language ? (language as Languages) : "br";
+    return language ? (language as LanguagesSchema) : "br";
   }
 
-  public static setLanguage(language: Languages): void {
+  public static setLanguage(language: LanguagesSchema): void {
     localStorage.setItem("language", language);
   }
 
@@ -24,6 +24,10 @@ export class LocalStorage {
     localStorage.setItem("session", JSON.stringify({ token: token }));
   }
 
+  public static removeSession(): void {
+    localStorage.removeItem("session");
+  }
+
   public static getCharacter<T = object>(): T {
     const character = localStorage.getItem("character");
 
@@ -32,5 +36,9 @@ export class LocalStorage {
 
   public static setCharacter(data: object): void {
     localStorage.setItem("character", JSON.stringify(data));
+  }
+
+  public static removeCharacter(): void {
+    localStorage.removeItem("character");
   }
 }
