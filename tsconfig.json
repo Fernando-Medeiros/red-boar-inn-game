@@ -15,11 +15,11 @@
     "baseUrl": ".",
     "types": ["webpack-env", "jest"],
     "paths": {
-      "src/*": ["src/*"],
       "setup/*": ["setup/*"],
       "assets/*": ["assets/*"],
       "core/*": ["src/core/*"],
-      "comp/*": ["src/components/*"]
+      "comp/*": ["src/components/*"],
+      "view/*": ["src/views/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },

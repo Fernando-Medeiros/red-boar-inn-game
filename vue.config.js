@@ -7,11 +7,11 @@ module.exports = defineConfig({
     resolve: {
       extensions: [".js", ".ts", ".vue", ".jsx"],
       alias: {
-        src: path.resolve(__dirname, "src/"),
         setup: path.resolve(__dirname, "setup/"),
         assets: path.resolve(__dirname, "assets/"),
         core: path.resolve(__dirname, "src/core/"),
         comp: path.resolve(__dirname, "src/components/"),
+        view: path.resolve(__dirname, "src/views/"),
       },
     },
   },
