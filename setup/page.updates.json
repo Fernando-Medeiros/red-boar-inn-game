@@ -5,13 +5,16 @@
       "1": {
         "version": 0.1,
         "date": "04-04-2023",
-        "description": ["Impl -> Página inicial; Página de atualizações"]
+        "description": [
+          "Impl -> Página inicial",
+          "Impl -> Página de atualizações"
+        ]
       },
       "2": {
         "version": 0.2,
         "date": "05-04-2023",
         "description": [
-          "Impl -> Página Sobre o projeto, termos de uso e créditos; Página de login e registro",
+          "Impl -> Página Sobre o projeto: termos de uso, privacidade dos dados, créditos",
           "Impl -> Página de login e registro"
         ]
       },
@@ -40,8 +43,20 @@
         "version": 0.6,
         "date": "12-04-2023",
         "description": [
-          "Impl -> Página de Perfil do personagem; Autenticação de Sessão",
+          "Impl -> Página de Perfil do personagem",
+          "Impl -> Autenticação de Sessão",
           "Fix -> Header; Footer"
+        ]
+      },
+      "7": {
+        "version": 0.7,
+        "date": "14-04-2023",
+        "description": [
+          "Impl -> Página Status: visão geral dos status",
+          "Impl -> Página Selecionar Classe",
+          "Impl -> Página Opções: Trocar o nome; Selecionar o idioma; Sair do jogo",
+          "Fix -> Barra de navegação",
+          "Fix -> Permissões de acesso a paginas autenticadas"
         ]
       }
     }
@@ -52,13 +67,13 @@
       "1": {
         "version": 0.1,
         "date": "04-04-2023",
-        "description": ["Impl -> Home Page; Updates Page"]
+        "description": ["Impl -> Homepage", "Impl -> Updates Page"]
       },
       "2": {
         "version": 0.2,
         "date": "05-04-2023",
         "description": [
-          "Impl -> Page About the project, terms of use and credits; Login and registration page",
+          "Impl -> About the project page: terms of use, data privacy, credits",
           "Impl -> Login and Registration Page"
         ]
       },
@@ -87,8 +102,20 @@
         "version": 0.6,
         "date": "12-04-2023",
         "description": [
-          "Impl -> Character Profile Page; Session Authentication",
+          "Impl -> Character Profile Page",
+          "Impl -> Session Authentication",
           "Fix -> Header; Footer"
+        ]
+      },
+      "7": {
+        "version": 0.7,
+        "date": "14-04-2023",
+        "description": [
+          "Impl -> Status page: status overview",
+          "Impl -> Select Class Page",
+          "Impl -> Options Page: Change Name; Select Language; Quit Game",
+          "Fix -> Navigation Bar",
+          "Fix -> Permissions to access authenticated pages"
         ]
       }
     }

@@ -3,11 +3,6 @@
     "sprite": {
       "levelLabel": "Nível"
     },
-
-    "barStatus": {
-      "notification": { "label": "Notificação", "icon": "notification" }
-    },
-
     "menu": {
       "status": { "label": "Status", "icon": "status" },
       "skills": { "label": "Habilidades", "icon": "skills" },
@@ -25,11 +20,6 @@
     "sprite": {
       "levelLabel": "Level"
     },
-
-    "barStatus": {
-      "notification": { "label": "Notification", "icon": "notification" }
-    },
-
     "menu": {
       "status": { "label": "Status", "icon": "status" },
       "skills": { "label": "Skills", "icon": "skills" },

@@ -1,20 +1,9 @@
 {
   "br": {
-    "title": "Configurações iniciais do seu personagem",
-    "currentClass": "peasant",
-    "currentGender": "man",
-
-    "form": {
-      "inputCharacterName": {
-        "label": "Nome do personagem*",
-        "placeholder": "ExampleXT22"
-      },
-      "inputSubmit": {
-        "label": "Registrar"
-      }
-    },
-
-    "class": {
+    "defaultClass": "peasant",
+    "defaultGender": "man",
+    "buttonSave": { "label": "Salvar" },
+    "classes": {
       "peasant": [
         "O camponês é uma classe que não segue uma tradição específica ou possui habilidades especializadas.",
         "Eles são a personificação daqueles que trabalham duro na terra, mas também têm uma presença social agradável e habilidade para se conectar com outros personagens.",
@@ -58,21 +47,10 @@
     }
   },
   "en": {
-    "title": "Your character's initial settings",
-    "currentClass": "peasant",
-    "currentGender": "woman",
-
-    "form": {
-      "inputCharacterName": {
-        "label": "Character name*",
-        "placeholder": "ExampleXT22"
-      },
-      "inputSubmit": {
-        "label": "Register"
-      }
-    },
-
-    "class": {
+    "defaultClass": "peasant",
+    "defaultGender": "woman",
+    "buttonSave": { "label": "Save" },
+    "classes": {
       "peasant": [
         "The Peasant is a class that does not follow a specific tradition or have specialized skills.",
         "They are the embodiment of those who work hard on the land, but also have a pleasant social presence and the ability to connect with other characters.",

@@ -1,0 +1,56 @@
+{
+  "br": {
+    "guides": [
+      { "name": "character", "placeholder": "Personagem" },
+      { "name": "system", "placeholder": "Sistema" }
+    ],
+    "character": {
+      "forms": {
+        "characterName": {
+          "name": {
+            "label": "Nome do personagem",
+            "placeholder": "ExampleXT22"
+          },
+          "submit": {
+            "label": "Salvar"
+          }
+        }
+      }
+    },
+    "system": {
+      "logout": {
+        "icon": "logout",
+        "label": "Sair",
+        "route": "/"
+      },
+      "language": { "label": "Escolha o idioma" }
+    }
+  },
+  "en": {
+    "guides": [
+      { "name": "character", "placeholder": "Character" },
+      { "name": "system", "placeholder": "System" }
+    ],
+    "character": {
+      "forms": {
+        "characterName": {
+          "name": {
+            "label": "Character name",
+            "placeholder": "ExampleXT22"
+          },
+          "submit": {
+            "label": "Save"
+          }
+        }
+      }
+    },
+    "system": {
+      "logout": {
+        "icon": "logout",
+        "label": "Logout",
+        "route": "/"
+      },
+      "language": { "label": "Choose language" }
+    }
+  }
+}

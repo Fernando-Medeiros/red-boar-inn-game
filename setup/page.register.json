@@ -2,27 +2,27 @@
   "br": {
     "title": "Registre-se",
     "form": {
-      "inputFirstName": {
+      "firstName": {
         "label": "Nome*",
         "placeholder": "Example"
       },
-      "inputLastName": {
+      "lastName": {
         "label": "Sobrenome*",
         "placeholder": "Example ou Example Example"
       },
-      "inputEmail": {
+      "email": {
         "label": "Email*",
         "placeholder": "example@email.com"
       },
-      "inputPassword": {
+      "password": {
         "label": "Senha*",
         "placeholder": "Example@01"
       },
-      "inputPasswordConfirm": {
+      "confirmPassword": {
         "label": "Confirme a senha*",
         "placeholder": "Example@01"
       },
-      "inputSubmit": {
+      "submit": {
         "placeholder": "Registrar"
       }
     }
@@ -30,27 +30,27 @@
   "en": {
     "title": "Register",
     "form": {
-      "inputFirstName": {
+      "firstName": {
         "label": "Name*",
         "placeholder": "Example"
       },
-      "inputLastName": {
+      "lastName": {
         "label": "LastName*",
         "placeholder": "Example or Example Example"
       },
-      "inputEmail": {
+      "email": {
         "label": "Email*",
         "placeholder": "example@email.com"
       },
-      "inputPassword": {
+      "password": {
         "label": "Password*",
         "placeholder": "Example@01"
       },
-      "inputPasswordConfirm": {
+      "confirmPassword": {
         "label": "Confirm Password*",
         "placeholder": "Example@01"
       },
-      "inputSubmit": {
+      "submit": {
         "placeholder": "Register"
       }
     }

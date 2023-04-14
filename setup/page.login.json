@@ -1,21 +1,21 @@
 {
   "br": {
     "form": {
-      "inputEmail": {
+      "email": {
         "label": "Email",
         "placeholder": "example@email.com"
       },
-      "inputPassword": {
+      "password": {
         "label": "Senha",
         "placeholder": "Example@01"
       },
-      "inputCheckbox": {
+      "checkbox": {
         "label": "lembrar"
       },
-      "inputSubmit": {
+      "submit": {
         "placeholder": "Acessar"
       },
-      "labelRecover": "recuperar a senha"
+      "recover": { "label": "recuperar a senha", "route": "/" }
     },
     "titleTips": [
       "Sou uma só, mas sou muitos. Sou antiga, mas também sou nova. Quem sou eu?",
@@ -32,21 +32,21 @@
   },
   "en": {
     "form": {
-      "inputEmail": {
+      "email": {
         "label": "Email",
         "placeholder": "example@email.com"
       },
-      "inputPassword": {
+      "password": {
         "label": "Password",
         "placeholder": "Example@01"
       },
-      "inputCheckbox": {
+      "checkbox": {
         "label": "remember"
       },
-      "inputSubmit": {
+      "submit": {
         "placeholder": "Access"
       },
-      "labelRecover": "recover password"
+      "recover": { "label": "recover password", "route": "/" }
     },
     "titleTips": [
       "I am one, but I am many. I am old, but I am also new. Who am I?",

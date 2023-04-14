@@ -1,0 +1,14 @@
+{
+  "br": {
+    "icons": [
+      { "label": "Perfil", "icon": "profile", "route": "/character/profile" },
+      { "label": "Notificação", "icon": "notification", "route": "" }
+    ]
+  },
+  "en": {
+    "icons": [
+      { "label": "Profile", "icon": "profile", "route": "/character/profile" },
+      { "label": "Notification", "icon": "notification", "route": "" }
+    ]
+  }
+}
