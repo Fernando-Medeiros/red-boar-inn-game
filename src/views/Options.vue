@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import OptionsGuides from "comp/view-options/options-guides.comp.vue";
-import OptionsCharacter from "comp/view-options/options-character.comp.vue";
-import OptionsSystem from "comp/view-options/options-system.comp.vue";
+import OptionsGuides from "comp/game/options/options-guides.comp.vue";
+import OptionsCharacter from "comp/game/options/options-character.comp.vue";
+import OptionsSystem from "comp/game/options/options-system.comp.vue";
 
 export default defineComponent({
   name: "OptionsView",

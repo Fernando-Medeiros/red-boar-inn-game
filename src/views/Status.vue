@@ -3,7 +3,7 @@ import { defineComponent } from "vue";
 import { ManagerCharacter } from "core/entities/manager-character";
 
 import Sprite from "comp/global/sprite/sprite.comp.vue";
-import StatusOverview from "comp/view-status/status-overview.comp.vue";
+import StatusOverview from "comp/game/status/status-overview.comp.vue";
 
 export default defineComponent({
   name: "StatusView",

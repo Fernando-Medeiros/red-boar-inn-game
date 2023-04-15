@@ -6,9 +6,9 @@ import SetupSelectClass from "setup/page.select-class.json";
 
 import Sprite from "comp/global/sprite/sprite.comp.vue";
 import InputSubmit from "comp/global/input/input-submit.comp.vue";
-import ClassButton from "comp/view-create-character/button-class.comp.vue";
-import ClassGenderButton from "comp/view-create-character/button-gender.comp.vue";
-import ClassDescription from "comp/view-create-character/description.comp.vue";
+import ClassButton from "comp/game/select-class/button-class.comp.vue";
+import ClassGenderButton from "comp/game/select-class/button-gender.comp.vue";
+import ClassDescription from "comp/game/select-class/description.comp.vue";
 
 function getSetup() {
   return SetupSelectClass[LocalStorage.getLanguage()];

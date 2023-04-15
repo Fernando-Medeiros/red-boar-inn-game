@@ -5,7 +5,7 @@ import SetupHome from "setup/page.home.json";
 
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
-import RegisterButton from "comp/view-home/register-button.comp.vue";
+import RegisterButton from "comp/home/register-button.comp.vue";
 
 function getSetup() {
   return SetupHome[LocalStorage.getLanguage()];
@@ -38,9 +38,9 @@ export default defineComponent({
     };
   },
   mounted() {
-    const setup = getSetup();
-    this.title = setup.title;
-    this.label = setup.buttonLabel;
+    const { title, buttonLabel } = getSetup();
+    this.title = title;
+    this.label = buttonLabel;
   },
 });
 </script>

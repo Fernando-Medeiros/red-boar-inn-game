@@ -10,7 +10,7 @@ export default defineComponent({
     displayUpdate(id: number | string) {
       const updateBox = document.getElementById(id.toString());
 
-      if (updateBox != null) {
+      if (updateBox) {
         updateBox.style.display != "flex"
           ? (updateBox.style.display = "flex")
           : (updateBox.style.display = "");

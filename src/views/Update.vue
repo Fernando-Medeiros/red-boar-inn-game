@@ -5,7 +5,7 @@ import SetupUpdates from "setup/page.updates.json";
 
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
-import UpdatePreview from "comp/view-update/update.preview.comp.vue";
+import UpdatePreview from "comp/update/update.preview.comp.vue";
 
 function getSetup() {
   return SetupUpdates[LocalStorage.getLanguage()];
@@ -38,10 +38,9 @@ export default defineComponent({
     };
   },
   mounted() {
-    const setup = getSetup();
-
-    this.title = setup.title;
-    this.updates = setup.updates;
+    const { title, updates } = getSetup();
+    this.title = title;
+    this.updates = updates;
   },
 });
 </script>

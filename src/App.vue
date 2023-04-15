@@ -68,11 +68,11 @@ export default defineComponent({
       this.headerGame.iconsButton = icons;
     },
     loadInventory() {
-      const character = ManagerCharacter;
+      const inventory = ManagerCharacter.inventory();
 
       Object.assign(this.headerGame.inventory, {
-        gold: String(character.inventory().findMaterial("gold")?.total),
-        jewel: String(character.inventory().findMaterial("jewel")?.total),
+        gold: String(inventory.findMaterial("gold")?.total),
+        jewel: String(inventory.findMaterial("jewel")?.total),
       });
     },
   },

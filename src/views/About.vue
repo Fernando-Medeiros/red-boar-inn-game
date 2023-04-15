@@ -5,7 +5,7 @@ import SetupAbout from "setup/page.about.json";
 
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
-import InfoComponent from "comp/view-about/info.comp.vue";
+import InfoComponent from "comp/about/info.comp.vue";
 
 function getSetup() {
   return SetupAbout[LocalStorage.getLanguage()];
@@ -33,9 +33,8 @@ export default defineComponent({
     };
   },
   mounted() {
-    const setup = getSetup();
-
-    this.title = setup.title;
+    const { title } = getSetup();
+    this.title = title;
   },
 });
 </script>
