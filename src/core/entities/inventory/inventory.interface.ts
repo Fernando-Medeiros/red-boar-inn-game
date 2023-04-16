@@ -4,7 +4,7 @@ import type {
   Weapon,
   Consumable,
   Material,
-} from "../items.interface";
+} from "core/schemas/items.interface";
 
 export interface IInventory {
   get getArmors(): Armor[];

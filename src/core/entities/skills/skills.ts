@@ -1,5 +1,5 @@
 import type { ISkills, PropsSkills } from "./skills.interface";
-import type { Defensive, Offensive } from "../skills.interface";
+import type { Defensive, Offensive } from "core/schemas/skills.interface";
 
 export class Skills implements ISkills {
   private props: PropsSkills;

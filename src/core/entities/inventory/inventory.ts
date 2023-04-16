@@ -5,7 +5,7 @@ import type {
   Consumable,
   Material,
   Weapon,
-} from "../items.interface";
+} from "core/schemas/items.interface";
 
 export class Inventory implements IInventory {
   private props: PropsInventory;
