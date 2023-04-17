@@ -1,6 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/middlewares/local-storage";
+import { ManagerAccount } from "core/api/manager-account";
+import { LocalStorage } from "core/storage/local.storage";
+
 import SetupRegister from "setup/page.register.json";
 
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
@@ -27,7 +29,9 @@ export default defineComponent({
   data() {
     return {
       title: "",
+      alertMessage: "",
       redirectTo: "/auth/login",
+
       form: {
         firstName: "",
         lastName: "",
@@ -55,10 +59,13 @@ export default defineComponent({
     this.title = title;
   },
   methods: {
-    async registerAccount() {
-      this.$router.push({ path: this.redirectTo });
-    },
+    async createAccount() {
+      const { message } = await ManagerAccount.create(this.form);
 
+      message
+        ? (this.alertMessage = message)
+        : this.$router.push({ path: this.redirectTo });
+    },
     emitFirstName(value: string) {
       this.form.firstName = value;
     },
@@ -88,56 +95,65 @@ export default defineComponent({
     />
 
     <div class="main-container">
-      <form class="form-login" @submit.prevent="registerAccount">
-        <InputName
-          :label="inputs.firstName.label"
-          :placeholder="inputs.firstName.placeholder"
-          @emit-content="emitFirstName"
-        />
+      <div class="background">
+        <span class="alert-message">
+          <p>{{ alertMessage }}</p>
+        </span>
 
-        <InputName
-          :label="inputs.lastName.label"
-          :placeholder="inputs.lastName.placeholder"
-          @emit-content="emitLastName"
-        />
+        <form class="form-login" @submit.prevent="createAccount">
+          <InputName
+            :label="inputs.firstName.label"
+            :placeholder="inputs.firstName.placeholder"
+            @emit-content="emitFirstName"
+          />
 
-        <InputEmail
-          :label="inputs.email.label"
-          :placeholder="inputs.email.placeholder"
-          @emit-content="emitEmail"
-        />
+          <InputName
+            :label="inputs.lastName.label"
+            :placeholder="inputs.lastName.placeholder"
+            @emit-content="emitLastName"
+          />
 
-        <InputPassword
-          :label="inputs.password.label"
-          :placeholder="inputs.password.placeholder"
-          @emit-content="emitPassword"
-        />
+          <InputEmail
+            :label="inputs.email.label"
+            :placeholder="inputs.email.placeholder"
+            @emit-content="emitEmail"
+          />
 
-        <InputPassword
-          :label="inputs.confirmPassword.label"
-          :placeholder="inputs.confirmPassword.placeholder"
-          @emit-content="emitConfirmPassword"
-        />
+          <InputPassword
+            :label="inputs.password.label"
+            :placeholder="inputs.password.placeholder"
+            @emit-content="emitPassword"
+          />
 
-        <InputSubmit :label="inputs.submit.placeholder" />
-      </form>
+          <InputPassword
+            :label="inputs.confirmPassword.label"
+            :placeholder="inputs.confirmPassword.placeholder"
+            @emit-content="emitConfirmPassword"
+          />
+
+          <InputSubmit :label="inputs.submit.placeholder" />
+        </form>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.view-container {
-  margin-bottom: 20px;
+.background {
+  padding-block: 1rem;
+  border-radius: 5px;
+  background: linear-gradient(#282828, #323232c0);
+}
+.alert-message {
+  color: tomato;
+  padding-block: 1rem;
+  text-align: center;
 }
 .form-login {
   z-index: 1;
   display: grid;
   width: 100%;
   gap: 1.4rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-radius: 5px;
-  background: linear-gradient(#282828, #323232c0);
 }
 
 @media (max-width: 780px) {
