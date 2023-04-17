@@ -12,8 +12,8 @@ export class LocalSession {
     return JSON.parse(String(session));
   }
 
-  static set(token: string): void {
-    storage.setItem("session", JSON.stringify({ token: token }));
+  static set(session: SessionSchema): void {
+    storage.setItem("session", JSON.stringify(session));
   }
 
   static remove(): void {
