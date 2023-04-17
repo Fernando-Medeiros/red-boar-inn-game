@@ -1,9 +1,9 @@
-import { Session } from "core/auth/session";
+import { LocalSession } from "core/storage/session.storage";
 
 export function isNotAuthenticated(requiresAuth: unknown) {
-  return requiresAuth && !Session.isAuthenticated();
+  return requiresAuth && !LocalSession.isAuthenticated();
 }
 
 export function isAuthenticated(requiresAuth: unknown) {
-  return !requiresAuth && Session.isAuthenticated();
+  return !requiresAuth && LocalSession.isAuthenticated();
 }

@@ -1,6 +1,6 @@
 import type { IEquipment, PropsEquipment } from "./equipment.interface";
 
-import type { Armor, Weapon, Accessory } from "core/schemas/items.interface";
+import type { Armor, Weapon, Accessory } from "core/schemas/items.schema";
 
 export class Equipment implements IEquipment {
   private props: PropsEquipment;

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { ManagerCharacter } from "core/entities/manager-character";
+import { HandlerCharacter } from "core/entities/handler-character";
 
 export default defineComponent({
   name: "StatusOverview",
@@ -10,7 +10,7 @@ export default defineComponent({
     };
   },
   created() {
-    this.currentStatus = ManagerCharacter.status().toJson();
+    this.currentStatus = HandlerCharacter.status().toJson();
   },
 });
 </script>

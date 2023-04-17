@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 import { LocalStorage } from "core/storage/local.storage";
 import { LocalSession } from "./core/storage/session.storage";
-import { ManagerCharacter } from "core/entities/manager-character";
+import { HandlerCharacter } from "core/entities/handler-character";
 
 import SetupHeader from "setup/global.header.json";
 import SetupFooter from "setup/global.footer.json";
@@ -68,7 +68,7 @@ export default defineComponent({
       this.headerGame.iconsButton = icons;
     },
     loadInventory() {
-      const inventory = ManagerCharacter.inventory();
+      const inventory = HandlerCharacter.inventory();
 
       Object.assign(this.headerGame.inventory, {
         gold: String(inventory.findMaterial("gold")?.total),

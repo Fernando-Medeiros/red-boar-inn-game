@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { LocalStorage } from "core/storage/local.storage";
-import { ManagerCharacter } from "core/entities/manager-character";
+import { HandlerCharacter } from "core/entities/handler-character";
 
 import SetupProfile from "setup/page.profile.json";
 
@@ -29,7 +29,7 @@ export default defineComponent({
     };
   },
   created() {
-    const characterData = ManagerCharacter.character();
+    const characterData = HandlerCharacter.character();
 
     Object.assign(this.character, {
       getLevel: characterData.getLevel,

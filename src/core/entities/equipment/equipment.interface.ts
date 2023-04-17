@@ -1,4 +1,4 @@
-import type { Armor, Weapon, Accessory } from "core/schemas/items.interface";
+import type { Armor, Weapon, Accessory } from "core/schemas/items.schema";
 
 export interface IEquipment {
   get getHead(): Armor | object;

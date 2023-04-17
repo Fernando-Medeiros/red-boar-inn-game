@@ -1,4 +1,4 @@
-import { LocalStorage } from "core/middlewares/local-storage";
+import { LocalStorage } from "core/storage/local.storage";
 
 import { Character } from "./character/character";
 import { Status } from "./status/status";
@@ -24,7 +24,7 @@ export type FullCharacterSchema = {
   equipment: PropsEquipment;
 };
 
-export class ManagerCharacter {
+export class HandlerCharacter {
   public static character(): Character {
     const { character } = getCharacter();
 

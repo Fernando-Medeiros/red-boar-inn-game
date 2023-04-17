@@ -1,4 +1,4 @@
-import type { Defensive, Offensive } from "core/schemas/skills.interface";
+import type { Defensive, Offensive } from "core/schemas/skills.schema";
 
 export interface ISkills {
   get getOffensiveSkills(): Offensive[] | object[];
