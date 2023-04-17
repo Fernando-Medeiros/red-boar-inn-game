@@ -10,6 +10,7 @@ import { LocalStorage } from "core/storage/local.storage";
 import { LocalSession } from "core/storage/session.storage";
 
 import SetupLogin from "setup/page.login.json";
+import SetupLoginRandomNames from "setup/page.login.names.json";
 
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
@@ -83,7 +84,9 @@ export default defineComponent({
     },
 
     async createCharacter() {
-      const randomName = this.form.email.slice(0, 6).concat("Peasant");
+      const randomName =
+        SetupLoginRandomNames.randomNames[0] +
+        this.form.email.slice(0, 2).toUpperCase();
 
       await Promise.all([
         ManagerCharacter.create({ charName: randomName }),
