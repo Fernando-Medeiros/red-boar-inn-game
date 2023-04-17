@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/middlewares/local-storage";
+import { LocalStorage } from "core/storage/local.storage";
 import SetupOptions from "setup/page.options.json";
 
 import InputCharacterName from "comp/global/input/input-character-name.comp.vue";

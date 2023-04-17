@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/middlewares/local-storage";
-import { Session } from "./core/auth/session";
+import { LocalStorage } from "core/storage/local.storage";
+import { LocalSession } from "./core/storage/session.storage";
 import { ManagerCharacter } from "core/entities/manager-character";
 
 import SetupHeader from "setup/global.header.json";
@@ -38,7 +38,7 @@ export default defineComponent({
     };
   },
   created() {
-    this.isAuthenticated = Session.isAuthenticated();
+    this.isAuthenticated = LocalSession.isAuthenticated();
 
     this.isAuthenticated
       ? [this.loadInventory(), this.loadHeaderGame()]

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import type { LanguagesSchema } from "core/schemas/language.schema";
-import { LocalStorage } from "core/middlewares/local-storage";
+import { LocalStorage } from "core/storage/local.storage";
 
 export default defineComponent({
   name: "LanguageButton",

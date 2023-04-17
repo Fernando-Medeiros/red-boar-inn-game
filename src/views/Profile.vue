@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/middlewares/local-storage";
+import { LocalStorage } from "core/storage/local.storage";
 import { ManagerCharacter } from "core/entities/manager-character";
 
 import SetupProfile from "setup/page.profile.json";

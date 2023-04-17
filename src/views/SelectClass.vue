@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { ClassesSchema } from "core/schemas/classes.schema";
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/middlewares/local-storage";
+import type { ClassesSchema } from "core/schemas/classes.schema.js";
+import { LocalStorage } from "core/storage/local.storage";
 import SetupSelectClass from "setup/page.select-class.json";
 
 import Sprite from "comp/global/sprite/sprite.comp.vue";

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/middlewares/local-storage";
-import { Session } from "core/auth/session";
+import { LocalStorage } from "core/storage/local.storage";
+import { LocalSession } from "core/storage/session.storage";
 import SetupOptions from "setup/page.options.json";
 
 import IconButton from "comp/global/button/icon-button.comp.vue";
@@ -25,7 +25,7 @@ export default defineComponent({
   },
   methods: {
     logoutAccount() {
-      Session.removeSession();
+      LocalSession.remove();
       LocalStorage.removeCharacter();
       location.reload();
     },
