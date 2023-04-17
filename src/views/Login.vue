@@ -1,9 +1,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/middlewares/local-storage";
-import { Session } from "core/auth/session";
+import { ManagerSession } from "core/api/manager-session";
+import { ManagerCharacter } from "core/api/manager-character";
+import { ManagerEquipment } from "core/api/manager-equipment";
+import { ManagerInventory } from "core/api/manager-inventory";
+import { ManagerStatus } from "core/api/manager-status";
+import { ManagerSkills } from "core/api/manager-skills";
+import { LocalStorage } from "core/storage/local.storage";
+import { LocalSession } from "core/storage/session.storage";
 
-import ExampleCharacter from "core/database/character-example.json";
 import SetupLogin from "setup/page.login.json";
 
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
@@ -34,7 +39,9 @@ export default defineComponent({
   data() {
     return {
       title: "",
+      alertMessage: "",
       redirectTo: "/character/profile",
+
       form: {
         email: "",
         password: "",
@@ -61,24 +68,60 @@ export default defineComponent({
   },
   methods: {
     async login() {
-      Session.setSession("bearerToken");
-      LocalStorage.setCharacter(ExampleCharacter);
+      const { message, pubId, access, refresh, type } =
+        await ManagerSession.login(this.form);
 
-      this.$router.push({
-        path: this.redirectTo,
+      message
+        ? (this.alertMessage = message)
+        : [
+            LocalSession.set({ pubId, access, refresh, type }),
+
+            (await ManagerCharacter.get())?.pubId
+              ? await this.loadCharacter()
+              : [await this.createCharacter(), await this.loadCharacter()],
+          ];
+    },
+
+    async createCharacter() {
+      const randomName = this.form.email.slice(0, 6).concat("Peasant");
+
+      await Promise.all([
+        ManagerCharacter.create({ charName: randomName }),
+        ManagerEquipment.create(),
+        ManagerInventory.create(),
+        ManagerStatus.create(),
+        ManagerSkills.create(),
+      ]);
+    },
+
+    async loadCharacter() {
+      await Promise.all([
+        ManagerCharacter.get(),
+        ManagerEquipment.get(),
+        ManagerInventory.get(),
+        ManagerStatus.get(),
+        ManagerSkills.get(),
+      ]).then(async ([character, equipment, inventory, status, skills]) => {
+        LocalStorage.setCharacter({
+          character: character,
+          equipment: equipment,
+          inventory: inventory,
+          status: status,
+          skills: skills,
+        });
+
+        this.$router.push({ path: this.redirectTo });
+
+        location.reload();
       });
-
-      location.reload();
     },
 
     emitEmail(value: string) {
       this.form.email = value;
     },
-
     emitPassword(value: string) {
       this.form.password = value;
     },
-
     clickRemember() {
       this.form.remember = !this.form.remember;
     },
@@ -96,46 +139,55 @@ export default defineComponent({
     />
 
     <div class="main-container">
-      <form class="form-login" @submit.prevent="login">
-        <InputEmail
-          :label="inputs.email.label"
-          :placeholder="inputs.email.placeholder"
-          @emit-content="emitEmail"
-        />
+      <div class="background">
+        <span class="alert-message">
+          <p>{{ alertMessage }}</p>
+        </span>
 
-        <InputPassword
-          :label="inputs.password.label"
-          :placeholder="inputs.password.placeholder"
-          @emit-content="emitPassword"
-        />
-
-        <div class="form-options">
-          <InputCheckBox
-            :label="inputs.checkbox.label"
-            @click="clickRemember"
+        <form class="form-login" @submit.prevent="login">
+          <InputEmail
+            :label="inputs.email.label"
+            :placeholder="inputs.email.placeholder"
+            @emit-content="emitEmail"
           />
-          <a :href="inputs.recover.route">{{ inputs.recover.label }}</a>
-        </div>
 
-        <InputSubmit :label="inputs.submit.placeholder" />
-      </form>
+          <InputPassword
+            :label="inputs.password.label"
+            :placeholder="inputs.password.placeholder"
+            @emit-content="emitPassword"
+          />
+
+          <div class="form-options">
+            <InputCheckBox
+              :label="inputs.checkbox.label"
+              @click="clickRemember"
+            />
+            <a :href="inputs.recover.route">{{ inputs.recover.label }}</a>
+          </div>
+
+          <InputSubmit :label="inputs.submit.placeholder" />
+        </form>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.view-container {
-  margin-bottom: 20px;
+.background {
+  padding-block: 1rem;
+  border-radius: 5px;
+  background: linear-gradient(#282828, #323232c0);
+}
+.alert-message {
+  color: tomato;
+  padding-block: 1rem;
+  text-align: center;
 }
 .form-login {
   z-index: 1;
   display: grid;
   justify-content: center;
   gap: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-radius: 5px;
-  background: linear-gradient(#282828, #323232c0);
 }
 .form-options {
   display: flex;
