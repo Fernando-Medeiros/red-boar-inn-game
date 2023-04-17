@@ -71,8 +71,8 @@ export default defineComponent({
       const inventory = HandlerCharacter.inventory();
 
       Object.assign(this.headerGame.inventory, {
-        gold: String(inventory.findMaterial("gold")?.total),
-        jewel: String(inventory.findMaterial("jewel")?.total),
+        gold: String(inventory.findMaterial("gold")?.total || "0"),
+        jewel: String(inventory.findMaterial("jewel")?.total || "0"),
       });
     },
   },
