@@ -23,8 +23,8 @@ function getSetup() {
   return SetupLogin[LocalStorage.getLanguage()];
 }
 
-function randomTitleTips(TitleTips: string[]) {
-  return TitleTips[Math.floor(Math.random() * TitleTips.length)];
+function random(array: string[]) {
+  return array[Math.floor(Math.random() * array.length)];
 }
 
 export default defineComponent({
@@ -65,7 +65,7 @@ export default defineComponent({
   },
   mounted() {
     const { titleTips } = getSetup();
-    this.title = randomTitleTips(titleTips);
+    this.title = random(titleTips);
   },
   methods: {
     async login() {
@@ -85,8 +85,8 @@ export default defineComponent({
 
     async createCharacter() {
       const randomName =
-        SetupLoginRandomNames.randomNames[0] +
-        this.form.email.slice(0, 2).toUpperCase();
+        random(SetupLoginRandomNames.names) +
+        this.form.email.slice(0, 3).toUpperCase();
 
       await Promise.all([
         ManagerCharacter.create({ charName: randomName }),
@@ -151,12 +151,14 @@ export default defineComponent({
           <InputEmail
             :label="inputs.email.label"
             :placeholder="inputs.email.placeholder"
+            :description="inputs.email.description"
             @emit-content="emitEmail"
           />
 
           <InputPassword
             :label="inputs.password.label"
             :placeholder="inputs.password.placeholder"
+            :description="inputs.password.description"
             @emit-content="emitPassword"
           />
 

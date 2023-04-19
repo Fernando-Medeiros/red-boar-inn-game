@@ -104,30 +104,35 @@ export default defineComponent({
           <InputName
             :label="inputs.firstName.label"
             :placeholder="inputs.firstName.placeholder"
+            :description="inputs.firstName.description"
             @emit-content="emitFirstName"
           />
 
           <InputName
             :label="inputs.lastName.label"
             :placeholder="inputs.lastName.placeholder"
+            :description="inputs.lastName.description"
             @emit-content="emitLastName"
           />
 
           <InputEmail
             :label="inputs.email.label"
             :placeholder="inputs.email.placeholder"
+            :description="inputs.email.description"
             @emit-content="emitEmail"
           />
 
           <InputPassword
             :label="inputs.password.label"
             :placeholder="inputs.password.placeholder"
+            :description="inputs.password.description"
             @emit-content="emitPassword"
           />
 
           <InputPassword
             :label="inputs.confirmPassword.label"
             :placeholder="inputs.confirmPassword.placeholder"
+            :description="inputs.confirmPassword.description"
             @emit-content="emitConfirmPassword"
           />
 

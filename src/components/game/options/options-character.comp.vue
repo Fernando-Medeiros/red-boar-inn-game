@@ -41,6 +41,7 @@ export default defineComponent({
       <InputCharacterName
         :label="formName.name.label"
         :placeholder="formName.name.placeholder"
+        :description="formName.name.description"
         @emit-content="emitCharacterName"
       />
 
