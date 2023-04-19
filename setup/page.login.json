@@ -3,11 +3,13 @@
     "form": {
       "email": {
         "label": "Email",
-        "placeholder": "example@email.com"
+        "placeholder": "example@email.com",
+        "description": "[a-z 0-9 ._%+-@]"
       },
       "password": {
         "label": "Senha",
-        "placeholder": "Example@01"
+        "placeholder": "Example@01",
+        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16"
       },
       "checkbox": {
         "label": "lembrar"
@@ -34,11 +36,13 @@
     "form": {
       "email": {
         "label": "Email",
-        "placeholder": "example@email.com"
+        "placeholder": "example@email.com",
+        "description": "[a-z 0-9 ._%+-@]"
       },
       "password": {
         "label": "Password",
-        "placeholder": "Example@01"
+        "placeholder": "Example@01",
+        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16"
       },
       "checkbox": {
         "label": "remember"

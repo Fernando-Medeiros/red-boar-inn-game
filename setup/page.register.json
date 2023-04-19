@@ -4,23 +4,28 @@
     "form": {
       "firstName": {
         "label": "Nome*",
-        "placeholder": "Example"
+        "placeholder": "Example",
+        "description": "[a-z] min-4 // max-24"
       },
       "lastName": {
         "label": "Sobrenome*",
-        "placeholder": "Example ou Example Example"
+        "placeholder": "Example ou Example Example",
+        "description": "[a-z] min-4 // max-24"
       },
       "email": {
         "label": "Email*",
-        "placeholder": "example@email.com"
+        "placeholder": "example@email.com",
+        "description": "[a-z 0-9 ._%+-@]"
       },
       "password": {
         "label": "Senha*",
-        "placeholder": "Example@01"
+        "placeholder": "Example@01",
+        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16"
       },
       "confirmPassword": {
         "label": "Confirme a senha*",
-        "placeholder": "Example@01"
+        "placeholder": "Example@01",
+        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16"
       },
       "submit": {
         "placeholder": "Registrar"
@@ -32,23 +37,28 @@
     "form": {
       "firstName": {
         "label": "Name*",
-        "placeholder": "Example"
+        "placeholder": "Example",
+        "description": "[a-z] min-4 // max-24"
       },
       "lastName": {
         "label": "LastName*",
-        "placeholder": "Example or Example Example"
+        "placeholder": "Example or Example Example",
+        "description": "[a-z] min-4 // max-24"
       },
       "email": {
         "label": "Email*",
-        "placeholder": "example@email.com"
+        "placeholder": "example@email.com",
+        "description": "[a-z 0-9 ._%+-@]"
       },
       "password": {
         "label": "Password*",
-        "placeholder": "Example@01"
+        "placeholder": "Example@01",
+        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16"
       },
       "confirmPassword": {
         "label": "Confirm Password*",
-        "placeholder": "Example@01"
+        "placeholder": "Example@01",
+        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16"
       },
       "submit": {
         "placeholder": "Register"

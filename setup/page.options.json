@@ -9,7 +9,8 @@
         "characterName": {
           "name": {
             "label": "Nome do personagem",
-            "placeholder": "ExampleXT22"
+            "placeholder": "ExampleXT22",
+            "description": "[a-z] min-4 // max-15"
           },
           "submit": {
             "label": "Salvar"
@@ -36,7 +37,8 @@
         "characterName": {
           "name": {
             "label": "Character name",
-            "placeholder": "ExampleXT22"
+            "placeholder": "ExampleXT22",
+            "description": "[a-z] min-4 // max-15"
           },
           "submit": {
             "label": "Save"
