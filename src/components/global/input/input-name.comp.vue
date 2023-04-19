@@ -7,38 +7,20 @@ export default defineComponent({
   props: {
     label: { type: String, required: true },
     placeholder: { type: String, required: true },
+    description: { type: String, required: false },
   },
   data() {
     return {
       content: "",
-      inputId: "",
+      alert: false,
       regex: NameRegex,
     };
   },
-  created() {
-    this.inputId = Math.random().toString();
-  },
-  methods: {
-    verifyInputRegex(): boolean | undefined {
-      return this.regex?.test(this.content);
-    },
-    emitRegexAlert(input: HTMLElement): void {
-      input.style.borderColor = "red";
-    },
-    emitRegexSuccess(input: HTMLElement): void {
-      input.style.borderColor = "green";
-    },
-  },
   watch: {
     content() {
-      const input = document.getElementById(this.inputId);
-
-      this.verifyInputRegex()
-        ? [
-            this.$emit("emitContent", this.content),
-            this.emitRegexSuccess(input as HTMLElement),
-          ]
-        : this.emitRegexAlert(input as HTMLElement);
+      this.regex.test(this.content)
+        ? [this.$emit("emitContent", this.content), (this.alert = false)]
+        : (this.alert = true);
     },
   },
 });
@@ -46,12 +28,23 @@ export default defineComponent({
 
 <template>
   <div class="input-name-container">
-    <label class="label-name" for="">{{ label }}</label>
+    <span class="label-description-container">
+      <label class="label-name" for="">{{ label }}</label>
+      <p class="" v-if="alert && content">
+        {{ description }}
+      </p>
+    </span>
 
     <input
-      class="input-name"
-      :id="inputId"
+      :style="
+        !content
+          ? 'border-color: white'
+          : alert
+          ? 'border-color: red'
+          : 'border-color: green'
+      "
       :placeholder="placeholder"
+      class="input-name"
       v-model="content"
       type="text"
       required
@@ -67,16 +60,22 @@ export default defineComponent({
   margin: auto;
   margin-top: 10px;
 }
-.label-name {
+.label-description-container {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 1rem;
+}
+.label-description-container > p {
+  font-size: 13px;
 }
 .input-name {
   font-size: 1.1rem;
   width: 500px;
   height: 20px;
   padding: 6px 5px;
+  border: none;
   border-radius: 5px;
-  border: 3px solid transparent;
+  border-bottom: 4px solid #d9d9d9;
   background-color: #d9d9d9;
 }
 @media (max-width: 780px) {

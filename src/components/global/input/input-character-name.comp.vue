@@ -7,38 +7,20 @@ export default defineComponent({
   props: {
     label: { type: String, required: true },
     placeholder: { type: String, required: true },
+    description: { type: String, required: false },
   },
   data() {
     return {
       content: "",
-      inputId: "",
+      alert: false,
       regex: CharacterNameRegex,
     };
   },
-  created() {
-    this.inputId = Math.random().toString();
-  },
-  methods: {
-    verifyInputRegex(): boolean | undefined {
-      return this.regex?.test(this.content);
-    },
-    emitRegexAlert(input: HTMLElement): void {
-      input.style.borderColor = "red";
-    },
-    emitRegexSuccess(input: HTMLElement): void {
-      input.style.borderColor = "green";
-    },
-  },
   watch: {
     content() {
-      const input = document.getElementById(this.inputId);
-
-      this.verifyInputRegex()
-        ? [
-            this.$emit("emitContent", this.content),
-            this.emitRegexSuccess(input as HTMLElement),
-          ]
-        : this.emitRegexAlert(input as HTMLElement);
+      this.regex.test(this.content)
+        ? [this.$emit("emitContent", this.content), (this.alert = false)]
+        : (this.alert = true);
     },
   },
 });
@@ -46,16 +28,27 @@ export default defineComponent({
 
 <template>
   <div class="input-character-name-container">
-    <label class="label-character-name" for="">{{ label }}</label>
+    <span class="label-description-container">
+      <label class="label-name" for="">{{ label }}</label>
+      <p class="" v-if="alert && content">
+        {{ description }}
+      </p>
+    </span>
 
     <input
-      class="input-character-name"
-      :id="inputId"
+      :style="
+        !content
+          ? 'border-color: white'
+          : alert
+          ? 'border-color: red'
+          : 'border-color: green'
+      "
       :placeholder="placeholder"
+      class="input-character-name"
       v-model="content"
       type="text"
       required
-      autocomplete="name"
+      autocomplete="username"
     />
   </div>
 </template>
@@ -66,8 +59,13 @@ export default defineComponent({
   margin: auto;
   margin-top: 10px;
 }
-.label-character-name {
+.label-description-container {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 1rem;
+}
+.label-description-container > p {
+  font-size: 13px;
 }
 .input-character-name {
   font-size: 1.1rem;
