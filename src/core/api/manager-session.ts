@@ -4,8 +4,7 @@ import type {
   RefreshTokenSchema,
 } from "./schemas/auth.schemas";
 import type { Message } from "core/api/responses";
-
-import { authHeader } from "./headers/authorization";
+import { AuthHeader } from "./headers/authorization";
 import { postMethod } from "./methods/post";
 
 const {
@@ -25,7 +24,7 @@ export class ManagerSession {
     return await postMethod<RefreshTokenSchema, Message & RefreshTokenSchema>(
       URL_REFRESH,
       token,
-      authHeader()
+      AuthHeader()
     );
   }
 }

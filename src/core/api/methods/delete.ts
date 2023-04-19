@@ -1,11 +1,12 @@
 import axios, { AxiosError } from "axios";
+import { SecretHeader } from "../headers/api-secret-key";
 
 export async function deleteMethod<Response = object>(
-  URL: string,
+  URL: string | undefined,
   headers?: object
 ): Promise<Response> {
   return await axios
-    .delete(URL, { headers: headers })
+    .delete(String(URL), { headers: { ...SecretHeader(), ...headers } })
 
     .then((response) => {
       return response.data;

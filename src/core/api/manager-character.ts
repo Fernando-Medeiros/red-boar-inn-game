@@ -1,7 +1,7 @@
 import type { Message } from "core/api/responses";
 import type { PropsCharacter } from "core/entities/character/character.interface";
 import { LocalSession } from "core/storage/session.storage";
-import { authHeader } from "./headers/authorization";
+import { AuthHeader } from "./headers/authorization";
 import { postMethod } from "./methods/post";
 import { getMethod } from "./methods/get";
 
@@ -14,14 +14,14 @@ export class ManagerCharacter {
     return await postMethod<{ charName: string }, Message>(
       URL,
       form,
-      authHeader()
+      AuthHeader()
     );
   }
 
   static async get() {
     return await getMethod<Message & PropsCharacter>(
       URL + pubId(),
-      authHeader()
+      AuthHeader()
     );
   }
 }

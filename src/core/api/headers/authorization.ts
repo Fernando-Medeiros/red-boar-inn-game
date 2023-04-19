@@ -1,5 +1,5 @@
 import { LocalSession } from "core/storage/session.storage";
 
-export const authHeader = () => {
+export const AuthHeader = () => {
   return { Authorization: `Bearer ${LocalSession.get().refresh}` };
 };
