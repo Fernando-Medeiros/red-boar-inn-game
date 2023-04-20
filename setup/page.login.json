@@ -15,7 +15,7 @@
         "label": "lembrar"
       },
       "submit": {
-        "placeholder": "Acessar"
+        "label": "Acessar"
       },
       "recover": { "label": "recuperar a senha", "route": "/" }
     },
@@ -48,7 +48,7 @@
         "label": "remember"
       },
       "submit": {
-        "placeholder": "Access"
+        "label": "Access"
       },
       "recover": { "label": "recover password", "route": "/" }
     },

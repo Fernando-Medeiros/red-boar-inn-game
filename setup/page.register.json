@@ -25,7 +25,8 @@
       "confirmPassword": {
         "label": "Confirme a senha*",
         "placeholder": "Example@01",
-        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16"
+        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16",
+        "message": "Por segurança, a senha precisa ser igual a confirmação"
       },
       "submit": {
         "placeholder": "Registrar"
@@ -58,7 +59,8 @@
       "confirmPassword": {
         "label": "Confirm Password*",
         "placeholder": "Example@01",
-        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16"
+        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16",
+        "message": "For security, the password must match the confirmation"
       },
       "submit": {
         "placeholder": "Register"

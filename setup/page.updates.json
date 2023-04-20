@@ -58,6 +58,47 @@
           "Fix -> Barra de navegação",
           "Fix -> Permissões de acesso a paginas autenticadas"
         ]
+      },
+      "8": {
+        "version": 0.8,
+        "date": "16-04-2023",
+        "description": [
+          "Impl -> .env-example",
+          "Impl -> Controlador da instancia do personagem",
+          "Fix -> LocalStorage, SessionStorage"
+        ]
+      },
+      "9": {
+        "version": 0.9,
+        "date": "17-04-2023",
+        "description": [
+          "Impl -> Axios para lidar com as API's",
+          "Impl -> Serviços para controlar a API",
+          "Impl -> Integração do Acesso com a API",
+          "Impl -> Integração do Registro com a API",
+          "Fix -> Gold e Jewel nullos na barra de navegação do jogo"
+        ]
+      },
+      "10": {
+        "version": 1.0,
+        "date": "19-04-2023",
+        "description": [
+          "Impl -> Menssagem auxiliar para os inputs",
+          "Impl -> Cabeçalho com a senha das API's para o acesso restrito",
+          "Fix -> Nome aleatorio ao criar um personagem"
+        ]
+      },
+      "11": {
+        "version": 1.1,
+        "date": "20-04-2023",
+        "description": [
+          "Impl -> Botão para visualizar a senha",
+          "Impl -> Verificação do input de senha",
+          "Impl -> Bloqueio do formulario de registro e acesso durante a espera da resposta da api",
+          "Impl -> Integração com a api para atualizar o nome do personagem",
+          "Impl -> Integração com a api para atualizar a classe e genero",
+          "Fix -> Otimização dos componentes"
+        ]
       }
     }
   },
@@ -116,6 +157,47 @@
           "Impl -> Options Page: Change Name; Select Language; Quit Game",
           "Fix -> Navigation Bar",
           "Fix -> Permissions to access authenticated pages"
+        ]
+      },
+      "8": {
+        "version": 0.8,
+        "date": "16-04-2023",
+        "description": [
+          "Impl -> .env-example",
+          "Impl -> Character instance controller",
+          "Fix -> LocalStorage, SessionStorage"
+        ]
+      },
+      "9": {
+        "version": 0.9,
+        "date": "17-04-2023",
+        "description": [
+          "Impl -> Axios to handle API's",
+          "Impl -> Services to control the API",
+          "Impl -> API Access Integration",
+          "Impl -> Registry Integration with API",
+          "Fix -> Gold and Jewel voids in game navigation bar"
+        ]
+      },
+      "10": {
+        "version": 1.0,
+        "date": "19-04-2023",
+        "description": [
+          "Impl -> Auxiliary message for the inputs",
+          "Impl -> Header with the API's password for restricted access",
+          "Fix -> Random name when creating a character"
+        ]
+      },
+      "11": {
+        "version": 1.1,
+        "date": "20-04-2023",
+        "description": [
+          "Impl -> Button to view the password",
+          "Impl -> Password input check",
+          "Impl -> Blocking the registration and access form while waiting for the api response",
+          "Impl -> Integration with api to update character name",
+          "Impl -> Integration with the api to update the class and genus",
+          "Fix -> Component Optimization"
         ]
       }
     }
