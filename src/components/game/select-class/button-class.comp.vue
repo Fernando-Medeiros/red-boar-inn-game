@@ -7,16 +7,7 @@ export default defineComponent({
   props: {
     spriteName: { type: String, required: true },
     spriteGender: { type: String, required: true },
-  },
-  data() {
-    return {
-      spriteId: Math.random().toString(),
-    };
-  },
-  mounted() {
-    const sprite = document.getElementById(`${this.spriteId}`);
-
-    sprite ? (sprite.style.transform = "rotateY(180deg)") : null;
+    isActive: { type: Boolean, required: true },
   },
 });
 </script>
@@ -25,10 +16,10 @@ export default defineComponent({
   <div>
     <img
       class="image-button-class-container"
-      :id="spriteId"
       :alt="spriteName"
       :src="require(`assets/sprites/${spriteGender}/${spriteName}.png`)"
-      @click="$emit('activeClass')"
+      :style="isActive ? 'border-color: white' : ''"
+      @click="$emit('activeClass', spriteName)"
     />
   </div>
 </template>
@@ -38,19 +29,21 @@ export default defineComponent({
   margin: auto;
   width: 3rem;
   height: 3rem;
+  padding-bottom: 5px;
+  border: none;
   border-radius: 5px;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid #222222;
   cursor: pointer;
   transition: all 0.5s;
+  transform: rotateY(180deg);
 }
 .image-button-class-container:hover {
-  border-color: white;
+  border-color: burlywood;
 }
-
 @media (max-width: 780px) {
   .image-button-class-container {
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
 </style>

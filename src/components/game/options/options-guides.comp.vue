@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/storage/local.storage";
+import { Helpers } from "core/helpers/functions-helpers";
 import SetupOptions from "setup/page.options.json";
 
 export default defineComponent({
@@ -8,7 +8,7 @@ export default defineComponent({
   emits: ["showGuide"],
   data() {
     return {
-      guides: SetupOptions[LocalStorage.getLanguage()].guides,
+      guides: SetupOptions[Helpers.getLanguage()].guides,
     };
   },
 });

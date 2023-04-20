@@ -21,6 +21,7 @@ export default defineComponent({
       class="status-overview"
       v-for="(status, name) in currentStatus"
       :key="status"
+      v-show="name != 'pubId'"
     >
       <p>{{ name }}</p>
       <p>{{ status }}</p>

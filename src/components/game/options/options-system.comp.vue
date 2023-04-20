@@ -1,15 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/storage/local.storage";
 import { LocalSession } from "core/storage/session.storage";
+import { LocalStorage } from "core/storage/local.storage";
+import { Helpers } from "core/helpers/functions-helpers";
 import SetupOptions from "setup/page.options.json";
-
 import IconButton from "comp/global/button/icon-button.comp.vue";
 import LanguageButton from "comp/global/button/language-button.comp.vue";
-
-function getSetup() {
-  return SetupOptions[LocalStorage.getLanguage()];
-}
 
 export default defineComponent({
   name: "OptionsSystem",
@@ -19,8 +15,8 @@ export default defineComponent({
   },
   data() {
     return {
-      logout: { ...getSetup().system.logout },
-      language: { ...getSetup().system.language },
+      logout: { ...SetupOptions[Helpers.getLanguage()].system.logout },
+      language: { ...SetupOptions[Helpers.getLanguage()].system.language },
     };
   },
   methods: {

@@ -13,12 +13,17 @@ export default defineComponent({
     return {
       content: "",
       alert: false,
-      regex: PasswordRegex,
+      inputType: "password",
     };
+  },
+  methods: {
+    showPassword() {
+      this.inputType = this.inputType === "password" ? "text" : "password";
+    },
   },
   watch: {
     content() {
-      this.regex.test(this.content)
+      PasswordRegex.test(this.content)
         ? [this.$emit("emitContent", this.content), (this.alert = false)]
         : (this.alert = true);
     },
@@ -35,21 +40,35 @@ export default defineComponent({
       </p>
     </span>
 
-    <input
-      :style="
-        !content
-          ? 'border-color: white'
-          : alert
-          ? 'border-color: red'
-          : 'border-color: green'
-      "
-      :placeholder="placeholder"
-      class="input-password"
-      v-model="content"
-      type="password"
-      autocomplete="current-password"
-      required
-    />
+    <div class="input-button-container">
+      <input
+        :placeholder="placeholder"
+        class="input-password"
+        v-model="content"
+        :type="inputType"
+        autocomplete="current-password"
+        required
+        :style="
+          !content
+            ? 'border-color: white'
+            : alert
+            ? 'border-color: red'
+            : 'border-color: green'
+        "
+      />
+      <div>
+        <img
+          class="button-password"
+          alt="show-password"
+          @click.prevent="showPassword"
+          :src="
+            inputType === 'password'
+              ? require('assets/icons/show-password.png')
+              : require('assets/icons/hide-password.png')
+          "
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -70,14 +89,26 @@ export default defineComponent({
 }
 .input-password {
   font-size: 1.1rem;
-  width: 500px;
+  width: 465px;
   height: 20px;
   padding: 6px 5px;
   border: none;
-  border-radius: 5px;
+  border-radius: 5px 0px 0px 5px;
   border-bottom: 4px solid #d9d9d9;
   background-color: #d9d9d9;
 }
+.input-button-container {
+  display: flex;
+}
+.button-password {
+  width: min-content;
+  height: 36px;
+  align-self: center;
+  border: none;
+  cursor: pointer;
+  background-color: #d9d9d957;
+}
+
 @media (max-width: 780px) {
   .input-password-container {
     max-width: 100%;
@@ -85,7 +116,7 @@ export default defineComponent({
   }
   .input-password {
     font-size: 14px;
-    width: 300px;
+    width: 265px;
   }
 }
 </style>

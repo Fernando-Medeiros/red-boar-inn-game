@@ -6,11 +6,7 @@ export default defineComponent({
   emits: ["activeClassGender"],
   props: {
     spriteName: { type: String, required: true },
-  },
-  data() {
-    return {
-      spriteId: Math.random().toString(),
-    };
+    isActive: { type: Boolean, required: true },
   },
 });
 </script>
@@ -19,10 +15,10 @@ export default defineComponent({
   <div>
     <img
       class="image-button-class-gender-container"
-      :id="spriteId"
       :alt="spriteName"
       :src="require(`assets/icons/${spriteName}.png`)"
-      @click="$emit('activeClassGender')"
+      :style="isActive ? 'filter: sepia() brightness(2)' : 'none'"
+      @click="$emit('activeClassGender', spriteName)"
     />
   </div>
 </template>

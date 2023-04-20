@@ -14,8 +14,8 @@ export default defineComponent({
   <div class="register-container">
     <img
       class="register-icon"
-      :src="require('assets/icons/guild.png')"
       alt="register"
+      :src="require('assets/icons/guild.png')"
     />
 
     <router-link :to="pathToRegister">

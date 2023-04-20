@@ -5,6 +5,7 @@ export default defineComponent({
   name: "InputSubmit",
   props: {
     label: { type: String, required: true },
+    isDisabled: { type: Boolean, required: false },
   },
 });
 </script>
@@ -12,9 +13,11 @@ export default defineComponent({
 <template>
   <div class="input-submit-container">
     <input
-      class="input-submit input-submit-text"
+      class="input-submit input-submit-label"
       type="submit"
+      :style="isDisabled ? 'background-color: grey' : 'background-color: none'"
       :value="label"
+      :disabled="isDisabled"
     />
   </div>
 </template>
@@ -28,27 +31,26 @@ export default defineComponent({
 }
 .input-submit {
   width: 180px;
-  height: 30px;
+  height: 40px;
   align-content: center;
-  border-radius: 0.5rem;
-  background: #d9d9d9;
+  border: none;
   border-radius: 5px;
+  background: #d9d9d9;
   cursor: pointer;
 }
-.input-submit-text {
+.input-submit-label {
   font-size: 20px;
   text-align: center;
   align-self: center;
-  /* margin: auto; */
   padding: auto;
 }
 .input-submit:hover {
-  background-color: burlywood;
+  background-color: white;
   transition: all 0.5s;
 }
 
 @media (max-width: 780px) {
-  .input-submit-text {
+  .input-submit-label {
     font-size: 16px;
   }
 }
