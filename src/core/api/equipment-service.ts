@@ -1,4 +1,4 @@
-import type { Message } from "core/api/responses";
+import type { Message } from "core/api/schemas/responses";
 import type { PropsEquipment } from "core/entities/equipment/equipment.interface";
 import { LocalSession } from "core/storage/session.storage";
 import { AuthHeader } from "./headers/authorization";
@@ -9,7 +9,7 @@ const { VUE_APP_API_EQUIPMENT: URL } = process.env;
 
 const pubId = (): string => LocalSession.get().pubId;
 
-export class ManagerEquipment {
+export class EquipmentService {
   static async create() {
     return await postMethod<Message>(URL, {}, AuthHeader());
   }
