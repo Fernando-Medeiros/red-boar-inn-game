@@ -1,18 +1,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import type { ClassesSchema } from "core/schemas/classes.schema.js";
-import { LocalStorage } from "core/storage/local.storage";
+import type { ClassesSchema } from "core/schemas/classes.schema";
+import { CharacterService } from "core/api/character-service";
+import { Helpers } from "core/helpers/functions-helpers";
 import SetupSelectClass from "setup/page.select-class.json";
-
 import Sprite from "comp/global/sprite/sprite.comp.vue";
 import InputSubmit from "comp/global/input/input-submit.comp.vue";
 import ClassButton from "comp/game/select-class/button-class.comp.vue";
 import ClassGenderButton from "comp/game/select-class/button-gender.comp.vue";
 import ClassDescription from "comp/game/select-class/description.comp.vue";
-
-function getSetup() {
-  return SetupSelectClass[LocalStorage.getLanguage()];
-}
 
 export default defineComponent({
   name: "SelectClassView",
@@ -25,36 +21,53 @@ export default defineComponent({
   },
   data() {
     return {
-      currentClass: "",
-      currentGender: "",
+      submitForm: false,
 
+      form: {
+        gender: "",
+        className: "",
+      },
       classList: [""],
       classDescription: [""],
-
       buttonSave: { label: "" },
     };
   },
   created() {
-    const { classes, defaultClass, defaultGender, buttonSave } = getSetup();
+    const { classes, defaultClass, defaultGender, buttonSave } =
+      SetupSelectClass[Helpers.getLanguage()];
 
     this.classList = Array.from(Object.keys(classes));
     this.classDescription = classes.peasant;
-
-    this.currentClass = defaultClass;
-    this.currentGender = defaultGender;
-
     this.buttonSave = buttonSave;
+
+    Object.assign(this.form, {
+      gender: defaultGender,
+      className: defaultClass,
+    });
   },
   methods: {
-    saveClass() {
-      //
+    async saveClass() {
+      this.blockInputSubmit();
+
+      await CharacterService.update(this.form);
+
+      this.blockInputSubmit();
     },
-    selectClass(className: string) {
-      this.currentClass = className;
-      this.classDescription = getSetup().classes[className as ClassesSchema];
+
+    blockInputSubmit() {
+      this.submitForm = !this.submitForm;
     },
+
     selectClassGender(classGender: string) {
-      this.currentGender = classGender;
+      this.form.gender = classGender;
+    },
+
+    selectClass(className: ClassesSchema) {
+      const { classes } = SetupSelectClass[Helpers.getLanguage()];
+
+      this.form.className = className;
+
+      this.classDescription = classes[className as ClassesSchema];
     },
   },
 });
@@ -63,14 +76,12 @@ export default defineComponent({
 <template>
   <div class="background-game">
     <div class="main-container">
-      <div class="sprite-and-input-container">
+      <div class="sprite-container">
         <Sprite
-          :sprite-name="currentClass"
-          :sprite-gender="currentGender"
+          :sprite-name="form.className"
+          :sprite-gender="form.gender"
           :rotate-y="true"
         />
-
-        <InputSubmit :label="buttonSave.label" />
       </div>
 
       <div class="choice-classes-container">
@@ -78,22 +89,31 @@ export default defineComponent({
           v-for="className in classList"
           :key="className"
           :sprite-name="className"
-          :sprite-gender="currentGender"
-          @active-class="selectClass(className)"
+          :sprite-gender="form.gender"
+          :is-active="form.className === className"
+          @active-class="selectClass"
         />
       </div>
 
       <div class="description-container">
-        <h2>{{ currentClass }}</h2>
+        <div class="className-and-button-container">
+          <h2>{{ form.className }}</h2>
+
+          <form @submit.prevent="saveClass">
+            <InputSubmit :label="buttonSave.label" :is-disabled="submitForm" />
+          </form>
+        </div>
 
         <div class="class-gender-container">
           <ClassGenderButton
             :sprite-name="'man'"
-            @active-class-gender="selectClassGender('man')"
+            :is-active="form.gender === 'man'"
+            @active-class-gender="selectClassGender"
           />
           <ClassGenderButton
             :sprite-name="'woman'"
-            @active-class-gender="selectClassGender('woman')"
+            :is-active="form.gender === 'woman'"
+            @active-class-gender="selectClassGender"
           />
         </div>
 
@@ -104,12 +124,11 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.sprite-and-input-container {
+.sprite-container {
   display: grid;
   padding: 10px;
   align-items: center;
-  grid-template-columns: 0.5fr 1fr;
-  justify-content: space-between;
+  justify-content: center;
 }
 .choice-classes-container {
   display: flex;
@@ -125,6 +144,10 @@ export default defineComponent({
   padding: 2rem;
   border-radius: 5px;
   border: 1px solid #e8e8e8;
+}
+.className-and-button-container {
+  display: flex;
+  justify-content: space-between;
 }
 .class-gender-container {
   display: flex;

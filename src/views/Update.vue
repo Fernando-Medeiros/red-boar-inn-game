@@ -1,15 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/storage/local.storage";
+import { Helpers } from "core/helpers/functions-helpers";
 import SetupUpdates from "setup/page.updates.json";
-
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
 import UpdatePreview from "comp/update/update.preview.comp.vue";
-
-function getSetup() {
-  return SetupUpdates[LocalStorage.getLanguage()];
-}
 
 export default defineComponent({
   name: "UpdateView",
@@ -20,8 +15,8 @@ export default defineComponent({
   },
   data() {
     return {
-      title: "",
-      updates: {},
+      title: SetupUpdates[Helpers.getLanguage()].title,
+      updates: SetupUpdates[Helpers.getLanguage()].updates,
 
       banner: {
         spriteLeft: {
@@ -36,11 +31,6 @@ export default defineComponent({
         },
       },
     };
-  },
-  mounted() {
-    const { title, updates } = getSetup();
-    this.title = title;
-    this.updates = updates;
   },
 });
 </script>
@@ -70,8 +60,5 @@ export default defineComponent({
   padding: 20px 10px;
   justify-items: center;
   background: linear-gradient(#282828, #323232c0);
-}
-
-@media (max-width: 780px) {
 }
 </style>

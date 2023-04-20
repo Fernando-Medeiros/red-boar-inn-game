@@ -28,7 +28,9 @@ export default defineComponent({
   <div class="background-game">
     <div class="main-container">
       <OptionsGuides @show-guide="showGuide" />
+
       <OptionsCharacter v-if="activeGuide === 'character'" />
+
       <OptionsSystem v-if="activeGuide === 'system'" />
     </div>
   </div>

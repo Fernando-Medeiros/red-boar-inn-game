@@ -1,7 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { HandlerCharacter } from "core/entities/handler-character";
-
 import Sprite from "comp/global/sprite/sprite.comp.vue";
 import StatusOverview from "comp/game/status/status-overview.comp.vue";
 

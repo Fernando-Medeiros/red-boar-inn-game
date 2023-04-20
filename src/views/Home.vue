@@ -1,15 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/storage/local.storage";
+import { Helpers } from "core/helpers/functions-helpers";
 import SetupHome from "setup/page.home.json";
-
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
 import RegisterButton from "comp/home/register-button.comp.vue";
-
-function getSetup() {
-  return SetupHome[LocalStorage.getLanguage()];
-}
 
 export default defineComponent({
   name: "HomeView",
@@ -38,7 +33,7 @@ export default defineComponent({
     };
   },
   mounted() {
-    const { title, buttonLabel } = getSetup();
+    const { title, buttonLabel } = SetupHome[Helpers.getLanguage()];
     this.title = title;
     this.label = buttonLabel;
   },

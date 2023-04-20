@@ -1,20 +1,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { ManagerAccount } from "core/api/manager-account";
-import { LocalStorage } from "core/storage/local.storage";
-
+import { AccountService } from "core/api/account-service";
+import { Helpers } from "core/helpers/functions-helpers";
 import SetupRegister from "setup/page.register.json";
-
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
 import InputName from "comp/global/input/input-name.comp.vue";
 import InputEmail from "comp/global/input/input-email.comp.vue";
 import InputPassword from "comp/global/input/input-password.comp.vue";
 import InputSubmit from "comp/global/input/input-submit.comp.vue";
-
-function getSetup() {
-  return SetupRegister[LocalStorage.getLanguage()];
-}
 
 export default defineComponent({
   name: "RegisterView",
@@ -30,6 +24,7 @@ export default defineComponent({
     return {
       title: "",
       alertMessage: "",
+      submitForm: false,
       redirectTo: "/auth/login",
 
       form: {
@@ -51,21 +46,40 @@ export default defineComponent({
           rotateY: false,
         },
       },
-      inputs: { ...getSetup().form },
+      inputs: { ...SetupRegister[Helpers.getLanguage()].form },
     };
   },
   created() {
-    const { title } = getSetup();
+    const { title } = SetupRegister[Helpers.getLanguage()];
     this.title = title;
   },
   methods: {
     async createAccount() {
-      const { message } = await ManagerAccount.create(this.form);
+      this.blockInputSubmit();
 
-      message
-        ? (this.alertMessage = message)
-        : this.$router.push({ path: this.redirectTo });
+      if (this.checkPassword()) {
+        const { message } = await AccountService.create(this.form);
+
+        message ? (this.alertMessage = message) : this.redirectAfterLoad();
+      } else {
+        const { message } = this.inputs.confirmPassword;
+
+        this.alertMessage = message;
+      }
+      this.blockInputSubmit();
     },
+
+    blockInputSubmit() {
+      this.submitForm = !this.submitForm;
+    },
+    redirectAfterLoad() {
+      this.$router.push({ path: this.redirectTo });
+    },
+    checkPassword() {
+      const { password, confirmPassword } = this.form;
+      return confirmPassword === password;
+    },
+
     emitFirstName(value: string) {
       this.form.firstName = value;
     },
@@ -136,7 +150,10 @@ export default defineComponent({
             @emit-content="emitConfirmPassword"
           />
 
-          <InputSubmit :label="inputs.submit.placeholder" />
+          <InputSubmit
+            :label="inputs.submit.placeholder"
+            :is-disabled="submitForm"
+          />
         </form>
       </div>
     </div>

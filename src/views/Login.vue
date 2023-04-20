@@ -1,31 +1,17 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { ManagerSession } from "core/api/manager-session";
-import { ManagerCharacter } from "core/api/manager-character";
-import { ManagerEquipment } from "core/api/manager-equipment";
-import { ManagerInventory } from "core/api/manager-inventory";
-import { ManagerStatus } from "core/api/manager-status";
-import { ManagerSkills } from "core/api/manager-skills";
-import { LocalStorage } from "core/storage/local.storage";
 import { LocalSession } from "core/storage/session.storage";
-
+import { SessionService } from "core/api/session-service";
+import { CharacterService } from "core/api/character-service";
+import { CharacterDependencies } from "core/api/helpers/character-dependencies";
+import { Helpers } from "core/helpers/functions-helpers";
 import SetupLogin from "setup/page.login.json";
-import SetupLoginRandomNames from "setup/page.login.names.json";
-
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
 import InputEmail from "comp/global/input/input-email.comp.vue";
 import InputPassword from "comp/global/input/input-password.comp.vue";
 import InputSubmit from "comp/global/input/input-submit.comp.vue";
 import InputCheckBox from "comp/global/input/input-checkbox.comp.vue";
-
-function getSetup() {
-  return SetupLogin[LocalStorage.getLanguage()];
-}
-
-function random(array: string[]) {
-  return array[Math.floor(Math.random() * array.length)];
-}
 
 export default defineComponent({
   name: "LoginView",
@@ -41,6 +27,7 @@ export default defineComponent({
     return {
       title: "",
       alertMessage: "",
+      submitForm: false,
       redirectTo: "/character/profile",
 
       form: {
@@ -60,63 +47,46 @@ export default defineComponent({
           rotateY: false,
         },
       },
-      inputs: { ...getSetup().form },
+      inputs: {
+        ...SetupLogin[Helpers.getLanguage()].form,
+      },
     };
   },
   mounted() {
-    const { titleTips } = getSetup();
-    this.title = random(titleTips);
+    const { titleTips } = SetupLogin[Helpers.getLanguage()];
+
+    this.title = Helpers.random(titleTips);
   },
   methods: {
     async login() {
+      this.blockInputSubmit();
+
       const { message, pubId, access, refresh, type } =
-        await ManagerSession.login(this.form);
+        await SessionService.login(this.form);
 
       message
         ? (this.alertMessage = message)
         : [
             LocalSession.set({ pubId, access, refresh, type }),
 
-            (await ManagerCharacter.get())?.pubId
-              ? await this.loadCharacter()
-              : [await this.createCharacter(), await this.loadCharacter()],
+            (await CharacterService.get())?.pubId
+              ? [await CharacterDependencies.load()]
+              : [
+                  await CharacterDependencies.create(),
+                  await CharacterDependencies.load(),
+                ],
+
+            this.redirectAfterLoad(),
           ];
+      this.blockInputSubmit();
     },
 
-    async createCharacter() {
-      const randomName =
-        random(SetupLoginRandomNames.names) +
-        this.form.email.slice(0, 3).toUpperCase();
-
-      await Promise.all([
-        ManagerCharacter.create({ charName: randomName }),
-        ManagerEquipment.create(),
-        ManagerInventory.create(),
-        ManagerStatus.create(),
-        ManagerSkills.create(),
-      ]);
+    blockInputSubmit() {
+      this.submitForm = !this.submitForm;
     },
-
-    async loadCharacter() {
-      await Promise.all([
-        ManagerCharacter.get(),
-        ManagerEquipment.get(),
-        ManagerInventory.get(),
-        ManagerStatus.get(),
-        ManagerSkills.get(),
-      ]).then(async ([character, equipment, inventory, status, skills]) => {
-        LocalStorage.setCharacter({
-          character: character,
-          equipment: equipment,
-          inventory: inventory,
-          status: status,
-          skills: skills,
-        });
-
-        this.$router.push({ path: this.redirectTo });
-
-        location.reload();
-      });
+    redirectAfterLoad() {
+      this.$router.push({ path: this.redirectTo });
+      location.reload();
     },
 
     emitEmail(value: string) {
@@ -167,10 +137,12 @@ export default defineComponent({
               :label="inputs.checkbox.label"
               @click="clickRemember"
             />
-            <a :href="inputs.recover.route">{{ inputs.recover.label }}</a>
+            <router-link :to="inputs.recover.route">
+              {{ inputs.recover.label }}
+            </router-link>
           </div>
 
-          <InputSubmit :label="inputs.submit.placeholder" />
+          <InputSubmit :label="inputs.submit.label" :is-disabled="submitForm" />
         </form>
       </div>
     </div>

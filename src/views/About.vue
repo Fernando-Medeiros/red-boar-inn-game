@@ -1,23 +1,18 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/storage/local.storage";
+import { Helpers } from "core/helpers/functions-helpers";
 import SetupAbout from "setup/page.about.json";
-
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
 import InfoComponent from "comp/about/info.comp.vue";
-
-function getSetup() {
-  return SetupAbout[LocalStorage.getLanguage()];
-}
 
 export default defineComponent({
   name: "AboutView",
   components: { BannerTitle, BannerSprites, InfoComponent },
   data() {
     return {
-      title: "",
-      articles: getSetup().articles,
+      title: SetupAbout[Helpers.getLanguage()].title,
+      articles: SetupAbout[Helpers.getLanguage()].articles,
       banner: {
         spriteLeft: {
           name: "merchant",
@@ -31,10 +26,6 @@ export default defineComponent({
         },
       },
     };
-  },
-  mounted() {
-    const { title } = getSetup();
-    this.title = title;
   },
 });
 </script>
@@ -52,9 +43,9 @@ export default defineComponent({
       <div class="about-container">
         <InfoComponent
           v-for="article in articles"
-          :key="article?.title"
-          :title="article?.title"
-          :content="article?.content.join('\n')"
+          :key="article.title"
+          :title="article.title"
+          :content="article.content.join('\n')"
           :credits="article?.links"
         />
       </div>
@@ -70,8 +61,5 @@ export default defineComponent({
   padding-bottom: 1rem;
   border-radius: 5px;
   background: linear-gradient(#282828, #323232c0);
-}
-
-@media (max-width: 780px) {
 }
 </style>

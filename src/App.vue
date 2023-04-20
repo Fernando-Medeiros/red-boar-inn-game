@@ -1,14 +1,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/storage/local.storage";
+import { Helpers } from "core/helpers/functions-helpers";
 import { LocalSession } from "./core/storage/session.storage";
 import { HandlerCharacter } from "core/entities/handler-character";
-
 import SetupHeader from "setup/global.header.json";
 import SetupFooter from "setup/global.footer.json";
 import SetupRoutes from "setup/global.routes.json";
 import SetupHeaderGame from "setup/global.header-game.json";
-
 import Header from "comp/global/header/header.main.comp.vue";
 import Footer from "comp/global/footer/footer.main.comp.vue";
 import HeaderGame from "comp/global/header-game/header-game.comp.vue";
@@ -49,12 +47,12 @@ export default defineComponent({
   },
   methods: {
     loadRoutes() {
-      const { routes } = SetupRoutes[LocalStorage.getLanguage()];
+      const { routes } = SetupRoutes[Helpers.getLanguage()];
       this.routes = routes;
     },
 
     loadHeader() {
-      const { loginLabel } = SetupHeader[LocalStorage.getLanguage()];
+      const { loginLabel } = SetupHeader[Helpers.getLanguage()];
       this.header.loginLabel = loginLabel;
     },
     loadFooter() {
@@ -64,7 +62,7 @@ export default defineComponent({
     },
 
     loadHeaderGame() {
-      const { icons } = SetupHeaderGame[LocalStorage.getLanguage()];
+      const { icons } = SetupHeaderGame[Helpers.getLanguage()];
       this.headerGame.iconsButton = icons;
     },
     loadInventory() {

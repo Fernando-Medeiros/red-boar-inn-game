@@ -1,16 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { LocalStorage } from "core/storage/local.storage";
 import { HandlerCharacter } from "core/entities/handler-character";
-
+import { Helpers } from "core/helpers/functions-helpers";
 import SetupProfile from "setup/page.profile.json";
-
 import Sprite from "comp/global/sprite/sprite.comp.vue";
 import IconButton from "comp/global/button/icon-button.comp.vue";
-
-function getSetup() {
-  return SetupProfile[LocalStorage.getLanguage()];
-}
 
 export default defineComponent({
   name: "ProfileView",
@@ -24,8 +18,8 @@ export default defineComponent({
         getLevel: "",
         getGender: "",
       },
-      spriteInfo: getSetup().sprite,
-      menuInfo: getSetup().menu,
+      spriteInfo: SetupProfile[Helpers.getLanguage()].sprite,
+      menuInfo: SetupProfile[Helpers.getLanguage()].menu,
     };
   },
   created() {
