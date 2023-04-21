@@ -99,6 +99,17 @@
           "Impl -> Integração com a api para atualizar a classe e genero",
           "Fix -> Otimização dos componentes"
         ]
+      },
+      "12": {
+        "version": 1.2,
+        "date": "21-04-2023",
+        "description": [
+          "Impl -> Caixa de alerta",
+          "Impl -> Tradução dos status",
+          "Impl -> Atualização do dados em tempo de execução",
+          "Fix -> Atualização do genêro do sprite",
+          "Fix -> Removi os Dados do personagem no localStorage"
+        ]
       }
     }
   },
@@ -198,6 +209,17 @@
           "Impl -> Integration with api to update character name",
           "Impl -> Integration with the api to update the class and genus",
           "Fix -> Component Optimization"
+        ]
+      },
+      "12": {
+        "version": 1.2,
+        "date": "21-04-2023",
+        "description": [
+          "Impl -> Alert Box",
+          "Impl -> Status translation",
+          "Impl -> Data update at runtime",
+          "Fix -> Sprite gender update",
+          "Fix -> Removed Character Data in localStorage"
         ]
       }
     }

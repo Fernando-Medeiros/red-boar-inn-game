@@ -1,1 +1,22 @@
-{ "br": {}, "en": {} }
+{
+  "br": {
+    "points": { "label": "pontos" },
+    "experience": { "label": "experiência" },
+    "strength": { "label": "força" },
+    "intelligence": { "label": "inteligência" },
+    "dexterity": { "label": "destreza" },
+    "vitality": { "label": "vitalidade" },
+    "health": { "label": "saúde" },
+    "energy": { "label": "energia" }
+  },
+  "en": {
+    "points": { "label": "points" },
+    "experience": { "label": "experience" },
+    "strength": { "label": "strength" },
+    "intelligence": { "label": "intelligence" },
+    "dexterity": { "label": "dexterity" },
+    "vitality": { "label": "vitality" },
+    "health": { "label": "health" },
+    "energy": { "label": "energy" }
+  }
+}

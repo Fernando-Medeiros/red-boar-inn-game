@@ -1,0 +1,39 @@
+{
+  "br": {
+    "login": "Redirecionando para o perfil",
+    "register": "Conta criada com sucesso",
+    "updates": {
+      "charName": {
+        "success": "Nome atualizado!",
+        "error": "O nome já está em uso, escolha outro"
+      },
+      "className": {
+        "success": "Classe atualizada!",
+        "error": "Houve um Erro inesperado"
+      },
+      "status": {
+        "success": "Status atualizado!",
+        "error": "Não há pontos para atualizar"
+      }
+    }
+  },
+
+  "en": {
+    "login": "Redirecting to profile",
+    "register": "Account created successfully",
+    "updates": {
+      "charName": {
+        "success": "Name updated!",
+        "error": "The name is already in use, choose another one"
+      },
+      "className": {
+        "success": "Class updated!",
+        "error": "There was an unexpected error"
+      },
+      "status": {
+        "success": "Status updated!",
+        "error": "There are no points to upgrade"
+      }
+    }
+  }
+}
