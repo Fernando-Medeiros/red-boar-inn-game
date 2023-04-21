@@ -1,36 +1,18 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { HandlerCharacter } from "core/entities/handler-character";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupProfile from "setup/page.profile.json";
-import Sprite from "comp/global/sprite/sprite.comp.vue";
+import CharacterPreview from "comp/game/profile/character-preview.comp.vue";
 import IconButton from "comp/global/button/icon-button.comp.vue";
 
 export default defineComponent({
   name: "ProfileView",
-  components: { Sprite, IconButton },
+  components: { CharacterPreview, IconButton },
 
   data() {
     return {
-      character: {
-        getName: "",
-        getClass: "",
-        getLevel: "",
-        getGender: "",
-      },
-      spriteInfo: SetupProfile[Helpers.getLanguage()].sprite,
       menuInfo: SetupProfile[Helpers.getLanguage()].menu,
     };
-  },
-  created() {
-    const characterData = HandlerCharacter.character();
-
-    Object.assign(this.character, {
-      getLevel: characterData.getLevel,
-      getName: characterData.getName,
-      getClass: characterData.getClass,
-      getGender: characterData.getGender,
-    });
   },
 });
 </script>
@@ -70,22 +52,7 @@ export default defineComponent({
             />
           </div>
 
-          <div class="sprite-character">
-            <Sprite
-              :sprite-name="character.getClass"
-              :sprite-gender="character.getGender"
-              :rotate-y="false"
-            />
-            <span>
-              <p>{{ character.getName }}</p>
-              <span>
-                <p>
-                  {{ spriteInfo.levelLabel }} - {{ character.getLevel }} /
-                  {{ character.getClass }}
-                </p>
-              </span>
-            </span>
-          </div>
+          <CharacterPreview />
 
           <div class="menu-middle-two-icon">
             <IconButton
@@ -153,25 +120,9 @@ export default defineComponent({
   display: grid;
   gap: 3rem;
 }
-
-.sprite-character {
-  display: grid;
-  gap: 1rem;
-  justify-content: center;
-}
-.sprite-character > span {
-  display: flex;
-  gap: 1rem;
-  text-align: center;
-}
-
 @media (max-width: 780px) {
   .menu-container {
     gap: 1.5rem;
-  }
-  .sprite-character > span {
-    display: grid;
-    font-size: 14px;
   }
 }
 </style>

@@ -4,6 +4,7 @@ import type { ClassesSchema } from "core/schemas/classes.schema";
 import { CharacterService } from "core/api/character-service";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupSelectClass from "setup/page.select-class.json";
+import SetupResponses from "setup/global.responses.json";
 import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
 import Sprite from "comp/global/sprite/sprite.comp.vue";
 import InputSubmit from "comp/global/input/input-submit.comp.vue";
@@ -26,13 +27,14 @@ export default defineComponent({
       alertMessage: "",
       submitForm: false,
 
+      classList: [""],
+      classDescription: [""],
+      buttonSave: { label: "" },
+
       form: {
         gender: "",
         className: "",
       },
-      classList: [""],
-      classDescription: [""],
-      buttonSave: { label: "" },
     };
   },
   created() {
@@ -52,9 +54,13 @@ export default defineComponent({
     async saveClass() {
       this.blockInputSubmit();
 
-      const { message } = await CharacterService.update(this.form);
+      const { status } = await CharacterService.update(this.form);
 
-      message ? (this.alertMessage = message) : "";
+      const {
+        className: { success, error },
+      } = SetupResponses[Helpers.getLanguage()].updates;
+
+      this.alertMessage = status === 204 ? success : error;
 
       this.blockInputSubmit();
     },

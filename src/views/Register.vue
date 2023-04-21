@@ -3,6 +3,7 @@ import { defineComponent } from "vue";
 import { AccountService } from "core/api/account-service";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupRegister from "setup/page.register.json";
+import SetupResponses from "setup/global.responses.json";
 import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
@@ -59,16 +60,18 @@ export default defineComponent({
     async createAccount() {
       this.blockInputSubmit();
 
-      if (this.checkPassword()) {
-        const { message } = await AccountService.create(this.form);
+      let success = SetupResponses[Helpers.getLanguage()].register;
+      let error: string | unknown | undefined;
 
-        message ? (this.alertMessage = message) : this.redirectAfterLoad();
-      } else {
-        const { message } = this.inputs.confirmPassword;
+      this.checkPassword()
+        ? (error = (await AccountService.create(this.form))?.message)
+        : (error = this.inputs.confirmPassword.message);
 
-        this.alertMessage = message;
-      }
-      this.blockInputSubmit();
+      this.alertMessage = String(error ?? success);
+
+      setTimeout(() => {
+        error ? this.blockInputSubmit() : this.redirectAfterLoad();
+      }, 3000);
     },
 
     blockInputSubmit() {

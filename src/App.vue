@@ -1,8 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Helpers } from "core/helpers/functions-helpers";
 import { LocalSession } from "./core/storage/session.storage";
-import { HandlerCharacter } from "core/entities/handler-character";
+import { Helpers } from "core/helpers/functions-helpers";
 import SetupHeader from "setup/global.header.json";
 import SetupFooter from "setup/global.footer.json";
 import SetupRoutes from "setup/global.routes.json";
@@ -66,11 +65,9 @@ export default defineComponent({
       this.headerGame.iconsButton = icons;
     },
     loadInventory() {
-      const inventory = HandlerCharacter.inventory();
-
       Object.assign(this.headerGame.inventory, {
-        gold: String(inventory.findMaterial("gold")?.total || "0"),
-        jewel: String(inventory.findMaterial("jewel")?.total || "0"),
+        gold: "0",
+        jewel: "0",
       });
     },
   },

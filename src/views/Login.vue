@@ -63,23 +63,20 @@ export default defineComponent({
     async login() {
       this.blockInputSubmit();
 
-      const { message, pubId, access, refresh, type } =
+      const { message, status, pubId, access, refresh, type } =
         await SessionService.login(this.form);
 
-      message
-        ? (this.alertMessage = message)
-        : [
-            LocalSession.set({ pubId, access, refresh, type }),
+      this.alertMessage = message ? message : "";
 
-            (await CharacterService.get())?.pubId
-              ? [await CharacterDependencies.load()]
-              : [
-                  await CharacterDependencies.create(),
-                  await CharacterDependencies.load(),
-                ],
+      if (status === 200) {
+        LocalSession.set({ pubId, access, refresh, type });
 
-            this.redirectAfterLoad(),
-          ];
+        (await CharacterService.get())?.pubId === undefined
+          ? await CharacterDependencies.create()
+          : "";
+      }
+      this.redirectAfterLoad();
+
       this.blockInputSubmit();
     },
 
@@ -93,6 +90,7 @@ export default defineComponent({
     deleteMessage(value: string) {
       this.alertMessage = value;
     },
+
     emitEmail(value: string) {
       this.form.email = value;
     },
