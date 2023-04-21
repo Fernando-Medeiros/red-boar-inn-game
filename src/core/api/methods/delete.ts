@@ -9,7 +9,9 @@ export async function deleteMethod<Response = object>(
     .delete(String(URL), { headers: { ...SecretHeader(), ...headers } })
 
     .then((response) => {
-      return response.data;
+      const { data, status } = response;
+
+      return Object({ ...data, status });
     })
     .catch((error: AxiosError) => {
       return error.response?.data;

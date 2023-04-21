@@ -10,7 +10,9 @@ export async function patchMethod<T = object, Response = object>(
     .patch(String(URL), body, { headers: { ...SecretHeader(), ...headers } })
 
     .then((response) => {
-      return response.data;
+      const { data, status } = response;
+
+      return Object({ ...data, status });
     })
     .catch((error: AxiosError) => {
       return error.response?.data;

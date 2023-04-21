@@ -10,7 +10,9 @@ export async function postMethod<T = object, Response = object>(
     .post(String(URL), body, { headers: { ...SecretHeader(), ...headers } })
 
     .then((response) => {
-      return response.data;
+      const { data, status } = response;
+
+      return Object({ ...data, status });
     })
     .catch((error: AxiosError) => {
       return error.response?.data;
