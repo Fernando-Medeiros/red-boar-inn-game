@@ -37,6 +37,14 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("view/Login.vue"),
       },
       {
+        path: "logout",
+        name: "logout",
+        component: () => import("view/Logout.vue"),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
         path: "register",
         name: "register",
         component: () => import("view/Register.vue"),
@@ -52,22 +60,22 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "profile",
         name: "profile",
-        component: () => import("view/Profile.vue"),
+        component: async () => await import("view/Profile.vue"),
       },
       {
         path: "status",
         name: "status",
-        component: () => import("view/Status.vue"),
+        component: async () => await import("view/Status.vue"),
       },
       {
         path: "class",
         name: "class",
-        component: () => import("view/SelectClass.vue"),
+        component: async () => await import("view/SelectClass.vue"),
       },
       {
         path: "options",
         name: "options",
-        component: () => import("view/Options.vue"),
+        component: async () => await import("view/Options.vue"),
       },
     ],
   },
@@ -81,8 +89,7 @@ const router = createRouter({
 router.beforeEach((to) => {
   const { requiresAuth, global } = to.meta;
 
-  if (isNotAuthenticated(requiresAuth))
-    return { path: "/auth/login", query: { redirect: to.fullPath } };
+  if (isNotAuthenticated(requiresAuth)) return { path: "/auth/login" };
 
   if (isAuthenticated(requiresAuth) && !global)
     return { path: "/character/profile" };
