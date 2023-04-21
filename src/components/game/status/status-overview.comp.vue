@@ -1,31 +1,87 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { HandlerCharacter } from "core/entities/handler-character";
+import { StatusService } from "core/api/status-service";
+import { Status } from "core/entities/status/status";
+import { Helpers } from "core/helpers/functions-helpers";
+import SetupStatus from "setup/page.status.json";
 
 export default defineComponent({
   name: "StatusOverview",
+
+  async beforeCreate() {
+    const status = new Status(await StatusService.get());
+
+    Object.assign(this.$data, status.toJson());
+  },
   data() {
     return {
-      currentStatus: {},
+      points: 0,
+      experience: 1,
+      strength: 1,
+      intelligence: 1,
+      dexterity: 1,
+      vitality: 1,
+      health: 1,
+      energy: 1,
+      currentHealth: 1,
+      currentEnergy: 1,
+
+      setupInfo: { ...SetupStatus[Helpers.getLanguage()] },
     };
-  },
-  created() {
-    this.currentStatus = HandlerCharacter.status().toJson();
   },
 });
 </script>
 
 <template>
   <div>
-    <div
-      class="status-overview"
-      v-for="(status, name) in currentStatus"
-      :key="status"
-      v-show="name != 'pubId'"
-    >
-      <p>{{ name }}</p>
-      <p>{{ status }}</p>
-    </div>
+    <span class="status-overview">
+      <p>
+        {{ setupInfo.points.label }}
+      </p>
+      {{ points }}
+    </span>
+    <span class="status-overview">
+      <p>
+        {{ setupInfo.experience.label }}
+      </p>
+      {{ experience }}
+    </span>
+    <span class="status-overview">
+      <p>
+        {{ setupInfo.strength.label }}
+      </p>
+      {{ strength }}
+    </span>
+    <span class="status-overview">
+      <p>
+        {{ setupInfo.intelligence.label }}
+      </p>
+      {{ intelligence }}
+    </span>
+    <span class="status-overview">
+      <p>
+        {{ setupInfo.dexterity.label }}
+      </p>
+      {{ dexterity }}
+    </span>
+    <span class="status-overview">
+      <p>
+        {{ setupInfo.vitality.label }}
+      </p>
+      {{ vitality }}
+    </span>
+    <span class="status-overview">
+      <p>
+        {{ setupInfo.health.label }}
+      </p>
+      {{ health }}
+    </span>
+    <span class="status-overview">
+      <p>
+        {{ setupInfo.energy.label }}
+      </p>
+      {{ energy }}
+    </span>
   </div>
 </template>
 
