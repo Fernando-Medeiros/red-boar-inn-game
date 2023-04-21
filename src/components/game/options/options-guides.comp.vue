@@ -6,6 +6,9 @@ import SetupOptions from "setup/page.options.json";
 export default defineComponent({
   name: "OptionsGuides",
   emits: ["showGuide"],
+  props: {
+    currentGuide: { type: String, required: true },
+  },
   data() {
     return {
       guides: SetupOptions[Helpers.getLanguage()].guides,
@@ -21,6 +24,7 @@ export default defineComponent({
       v-for="guide in guides"
       :key="guide.name"
       @click="$emit('showGuide', guide.name)"
+      :style="currentGuide === guide.name ? ' border-color: burlywood;' : ''"
     >
       {{ guide.placeholder }}
     </button>
@@ -37,7 +41,7 @@ export default defineComponent({
   width: 100%;
   height: 2rem;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   border: none;
   border-radius: 5px;
   border-bottom: 1px solid white;

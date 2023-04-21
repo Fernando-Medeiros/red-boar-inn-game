@@ -8,6 +8,7 @@ import InputSubmit from "comp/global/input/input-submit.comp.vue";
 
 export default defineComponent({
   name: "OptionsCharacter",
+  emits: ["emitMessage"],
   components: {
     InputCharacterName,
     InputSubmit,
@@ -15,7 +16,6 @@ export default defineComponent({
   data() {
     return {
       submitForm: false,
-
       form: {
         charName: "",
       },
@@ -28,7 +28,9 @@ export default defineComponent({
     async saveCharacterName() {
       this.blockInputSubmit();
 
-      await CharacterService.update(this.form);
+      const { message } = await CharacterService.update(this.form);
+
+      this.$emit("emitMessage", message || "");
 
       this.blockInputSubmit();
     },
@@ -36,7 +38,6 @@ export default defineComponent({
     blockInputSubmit() {
       this.submitForm = !this.submitForm;
     },
-
     emitCharacterName(name: string) {
       this.form.charName = name;
     },
