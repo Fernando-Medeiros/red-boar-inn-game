@@ -83,7 +83,7 @@
         "version": 1.0,
         "date": "19-04-2023",
         "description": [
-          "Impl -> Menssagem auxiliar para os inputs",
+          "Impl -> Mensagem auxiliar para os inputs",
           "Impl -> Cabeçalho com a senha das API's para o acesso restrito",
           "Fix -> Nome aleatorio ao criar um personagem"
         ]
