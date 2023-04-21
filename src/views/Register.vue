@@ -3,6 +3,7 @@ import { defineComponent } from "vue";
 import { AccountService } from "core/api/account-service";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupRegister from "setup/page.register.json";
+import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
 import InputName from "comp/global/input/input-name.comp.vue";
@@ -19,6 +20,7 @@ export default defineComponent({
     InputPassword,
     InputName,
     InputSubmit,
+    AlertMessage,
   },
   data() {
     return {
@@ -79,6 +81,9 @@ export default defineComponent({
       const { password, confirmPassword } = this.form;
       return confirmPassword === password;
     },
+    deleteMessage(value: string) {
+      this.alertMessage = value;
+    },
 
     emitFirstName(value: string) {
       this.form.firstName = value;
@@ -101,6 +106,8 @@ export default defineComponent({
 
 <template>
   <div>
+    <AlertMessage :message="alertMessage" @delete-message="deleteMessage" />
+
     <BannerTitle :title="title" />
 
     <BannerSprites
@@ -110,10 +117,6 @@ export default defineComponent({
 
     <div class="main-container">
       <div class="background">
-        <span class="alert-message">
-          <p>{{ alertMessage }}</p>
-        </span>
-
         <form class="form-login" @submit.prevent="createAccount">
           <InputName
             :label="inputs.firstName.label"
@@ -165,11 +168,6 @@ export default defineComponent({
   padding-block: 1rem;
   border-radius: 5px;
   background: linear-gradient(#282828, #323232c0);
-}
-.alert-message {
-  color: tomato;
-  padding-block: 1rem;
-  text-align: center;
 }
 .form-login {
   z-index: 1;

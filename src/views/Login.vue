@@ -6,6 +6,7 @@ import { CharacterService } from "core/api/character-service";
 import { CharacterDependencies } from "core/api/helpers/character-dependencies";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupLogin from "setup/page.login.json";
+import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
 import InputEmail from "comp/global/input/input-email.comp.vue";
@@ -22,6 +23,7 @@ export default defineComponent({
     InputPassword,
     InputSubmit,
     InputCheckBox,
+    AlertMessage,
   },
   data() {
     return {
@@ -88,7 +90,9 @@ export default defineComponent({
       this.$router.push({ path: this.redirectTo });
       location.reload();
     },
-
+    deleteMessage(value: string) {
+      this.alertMessage = value;
+    },
     emitEmail(value: string) {
       this.form.email = value;
     },
@@ -104,6 +108,8 @@ export default defineComponent({
 
 <template>
   <div>
+    <AlertMessage :message="alertMessage" @delete-message="deleteMessage" />
+
     <BannerTitle :title="title" />
 
     <BannerSprites
@@ -113,10 +119,6 @@ export default defineComponent({
 
     <div class="main-container">
       <div class="background">
-        <span class="alert-message">
-          <p>{{ alertMessage }}</p>
-        </span>
-
         <form class="form-login" @submit.prevent="login">
           <InputEmail
             :label="inputs.email.label"
@@ -155,11 +157,6 @@ export default defineComponent({
   border-radius: 5px;
   background: linear-gradient(#282828, #323232c0);
 }
-.alert-message {
-  color: tomato;
-  padding-block: 1rem;
-  text-align: center;
-}
 .form-login {
   z-index: 1;
   display: grid;
@@ -176,7 +173,5 @@ export default defineComponent({
 }
 .form-options a:hover {
   color: burlywood;
-}
-@media (max-width: 780px) {
 }
 </style>

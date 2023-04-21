@@ -4,6 +4,7 @@ import type { ClassesSchema } from "core/schemas/classes.schema";
 import { CharacterService } from "core/api/character-service";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupSelectClass from "setup/page.select-class.json";
+import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
 import Sprite from "comp/global/sprite/sprite.comp.vue";
 import InputSubmit from "comp/global/input/input-submit.comp.vue";
 import ClassButton from "comp/game/select-class/button-class.comp.vue";
@@ -18,9 +19,11 @@ export default defineComponent({
     ClassButton,
     ClassGenderButton,
     ClassDescription,
+    AlertMessage,
   },
   data() {
     return {
+      alertMessage: "",
       submitForm: false,
 
       form: {
@@ -49,7 +52,9 @@ export default defineComponent({
     async saveClass() {
       this.blockInputSubmit();
 
-      await CharacterService.update(this.form);
+      const { message } = await CharacterService.update(this.form);
+
+      message ? (this.alertMessage = message) : "";
 
       this.blockInputSubmit();
     },
@@ -57,11 +62,12 @@ export default defineComponent({
     blockInputSubmit() {
       this.submitForm = !this.submitForm;
     },
-
+    deleteMessage(value: string) {
+      this.alertMessage = value;
+    },
     selectClassGender(classGender: string) {
       this.form.gender = classGender;
     },
-
     selectClass(className: ClassesSchema) {
       const { classes } = SetupSelectClass[Helpers.getLanguage()];
 
@@ -74,6 +80,8 @@ export default defineComponent({
 </script>
 
 <template>
+  <AlertMessage :message="alertMessage" @delete-message="deleteMessage" />
+
   <div class="background-game">
     <div class="main-container">
       <div class="sprite-container">
