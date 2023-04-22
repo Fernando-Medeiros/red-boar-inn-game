@@ -16,20 +16,8 @@ export default defineComponent({
   data() {
     return {
       title: "",
-      pathToRegister: "/auth/register",
       label: "",
-      banner: {
-        spriteLeft: {
-          name: "mage",
-          gender: "woman",
-          rotateY: true,
-        },
-        spriteRight: {
-          name: "mage",
-          gender: "man",
-          rotateY: false,
-        },
-      },
+      pathToRegister: "/auth/register",
     };
   },
   mounted() {
@@ -44,10 +32,7 @@ export default defineComponent({
   <div>
     <BannerTitle :title="title" />
 
-    <BannerSprites
-      :sprite-left="banner.spriteLeft"
-      :sprite-right="banner.spriteRight"
-    />
+    <BannerSprites :sprite-left="'mage'" :sprite-right="'mage'" />
 
     <div class="main-container">
       <RegisterButton :path-to-register="pathToRegister" :label="label" />

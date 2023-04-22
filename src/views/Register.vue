@@ -37,18 +37,6 @@ export default defineComponent({
         password: "",
         confirmPassword: "",
       },
-      banner: {
-        spriteLeft: {
-          name: "peasant",
-          gender: "woman",
-          rotateY: true,
-        },
-        spriteRight: {
-          name: "peasant",
-          gender: "man",
-          rotateY: false,
-        },
-      },
       inputs: { ...SetupRegister[Helpers.getLanguage()].form },
     };
   },
@@ -113,10 +101,7 @@ export default defineComponent({
 
     <BannerTitle :title="title" />
 
-    <BannerSprites
-      :sprite-left="banner.spriteLeft"
-      :sprite-right="banner.spriteRight"
-    />
+    <BannerSprites :sprite-left="'peasant'" :sprite-right="'peasant'" />
 
     <div class="main-container">
       <div class="background">

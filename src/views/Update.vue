@@ -17,19 +17,6 @@ export default defineComponent({
     return {
       title: SetupUpdates[Helpers.getLanguage()].title,
       updates: SetupUpdates[Helpers.getLanguage()].updates,
-
-      banner: {
-        spriteLeft: {
-          name: "warrior",
-          gender: "woman",
-          rotateY: true,
-        },
-        spriteRight: {
-          name: "warrior",
-          gender: "man",
-          rotateY: false,
-        },
-      },
     };
   },
 });
@@ -39,10 +26,7 @@ export default defineComponent({
   <div>
     <BannerTitle :title="title" />
 
-    <BannerSprites
-      :sprite-left="banner.spriteLeft"
-      :sprite-right="banner.spriteRight"
-    />
+    <BannerSprites :sprite-left="'warrior'" :sprite-right="'warrior'" />
 
     <div class="main-container">
       <div class="updates-container">

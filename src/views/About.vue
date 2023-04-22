@@ -13,18 +13,6 @@ export default defineComponent({
     return {
       title: SetupAbout[Helpers.getLanguage()].title,
       articles: SetupAbout[Helpers.getLanguage()].articles,
-      banner: {
-        spriteLeft: {
-          name: "merchant",
-          gender: "woman",
-          rotateY: true,
-        },
-        spriteRight: {
-          name: "merchant",
-          gender: "man",
-          rotateY: false,
-        },
-      },
     };
   },
 });
@@ -34,10 +22,7 @@ export default defineComponent({
   <div>
     <BannerTitle :title="title" />
 
-    <BannerSprites
-      :sprite-left="banner.spriteLeft"
-      :sprite-right="banner.spriteRight"
-    />
+    <BannerSprites :sprite-left="'merchant'" :sprite-right="'merchant'" />
 
     <div class="main-container">
       <div class="about-container">

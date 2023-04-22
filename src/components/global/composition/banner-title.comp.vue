@@ -10,7 +10,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="title-container">
+  <div class="container">
     <div class="main-container">
       <h1 class="title">{{ title }}</h1>
     </div>
@@ -18,7 +18,7 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.title-container {
+.container {
   background-image: linear-gradient(#2222225b, #2222225b, #222222c0),
     url("assets/pictures/img4.png");
   background-repeat: no-repeat;

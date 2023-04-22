@@ -1,23 +1,17 @@
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent } from "vue";
 import SpriteComponent from "../sprite/sprite.comp.vue";
-
-type Sprite = {
-  name: string;
-  gender: string;
-  rotateY: boolean;
-};
 
 export default defineComponent({
   name: "BannerSprites",
   components: { SpriteComponent },
   props: {
     spriteLeft: {
-      type: Object as PropType<Sprite>,
+      type: String,
       required: true,
     },
     spriteRight: {
-      type: Object as PropType<Sprite>,
+      type: String,
       required: true,
     },
   },
@@ -30,15 +24,15 @@ export default defineComponent({
   <div class="main-container">
     <div class="banner-container">
       <SpriteComponent
-        :rotate-y="spriteLeft.rotateY"
-        :sprite-name="spriteLeft.name"
-        :sprite-gender="spriteLeft.gender"
+        :rotate-y="true"
+        :sprite-name="spriteLeft"
+        :sprite-gender="'woman'"
       />
 
       <SpriteComponent
-        :rotate-y="spriteRight.rotateY"
-        :sprite-name="spriteRight.name"
-        :sprite-gender="spriteRight.gender"
+        :rotate-y="false"
+        :sprite-name="spriteRight"
+        :sprite-gender="'man'"
       />
     </div>
   </div>
