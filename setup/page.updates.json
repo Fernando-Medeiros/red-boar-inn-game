@@ -107,6 +107,7 @@
           "Impl -> Caixa de alerta",
           "Impl -> Tradução dos status",
           "Impl -> Atualização do dados em tempo de execução",
+          "Impl -> Página de status: overview dos status e distribuição dos pontos",
           "Fix -> Atualização do genêro do sprite",
           "Fix -> Removi os Dados do personagem no localStorage"
         ]
@@ -218,6 +219,7 @@
           "Impl -> Alert Box",
           "Impl -> Status translation",
           "Impl -> Data update at runtime",
+          "Impl -> Status page: status overview and point distribution",
           "Fix -> Sprite gender update",
           "Fix -> Removed Character Data in localStorage"
         ]

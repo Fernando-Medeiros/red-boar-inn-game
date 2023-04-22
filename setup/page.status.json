@@ -7,7 +7,13 @@
     "dexterity": { "label": "destreza" },
     "vitality": { "label": "vitalidade" },
     "health": { "label": "saúde" },
-    "energy": { "label": "energia" }
+    "energy": { "label": "energia" },
+    "currentHealth": { "label": "saúde atual" },
+    "currentEnergy": { "label": "energia atual" },
+
+    "form": {
+      "submit": { "label": "atualizar" }
+    }
   },
   "en": {
     "points": { "label": "points" },
@@ -17,6 +23,12 @@
     "dexterity": { "label": "dexterity" },
     "vitality": { "label": "vitality" },
     "health": { "label": "health" },
-    "energy": { "label": "energy" }
+    "energy": { "label": "energy" },
+    "currentHealth": { "label": "currentHealth" },
+    "currentEnergy": { "label": "currentEnergy" },
+
+    "form": {
+      "submit": { "label": "update" }
+    }
   }
 }
