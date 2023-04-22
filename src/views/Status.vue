@@ -2,19 +2,37 @@
 import { defineComponent } from "vue";
 import CharacterPreview from "comp/game/profile/character-preview.comp.vue";
 import StatusOverview from "comp/game/status/status-overview.comp.vue";
+import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
 
 export default defineComponent({
   name: "StatusView",
-  components: { CharacterPreview, StatusOverview },
+  components: { AlertMessage, CharacterPreview, StatusOverview },
+
+  data() {
+    return {
+      alertMessage: "",
+    };
+  },
+  methods: {
+    receiveMessage(message: string) {
+      this.alertMessage = message;
+    },
+    deleteMessage(value: string) {
+      this.alertMessage = value;
+    },
+  },
 });
 </script>
 
 <template>
+  <AlertMessage :message="alertMessage" @delete-message="deleteMessage" />
+
   <div class="background-game">
     <div class="main-container">
       <div class="status-container">
         <CharacterPreview />
-        <StatusOverview />
+
+        <StatusOverview @emit-message="receiveMessage" />
       </div>
     </div>
   </div>
@@ -24,7 +42,5 @@ export default defineComponent({
 .status-container {
   display: grid;
   gap: 1rem;
-}
-@media (max-width: 780px) {
 }
 </style>
