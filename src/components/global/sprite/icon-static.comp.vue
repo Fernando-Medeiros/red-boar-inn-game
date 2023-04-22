@@ -5,20 +5,21 @@ export default defineComponent({
   name: "IconStatic",
   props: {
     name: { type: String, required: true },
-    label: { type: String, required: true },
+    label: { type: String, required: false },
   },
 });
 </script>
 
 <template>
-  <div class="icon-static-container">
+  <div class="container">
     <img class="icon" :alt="name" :src="require(`assets/icons/${name}.png`)" />
+
     <label :for="label">{{ label }}</label>
   </div>
 </template>
 
 <style scoped>
-.icon-static-container {
+.container {
   display: flex;
   gap: 10px;
   align-items: center;

@@ -32,9 +32,10 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="input-password-container">
-    <span class="label-description-container">
+  <div class="container">
+    <span class="label-description">
       <label class="label-name" for="">{{ label }}</label>
+
       <p class="" v-if="alert && content">
         {{ description }}
       </p>
@@ -42,12 +43,12 @@ export default defineComponent({
 
     <div class="input-button-container">
       <input
-        :placeholder="placeholder"
-        class="input-password"
+        class="input"
         v-model="content"
-        :type="inputType"
         autocomplete="current-password"
         required
+        :type="inputType"
+        :placeholder="placeholder"
         :style="
           !content
             ? 'border-color: white'
@@ -73,21 +74,21 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.input-password-container {
+.container {
   max-width: 500px;
   display: grid;
   margin: auto;
   margin-top: 10px;
 }
-.label-description-container {
+.label-description {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
-.label-description-container > p {
+.label-description > p {
   font-size: 13px;
 }
-.input-password {
+.input {
   font-size: 1.1rem;
   width: 465px;
   height: 20px;
@@ -110,11 +111,11 @@ export default defineComponent({
 }
 
 @media (max-width: 780px) {
-  .input-password-container {
+  .container {
     max-width: 100%;
     justify-self: center;
   }
-  .input-password {
+  .input {
     font-size: 14px;
     width: 265px;
   }

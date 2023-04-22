@@ -9,18 +9,6 @@ export default defineComponent({
     label: { type: String, required: true },
     toRoute: { type: String, default: "" },
   },
-  data() {
-    return {
-      id: Math.random().toString(),
-    };
-  },
-  mounted() {
-    if (!this.toRoute) {
-      const icon = document.getElementById(this.id.toString());
-
-      icon ? (icon.style.filter = "grayscale()") : null;
-    }
-  },
 });
 </script>
 
@@ -29,10 +17,10 @@ export default defineComponent({
     <div class="icon-button-container">
       <img
         class="icon-button"
-        :id="id"
         :alt="name"
         :src="require(`assets/icons/${name}.png`)"
         @click="$emit('changeIcon')"
+        :style="!toRoute ? 'filter: grayscale()' : ''"
       />
       <span class="icon-button-label">
         <p :for="label">{{ label }}</p>

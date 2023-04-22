@@ -6,14 +6,7 @@ export default defineComponent({
   props: {
     spriteName: { type: String, required: true },
     spriteGender: { type: String, required: true },
-    rotateY: { type: Boolean, required: true },
-  },
-  mounted() {
-    if (this.rotateY) {
-      const sprite = document.getElementById(`${this.spriteName}`);
-
-      sprite ? (sprite.style.transform = "rotateY(180deg)") : null;
-    }
+    rotateY: { type: Boolean, required: false },
   },
 });
 </script>
@@ -22,8 +15,8 @@ export default defineComponent({
   <div class="sprite-container">
     <img
       class="sprite"
-      :id="spriteName"
       :alt="spriteName"
+      :style="rotateY ? 'transform: rotateY(180deg)' : ''"
       :src="require(`assets/sprites/${spriteGender}/${spriteName}.png`)"
     />
     <span class="sprite-background"></span>

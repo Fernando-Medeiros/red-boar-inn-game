@@ -13,12 +13,11 @@ export default defineComponent({
     return {
       content: "",
       alert: false,
-      regex: NameRegex,
     };
   },
   watch: {
     content() {
-      this.regex.test(this.content)
+      NameRegex.test(this.content)
         ? [this.$emit("emitContent", this.content), (this.alert = false)]
         : (this.alert = true);
     },
@@ -27,15 +26,22 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="input-name-container">
-    <span class="label-description-container">
+  <div class="container">
+    <span class="label-description">
       <label class="label-name" for="">{{ label }}</label>
+
       <p class="" v-if="alert && content">
         {{ description }}
       </p>
     </span>
 
     <input
+      :placeholder="placeholder"
+      class="input"
+      v-model="content"
+      type="text"
+      required
+      autocomplete="name"
       :style="
         !content
           ? 'border-color: white'
@@ -43,32 +49,26 @@ export default defineComponent({
           ? 'border-color: red'
           : 'border-color: green'
       "
-      :placeholder="placeholder"
-      class="input-name"
-      v-model="content"
-      type="text"
-      required
-      autocomplete="name"
     />
   </div>
 </template>
 
 <style scoped>
-.input-name-container {
+.container {
   max-width: 500px;
   display: grid;
   margin: auto;
   margin-top: 10px;
 }
-.label-description-container {
+.label-description {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
-.label-description-container > p {
+.label-description > p {
   font-size: 13px;
 }
-.input-name {
+.input {
   font-size: 1.1rem;
   width: 500px;
   height: 20px;
@@ -79,11 +79,11 @@ export default defineComponent({
   background-color: #d9d9d9;
 }
 @media (max-width: 780px) {
-  .input-name-container {
+  .container {
     max-width: 100%;
     justify-self: center;
   }
-  .input-name {
+  .input {
     font-size: 14px;
     width: 300px;
   }

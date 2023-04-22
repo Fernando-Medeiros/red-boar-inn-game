@@ -13,12 +13,11 @@ export default defineComponent({
     return {
       content: "",
       alert: false,
-      regex: EmailRegex,
     };
   },
   watch: {
     content() {
-      this.regex.test(this.content)
+      EmailRegex.test(this.content)
         ? [this.$emit("emitContent", this.content), (this.alert = false)]
         : (this.alert = true);
     },
@@ -27,15 +26,22 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="input-email-container">
-    <span class="label-description-container">
+  <div class="container">
+    <span class="label-description">
       <label class="label-name" for="">{{ label }}</label>
+
       <p class="" v-if="alert && content">
         {{ description }}
       </p>
     </span>
 
     <input
+      class="input"
+      v-model="content"
+      type="email"
+      autocomplete="email"
+      required
+      :placeholder="placeholder"
       :style="
         !content
           ? 'border-color: white'
@@ -43,32 +49,26 @@ export default defineComponent({
           ? 'border-color: red'
           : 'border-color: green'
       "
-      :placeholder="placeholder"
-      class="input-email"
-      v-model="content"
-      type="email"
-      autocomplete="email"
-      required
     />
   </div>
 </template>
 
 <style scoped>
-.input-email-container {
+.container {
   max-width: 500px;
   display: grid;
   margin: auto;
   margin-top: 10px;
 }
-.label-description-container {
+.label-description {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
-.label-description-container > p {
+.label-description > p {
   font-size: 13px;
 }
-.input-email {
+.input {
   font-size: 1.1rem;
   width: 500px;
   height: 20px;
@@ -78,15 +78,15 @@ export default defineComponent({
   border-bottom: 4px solid #d9d9d9;
   background-color: #d9d9d9;
 }
-.input-email:focus {
+.input:focus {
   background-color: #d9d9d9;
 }
 @media (max-width: 780px) {
-  .input-email-container {
+  .container {
     max-width: 100%;
     justify-self: center;
   }
-  .input-email {
+  .input {
     font-size: 14px;
     width: 300px;
   }

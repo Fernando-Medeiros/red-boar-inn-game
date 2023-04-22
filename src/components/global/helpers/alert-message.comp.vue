@@ -53,7 +53,7 @@ export default defineComponent({
   position: fixed;
   z-index: 50;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .alert-box {
   width: 20rem;

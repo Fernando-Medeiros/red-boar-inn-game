@@ -36,9 +36,9 @@ export default defineComponent({
       <img
         v-for="lang in listLanguages"
         :key="lang"
-        @click="setLanguage(lang)"
         :src="require(`assets/icons/${lang}.png`)"
         :alt="lang"
+        @click="setLanguage(lang)"
       />
     </span>
   </div>
