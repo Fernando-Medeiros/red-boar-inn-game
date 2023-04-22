@@ -34,7 +34,7 @@ export default defineComponent({
 
 <template>
   <div class="main-container">
-    <div v-show="message" class="alert-container main-container">
+    <div v-show="message" class="container main-container">
       <div class="alert-box">
         <span>
           {{ message }}
@@ -49,7 +49,7 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.alert-container {
+.container {
   position: fixed;
   z-index: 50;
   display: flex;
@@ -60,16 +60,16 @@ export default defineComponent({
   height: 2rem;
   display: grid;
   padding: 10px;
-  color: white;
+  color: black;
   border-radius: 1rem;
-  background-color: #3d3c3c;
+  background-color: white;
 }
 .progress-bar {
   position: relative;
   width: 20rem;
   height: 5px;
   margin-top: 10px;
-  background-color: black;
+  background-color: #222222;
 }
 #progress {
   position: absolute;

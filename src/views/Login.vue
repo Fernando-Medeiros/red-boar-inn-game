@@ -72,10 +72,9 @@ export default defineComponent({
         LocalSession.set({ pubId, access, refresh, type });
 
         (await CharacterService.get())?.pubId === undefined
-          ? await CharacterDependencies.create()
-          : "";
+          ? [await CharacterDependencies.create(), this.redirectAfterLoad()]
+          : this.redirectAfterLoad();
       }
-      this.redirectAfterLoad();
 
       this.blockInputSubmit();
     },
