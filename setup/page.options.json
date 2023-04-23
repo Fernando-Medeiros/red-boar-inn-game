@@ -10,7 +10,7 @@
           "name": {
             "label": "Nome do personagem",
             "placeholder": "ExampleXT22",
-            "description": "[a-z] min-4 // max-15"
+            "description": "apenas letras e ter entre 4 e 15 caracteres"
           },
           "submit": {
             "label": "Salvar"
@@ -38,7 +38,7 @@
           "name": {
             "label": "Character name",
             "placeholder": "ExampleXT22",
-            "description": "[a-z] min-4 // max-15"
+            "description": "only letters and between 4 and 15 characters"
           },
           "submit": {
             "label": "Save"

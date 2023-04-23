@@ -4,12 +4,12 @@
       "email": {
         "label": "Email",
         "placeholder": "example@email.com",
-        "description": "[a-z 0-9 ._%+-@]"
+        "description": ""
       },
       "password": {
         "label": "Senha",
         "placeholder": "Example@01",
-        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16"
+        "description": "apenas letras, números, @$!%*#?& e ter entre 7 e 16 caracteres"
       },
       "checkbox": {
         "label": "lembrar"
@@ -37,12 +37,12 @@
       "email": {
         "label": "Email",
         "placeholder": "example@email.com",
-        "description": "[a-z 0-9 ._%+-@]"
+        "description": ""
       },
       "password": {
         "label": "Password",
         "placeholder": "Example@01",
-        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16"
+        "description": "only letters, numbers, @$!%*#?& and be between 7 and 16 characters long"
       },
       "checkbox": {
         "label": "remember"

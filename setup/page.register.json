@@ -5,27 +5,27 @@
       "firstName": {
         "label": "Nome*",
         "placeholder": "Example",
-        "description": "[a-z] min-4 // max-24"
+        "description": "apenas letras e ter entre 4 e 24 caracteres"
       },
       "lastName": {
         "label": "Sobrenome*",
         "placeholder": "Example ou Example Example",
-        "description": "[a-z] min-4 // max-24"
+        "description": "apenas letras e ter entre 4 e 24 caracteres"
       },
       "email": {
         "label": "Email*",
         "placeholder": "example@email.com",
-        "description": "[a-z 0-9 ._%+-@]"
+        "description": ""
       },
       "password": {
         "label": "Senha*",
         "placeholder": "Example@01",
-        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16"
+        "description": "apenas letras, números, @$!%*#?& e ter entre 7 e 16 caracteres"
       },
       "confirmPassword": {
         "label": "Confirme a senha*",
         "placeholder": "Example@01",
-        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16",
+        "description": "apenas letras, números, @$!%*#?& e ter entre 7 e 16 caracteres",
         "message": "Por segurança, a senha precisa ser igual a confirmação"
       },
       "submit": {
@@ -39,27 +39,27 @@
       "firstName": {
         "label": "Name*",
         "placeholder": "Example",
-        "description": "[a-z] min-4 // max-24"
+        "description": "only letters and between 4 and 24 characters"
       },
       "lastName": {
         "label": "LastName*",
         "placeholder": "Example or Example Example",
-        "description": "[a-z] min-4 // max-24"
+        "description": "only letters and between 4 and 24 characters"
       },
       "email": {
         "label": "Email*",
         "placeholder": "example@email.com",
-        "description": "[a-z 0-9 ._%+-@]"
+        "description": ""
       },
       "password": {
         "label": "Password*",
         "placeholder": "Example@01",
-        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16"
+        "description": "only letters, numbers, @$!%*#?& and be between 7 and 16 characters long"
       },
       "confirmPassword": {
         "label": "Confirm Password*",
         "placeholder": "Example@01",
-        "description": "[a-z 0-9 @$!%*#?&] min-7 // max-16",
+        "description": "only letters, numbers, @$!%*#?& and be between 7 and 16 characters long",
         "message": "For security, the password must match the confirmation"
       },
       "submit": {
