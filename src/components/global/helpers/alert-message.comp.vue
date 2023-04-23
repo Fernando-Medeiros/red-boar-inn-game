@@ -12,8 +12,8 @@ export default defineComponent({
     },
   },
   watch: {
-    message() {
-      this.loadProgress(5, this.progressBar);
+    message(msg) {
+      msg ? this.loadProgress(3, this.progressBar) : "";
     },
   },
   methods: {
@@ -58,8 +58,8 @@ export default defineComponent({
   right: 2%;
 }
 .alert-box {
-  width: 20rem;
-  height: 2rem;
+  width: 15rem;
+  height: auto;
   display: grid;
   padding: 10px;
   color: black;
@@ -68,16 +68,21 @@ export default defineComponent({
 }
 .progress-bar {
   position: relative;
-  width: 20rem;
+  width: 15rem;
   height: 5px;
   margin-top: 10px;
   background-color: #222222;
 }
 #progress {
   position: absolute;
-  width: 20rem;
+  width: 15rem;
   height: 5px;
   background-color: burlywood;
   transition: width 1s linear;
+}
+@media (max-width: 780px) {
+  .container {
+    right: 0;
+  }
 }
 </style>

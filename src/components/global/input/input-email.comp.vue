@@ -27,13 +27,7 @@ export default defineComponent({
 
 <template>
   <div class="container">
-    <span class="label-description">
-      <label class="label-name" for="">{{ label }}</label>
-
-      <p class="" v-if="alert && content">
-        {{ description }}
-      </p>
-    </span>
+    <label class="label" for="">{{ label }}</label>
 
     <input
       class="input"
@@ -50,6 +44,10 @@ export default defineComponent({
           : 'border-color: green'
       "
     />
+
+    <p class="description" v-if="alert && content">
+      {{ description }}
+    </p>
   </div>
 </template>
 
@@ -60,13 +58,12 @@ export default defineComponent({
   margin: auto;
   margin-top: 10px;
 }
-.label-description {
-  display: flex;
-  justify-content: space-between;
+.label {
   margin-bottom: 1rem;
 }
-.label-description > p {
-  font-size: 13px;
+.description {
+  font-size: 14px;
+  margin-top: 1rem;
 }
 .input {
   font-size: 1.1rem;
@@ -85,6 +82,9 @@ export default defineComponent({
   .container {
     max-width: 100%;
     justify-self: center;
+  }
+  .description {
+    font-size: 10px;
   }
   .input {
     font-size: 14px;

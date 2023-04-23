@@ -17,7 +17,7 @@ export default defineComponent({
       type="checkbox"
       @click="$emit('emitContent')"
     />
-    <label class="label-checkbox" for="label - checkbox">{{ label }}</label>
+    <label class="label-checkbox" :for="label">{{ label }}</label>
   </div>
 </template>
 
