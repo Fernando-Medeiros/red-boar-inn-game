@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { SecretHeader } from "../headers/api-secret-key";
+import { CheckSession } from "../helpers/check-session";
 
 export async function postMethod<T = object, Response = object>(
   URL: string | undefined,
@@ -15,6 +16,8 @@ export async function postMethod<T = object, Response = object>(
       return Object({ ...data, status });
     })
     .catch((error: AxiosError) => {
+      CheckSession(Object(error.response));
+
       return error.response?.data;
     });
 }
