@@ -1,8 +1,10 @@
 {
   "br": {
-    "loginLabel": "Acessar"
+    "register": { "label": "Inscreva-se", "path": "/auth/register" },
+    "login": { "label": "Entrar", "path": "/auth/login" }
   },
   "en": {
-    "loginLabel": "Access"
+    "register": { "label": "Sign up", "path": "/auth/register" },
+    "login": { "label": "Sing in", "path": "/auth/login" }
   }
 }

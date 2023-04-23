@@ -1,24 +1,16 @@
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent } from "vue";
+import { Helpers } from "core/helpers/functions-helpers";
+import SetupHeaderGame from "setup/global.header-game.json";
 import IconButton from "comp/global/button/icon-button.comp.vue";
-import IconStatic from "comp/global/sprite/icon-static.comp.vue";
-
-type Icon = {
-  icon: string;
-  label: string;
-  route?: string;
-};
 
 export default defineComponent({
   name: "HeaderGame",
-  components: { IconStatic, IconButton },
-  props: {
-    gold: { type: String, required: true },
-    jewel: { type: String, required: true },
+  components: { IconButton },
 
-    iconsButton: {
-      type: Array as PropType<Icon[]>,
-      required: true,
+  computed: {
+    menuIcons() {
+      return SetupHeaderGame[Helpers.translate()].icons;
     },
   },
 });
@@ -28,18 +20,13 @@ export default defineComponent({
   <div class="background-banner">
     <div class="main-container">
       <div class="banner-status-container">
-        <div>
-          <IconStatic :name="'gold'" :label="gold" />
-          <IconStatic :name="'jewel'" :label="jewel" />
-        </div>
-
         <div class="banner-nav-icons">
           <IconButton
-            v-for="icon in iconsButton"
-            :key="icon.icon"
-            :name="icon.icon"
+            v-for="icon in menuIcons"
+            :key="icon.name"
+            :name="icon.name"
             :label="icon.label"
-            :to-route="icon.route"
+            :to-route="icon.path"
           />
         </div>
       </div>
@@ -55,7 +42,7 @@ export default defineComponent({
   display: flex;
   padding: 5px 1rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 .banner-nav-icons {
   display: flex;

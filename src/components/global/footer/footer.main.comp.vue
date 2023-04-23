@@ -1,21 +1,24 @@
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent } from "vue";
+import { Helpers } from "core/helpers/functions-helpers";
 import IconContact from "./footer.contact-icon.comp.vue";
+import SetupFooter from "setup/global.footer.json";
+import SetupRoutes from "setup/global.routes.json";
 import Routes from "./footer.routes.comp.vue";
 
 export default defineComponent({
   name: "FooterComponent",
   components: { IconContact, Routes },
-  props: {
-    routes: {
-      type: Array as PropType<{ path: string; name: string }[]>,
-      required: true,
+  computed: {
+    contacts() {
+      return SetupFooter.contacts;
     },
-    contacts: {
-      type: Array as PropType<{ path: string; name: string }[]>,
-      required: true,
+    copyright() {
+      return SetupFooter.info.copyright;
     },
-    copyright: { type: String, required: true },
+    routes() {
+      return SetupRoutes[Helpers.translate()].routes;
+    },
   },
 });
 </script>
@@ -42,7 +45,9 @@ export default defineComponent({
         <img class="image-logo" :src="require('assets/logo.png')" alt="logo" />
       </router-link>
 
-      {{ copyright }}
+      <span>
+        {{ copyright }}
+      </span>
     </p>
   </footer>
 </template>

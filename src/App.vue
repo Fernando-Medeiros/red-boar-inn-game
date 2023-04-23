@@ -1,11 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { LocalSession } from "./core/storage/session.storage";
-import { Helpers } from "core/helpers/functions-helpers";
-import SetupHeader from "setup/global.header.json";
-import SetupFooter from "setup/global.footer.json";
-import SetupRoutes from "setup/global.routes.json";
-import SetupHeaderGame from "setup/global.header-game.json";
 import Header from "comp/global/header/header.main.comp.vue";
 import Footer from "comp/global/footer/footer.main.comp.vue";
 import HeaderGame from "comp/global/header-game/header-game.comp.vue";
@@ -13,82 +8,27 @@ import HeaderGame from "comp/global/header-game/header-game.comp.vue";
 export default defineComponent({
   name: "MainComponent",
   components: { Header, Footer, HeaderGame },
-
-  computed: {
-    routes() {
-      return SetupRoutes[Helpers.translate()].routes;
-    },
-    footer() {
-      return {
-        copyright: SetupFooter.info.copyright,
-        contacts: SetupFooter.contacts,
-      };
-    },
-  },
-
   data() {
     return {
       isAuthenticated: false,
-      header: {
-        loginPath: "/auth/login",
-        loginLabel: "",
-      },
-      headerGame: {
-        inventory: { gold: "0", jewel: "0" },
-        iconsButton: [{ icon: "", label: "", route: "" }],
-      },
     };
   },
   created() {
     this.isAuthenticated = LocalSession.isAuthenticated();
-
-    this.isAuthenticated
-      ? [this.loadInventory(), this.loadHeaderGame()]
-      : [this.loadHeader()];
-  },
-  methods: {
-    loadHeader() {
-      const { loginLabel } = SetupHeader[Helpers.translate()];
-      this.header.loginLabel = loginLabel;
-    },
-    loadHeaderGame() {
-      const { icons } = SetupHeaderGame[Helpers.translate()];
-      this.headerGame.iconsButton = icons;
-    },
-    loadInventory() {
-      Object.assign(this.headerGame.inventory, {
-        gold: "0",
-        jewel: "0",
-      });
-    },
   },
 });
 </script>
 
 <template>
-  <Header
-    v-if="isAuthenticated === false"
-    :routes="routes"
-    :login-path="header.loginPath"
-    :button-label="header.loginLabel"
-  />
+  <Header v-if="!isAuthenticated" />
 
-  <HeaderGame
-    v-if="isAuthenticated"
-    :gold="headerGame.inventory.gold"
-    :jewel="headerGame.inventory.jewel"
-    :icons-button="headerGame.iconsButton"
-  />
+  <HeaderGame v-if="isAuthenticated" />
 
-  <div class="view-container">
+  <main class="view-container">
     <router-view />
-  </div>
+  </main>
 
-  <Footer
-    :routes="routes"
-    :contacts="footer.contacts"
-    :copyright="footer.copyright"
-  />
+  <Footer />
 </template>
 
 <style>

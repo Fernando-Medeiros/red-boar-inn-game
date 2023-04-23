@@ -1,16 +1,22 @@
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent } from "vue";
+import { Helpers } from "core/helpers/functions-helpers";
+import SetupHeader from "setup/global.header.json";
+import SetupRoutes from "setup/global.routes.json";
 import LanguageButton from "../button/language-button.comp.vue";
+
+const Setup = SetupHeader[Helpers.translate()];
 
 export default defineComponent({
   name: "HeaderComponent",
   components: { LanguageButton },
-  props: {
-    loginPath: { type: String, required: true },
-    buttonLabel: { type: String, required: true },
-    routes: {
-      type: Array as PropType<{ path: string; name: string }[]>,
-      required: true,
+  computed: {
+    buttons() {
+      const { login, register } = Setup;
+      return { login, register };
+    },
+    routes() {
+      return SetupRoutes[Helpers.translate()].routes;
     },
   },
 });
@@ -20,29 +26,31 @@ export default defineComponent({
   <header class="header-background">
     <div class="main-container">
       <nav class="header-container">
-        <router-link to="/">
-          <img
-            class="image-logo"
-            :src="require('assets/logo.png')"
-            alt="logo"
-          />
-        </router-link>
-
-        <nav class="header-routes">
-          <router-link
-            v-for="route in routes"
-            :key="route.path"
-            :to="route.path"
-          >
-            {{ route.name }}
+        <div class="routes">
+          <router-link to="/" style="margin-left: 0px">
+            <img class="logo" alt="logo" :src="require('assets/logo.png')" />
           </router-link>
 
-          <LanguageButton />
+          <nav class="mobile-box-routes">
+            <router-link
+              v-for="route in routes"
+              :key="route.path"
+              :to="route.path"
+            >
+              {{ route.name }}
+            </router-link>
+          </nav>
 
-          <router-link :to="loginPath">
-            <button class="btn-login">
-              <p>{{ buttonLabel }}</p>
-            </button>
+          <LanguageButton />
+        </div>
+
+        <nav class="routes">
+          <router-link
+            v-for="button in buttons"
+            :key="button.label"
+            :to="button.path"
+          >
+            {{ button.label }}
           </router-link>
         </nav>
       </nav>
@@ -63,59 +71,39 @@ export default defineComponent({
   align-items: center;
   justify-content: space-between;
 }
-.image-logo {
-  width: 2.5rem;
-  height: 2.5rem;
+.logo {
+  width: 2rem;
+  height: 2rem;
+  filter: saturate(0.9);
   transition: all 1s;
-  margin: 5px;
 }
-.image-logo:hover {
-  transition: all 1s;
-  transform: scale(1.1);
-}
-.header-routes {
+.routes {
   width: auto;
   display: flex;
   margin: 5px;
   align-items: center;
 }
-.header-routes a {
+.routes a {
   color: #e8e8e8;
   text-decoration: none;
   margin-left: 2.5rem;
 }
-.header-routes a:hover {
+.routes a:hover {
   text-decoration: underline 2px;
   transition: all 1s;
 }
-.header-routes a.router-link-exact-active {
+.routes a.router-link-exact-active {
   color: burlywood;
-}
-.btn-login {
-  height: 32px;
-  width: 75px;
-  border-radius: 4px;
-  background-color: transparent;
-  border: 1px solid #d9d9d9;
-  box-shadow: 0px 1px 10px 1px rgba(255, 190, 64, 0.5);
-  border-radius: 4px;
-  cursor: pointer;
-}
-.btn-login p {
-  font-size: 14px;
-  color: white;
-}
-.btn-login:hover {
-  border: 1px solid white;
 }
 
 @media (max-width: 780px) {
-  .image-logo {
-    width: 2rem;
-    height: 2rem;
+  .routes a {
+    margin-left: 1.5rem;
   }
-  .header-routes a {
-    margin-left: 1rem;
+}
+@media (max-width: 480px) {
+  .mobile-box-routes {
+    display: none;
   }
 }
 </style>
