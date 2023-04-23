@@ -18,6 +18,7 @@ const Setup = SetupLogin[Helpers.translate()];
 
 export default defineComponent({
   name: "LoginView",
+  expose: ["alertMessage"],
   components: {
     BannerTitle,
     BannerSprites,
@@ -57,7 +58,7 @@ export default defineComponent({
       const { message, status, pubId, access, refresh, type } =
         await SessionService.login(this.form);
 
-      this.alertMessage = message ? message : "";
+      this.alertMessage = message || "";
 
       if (status === 200) {
         LocalSession.set({ pubId, access, refresh, type });
@@ -73,10 +74,6 @@ export default defineComponent({
       this.$router.push({ path: this.redirectTo });
       location.reload();
     },
-    deleteMessage(value: string) {
-      this.alertMessage = value;
-    },
-
     emitEmail(value: string) {
       this.form.email = value;
     },
@@ -92,7 +89,7 @@ export default defineComponent({
 
 <template>
   <div>
-    <AlertMessage :message="alertMessage" @delete-message="deleteMessage" />
+    <AlertMessage :message="alertMessage" />
 
     <BannerTitle :title="title" />
 

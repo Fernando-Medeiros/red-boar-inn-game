@@ -7,6 +7,7 @@ import OptionsSystem from "comp/game/options/options-system.comp.vue";
 
 export default defineComponent({
   name: "OptionsView",
+  expose: ["alertMessage"],
   components: {
     AlertMessage,
     OptionsGuides,
@@ -23,18 +24,12 @@ export default defineComponent({
     showGuide(guide: string) {
       this.activeGuide = guide;
     },
-    receiveMessage(message: string) {
-      this.alertMessage = message;
-    },
-    deleteMessage(value: string) {
-      this.alertMessage = value;
-    },
   },
 });
 </script>
 
 <template>
-  <AlertMessage :message="alertMessage" @delete-message="deleteMessage" />
+  <AlertMessage :message="alertMessage" />
 
   <div class="background-game">
     <div class="main-container">
@@ -42,7 +37,7 @@ export default defineComponent({
 
       <OptionsCharacter
         v-if="activeGuide === 'character'"
-        @emit-message="receiveMessage"
+        @emit-message="(message) => (alertMessage = message)"
       />
 
       <OptionsSystem v-if="activeGuide === 'system'" />

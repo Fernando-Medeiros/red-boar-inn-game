@@ -20,6 +20,7 @@ let {
 
 export default defineComponent({
   name: "RegisterView",
+  expose: ["alertMessage"],
   components: {
     BannerTitle,
     BannerSprites,
@@ -76,10 +77,6 @@ export default defineComponent({
       const { password, confirmPassword } = this.form;
       return confirmPassword === password;
     },
-    deleteMessage(value: string) {
-      this.alertMessage = value;
-    },
-
     emitFirstName(value: string) {
       this.form.firstName = value;
     },
@@ -101,7 +98,7 @@ export default defineComponent({
 
 <template>
   <div>
-    <AlertMessage :message="alertMessage" @delete-message="deleteMessage" />
+    <AlertMessage :message="alertMessage" />
 
     <BannerTitle :title="title" />
 

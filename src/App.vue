@@ -8,13 +8,10 @@ import HeaderGame from "comp/global/header-game/header-game.comp.vue";
 export default defineComponent({
   name: "MainComponent",
   components: { Header, Footer, HeaderGame },
-  data() {
-    return {
-      isAuthenticated: false,
-    };
-  },
-  created() {
-    this.isAuthenticated = LocalSession.isAuthenticated();
+  computed: {
+    isAuthenticated() {
+      return LocalSession.isAuthenticated();
+    },
   },
 });
 </script>

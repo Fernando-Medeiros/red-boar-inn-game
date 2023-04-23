@@ -6,32 +6,25 @@ import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
 
 export default defineComponent({
   name: "StatusView",
+  expose: ["alertMessage"],
   components: { AlertMessage, CharacterPreview, StatusOverview },
   data() {
     return {
       alertMessage: "",
     };
   },
-  methods: {
-    receiveMessage(message: string) {
-      this.alertMessage = message;
-    },
-    deleteMessage(value: string) {
-      this.alertMessage = value;
-    },
-  },
 });
 </script>
 
 <template>
-  <AlertMessage :message="alertMessage" @delete-message="deleteMessage" />
+  <AlertMessage :message="alertMessage" />
 
   <div class="background-game">
     <div class="main-container">
       <div class="status-container">
         <CharacterPreview />
 
-        <StatusOverview @emit-message="receiveMessage" />
+        <StatusOverview @emit-message="(message) => (alertMessage = message)" />
       </div>
     </div>
   </div>

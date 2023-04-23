@@ -22,6 +22,7 @@ const {
 
 export default defineComponent({
   name: "SelectClassView",
+  expose: ["alertMessage"],
   components: {
     Sprite,
     InputSubmit,
@@ -58,9 +59,6 @@ export default defineComponent({
 
       this.submitForm = !this.submitForm;
     },
-    deleteMessage(value: string) {
-      this.alertMessage = value;
-    },
     selectClassGender(classGender: string) {
       this.form.gender = classGender;
     },
@@ -74,7 +72,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <AlertMessage :message="alertMessage" @delete-message="deleteMessage" />
+  <AlertMessage :message="alertMessage" />
 
   <div class="background-game">
     <div class="main-container">

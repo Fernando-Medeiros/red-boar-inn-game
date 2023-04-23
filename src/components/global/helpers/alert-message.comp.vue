@@ -3,9 +3,18 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "AlertMessage",
-  emits: ["deleteMessage"],
   props: {
-    message: { type: String, required: false },
+    message: { type: String, required: true },
+  },
+  computed: {
+    progressBar() {
+      return document.getElementById("progress") as HTMLElement;
+    },
+  },
+  watch: {
+    message() {
+      this.loadProgress(5, this.progressBar);
+    },
   },
   methods: {
     loadProgress(duration: number, progress: HTMLElement) {
@@ -15,34 +24,28 @@ export default defineComponent({
         seconds--;
 
         seconds < -1
-          ? [clearInterval(interval), this.$emit("deleteMessage", "")]
+          ? [
+              clearInterval(interval),
+              (Object(this.$parent?.$data).alertMessage = ""),
+            ]
           : (progress.style.width = (seconds / duration) * duration + "0%");
       }, 500);
 
       progress.style.width = "100%";
     },
   },
-  watch: {
-    message() {
-      const progress = document.getElementById("progress");
-
-      progress && this.message ? this.loadProgress(5, progress) : null;
-    },
-  },
 });
 </script>
 
 <template>
-  <div class="main-container">
-    <div v-show="message" class="container main-container">
-      <div class="alert-box">
-        <span>
-          {{ message }}
-        </span>
+  <div v-show="message" class="container">
+    <div class="alert-box">
+      <span>
+        {{ message }}
+      </span>
 
-        <div class="progress-bar">
-          <span id="progress"></span>
-        </div>
+      <div class="progress-bar">
+        <span id="progress"></span>
       </div>
     </div>
   </div>
@@ -52,8 +55,7 @@ export default defineComponent({
 .container {
   position: fixed;
   z-index: 50;
-  display: flex;
-  justify-content: flex-end;
+  right: 2%;
 }
 .alert-box {
   width: 20rem;
