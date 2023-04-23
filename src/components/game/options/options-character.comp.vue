@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { CharacterService } from "core/api/character-service";
+import { CharacterService } from "core/services/character-service";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupOptions from "setup/page.options.json";
 import SetupResponses from "setup/global.responses.json";

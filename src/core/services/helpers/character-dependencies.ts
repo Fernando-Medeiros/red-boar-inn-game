@@ -1,8 +1,8 @@
-import { CharacterService } from "core/api/character-service";
-import { EquipmentService } from "core/api/equipment-service";
-import { InventoryService } from "core/api/inventory-service";
-import { StatusService } from "core/api/status-service";
-import { SkillsService } from "core/api/skills-service";
+import { CharacterService } from "core/services/character-service";
+import { EquipmentService } from "core/services/equipment-service";
+import { InventoryService } from "core/services/inventory-service";
+import { StatusService } from "core/services/status-service";
+import { SkillsService } from "core/services/skills-service";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupRandomNames from "setup/page.login.names.json";
 

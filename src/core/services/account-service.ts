@@ -1,4 +1,4 @@
-import type { Message, StatusCode } from "core/api/schemas/responses";
+import type { Message, StatusCode } from "core/services/schemas/responses";
 import type { CreateAccountSchema } from "./schemas/account.schemas";
 
 import { postMethod } from "./methods/post";

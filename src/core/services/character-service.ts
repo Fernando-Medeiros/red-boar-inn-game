@@ -1,4 +1,4 @@
-import type { Message, StatusCode } from "core/api/schemas/responses";
+import type { Message, StatusCode } from "core/services/schemas/responses";
 import type { PropsCharacter } from "core/entities/character/character.interface";
 import type {
   CharacterCreateSchema,

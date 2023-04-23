@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { AccountService } from "core/api/account-service";
+import { AccountService } from "core/services/account-service";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupRegister from "setup/page.register.json";
 import SetupResponses from "setup/global.responses.json";

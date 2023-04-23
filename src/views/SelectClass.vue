@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import type { ClassesSchema } from "core/schemas/classes.schema";
-import { CharacterService } from "core/api/character-service";
+import { CharacterService } from "core/services/character-service";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupSelectClass from "setup/page.select-class.json";
 import SetupResponses from "setup/global.responses.json";

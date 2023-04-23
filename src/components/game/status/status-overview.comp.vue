@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { StatusService } from "core/api/status-service";
+import { StatusService } from "core/services/status-service";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupStatus from "setup/page.status.json";
 import SetupResponses from "setup/global.responses.json";

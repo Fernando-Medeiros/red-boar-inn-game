@@ -3,7 +3,7 @@ import type {
   AccessTokenSchema,
   RefreshTokenSchema,
 } from "./schemas/auth.schemas";
-import type { Message, StatusCode } from "core/api/schemas/responses";
+import type { Message, StatusCode } from "core/services/schemas/responses";
 import { AuthHeader } from "./headers/authorization";
 import { postMethod } from "./methods/post";
 

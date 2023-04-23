@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { LocalSession } from "core/storage/session.storage";
-import { SessionService } from "core/api/session-service";
-import { CharacterService } from "core/api/character-service";
-import { CharacterDependencies } from "core/api/helpers/character-dependencies";
+import { SessionService } from "core/services/session-service";
+import { CharacterService } from "core/services/character-service";
+import { CharacterDependencies } from "core/services/helpers/character-dependencies";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupLogin from "setup/page.login.json";
 import AlertMessage from "comp/global/helpers/alert-message.comp.vue";

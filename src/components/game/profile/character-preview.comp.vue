@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { CharacterService } from "core/api/character-service";
+import { CharacterService } from "core/services/character-service";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupProfile from "setup/page.profile.json";
 import Sprite from "comp/global/sprite/sprite.comp.vue";
