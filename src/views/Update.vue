@@ -13,11 +13,13 @@ export default defineComponent({
     BannerSprites,
     UpdatePreview,
   },
-  data() {
-    return {
-      title: SetupUpdates[Helpers.getLanguage()].title,
-      updates: SetupUpdates[Helpers.getLanguage()].updates,
-    };
+  computed: {
+    title() {
+      return SetupUpdates[Helpers.translate()].title;
+    },
+    updates() {
+      return SetupUpdates[Helpers.translate()].updates;
+    },
   },
 });
 </script>

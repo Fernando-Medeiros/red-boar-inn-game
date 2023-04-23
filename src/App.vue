@@ -14,19 +14,24 @@ export default defineComponent({
   name: "MainComponent",
   components: { Header, Footer, HeaderGame },
 
+  computed: {
+    routes() {
+      return SetupRoutes[Helpers.translate()].routes;
+    },
+    footer() {
+      return {
+        copyright: SetupFooter.info.copyright,
+        contacts: SetupFooter.contacts,
+      };
+    },
+  },
+
   data() {
     return {
       isAuthenticated: false,
-
-      routes: [{ path: "", name: "" }],
-
       header: {
         loginPath: "/auth/login",
         loginLabel: "",
-      },
-      footer: {
-        copyright: "",
-        contacts: [{ path: "", name: "" }],
       },
       headerGame: {
         inventory: { gold: "0", jewel: "0" },
@@ -40,28 +45,14 @@ export default defineComponent({
     this.isAuthenticated
       ? [this.loadInventory(), this.loadHeaderGame()]
       : [this.loadHeader()];
-
-    this.loadFooter();
-    this.loadRoutes();
   },
   methods: {
-    loadRoutes() {
-      const { routes } = SetupRoutes[Helpers.getLanguage()];
-      this.routes = routes;
-    },
-
     loadHeader() {
-      const { loginLabel } = SetupHeader[Helpers.getLanguage()];
+      const { loginLabel } = SetupHeader[Helpers.translate()];
       this.header.loginLabel = loginLabel;
     },
-    loadFooter() {
-      const { contacts, info } = SetupFooter;
-      this.footer.copyright = info.copyright;
-      this.footer.contacts = contacts;
-    },
-
     loadHeaderGame() {
-      const { icons } = SetupHeaderGame[Helpers.getLanguage()];
+      const { icons } = SetupHeaderGame[Helpers.translate()];
       this.headerGame.iconsButton = icons;
     },
     loadInventory() {
@@ -83,7 +74,7 @@ export default defineComponent({
   />
 
   <HeaderGame
-    v-if="isAuthenticated === true"
+    v-if="isAuthenticated"
     :gold="headerGame.inventory.gold"
     :jewel="headerGame.inventory.jewel"
     :icons-button="headerGame.iconsButton"

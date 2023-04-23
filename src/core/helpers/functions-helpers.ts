@@ -6,7 +6,7 @@ export class Helpers {
     return array[Math.floor(Math.random() * array.length)];
   }
 
-  static getLanguage(): LanguagesSchema {
+  static translate(): LanguagesSchema {
     return LocalStorage.getLanguage();
   }
 }

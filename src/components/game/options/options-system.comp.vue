@@ -11,11 +11,13 @@ export default defineComponent({
     IconButton,
     LanguageButton,
   },
-  data() {
-    return {
-      logout: { ...SetupOptions[Helpers.getLanguage()].system.logout },
-      language: { ...SetupOptions[Helpers.getLanguage()].system.language },
-    };
+  computed: {
+    logout() {
+      return SetupOptions[Helpers.translate()].system.logout;
+    },
+    language() {
+      return SetupOptions[Helpers.translate()].system.language;
+    },
   },
 });
 </script>
@@ -24,6 +26,7 @@ export default defineComponent({
   <div class="system-container">
     <div class="language-container">
       <p>{{ language.label }}</p>
+
       <LanguageButton />
     </div>
 

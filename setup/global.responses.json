@@ -1,7 +1,13 @@
 {
   "br": {
-    "login": "Redirecionando para o perfil",
-    "register": "Conta criada com sucesso",
+    "login": {
+      "success": "Redirecionando para o perfil",
+      "error": ""
+    },
+    "register": {
+      "success": "Conta criada com sucesso",
+      "error": ""
+    },
     "updates": {
       "charName": {
         "success": "Nome atualizado!",
@@ -19,8 +25,14 @@
   },
 
   "en": {
-    "login": "Redirecting to profile",
-    "register": "Account created successfully",
+    "login": {
+      "success": "Redirecting to profile",
+      "error": ""
+    },
+    "register": {
+      "success": "Account created successfully",
+      "error": ""
+    },
     "updates": {
       "charName": {
         "success": "Name updated!",

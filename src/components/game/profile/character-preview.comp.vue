@@ -1,7 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { CharacterService } from "core/api/character-service";
-import { Character } from "core/entities/character/character";
 import { Helpers } from "core/helpers/functions-helpers";
 import SetupProfile from "setup/page.profile.json";
 import Sprite from "comp/global/sprite/sprite.comp.vue";
@@ -11,22 +10,25 @@ export default defineComponent({
   components: { Sprite },
 
   async beforeCreate() {
-    const char = new Character(await CharacterService.get());
+    const { charName, className, level, gender } = await CharacterService.get();
 
-    Object.assign(this.$data, {
-      charName: char.getName,
-      charClass: char.getClass,
-      level: char.getLevel,
-      gender: char.getGender,
-    });
+    Object.assign(this.$data, { charName, className, level, gender });
+  },
+  computed: {
+    spriteInfo() {
+      const {
+        sprite: { levelLabel },
+      } = SetupProfile[Helpers.translate()];
+
+      return { levelLabel };
+    },
   },
   data() {
     return {
-      charName: "unknown",
-      charClass: "peasant",
+      charName: "loading",
+      className: "peasant",
       level: "1",
       gender: "man",
-      spriteInfo: SetupProfile[Helpers.getLanguage()].sprite,
     };
   },
 });
@@ -35,7 +37,7 @@ export default defineComponent({
 <template>
   <div class="sprite-character">
     <Sprite
-      :sprite-name="charClass"
+      :sprite-name="className"
       :sprite-gender="gender"
       :rotate-y="false"
     />
@@ -44,7 +46,7 @@ export default defineComponent({
       <span>
         <p>
           {{ spriteInfo.levelLabel }} - {{ level }} /
-          {{ charClass }}
+          {{ className }}
         </p>
       </span>
     </span>

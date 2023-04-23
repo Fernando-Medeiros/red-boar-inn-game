@@ -7,6 +7,14 @@ import SetupResponses from "setup/global.responses.json";
 import InputCharacterName from "comp/global/input/input-character-name.comp.vue";
 import InputSubmit from "comp/global/input/input-submit.comp.vue";
 
+const Setup = SetupOptions[Helpers.translate()];
+
+const {
+  updates: {
+    charName: { success, error },
+  },
+} = SetupResponses[Helpers.translate()];
+
 export default defineComponent({
   name: "OptionsCharacter",
   emits: ["emitMessage"],
@@ -14,33 +22,30 @@ export default defineComponent({
     InputCharacterName,
     InputSubmit,
   },
+  computed: {
+    inputs() {
+      const {
+        forms: { characterName },
+      } = Setup.character;
+
+      return characterName;
+    },
+  },
   data() {
     return {
       submitForm: false,
+
       form: {
         charName: "",
-      },
-      inputs: {
-        ...SetupOptions[Helpers.getLanguage()].character.forms.characterName,
       },
     };
   },
   methods: {
     async saveCharacterName() {
-      this.blockInputSubmit();
-
       const { status } = await CharacterService.update(this.form);
-
-      const {
-        charName: { success, error },
-      } = SetupResponses[Helpers.getLanguage()].updates;
 
       this.$emit("emitMessage", status === 204 ? success : error);
 
-      this.blockInputSubmit();
-    },
-
-    blockInputSubmit() {
       this.submitForm = !this.submitForm;
     },
     receiveCharName(name: string) {
@@ -52,7 +57,11 @@ export default defineComponent({
 
 <template>
   <div class="top-character-name">
-    <form class="form-container" @submit.prevent="saveCharacterName">
+    <form
+      class="form-container"
+      @submit.prevent="saveCharacterName"
+      @submit="submitForm = !submitForm"
+    >
       <InputCharacterName
         :label="inputs.name.label"
         :placeholder="inputs.name.placeholder"

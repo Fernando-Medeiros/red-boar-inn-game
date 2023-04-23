@@ -9,10 +9,10 @@ export default defineComponent({
   props: {
     currentGuide: { type: String, required: true },
   },
-  data() {
-    return {
-      guides: SetupOptions[Helpers.getLanguage()].guides,
-    };
+  computed: {
+    guides() {
+      return SetupOptions[Helpers.translate()].guides;
+    },
   },
 });
 </script>

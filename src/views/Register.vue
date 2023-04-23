@@ -12,6 +12,12 @@ import InputEmail from "comp/global/input/input-email.comp.vue";
 import InputPassword from "comp/global/input/input-password.comp.vue";
 import InputSubmit from "comp/global/input/input-submit.comp.vue";
 
+const Setup = SetupRegister[Helpers.translate()];
+
+let {
+  register: { success, error },
+} = SetupResponses[Helpers.translate()];
+
 export default defineComponent({
   name: "RegisterView",
   components: {
@@ -23,9 +29,20 @@ export default defineComponent({
     InputSubmit,
     AlertMessage,
   },
+  computed: {
+    title() {
+      return Setup.title;
+    },
+    inputs() {
+      const {
+        form: { firstName, lastName, email, password, confirmPassword, submit },
+      } = Setup;
+
+      return { firstName, lastName, email, password, confirmPassword, submit };
+    },
+  },
   data() {
     return {
-      title: "",
       alertMessage: "",
       submitForm: false,
       redirectTo: "/auth/login",
@@ -37,34 +54,21 @@ export default defineComponent({
         password: "",
         confirmPassword: "",
       },
-      inputs: { ...SetupRegister[Helpers.getLanguage()].form },
     };
-  },
-  created() {
-    const { title } = SetupRegister[Helpers.getLanguage()];
-    this.title = title;
   },
   methods: {
     async createAccount() {
-      this.blockInputSubmit();
-
-      let success = SetupResponses[Helpers.getLanguage()].register;
-      let error: string | unknown | undefined;
-
       this.checkPassword()
-        ? (error = (await AccountService.create(this.form))?.message)
+        ? (error = (await AccountService.create(this.form))?.message || "")
         : (error = this.inputs.confirmPassword.message);
 
       this.alertMessage = String(error ?? success);
 
       setTimeout(() => {
-        error ? this.blockInputSubmit() : this.redirectAfterLoad();
+        error ? (this.submitForm = !this.submitForm) : this.redirectAfterLoad();
       }, 3000);
     },
 
-    blockInputSubmit() {
-      this.submitForm = !this.submitForm;
-    },
     redirectAfterLoad() {
       this.$router.push({ path: this.redirectTo });
     },
@@ -105,7 +109,11 @@ export default defineComponent({
 
     <div class="main-container">
       <div class="background">
-        <form class="form-login" @submit.prevent="createAccount">
+        <form
+          class="form-login"
+          @submit.prevent="createAccount"
+          @submit="submitForm = !submitForm"
+        >
           <InputName
             :label="inputs.firstName.label"
             :placeholder="inputs.firstName.placeholder"

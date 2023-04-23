@@ -12,6 +12,14 @@ import ClassButton from "comp/game/select-class/button-class.comp.vue";
 import ClassGenderButton from "comp/game/select-class/button-gender.comp.vue";
 import ClassDescription from "comp/game/select-class/description.comp.vue";
 
+const Setup = SetupSelectClass[Helpers.translate()];
+
+const {
+  updates: {
+    className: { success, error },
+  },
+} = SetupResponses[Helpers.translate()];
+
 export default defineComponent({
   name: "SelectClassView",
   components: {
@@ -22,50 +30,32 @@ export default defineComponent({
     ClassDescription,
     AlertMessage,
   },
+  computed: {
+    buttonSave() {
+      return Setup.buttonSave;
+    },
+    classOptions() {
+      return Object.keys(Setup.classes);
+    },
+  },
   data() {
     return {
       alertMessage: "",
       submitForm: false,
-
-      classList: [""],
-      classDescription: [""],
-      buttonSave: { label: "" },
+      classDescription: Setup.classes.peasant,
 
       form: {
-        gender: "",
-        className: "",
+        gender: Setup.defaultGender,
+        className: Setup.defaultClass,
       },
     };
   },
-  created() {
-    const { classes, defaultClass, defaultGender, buttonSave } =
-      SetupSelectClass[Helpers.getLanguage()];
-
-    this.classList = Array.from(Object.keys(classes));
-    this.classDescription = classes.peasant;
-    this.buttonSave = buttonSave;
-
-    Object.assign(this.form, {
-      gender: defaultGender,
-      className: defaultClass,
-    });
-  },
   methods: {
     async saveClass() {
-      this.blockInputSubmit();
-
       const { status } = await CharacterService.update(this.form);
-
-      const {
-        className: { success, error },
-      } = SetupResponses[Helpers.getLanguage()].updates;
 
       this.alertMessage = status === 204 ? success : error;
 
-      this.blockInputSubmit();
-    },
-
-    blockInputSubmit() {
       this.submitForm = !this.submitForm;
     },
     deleteMessage(value: string) {
@@ -75,11 +65,9 @@ export default defineComponent({
       this.form.gender = classGender;
     },
     selectClass(className: ClassesSchema) {
-      const { classes } = SetupSelectClass[Helpers.getLanguage()];
-
       this.form.className = className;
 
-      this.classDescription = classes[className as ClassesSchema];
+      this.classDescription = Setup.classes[className];
     },
   },
 });
@@ -100,7 +88,7 @@ export default defineComponent({
 
       <div class="choice-classes-container">
         <ClassButton
-          v-for="className in classList"
+          v-for="className in classOptions"
           :key="className"
           :sprite-name="className"
           :sprite-gender="form.gender"
@@ -113,7 +101,7 @@ export default defineComponent({
         <div class="className-and-button-container">
           <h2>{{ form.className }}</h2>
 
-          <form @submit.prevent="saveClass">
+          <form @submit.prevent="saveClass" @submit="submitForm = !submitForm">
             <InputSubmit :label="buttonSave.label" :is-disabled="submitForm" />
           </form>
         </div>

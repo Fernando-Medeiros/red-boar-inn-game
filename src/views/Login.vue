@@ -14,6 +14,8 @@ import InputPassword from "comp/global/input/input-password.comp.vue";
 import InputSubmit from "comp/global/input/input-submit.comp.vue";
 import InputCheckBox from "comp/global/input/input-checkbox.comp.vue";
 
+const Setup = SetupLogin[Helpers.translate()];
+
 export default defineComponent({
   name: "LoginView",
   components: {
@@ -25,9 +27,20 @@ export default defineComponent({
     InputCheckBox,
     AlertMessage,
   },
+  computed: {
+    title() {
+      return Helpers.random(Setup.titleTips);
+    },
+    inputs() {
+      const {
+        form: { email, password, checkbox, recover, submit },
+      } = Setup;
+
+      return { email, password, checkbox, recover, submit };
+    },
+  },
   data() {
     return {
-      title: "",
       alertMessage: "",
       submitForm: false,
       redirectTo: "/character/profile",
@@ -37,20 +50,10 @@ export default defineComponent({
         password: "",
         remember: false,
       },
-      inputs: {
-        ...SetupLogin[Helpers.getLanguage()].form,
-      },
     };
-  },
-  mounted() {
-    const { titleTips } = SetupLogin[Helpers.getLanguage()];
-
-    this.title = Helpers.random(titleTips);
   },
   methods: {
     async login() {
-      this.blockInputSubmit();
-
       const { message, status, pubId, access, refresh, type } =
         await SessionService.login(this.form);
 
@@ -59,15 +62,11 @@ export default defineComponent({
       if (status === 200) {
         LocalSession.set({ pubId, access, refresh, type });
 
-        (await CharacterService.get())?.pubId === undefined
-          ? [await CharacterDependencies.create(), this.redirectAfterLoad()]
-          : this.redirectAfterLoad();
+        (await CharacterService.get())?.pubId
+          ? this.redirectAfterLoad()
+          : [await CharacterDependencies.create(), this.redirectAfterLoad()];
       }
 
-      this.blockInputSubmit();
-    },
-
-    blockInputSubmit() {
       this.submitForm = !this.submitForm;
     },
     redirectAfterLoad() {
@@ -101,7 +100,11 @@ export default defineComponent({
 
     <div class="main-container">
       <div class="background">
-        <form class="form-login" @submit.prevent="login">
+        <form
+          class="form-login"
+          @submit.prevent="login"
+          @submit="submitForm = !submitForm"
+        >
           <InputEmail
             :label="inputs.email.label"
             :placeholder="inputs.email.placeholder"

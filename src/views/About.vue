@@ -9,11 +9,13 @@ import InfoComponent from "comp/about/info.comp.vue";
 export default defineComponent({
   name: "AboutView",
   components: { BannerTitle, BannerSprites, InfoComponent },
-  data() {
-    return {
-      title: SetupAbout[Helpers.getLanguage()].title,
-      articles: SetupAbout[Helpers.getLanguage()].articles,
-    };
+  computed: {
+    title() {
+      return SetupAbout[Helpers.translate()].title;
+    },
+    articles() {
+      return SetupAbout[Helpers.translate()].articles;
+    },
   },
 });
 </script>

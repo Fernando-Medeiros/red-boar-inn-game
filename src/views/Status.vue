@@ -7,7 +7,6 @@ import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
 export default defineComponent({
   name: "StatusView",
   components: { AlertMessage, CharacterPreview, StatusOverview },
-
   data() {
     return {
       alertMessage: "",

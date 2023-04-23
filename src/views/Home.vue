@@ -13,17 +13,18 @@ export default defineComponent({
     BannerSprites,
     RegisterButton,
   },
+  computed: {
+    title() {
+      return SetupHome[Helpers.translate()].title;
+    },
+    buttonLabel() {
+      return SetupHome[Helpers.translate()].buttonLabel;
+    },
+  },
   data() {
     return {
-      title: "",
-      label: "",
       pathToRegister: "/auth/register",
     };
-  },
-  mounted() {
-    const { title, buttonLabel } = SetupHome[Helpers.getLanguage()];
-    this.title = title;
-    this.label = buttonLabel;
   },
 });
 </script>
@@ -35,7 +36,7 @@ export default defineComponent({
     <BannerSprites :sprite-left="'mage'" :sprite-right="'mage'" />
 
     <div class="main-container">
-      <RegisterButton :path-to-register="pathToRegister" :label="label" />
+      <RegisterButton :path-to-register="pathToRegister" :label="buttonLabel" />
     </div>
   </div>
 </template>

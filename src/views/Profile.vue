@@ -8,11 +8,10 @@ import IconButton from "comp/global/button/icon-button.comp.vue";
 export default defineComponent({
   name: "ProfileView",
   components: { CharacterPreview, IconButton },
-
-  data() {
-    return {
-      menuInfo: SetupProfile[Helpers.getLanguage()].menu,
-    };
+  computed: {
+    menuInfo() {
+      return SetupProfile[Helpers.translate()].menu;
+    },
   },
 });
 </script>

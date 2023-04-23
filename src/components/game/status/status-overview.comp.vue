@@ -6,6 +6,11 @@ import SetupStatus from "setup/page.status.json";
 import SetupResponses from "setup/global.responses.json";
 import InputSubmit from "comp/global/input/input-submit.comp.vue";
 import AddButton from "comp/global/button/add-button-comp.vue";
+const {
+  updates: {
+    status: { success, error },
+  },
+} = SetupResponses[Helpers.translate()];
 
 export default defineComponent({
   name: "StatusOverview",
@@ -42,10 +47,18 @@ export default defineComponent({
     });
   },
 
+  computed: {
+    statusInfo() {
+      return { ...SetupStatus[Helpers.translate()] };
+    },
+  },
+
   data() {
     return {
+      submitForm: false,
+
       statusPrimary: {
-        points: 0,
+        points: 1,
         strength: 1,
         intelligence: 1,
         dexterity: 1,
@@ -58,26 +71,14 @@ export default defineComponent({
         currentHealth: 1,
         currentEnergy: 1,
       },
-      submitForm: false,
-      statusInfo: { ...SetupStatus[Helpers.getLanguage()] },
     };
   },
   methods: {
     async updateStatus() {
-      this.blockInputSubmit();
-
-      const {
-        status: { success, error },
-      } = SetupResponses[Helpers.getLanguage()].updates;
-
       const { status } = await StatusService.update(this.statusPrimary);
 
       this.$emit("emitMessage", status === 204 ? success : error);
 
-      this.blockInputSubmit();
-    },
-
-    blockInputSubmit() {
       this.submitForm = !this.submitForm;
     },
 
@@ -102,7 +103,7 @@ export default defineComponent({
 
 <template>
   <div class="status-container">
-    <form @submit.prevent="updateStatus">
+    <form @submit.prevent="updateStatus" @submit="submitForm = !submitForm">
       <div
         class="status-overview"
         v-for="(value, name) in statusPrimary"
