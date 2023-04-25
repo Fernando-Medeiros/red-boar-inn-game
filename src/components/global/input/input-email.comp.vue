@@ -4,6 +4,7 @@ import { EmailRegex } from "core/validators/regex.validators";
 
 export default defineComponent({
   name: "InputEmail",
+  emits: ["emitContent"],
   props: {
     label: { type: String, required: true },
     placeholder: { type: String, required: true },

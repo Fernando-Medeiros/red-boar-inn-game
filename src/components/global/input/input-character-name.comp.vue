@@ -4,6 +4,7 @@ import { CharacterNameRegex } from "core/validators/regex.validators";
 
 export default defineComponent({
   name: "InputCharacterName",
+  emits: ["emitContent"],
   props: {
     label: { type: String, required: true },
     placeholder: { type: String, required: true },

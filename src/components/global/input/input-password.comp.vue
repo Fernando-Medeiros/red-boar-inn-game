@@ -4,6 +4,7 @@ import { PasswordRegex } from "core/validators/regex.validators";
 
 export default defineComponent({
   name: "InputPassword",
+  emits: ["emitContent"],
   props: {
     label: { type: String, required: true },
     placeholder: { type: String, required: true },
@@ -33,13 +34,13 @@ export default defineComponent({
 
 <template>
   <div class="container">
-    <label class="label" for="">{{ label }}</label>
+    <label class="label" :for="label">{{ label }}</label>
 
     <div class="input-button-container">
       <input
         class="input"
         v-model="content"
-        autocomplete="current-password"
+        autocomplete="password"
         required
         :type="inputType"
         :placeholder="placeholder"
