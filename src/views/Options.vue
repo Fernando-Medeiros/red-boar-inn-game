@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
-import OptionsGuides from "comp/game/options/options-guides.comp.vue";
-import OptionsCharacter from "comp/game/options/options-character.comp.vue";
-import OptionsSystem from "comp/game/options/options-system.comp.vue";
+import OptionsGuides from "comp/game/options/guides.comp.vue";
+import OptionsCharacter from "comp/game/options/character-options.comp.vue";
+import OptionsSystem from "comp/game/options/system-options.comp.vue";
 
 export default defineComponent({
   name: "OptionsView",
@@ -37,7 +37,7 @@ export default defineComponent({
 
       <OptionsCharacter
         v-if="activeGuide === 'character'"
-        @emit-message="(message) => (alertMessage = message)"
+        @emit-message="(message: string) => (alertMessage = message)"
       />
 
       <OptionsSystem v-if="activeGuide === 'system'" />
