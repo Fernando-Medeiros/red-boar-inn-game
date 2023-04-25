@@ -52,6 +52,21 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: "/password",
+    children: [
+      {
+        path: "recover",
+        name: "recover",
+        component: () => import("view/RecoverPassword.vue"),
+      },
+      {
+        path: "reset/:token",
+        name: "reset",
+        component: () => import("view/ResetPassword.vue"),
+      },
+    ],
+  },
+  {
     path: "/character",
     meta: {
       requiresAuth: true,

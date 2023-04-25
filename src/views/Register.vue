@@ -14,9 +14,7 @@ import InputSubmit from "comp/global/input/input-submit.comp.vue";
 
 const Setup = SetupRegister[Helpers.translate()];
 
-let {
-  register: { success, error },
-} = SetupResponses[Helpers.translate()];
+let { success, error } = SetupResponses[Helpers.translate()].register;
 
 export default defineComponent({
   name: "RegisterView",
@@ -63,19 +61,18 @@ export default defineComponent({
         ? (error = (await AccountService.create(this.form))?.message || "")
         : (error = this.inputs.confirmPassword.message);
 
-      this.alertMessage = String(error ?? success);
+      this.alertMessage = error || success;
 
       setTimeout(() => {
-        error ? (this.submitForm = !this.submitForm) : this.redirectAfterLoad();
-      }, 3000);
+        error ? (this.submitForm = false) : this.redirectAfterLoad();
+      }, 2500);
     },
 
     redirectAfterLoad() {
       this.$router.push({ path: this.redirectTo });
     },
     checkPassword() {
-      const { password, confirmPassword } = this.form;
-      return confirmPassword === password;
+      return this.form.confirmPassword === this.form.password;
     },
     receiveFirstName(value: string) {
       this.form.firstName = value;
@@ -109,7 +106,7 @@ export default defineComponent({
         <form
           class="form-login"
           @submit.prevent="createAccount"
-          @submit="submitForm = !submitForm"
+          @submit="submitForm = true"
         >
           <InputName
             :label="inputs.firstName.label"
