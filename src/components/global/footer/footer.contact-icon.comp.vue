@@ -16,7 +16,7 @@ export default defineComponent({
       <img
         class="image-contact"
         :alt="iconName"
-        :src="require(`assets/icons/${iconName}.png`)"
+        :src="require(`assets/icons/${iconName}.svg`)"
       />
     </a>
   </div>

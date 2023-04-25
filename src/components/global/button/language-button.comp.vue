@@ -27,7 +27,7 @@ export default defineComponent({
   <div class="language-container">
     <div class="current-option">
       <img
-        :src="require(`assets/icons/${currentLanguage}.png`)"
+        :src="require(`assets/icons/${currentLanguage}.svg`)"
         :alt="currentLanguage"
       />
     </div>
@@ -36,8 +36,8 @@ export default defineComponent({
       <img
         v-for="lang in listLanguages"
         :key="lang"
-        :src="require(`assets/icons/${lang}.png`)"
         :alt="lang"
+        :src="require(`assets/icons/${lang}.svg`)"
         @click="setLanguage(lang)"
       />
     </span>

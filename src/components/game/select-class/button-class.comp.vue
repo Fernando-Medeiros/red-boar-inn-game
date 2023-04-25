@@ -17,7 +17,7 @@ export default defineComponent({
     <img
       class="image-button-class-container"
       :alt="spriteName"
-      :src="require(`assets/sprites/${spriteGender}/${spriteName}.png`)"
+      :src="require(`assets/sprites/${spriteGender}/${spriteName}.svg`)"
       :style="isActive ? 'border-color: white' : ''"
       @click="$emit('activeClass', spriteName)"
     />

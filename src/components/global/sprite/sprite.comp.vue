@@ -17,7 +17,7 @@ export default defineComponent({
       class="sprite"
       :alt="spriteName"
       :style="rotateY ? 'transform: rotateY(180deg)' : ''"
-      :src="require(`assets/sprites/${spriteGender}/${spriteName}.png`)"
+      :src="require(`assets/sprites/${spriteGender}/${spriteName}.svg`)"
     />
     <span class="sprite-background"></span>
   </div>

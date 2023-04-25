@@ -18,7 +18,7 @@ export default defineComponent({
       <img
         class="icon-button"
         :alt="name"
-        :src="require(`assets/icons/${name}.png`)"
+        :src="require(`assets/icons/${name}.svg`)"
         @click="$emit('changeIcon')"
         :style="!toRoute ? 'filter: grayscale()' : ''"
       />

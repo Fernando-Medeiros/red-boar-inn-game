@@ -16,7 +16,7 @@ export default defineComponent({
     <img
       class="image-button-class-gender-container"
       :alt="spriteName"
-      :src="require(`assets/icons/${spriteName}.png`)"
+      :src="require(`assets/icons/${spriteName}.svg`)"
       :style="isActive ? 'filter: sepia() brightness(2)' : 'none'"
       @click="$emit('activeClassGender', spriteName)"
     />

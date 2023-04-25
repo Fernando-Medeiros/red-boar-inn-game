@@ -58,8 +58,8 @@ export default defineComponent({
           @click.prevent="showPassword"
           :src="
             inputType === 'password'
-              ? require('assets/icons/show-password.png')
-              : require('assets/icons/hide-password.png')
+              ? require('assets/icons/show-password.svg')
+              : require('assets/icons/hide-password.svg')
           "
         />
       </div>

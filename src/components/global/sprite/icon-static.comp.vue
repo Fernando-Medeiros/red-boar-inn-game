@@ -12,7 +12,7 @@ export default defineComponent({
 
 <template>
   <div class="container">
-    <img class="icon" :alt="name" :src="require(`assets/icons/${name}.png`)" />
+    <img class="icon" :alt="name" :src="require(`assets/icons/${name}.svg`)" />
 
     <label :for="label">{{ label }}</label>
   </div>

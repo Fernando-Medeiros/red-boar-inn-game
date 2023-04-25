@@ -19,7 +19,10 @@ export default defineComponent({
 <template>
   <Header v-if="!isAuthenticated" />
   <HeaderGame v-if="isAuthenticated" />
-  <router-view class="view-container" />
+
+  <main class="view-container">
+    <router-view />
+  </main>
   <Footer />
 </template>
 

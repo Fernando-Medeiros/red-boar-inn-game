@@ -28,7 +28,7 @@ export default defineComponent({
       <nav class="header-container">
         <div class="routes">
           <router-link to="/" style="margin-left: 0px">
-            <img class="logo" alt="logo" :src="require('assets/logo.png')" />
+            <img class="logo" alt="logo" :src="require('assets/logo.svg')" />
           </router-link>
 
           <nav class="mobile-box-routes">

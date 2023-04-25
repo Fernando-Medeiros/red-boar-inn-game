@@ -42,7 +42,7 @@ export default defineComponent({
 
     <p class="copy" translate="no">
       <router-link to="/">
-        <img class="image-logo" :src="require('assets/logo.png')" alt="logo" />
+        <img class="image-logo" :src="require('assets/logo.svg')" alt="logo" />
       </router-link>
 
       <span>

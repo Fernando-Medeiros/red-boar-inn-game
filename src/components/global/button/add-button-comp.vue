@@ -21,7 +21,7 @@ export default defineComponent({
         maxValue <= 1 && type === 'increment' ? 'disabled' : 'icon-button'
       "
       :alt="type"
-      :src="require(`assets/icons/${type}.png`)"
+      :src="require(`assets/icons/${type}.svg`)"
       @click="$emit('updateValue', attrName)"
     />
   </div>
