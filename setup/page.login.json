@@ -17,7 +17,7 @@
       "submit": {
         "label": "Acessar"
       },
-      "recover": { "label": "recuperar a senha", "route": "/" }
+      "recover": { "label": "recuperar a senha", "route": "/password/recover" }
     },
     "titleTips": [
       "Sou uma só, mas sou muitos. Sou antiga, mas também sou nova. Quem sou eu?",
@@ -50,7 +50,7 @@
       "submit": {
         "label": "Access"
       },
-      "recover": { "label": "recover password", "route": "/" }
+      "recover": { "label": "recover password", "route": "/password/recover" }
     },
     "titleTips": [
       "I am one, but I am many. I am old, but I am also new. Who am I?",

@@ -8,6 +8,14 @@
       "success": "Conta criada com sucesso",
       "error": ""
     },
+    "recoverPassword": {
+      "success": "Email com o link de recuperação enviado, verique a caixa de mensagens!",
+      "error": "Não foi possível encontrar o email na base de dados!"
+    },
+    "resetPassword": {
+      "success": "Senha atualizado com sucesso!",
+      "error": "Senha invalida, é necessario ter entre 7 a 16 caracteres e conter letras, números e um caracter especial!"
+    },
     "updates": {
       "charName": {
         "success": "Nome atualizado!",
@@ -32,6 +40,14 @@
     "register": {
       "success": "Account created successfully",
       "error": ""
+    },
+    "recoverPassword": {
+      "success": "Email with recovery link sent, check your inbox!",
+      "error": "Could not find the email in the database!"
+    },
+    "resetPassword": {
+      "success": "Password successfully updated!",
+      "error": "Invalid password, it must have between 7 to 16 characters and contain letters, numbers and a special character!"
     },
     "updates": {
       "charName": {
