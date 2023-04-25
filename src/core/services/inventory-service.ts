@@ -11,11 +11,7 @@ const pubId = (): string => LocalSession.get().pubId;
 
 export class InventoryService {
   static async create() {
-    return await postMethod<object, Message & StatusCode>(
-      URL,
-      {},
-      AuthHeader()
-    );
+    return await postMethod<Message & StatusCode>(URL, {}, AuthHeader());
   }
 
   static async get() {

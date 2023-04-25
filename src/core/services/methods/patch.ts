@@ -2,9 +2,9 @@ import axios, { AxiosError } from "axios";
 import { SecretHeader } from "../headers/api-secret-key";
 import { CheckSession } from "../helpers/check-session";
 
-export async function patchMethod<T = object, Response = object>(
+export async function patchMethod<Response = object>(
   URL: string | undefined,
-  body?: T,
+  body?: object,
   headers?: object
 ): Promise<Response> {
   return await axios

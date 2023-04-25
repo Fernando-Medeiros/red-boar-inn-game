@@ -7,9 +7,6 @@ const { VUE_APP_API_ACCOUNT: URL } = process.env;
 
 export class AccountService {
   static async create(form: CreateAccountSchema) {
-    return await postMethod<CreateAccountSchema, Message & StatusCode>(
-      URL,
-      form
-    );
+    return await postMethod<Message & StatusCode>(URL, form);
   }
 }

@@ -16,11 +16,7 @@ const pubId = (): string => LocalSession.get().pubId;
 
 export class CharacterService {
   static async create(form: CharacterCreateSchema) {
-    return await postMethod<CharacterCreateSchema, Message & StatusCode>(
-      URL,
-      form,
-      AuthHeader()
-    );
+    return await postMethod<Message & StatusCode>(URL, form, AuthHeader());
   }
   static async get() {
     return await getMethod<Message & StatusCode & PropsCharacter>(
@@ -29,10 +25,6 @@ export class CharacterService {
     );
   }
   static async update(form: CharacterUpdateSchema) {
-    return await patchMethod<CharacterUpdateSchema, Message & StatusCode>(
-      URL,
-      form,
-      AuthHeader()
-    );
+    return await patchMethod<Message & StatusCode>(URL, form, AuthHeader());
   }
 }

@@ -14,16 +14,17 @@ const {
 
 export class SessionService {
   static async login(form: LoginSchema) {
-    return await postMethod<
-      LoginSchema,
-      Message & StatusCode & AccessTokenSchema
-    >(URL_LOGIN, form);
+    return await postMethod<Message & StatusCode & AccessTokenSchema>(
+      URL_LOGIN,
+      form
+    );
   }
 
   static async refresh(token: RefreshTokenSchema) {
-    return await postMethod<
-      RefreshTokenSchema,
-      Message & StatusCode & RefreshTokenSchema
-    >(URL_REFRESH, token, AuthHeader());
+    return await postMethod<Message & StatusCode & RefreshTokenSchema>(
+      URL_REFRESH,
+      token,
+      AuthHeader()
+    );
   }
 }

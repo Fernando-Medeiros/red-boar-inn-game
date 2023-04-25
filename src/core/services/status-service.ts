@@ -12,11 +12,7 @@ const pubId = (): string => LocalSession.get().pubId;
 
 export class StatusService {
   static async create() {
-    return await postMethod<object, Message & StatusCode>(
-      URL,
-      {},
-      AuthHeader()
-    );
+    return await postMethod<Message & StatusCode>(URL, {}, AuthHeader());
   }
 
   static async get() {
@@ -27,10 +23,6 @@ export class StatusService {
   }
 
   static async update(form: Partial<PropsStatus>) {
-    return await patchMethod<Partial<PropsStatus>, Message & StatusCode>(
-      URL,
-      form,
-      AuthHeader()
-    );
+    return await patchMethod<Message & StatusCode>(URL, form, AuthHeader());
   }
 }
