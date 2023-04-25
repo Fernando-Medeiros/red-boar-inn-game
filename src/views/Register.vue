@@ -77,19 +77,19 @@ export default defineComponent({
       const { password, confirmPassword } = this.form;
       return confirmPassword === password;
     },
-    emitFirstName(value: string) {
+    receiveFirstName(value: string) {
       this.form.firstName = value;
     },
-    emitLastName(value: string) {
+    receiveLastName(value: string) {
       this.form.lastName = value;
     },
-    emitEmail(value: string) {
+    receiveEmail(value: string) {
       this.form.email = value;
     },
-    emitPassword(value: string) {
+    receivePassword(value: string) {
       this.form.password = value;
     },
-    emitConfirmPassword(value: string) {
+    receiveConfirmPassword(value: string) {
       this.form.confirmPassword = value;
     },
   },
@@ -115,35 +115,35 @@ export default defineComponent({
             :label="inputs.firstName.label"
             :placeholder="inputs.firstName.placeholder"
             :description="inputs.firstName.description"
-            @emit-content="emitFirstName"
+            @emit-content="receiveFirstName"
           />
 
           <InputName
             :label="inputs.lastName.label"
             :placeholder="inputs.lastName.placeholder"
             :description="inputs.lastName.description"
-            @emit-content="emitLastName"
+            @emit-content="receiveLastName"
           />
 
           <InputEmail
             :label="inputs.email.label"
             :placeholder="inputs.email.placeholder"
             :description="inputs.email.description"
-            @emit-content="emitEmail"
+            @emit-content="receiveEmail"
           />
 
           <InputPassword
             :label="inputs.password.label"
             :placeholder="inputs.password.placeholder"
             :description="inputs.password.description"
-            @emit-content="emitPassword"
+            @emit-content="receivePassword"
           />
 
           <InputPassword
             :label="inputs.confirmPassword.label"
             :placeholder="inputs.confirmPassword.placeholder"
             :description="inputs.confirmPassword.description"
-            @emit-content="emitConfirmPassword"
+            @emit-content="receiveConfirmPassword"
           />
 
           <InputSubmit

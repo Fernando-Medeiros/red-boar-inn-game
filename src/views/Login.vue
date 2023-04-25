@@ -74,13 +74,13 @@ export default defineComponent({
       this.$router.push({ path: this.redirectTo });
       location.reload();
     },
-    emitEmail(value: string) {
+    receiveEmail(value: string) {
       this.form.email = value;
     },
-    emitPassword(value: string) {
+    receivePassword(value: string) {
       this.form.password = value;
     },
-    clickRemember() {
+    receiveRemember() {
       this.form.remember = !this.form.remember;
     },
   },
@@ -106,20 +106,20 @@ export default defineComponent({
             :label="inputs.email.label"
             :placeholder="inputs.email.placeholder"
             :description="inputs.email.description"
-            @emit-content="emitEmail"
+            @emit-content="receiveEmail"
           />
 
           <InputPassword
             :label="inputs.password.label"
             :placeholder="inputs.password.placeholder"
             :description="inputs.password.description"
-            @emit-content="emitPassword"
+            @emit-content="receivePassword"
           />
 
           <div class="form-options">
             <InputCheckBox
               :label="inputs.checkbox.label"
-              @click="clickRemember"
+              @click="receiveRemember"
             />
             <router-link :to="inputs.recover.route">
               {{ inputs.recover.label }}
