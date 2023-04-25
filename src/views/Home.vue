@@ -4,27 +4,22 @@ import { Helpers } from "core/helpers/functions-helpers";
 import SetupHome from "setup/page.home.json";
 import BannerTitle from "comp/global/composition/banner-title.comp.vue";
 import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
-import RegisterButton from "comp/home/register-button.comp.vue";
+import PreviewComponent from "comp/home/preview.comp.vue";
 
 export default defineComponent({
   name: "HomeView",
   components: {
     BannerTitle,
     BannerSprites,
-    RegisterButton,
+    PreviewComponent,
   },
   computed: {
     title() {
       return SetupHome[Helpers.translate()].title;
     },
-    buttonLabel() {
-      return SetupHome[Helpers.translate()].buttonLabel;
+    previews() {
+      return SetupHome[Helpers.translate()].preview;
     },
-  },
-  data() {
-    return {
-      pathToRegister: "/auth/register",
-    };
   },
 });
 </script>
@@ -35,10 +30,22 @@ export default defineComponent({
 
     <BannerSprites :sprite-left="'mage'" :sprite-right="'mage'" />
 
-    <div class="main-container">
-      <RegisterButton :path-to-register="pathToRegister" :label="buttonLabel" />
+    <div class="background-game">
+      <div class="main-container previews-container">
+        <PreviewComponent
+          v-for="preview in previews"
+          :key="preview.title"
+          :title="preview.title"
+          :content="preview.content"
+          :image="preview.image"
+        />
+      </div>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.previews-container {
+  display: grid;
+}
+</style>
