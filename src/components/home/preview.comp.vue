@@ -26,7 +26,7 @@ export default defineComponent({
       <img
         class="template-image"
         :alt="image"
-        :src="require('assets/templates/' + image + '.png')"
+        :src="require('assets/templates/' + image)"
       />
     </div>
   </div>

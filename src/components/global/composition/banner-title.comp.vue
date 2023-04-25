@@ -20,7 +20,7 @@ export default defineComponent({
 <style scoped>
 .container {
   background-image: linear-gradient(#2222225b, #2222225b, #222222c0),
-    url("assets/pictures/img4.png");
+    url("assets/pictures/img4.webp");
   background-repeat: no-repeat;
   background-size: cover;
 }

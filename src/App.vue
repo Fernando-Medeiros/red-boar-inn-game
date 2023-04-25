@@ -37,7 +37,7 @@ html {
 #app {
   color: #e8e8e8;
   background-image: linear-gradient(#2222225b, #2222225b, #222222c0),
-    url("assets/pictures/img2.png");
+    url("assets/pictures/img2.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;

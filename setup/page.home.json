@@ -4,7 +4,7 @@
     "preview": [
       {
         "title": "Perfil",
-        "image": "profile",
+        "image": "profile.webp",
         "content": [
           "O perfil do personagem agora possui um menu geral que permite aos jogadores navegar facilmente pelo jogo.",
           "Através do menu, os jogadores podem acessar seus status, habilidades, equipamentos, missões, arena, inventário e muito mais, oferecendo uma experiência de jogo mais organizada e intuitiva."
@@ -12,7 +12,7 @@
       },
       {
         "title": "Status",
-        "image": "status",
+        "image": "status.webp",
         "content": [
           "Os jogadores agora podem atribuir pontos de status para personalizar ainda mais seu personagem, melhorando seus atributos e habilidades.",
           "Além disso, os jogadores também podem visualizar seus atributos atualizados em tempo real, permitindo que ajustem seu personagem de acordo com suas preferências."
@@ -20,7 +20,7 @@
       },
       {
         "title": "Classes",
-        "image": "classes",
+        "image": "classes.webp",
         "content": [
           "Escolha livremente a classe do seu personagem, podendo trocá-la a qualquer momento.",
           "Cada classe terá vantagens únicas, como habilidades especiais e equipamentos exclusivos, oferecendo ainda mais possibilidades de personalização."
@@ -33,7 +33,7 @@
     "preview": [
       {
         "title": "Profile",
-        "image": "profile",
+        "image": "profile.webp",
         "content": [
           "The character profile now has a general menu that allows players to easily navigate the game.",
           "Through the menu, players can access their stats, skills, equipment, quests, arena, inventory and more, offering a more organized and intuitive gaming experience."
@@ -41,7 +41,7 @@
       },
       {
         "title": "Status",
-        "image": "status",
+        "image": "status.webp",
         "content": [
           "Players can now assign stat points to further customize their character, improving their attributes and abilities.",
           "In addition, players can also view their updated attributes in real-time, allowing them to fine-tune their character to their preferences."
@@ -49,7 +49,7 @@
       },
       {
         "title": "Classes",
-        "image": "classes",
+        "image": "classes.webp",
         "content": [
           "Freely choose your character's class, being able to change it at any time.",
           "Each class will have unique perks like special abilities and unique gear, offering even more customization possibilities."
