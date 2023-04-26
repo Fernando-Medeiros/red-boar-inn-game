@@ -9,6 +9,7 @@ export default defineComponent({
     label: { type: String, required: true },
     placeholder: { type: String, required: true },
     description: { type: String, required: false },
+    isRequired: { type: Boolean, default: true },
   },
   data() {
     return {
@@ -28,15 +29,15 @@ export default defineComponent({
 
 <template>
   <div class="container">
-    <label class="label" for="">{{ label }}</label>
+    <label class="label" :for="label">{{ label }}</label>
 
     <input
       class="input"
       v-model="content"
-      type="email"
       autocomplete="email"
-      required
+      type="email"
       :placeholder="placeholder"
+      :required="isRequired"
       :style="
         !content
           ? 'border-color: white'

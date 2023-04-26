@@ -9,6 +9,7 @@ export default defineComponent({
     label: { type: String, required: true },
     placeholder: { type: String, required: true },
     description: { type: String, required: false },
+    isRequired: { type: Boolean, default: true },
   },
   data() {
     return {
@@ -41,8 +42,8 @@ export default defineComponent({
         class="input"
         v-model="content"
         autocomplete="password"
-        required
         :type="inputType"
+        :required="isRequired"
         :placeholder="placeholder"
         :style="
           !content
