@@ -56,5 +56,13 @@ export default defineComponent({
   transition: all 0.3s;
 }
 @media (max-width: 780px) {
+  .guides-container {
+    gap: 5px;
+  }
+  .guide-button {
+    width: 100%;
+    height: 2rem;
+    font-size: 1rem;
+  }
 }
 </style>

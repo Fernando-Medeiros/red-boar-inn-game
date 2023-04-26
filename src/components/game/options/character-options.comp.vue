@@ -16,7 +16,7 @@ const {
 } = SetupResponses[Helpers.translate()];
 
 export default defineComponent({
-  name: "OptionsCharacter",
+  name: "CharacterOptions",
   emits: ["emitMessage"],
   components: {
     InputCharacterName,

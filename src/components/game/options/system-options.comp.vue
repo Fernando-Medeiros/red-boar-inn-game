@@ -6,7 +6,7 @@ import IconButton from "comp/global/button/icon-button.comp.vue";
 import LanguageButton from "comp/global/button/language-button.comp.vue";
 
 export default defineComponent({
-  name: "OptionsSystem",
+  name: "SystemOptions",
   components: {
     IconButton,
     LanguageButton,
