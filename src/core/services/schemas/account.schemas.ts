@@ -4,3 +4,9 @@ export type CreateAccountSchema = {
   email: string;
   password: string;
 };
+
+export type UpdateAccountSchema = {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+};
