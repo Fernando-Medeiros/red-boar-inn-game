@@ -8,18 +8,22 @@
       "success": "Conta criada com sucesso",
       "error": ""
     },
+    "account": {
+      "success": "Conta Atualizada com sucesso",
+      "error": "Não há dados para atualizar"
+    },
     "recoverPassword": {
       "success": "Email com o link de recuperação enviado, verique a caixa de mensagens!",
-      "error": "Não foi possível encontrar o email na base de dados!"
+      "error": "Não foi possível encontrar o email na base de dados"
     },
     "resetPassword": {
-      "success": "Senha atualizado com sucesso!",
-      "error": "Senha invalida, é necessario ter entre 7 a 16 caracteres e conter letras, números e um caracter especial!"
+      "success": "Senha atualizada!",
+      "error": "Senha inválida, é necessario ter entre 7 a 16 caracteres e conter letras, números e um caracter especial"
     },
     "updates": {
       "charName": {
-        "success": "Nome atualizado!",
-        "error": "O nome já está em uso, escolha outro"
+        "success": "Nome do personagem atualizado!",
+        "error": "O nome está em uso, escolha outro"
       },
       "className": {
         "success": "Classe atualizada!",
@@ -41,18 +45,22 @@
       "success": "Account created successfully",
       "error": ""
     },
+    "account": {
+      "success": "Account updated successfully",
+      "error": "There is no data to update"
+    },
     "recoverPassword": {
       "success": "Email with recovery link sent, check your inbox!",
-      "error": "Could not find the email in the database!"
+      "error": "Could not find the email in the database"
     },
     "resetPassword": {
       "success": "Password successfully updated!",
-      "error": "Invalid password, it must have between 7 to 16 characters and contain letters, numbers and a special character!"
+      "error": "Invalid password, it must have between 7 to 16 characters and contain letters, numbers and a special character"
     },
     "updates": {
       "charName": {
-        "success": "Name updated!",
-        "error": "The name is already in use, choose another one"
+        "success": "Character name updated!",
+        "error": "The name is in use, choose another one"
       },
       "className": {
         "success": "Class updated!",

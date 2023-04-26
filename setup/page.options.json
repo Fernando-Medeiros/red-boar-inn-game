@@ -2,6 +2,7 @@
   "br": {
     "guides": [
       { "name": "character", "placeholder": "Personagem" },
+      { "name": "account", "placeholder": "Conta" },
       { "name": "system", "placeholder": "Sistema" }
     ],
     "character": {
@@ -18,6 +19,35 @@
         }
       }
     },
+
+    "account": {
+      "form": {
+        "firstName": {
+          "label": "Nome",
+          "placeholder": "Example",
+          "description": "apenas letras e ter entre 4 e 24 caracteres"
+        },
+        "lastName": {
+          "label": "Sobrenome",
+          "placeholder": "Example ou Example Example",
+          "description": "apenas letras e ter entre 4 e 24 caracteres"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "example@email.com",
+          "description": ""
+        },
+        "password": {
+          "label": "Senha",
+          "placeholder": "Example@01",
+          "description": "apenas letras, números, @$!%*#?& e ter entre 7 e 16 caracteres"
+        },
+        "submit": {
+          "label": "atualizar"
+        }
+      }
+    },
+
     "system": {
       "logout": {
         "icon": "logout",
@@ -27,9 +57,11 @@
       "language": { "label": "Escolha o idioma" }
     }
   },
+
   "en": {
     "guides": [
       { "name": "character", "placeholder": "Character" },
+      { "name": "account", "placeholder": "Account" },
       { "name": "system", "placeholder": "System" }
     ],
     "character": {
@@ -46,6 +78,35 @@
         }
       }
     },
+
+    "account": {
+      "form": {
+        "firstName": {
+          "label": "Name",
+          "placeholder": "Example",
+          "description": "only letters and between 4 and 24 characters"
+        },
+        "lastName": {
+          "label": "LastName",
+          "placeholder": "Example or Example Example",
+          "description": "only letters and between 4 and 24 characters"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "example@email.com",
+          "description": ""
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Example@01",
+          "description": "only letters, numbers, @$!%*#?& and be between 7 and 16 characters long"
+        },
+        "submit": {
+          "label": "update"
+        }
+      }
+    },
+
     "system": {
       "logout": {
         "icon": "logout",
