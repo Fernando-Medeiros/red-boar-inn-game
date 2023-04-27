@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import CharacterPreview from "comp/game/profile/character-preview.comp.vue";
-import StatusOverview from "comp/game/status/status-overview.comp.vue";
-import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
+import CharacterPreview from "comp/game/profile/character-preview.vue";
+import StatusOverview from "comp/game/status/status-overview.vue";
+import AlertMessage from "comp/global/helpers/alert-message.vue";
 
 export default defineComponent({
   name: "StatusView",

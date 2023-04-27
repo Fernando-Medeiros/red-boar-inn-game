@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupUpdates from "setup/page.updates.json";
-import BannerTitle from "comp/global/composition/banner-title.comp.vue";
-import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
-import UpdatePreview from "comp/update/update.preview.comp.vue";
+import BannerTitle from "comp/global/composition/banner-title.vue";
+import BannerSprites from "comp/global/composition/banner-sprites.vue";
+import UpdatePreview from "comp/update/update.preview.vue";
 
 export default defineComponent({
   name: "UpdateView",

@@ -2,13 +2,13 @@
 import { defineComponent } from "vue";
 import { AccountService } from "core/services/account-service";
 import { PasswordService } from "core/services/password-service";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupOptions from "setup/page.options.json";
 import SetupResponses from "setup/global.responses.json";
-import InputName from "comp/global/input/input-name.comp.vue";
-import InputEmail from "comp/global/input/input-email.comp.vue";
-import InputPassword from "comp/global/input/input-password.comp.vue";
-import InputSubmit from "comp/global/input/input-submit.comp.vue";
+import InputName from "comp/global/input/input-name.vue";
+import InputEmail from "comp/global/input/input-email.vue";
+import InputPassword from "comp/global/input/input-password.vue";
+import InputSubmit from "comp/global/input/input-submit.vue";
 
 const Setup = SetupOptions[Helpers.translate()];
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupHeaderGame from "setup/global.header-game.json";
-import IconButton from "comp/global/button/icon-button.comp.vue";
+import IconButton from "comp/global/button/icon-button.vue";
 
 export default defineComponent({
   name: "HeaderGame",

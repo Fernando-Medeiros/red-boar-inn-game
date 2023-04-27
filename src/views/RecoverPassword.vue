@@ -1,14 +1,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { PasswordService } from "core/services/password-service";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupPassword from "setup/page.recover-password.json";
 import SetupResponses from "setup/global.responses.json";
-import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
-import BannerTitle from "comp/global/composition/banner-title.comp.vue";
-import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
-import InputEmail from "comp/global/input/input-email.comp.vue";
-import InputSubmit from "comp/global/input/input-submit.comp.vue";
+import AlertMessage from "comp/global/helpers/alert-message.vue";
+import BannerTitle from "comp/global/composition/banner-title.vue";
+import BannerSprites from "comp/global/composition/banner-sprites.vue";
+import InputEmail from "comp/global/input/input-email.vue";
+import InputSubmit from "comp/global/input/input-submit.vue";
 
 const Setup = SetupPassword[Helpers.translate()];
 

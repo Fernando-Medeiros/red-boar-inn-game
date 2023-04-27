@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupOptions from "setup/page.options.json";
 
 export default defineComponent({
-  name: "OptionsGuides",
+  name: "GuidesOptions",
   emits: ["showGuide"],
   props: {
     currentGuide: { type: String, required: true },

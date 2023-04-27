@@ -3,7 +3,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "IconButton",
-  emits: ["changeIcon"],
+  emits: ["changeAction"],
   props: {
     name: { type: String, required: true },
     label: { type: String, required: true },
@@ -19,7 +19,7 @@ export default defineComponent({
         class="icon-button"
         :alt="name"
         :src="require(`assets/icons/${name}.svg`)"
-        @click="$emit('changeIcon')"
+        @click="$emit('changeAction')"
         :style="!toRoute ? 'filter: grayscale()' : ''"
       />
       <span class="icon-button-label">

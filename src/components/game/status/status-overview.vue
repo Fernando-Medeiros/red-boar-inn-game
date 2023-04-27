@@ -1,11 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { StatusService } from "core/services/status-service";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupStatus from "setup/page.status.json";
 import SetupResponses from "setup/global.responses.json";
-import InputSubmit from "comp/global/input/input-submit.comp.vue";
-import AddButton from "comp/global/button/add-button-comp.vue";
+import InputSubmit from "comp/global/input/input-submit.vue";
+import AddButton from "comp/global/button/add-button.vue";
 const {
   updates: {
     status: { success, error },

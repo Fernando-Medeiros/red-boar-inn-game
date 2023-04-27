@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { LocalSession } from "./core/storage/session.storage";
-import Header from "comp/global/header/header.main.comp.vue";
-import Footer from "comp/global/footer/footer.main.comp.vue";
-import HeaderGame from "comp/global/header-game/header-game.comp.vue";
+import Header from "comp/global/header/header.main.vue";
+import Footer from "comp/global/footer/footer.main.vue";
+import HeaderGame from "comp/global/header-game/header-game.vue";
 
 export default defineComponent({
   name: "MainComponent",

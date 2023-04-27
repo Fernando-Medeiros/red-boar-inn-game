@@ -2,29 +2,29 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "SpriteComponent",
+  name: "CharacterSprite",
   props: {
-    spriteName: { type: String, required: true },
-    spriteGender: { type: String, required: true },
+    name: { type: String, required: true },
+    gender: { type: String, required: true },
     rotateY: { type: Boolean, required: false },
   },
 });
 </script>
 
 <template>
-  <div class="sprite-container">
+  <div class="container">
     <img
       class="sprite"
-      :alt="spriteName"
+      :alt="name"
       :style="rotateY ? 'transform: rotateY(180deg)' : ''"
-      :src="require(`assets/sprites/${spriteGender}/${spriteName}.svg`)"
+      :src="require(`assets/sprites/${gender}/${name}.svg`)"
     />
     <span class="sprite-background"></span>
   </div>
 </template>
 
 <style scoped>
-.sprite-container {
+.container {
   display: flex;
   align-items: center;
   justify-content: center;

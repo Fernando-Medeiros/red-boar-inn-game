@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupOptions from "setup/page.options.json";
-import IconButton from "comp/global/button/icon-button.comp.vue";
-import LanguageButton from "comp/global/button/language-button.comp.vue";
+import IconButton from "comp/global/button/icon-button.vue";
+import LanguageButton from "comp/global/button/language-button.vue";
 
 export default defineComponent({
   name: "SystemOptions",

@@ -1,13 +1,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { CharacterService } from "core/services/character-service";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupProfile from "setup/page.profile.json";
-import Sprite from "comp/global/sprite/sprite.comp.vue";
+import CharacterSprite from "comp/global/sprite/character.vue";
 
 export default defineComponent({
   name: "CharacterPreview",
-  components: { Sprite },
+  props: { rotateY: { type: Boolean, default: false } },
+  components: { CharacterSprite },
 
   async beforeCreate() {
     const { charName, className, level, gender } = await CharacterService.get();
@@ -16,19 +17,16 @@ export default defineComponent({
   },
   computed: {
     spriteInfo() {
-      const {
-        sprite: { levelLabel },
-      } = SetupProfile[Helpers.translate()];
-
+      const { levelLabel } = SetupProfile[Helpers.translate()].sprite;
       return { levelLabel };
     },
   },
   data() {
     return {
-      charName: "loading",
-      className: "peasant",
       level: "1",
       gender: "man",
+      charName: "loading",
+      className: "peasant",
     };
   },
 });
@@ -36,11 +34,7 @@ export default defineComponent({
 
 <template>
   <div class="sprite-character">
-    <Sprite
-      :sprite-name="className"
-      :sprite-gender="gender"
-      :rotate-y="false"
-    />
+    <CharacterSprite :name="className" :gender="gender" :rotate-y="rotateY" />
     <span>
       <p>{{ charName }}</p>
       <span>

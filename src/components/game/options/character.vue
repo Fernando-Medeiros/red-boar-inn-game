@@ -1,11 +1,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { CharacterService } from "core/services/character-service";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupOptions from "setup/page.options.json";
 import SetupResponses from "setup/global.responses.json";
-import InputCharacterName from "comp/global/input/input-character-name.comp.vue";
-import InputSubmit from "comp/global/input/input-submit.comp.vue";
+import InputCharacterName from "comp/global/input/input-character-name.vue";
+import InputSubmit from "comp/global/input/input-submit.vue";
 
 const Setup = SetupOptions[Helpers.translate()];
 

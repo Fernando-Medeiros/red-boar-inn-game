@@ -2,7 +2,7 @@
 import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
-  name: "FooterRoutesComponent",
+  name: "RoutesComponent",
   props: {
     routes: {
       type: Array as PropType<{ path: string; name: string }[]>,

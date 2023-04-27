@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import SpriteComponent from "../sprite/sprite.comp.vue";
+import CharacterSprite from "../sprite/character.vue";
 
 export default defineComponent({
   name: "BannerSprites",
-  components: { SpriteComponent },
+  components: { CharacterSprite },
   props: {
     spriteLeft: {
       type: String,
@@ -23,17 +23,8 @@ export default defineComponent({
 
   <div class="main-container">
     <div class="banner-container">
-      <SpriteComponent
-        :rotate-y="true"
-        :sprite-name="spriteLeft"
-        :sprite-gender="'woman'"
-      />
-
-      <SpriteComponent
-        :rotate-y="false"
-        :sprite-name="spriteRight"
-        :sprite-gender="'man'"
-      />
+      <CharacterSprite :name="spriteLeft" :gender="'woman'" :rotate-y="true" />
+      <CharacterSprite :name="spriteRight" :gender="'man'" :rotate-y="false" />
     </div>
   </div>
 </template>

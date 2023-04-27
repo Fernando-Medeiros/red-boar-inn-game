@@ -21,11 +21,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div
-    class="updates-container"
-    v-for="update in updates"
-    :key="update.version"
-  >
+  <div class="container" v-for="update in updates" :key="update.version">
     <div class="updates-button">
       <p>
         <strong>V-{{ update.version }}</strong> __ {{ update.date }}
@@ -48,7 +44,7 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.updates-container {
+.container {
   width: 600px;
   height: auto;
   padding: 10px;
@@ -56,7 +52,7 @@ export default defineComponent({
   border-radius: 5px;
   background-color: #e8e8e8;
 }
-.updates-container:hover {
+.container:hover {
   background-color: white;
 }
 .updates-button {
@@ -88,7 +84,7 @@ export default defineComponent({
   list-style: none;
 }
 @media (max-width: 780px) {
-  .updates-container {
+  .container {
     width: 90%;
   }
   .updates-button button {

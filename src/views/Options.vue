@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
-import Guides from "comp/game/options/guides.comp.vue";
-import CharacterOptions from "comp/game/options/character-options.comp.vue";
-import SystemOptions from "comp/game/options/system-options.comp.vue";
-import AccountOptions from "comp/game/options/account-options.comp.vue";
+import AlertMessage from "comp/global/helpers/alert-message.vue";
+import Guides from "comp/game/options/guides.vue";
+import CharacterOptions from "comp/game/options/character.vue";
+import SystemOptions from "comp/game/options/system.vue";
+import AccountOptions from "comp/game/options/account.vue";
 
 export default defineComponent({
   name: "OptionsView",

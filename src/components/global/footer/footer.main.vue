@@ -1,10 +1,10 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Helpers } from "core/helpers/functions-helpers";
-import IconContact from "./footer.contact-icon.comp.vue";
+import { Helpers } from "core/helpers/helpers";
 import SetupFooter from "setup/global.footer.json";
 import SetupRoutes from "setup/global.routes.json";
-import Routes from "./footer.routes.comp.vue";
+import IconContact from "./contact-icon.vue";
+import Routes from "./routes.vue";
 
 export default defineComponent({
   name: "FooterComponent",
@@ -26,7 +26,7 @@ export default defineComponent({
 <template>
   <footer class="background-footer">
     <div class="main-container">
-      <div class="footer-container">
+      <div class="container">
         <Routes :routes="routes" />
 
         <div class="contact-icons">
@@ -57,7 +57,7 @@ export default defineComponent({
   width: 100%;
   background-color: #222222;
 }
-.footer-container {
+.container {
   display: flex;
   max-width: 100%;
   padding: 1rem;

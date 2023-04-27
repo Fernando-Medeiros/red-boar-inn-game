@@ -1,14 +1,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupAbout from "setup/page.about.json";
-import BannerTitle from "comp/global/composition/banner-title.comp.vue";
-import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
-import InfoComponent from "comp/about/info.comp.vue";
+import BannerTitle from "comp/global/composition/banner-title.vue";
+import BannerSprites from "comp/global/composition/banner-sprites.vue";
+import AboutOverview from "comp/about/about-overview.vue";
 
 export default defineComponent({
   name: "AboutView",
-  components: { BannerTitle, BannerSprites, InfoComponent },
+  components: { BannerTitle, BannerSprites, AboutOverview },
   computed: {
     title() {
       return SetupAbout[Helpers.translate()].title;
@@ -28,11 +28,11 @@ export default defineComponent({
 
     <div class="main-container">
       <div class="about-container">
-        <InfoComponent
+        <AboutOverview
           v-for="article in articles"
           :key="article.title"
           :title="article.title"
-          :content="article.content.join('\n')"
+          :content="article.content"
           :credits="article?.links"
         />
       </div>

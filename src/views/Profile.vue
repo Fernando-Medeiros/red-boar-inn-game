@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupProfile from "setup/page.profile.json";
-import CharacterPreview from "comp/game/profile/character-preview.comp.vue";
-import IconButton from "comp/global/button/icon-button.comp.vue";
+import CharacterPreview from "comp/game/profile/character-preview.vue";
+import IconButton from "comp/global/button/icon-button.vue";
 
 export default defineComponent({
   name: "ProfileView",
@@ -24,7 +24,7 @@ export default defineComponent({
           <IconButton
             :name="menuInfo.status.icon"
             :label="menuInfo.status.label"
-            :to-route="'/character/status'"
+            :to-route="menuInfo.status.route"
           />
         </div>
 
@@ -32,10 +32,12 @@ export default defineComponent({
           <IconButton
             :name="menuInfo.skills.icon"
             :label="menuInfo.skills.label"
+            :to-route="menuInfo.skills.route"
           />
           <IconButton
             :name="menuInfo.equipment.icon"
             :label="menuInfo.equipment.label"
+            :to-route="menuInfo.equipment.route"
           />
         </div>
 
@@ -44,10 +46,12 @@ export default defineComponent({
             <IconButton
               :name="menuInfo.codex.icon"
               :label="menuInfo.codex.label"
+              :to-route="menuInfo.codex.route"
             />
             <IconButton
               :name="menuInfo.dungeon.icon"
               :label="menuInfo.dungeon.label"
+              :to-route="menuInfo.dungeon.route"
             />
           </div>
 
@@ -57,10 +61,12 @@ export default defineComponent({
             <IconButton
               :name="menuInfo.inventory.icon"
               :label="menuInfo.inventory.label"
+              :to-route="menuInfo.inventory.route"
             />
             <IconButton
               :name="menuInfo.arena.icon"
               :label="menuInfo.arena.label"
+              :to-route="menuInfo.arena.route"
             />
           </div>
         </div>
@@ -69,11 +75,12 @@ export default defineComponent({
           <IconButton
             :name="menuInfo.quests.icon"
             :label="menuInfo.quests.label"
+            :to-route="menuInfo.quests.route"
           />
           <IconButton
             :name="menuInfo.options.icon"
             :label="menuInfo.options.label"
-            :to-route="'/character/options'"
+            :to-route="menuInfo.options.route"
           />
         </div>
 
@@ -81,7 +88,7 @@ export default defineComponent({
           <IconButton
             :name="menuInfo.classes.icon"
             :label="menuInfo.classes.label"
-            :to-route="'/character/class'"
+            :to-route="menuInfo.classes.route"
           />
         </div>
       </div>

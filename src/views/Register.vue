@@ -1,16 +1,16 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { AccountService } from "core/services/account-service";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupRegister from "setup/page.register.json";
 import SetupResponses from "setup/global.responses.json";
-import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
-import BannerTitle from "comp/global/composition/banner-title.comp.vue";
-import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
-import InputName from "comp/global/input/input-name.comp.vue";
-import InputEmail from "comp/global/input/input-email.comp.vue";
-import InputPassword from "comp/global/input/input-password.comp.vue";
-import InputSubmit from "comp/global/input/input-submit.comp.vue";
+import AlertMessage from "comp/global/helpers/alert-message.vue";
+import BannerTitle from "comp/global/composition/banner-title.vue";
+import BannerSprites from "comp/global/composition/banner-sprites.vue";
+import InputName from "comp/global/input/input-name.vue";
+import InputEmail from "comp/global/input/input-email.vue";
+import InputPassword from "comp/global/input/input-password.vue";
+import InputSubmit from "comp/global/input/input-submit.vue";
 
 const Setup = SetupRegister[Helpers.translate()];
 

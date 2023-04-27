@@ -4,15 +4,15 @@ import { LocalSession } from "core/storage/session.storage";
 import { SessionService } from "core/services/session-service";
 import { CharacterService } from "core/services/character-service";
 import { CharacterDependencies } from "core/services/helpers/character-dependencies";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupLogin from "setup/page.login.json";
-import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
-import BannerTitle from "comp/global/composition/banner-title.comp.vue";
-import BannerSprites from "comp/global/composition/banner-sprites.comp.vue";
-import InputEmail from "comp/global/input/input-email.comp.vue";
-import InputPassword from "comp/global/input/input-password.comp.vue";
-import InputSubmit from "comp/global/input/input-submit.comp.vue";
-import InputCheckBox from "comp/global/input/input-checkbox.comp.vue";
+import AlertMessage from "comp/global/helpers/alert-message.vue";
+import BannerTitle from "comp/global/composition/banner-title.vue";
+import BannerSprites from "comp/global/composition/banner-sprites.vue";
+import InputEmail from "comp/global/input/input-email.vue";
+import InputPassword from "comp/global/input/input-password.vue";
+import InputSubmit from "comp/global/input/input-submit.vue";
+import InputCheckBox from "comp/global/input/input-checkbox.vue";
 
 const Setup = SetupLogin[Helpers.translate()];
 

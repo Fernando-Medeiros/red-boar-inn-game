@@ -1,9 +1,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupHeader from "setup/global.header.json";
 import SetupRoutes from "setup/global.routes.json";
-import LanguageButton from "../button/language-button.comp.vue";
+import LanguageButton from "../button/language-button.vue";
 
 const Setup = SetupHeader[Helpers.translate()];
 

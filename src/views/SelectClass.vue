@@ -2,15 +2,15 @@
 import { defineComponent } from "vue";
 import type { ClassesSchema } from "core/schemas/classes.schema";
 import { CharacterService } from "core/services/character-service";
-import { Helpers } from "core/helpers/functions-helpers";
+import { Helpers } from "core/helpers/helpers";
 import SetupSelectClass from "setup/page.select-class.json";
 import SetupResponses from "setup/global.responses.json";
-import AlertMessage from "comp/global/helpers/alert-message.comp.vue";
-import Sprite from "comp/global/sprite/sprite.comp.vue";
-import InputSubmit from "comp/global/input/input-submit.comp.vue";
-import ClassButton from "comp/game/select-class/button-class.comp.vue";
-import ClassGenderButton from "comp/game/select-class/button-gender.comp.vue";
-import ClassDescription from "comp/game/select-class/description.comp.vue";
+import AlertMessage from "comp/global/helpers/alert-message.vue";
+import CharacterSprite from "comp/global/sprite/character.vue";
+import InputSubmit from "comp/global/input/input-submit.vue";
+import ClassButton from "comp/game/select-class/button-class.vue";
+import ClassGenderButton from "comp/game/select-class/button-gender.vue";
+import ClassDescription from "comp/game/select-class/description.vue";
 
 const Setup = SetupSelectClass[Helpers.translate()];
 
@@ -24,7 +24,7 @@ export default defineComponent({
   name: "SelectClassView",
   expose: ["alertMessage"],
   components: {
-    Sprite,
+    CharacterSprite,
     InputSubmit,
     ClassButton,
     ClassGenderButton,
@@ -77,9 +77,9 @@ export default defineComponent({
   <div class="background-game">
     <div class="main-container">
       <div class="sprite-container">
-        <Sprite
-          :sprite-name="form.className"
-          :sprite-gender="form.gender"
+        <CharacterSprite
+          :name="form.className"
+          :gender="form.gender"
           :rotate-y="true"
         />
       </div>

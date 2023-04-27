@@ -2,7 +2,7 @@
 import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
-  name: "PreviewComponent",
+  name: "GamePreview",
   props: {
     title: { type: String, required: true },
     content: { type: Array as PropType<string[]>, required: true },

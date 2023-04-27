@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "FooterContactIconComponent",
+  name: "ContactIcon",
   props: {
     iconName: { type: String, required: true },
     link: { type: String, required: true },
