@@ -7,7 +7,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/",
     children: [
       {
-        path: "/",
+        path: "",
         component: HomeView,
       },
       {
@@ -91,6 +91,19 @@ const routes: Array<RouteRecordRaw> = [
         path: "options",
         name: "options",
         component: async () => await import("view/Options.vue"),
+      },
+    ],
+  },
+  {
+    path: "/dungeon",
+    meta: {
+      requiresAuth: true,
+    },
+    children: [
+      {
+        path: "",
+        name: "dungeon",
+        component: async () => await import("view/Dungeon.vue"),
       },
     ],
   },

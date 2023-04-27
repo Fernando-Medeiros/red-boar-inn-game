@@ -1,0 +1,19 @@
+{
+  "br": {
+    "menu": [
+      { "label": "ataque", "icon": "attack" },
+      { "label": "habilidades", "icon": "skills" },
+      { "label": "items", "icon": "items" },
+      { "label": "fugir", "icon": "flee" }
+    ]
+  },
+
+  "en": {
+    "menu": [
+      { "label": "attack", "icon": "attack" },
+      { "label": "skills", "icon": "skills" },
+      { "label": "items", "icon": "items" },
+      { "label": "flee", "icon": "flee" }
+    ]
+  }
+}

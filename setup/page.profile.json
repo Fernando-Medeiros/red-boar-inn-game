@@ -4,16 +4,32 @@
       "levelLabel": "Nível"
     },
     "menu": {
-      "status": { "label": "Status", "icon": "status" },
-      "skills": { "label": "Habilidades", "icon": "skills" },
-      "equipment": { "label": "Equipmentos", "icon": "equipment" },
-      "codex": { "label": "Codex", "icon": "codex" },
-      "inventory": { "label": "Inventário", "icon": "inventory" },
-      "dungeon": { "label": "Labirinto", "icon": "dungeon" },
-      "arena": { "label": "Arena", "icon": "arena" },
-      "quests": { "label": "Missões", "icon": "quests" },
-      "options": { "label": "Opções", "icon": "options" },
-      "classes": { "label": "Mudar Classe", "icon": "classes" }
+      "status": {
+        "label": "Status",
+        "icon": "status",
+        "route": "/character/status"
+      },
+      "skills": { "label": "Habilidades", "icon": "skills", "route": "" },
+      "equipment": { "label": "Equipmentos", "icon": "equipment", "route": "" },
+      "codex": { "label": "Codex", "icon": "codex", "route": "" },
+      "inventory": { "label": "Inventário", "icon": "inventory", "route": "" },
+      "dungeon": {
+        "label": "Labirinto",
+        "icon": "dungeon",
+        "route": "/dungeon"
+      },
+      "arena": { "label": "Arena", "icon": "arena", "route": "" },
+      "quests": { "label": "Missões", "icon": "quests", "route": "" },
+      "options": {
+        "label": "Opções",
+        "icon": "options",
+        "route": "/character/options"
+      },
+      "classes": {
+        "label": "Mudar Classe",
+        "icon": "classes",
+        "route": "/character/class"
+      }
     }
   },
   "en": {
@@ -21,16 +37,28 @@
       "levelLabel": "Level"
     },
     "menu": {
-      "status": { "label": "Status", "icon": "status" },
-      "skills": { "label": "Skills", "icon": "skills" },
-      "equipment": { "label": "Equipment", "icon": "equipment" },
-      "codex": { "label": "Codex", "icon": "codex" },
-      "inventory": { "label": "Inventory", "icon": "inventory" },
-      "dungeon": { "label": "Dungeon", "icon": "dungeon" },
-      "arena": { "label": "Arena", "icon": "arena" },
-      "quests": { "label": "Quests", "icon": "quests" },
-      "options": { "label": "Options", "icon": "options" },
-      "classes": { "label": "Class", "icon": "classes" }
+      "status": {
+        "label": "Status",
+        "icon": "status",
+        "route": "/character/status"
+      },
+      "skills": { "label": "Skills", "icon": "skills", "route": "" },
+      "equipment": { "label": "Equipment", "icon": "equipment", "route": "" },
+      "codex": { "label": "Codex", "icon": "codex", "route": "" },
+      "inventory": { "label": "Inventory", "icon": "inventory", "route": "" },
+      "dungeon": { "label": "Dungeon", "icon": "dungeon", "route": "/dungeon" },
+      "arena": { "label": "Arena", "icon": "arena", "route": "" },
+      "quests": { "label": "Quests", "icon": "quests", "route": "" },
+      "options": {
+        "label": "Options",
+        "icon": "options",
+        "route": "/character/options"
+      },
+      "classes": {
+        "label": "Class",
+        "icon": "classes",
+        "route": "/character/class"
+      }
     }
   }
 }
