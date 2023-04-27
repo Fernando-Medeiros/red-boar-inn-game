@@ -1,26 +1,26 @@
 {
   "melee": [
     {
-      "name": "rat",
+      "name": "thief",
       "level": 1,
       "experience": 2,
       "health": 15,
       "energy": 1,
-      "attack": 2,
+      "attack": 3,
       "defense": 1,
       "loot": [{ "gold": 2 }]
     }
   ],
   "magic": [
     {
-      "name": "slime",
+      "name": "merchant",
       "level": 1,
       "experience": 2,
       "health": 10,
       "energy": 5,
       "attack": 2,
       "defense": 1,
-      "loot": [{ "gold": 1 }]
+      "loot": [{ "gold": 3 }]
     }
   ]
 }

@@ -1,5 +1,4 @@
 import type { LanguagesSchema } from "core/schemas/language.schema";
-import { LocalStorage } from "core/storage/local.storage";
 
 export class Helpers {
   static random(array: string[]) {
@@ -7,6 +6,8 @@ export class Helpers {
   }
 
   static translate(): LanguagesSchema {
-    return LocalStorage.getLanguage();
+    const language = localStorage.getItem("language");
+
+    return language ? (language as LanguagesSchema) : "br";
   }
 }
