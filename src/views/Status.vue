@@ -19,7 +19,7 @@ export default defineComponent({
 <template>
   <AlertMessage :message="alertMessage" />
 
-  <div class="background-game">
+  <div class="main-background">
     <div class="main-container">
       <div class="status-container">
         <CharacterPreview />

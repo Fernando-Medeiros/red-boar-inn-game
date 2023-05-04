@@ -30,9 +30,11 @@ export default defineComponent({
 
     <BannerSprites :sprite-left="'warrior'" :sprite-right="'warrior'" />
 
-    <div class="main-container">
-      <div class="updates-container">
-        <UpdatePreview :updates="updates" />
+    <div class="main-background">
+      <div class="main-container">
+        <div class="updates-container">
+          <UpdatePreview :updates="updates" />
+        </div>
       </div>
     </div>
   </div>
@@ -43,8 +45,9 @@ export default defineComponent({
   z-index: 1;
   display: grid;
   gap: 20px;
+  margin-top: 1rem;
   padding: 20px 10px;
   justify-items: center;
-  background: linear-gradient(#282828, #323232c0);
+  background-color: var(--cor-background-color);
 }
 </style>

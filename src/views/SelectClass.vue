@@ -74,7 +74,7 @@ export default defineComponent({
 <template>
   <AlertMessage :message="alertMessage" />
 
-  <div class="background-game">
+  <div class="main-background">
     <div class="main-container">
       <div class="sprite-container">
         <CharacterSprite
@@ -144,6 +144,9 @@ export default defineComponent({
   padding: 2rem;
   border-radius: 5px;
   border: 1px solid #e8e8e8;
+  color: white;
+  background: var(--cor-background-linear-gradient),
+    var(--cor-background-linear-gradient);
 }
 .className-and-button-container {
   display: flex;

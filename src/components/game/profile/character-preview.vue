@@ -57,6 +57,7 @@ export default defineComponent({
   display: flex;
   gap: 1rem;
   text-align: center;
+  color: white;
 }
 
 @media (max-width: 780px) {

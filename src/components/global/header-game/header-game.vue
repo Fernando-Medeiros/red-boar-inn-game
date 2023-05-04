@@ -36,7 +36,8 @@ export default defineComponent({
 
 <style scoped>
 .background-banner {
-  background: linear-gradient(#282828, #323232c0);
+  background: var(--cor-background-linear-gradient),
+    var(--cor-background-linear-gradient);
 }
 .banner-status-container {
   display: flex;
@@ -46,6 +47,6 @@ export default defineComponent({
 }
 .banner-nav-icons {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 </style>

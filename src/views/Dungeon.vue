@@ -30,7 +30,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="background-game">
+  <div class="main-background">
     <div class="main-container">
       <div class="battle-container battle-background">
         <CharacterPreview :rotate-y="true" />
@@ -58,8 +58,8 @@ export default defineComponent({
 <style scoped>
 .battle-background {
   background-position: bottom;
-  background-image: linear-gradient(#2222225b, #2222225b, #222222c0),
-    url("assets/pictures/img2.webp");
+  background-image: var(--cor-background-linear-gradient),
+    url("assets/pictures/img3.webp");
 }
 .battle-container,
 .battle-menu {
@@ -69,6 +69,6 @@ export default defineComponent({
   grid-template-columns: 1fr 1fr;
 }
 .battle-menu {
-  background-image: linear-gradient(#2222225b, #2222225b, #222222c0);
+  background-image: var(--cor-background-linear-gradient);
 }
 </style>

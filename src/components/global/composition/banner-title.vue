@@ -19,7 +19,7 @@ export default defineComponent({
 
 <style scoped>
 .container {
-  background-image: linear-gradient(#2222225b, #2222225b, #222222c0),
+  background-image: var(--cor-background-linear-gradient),
     url("assets/pictures/img4.webp");
   background-repeat: no-repeat;
   background-size: cover;

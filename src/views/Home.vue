@@ -30,7 +30,7 @@ export default defineComponent({
 
     <BannerSprites :sprite-left="'mage'" :sprite-right="'mage'" />
 
-    <div class="background-game">
+    <div class="main-background">
       <div class="main-container previews-container">
         <GamePreview
           v-for="preview in previews"

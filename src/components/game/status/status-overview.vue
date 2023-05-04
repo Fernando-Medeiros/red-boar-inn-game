@@ -154,6 +154,10 @@ export default defineComponent({
 .status-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding-block: 1rem;
+  color: white;
+  background: var(--cor-background-linear-gradient),
+    var(--cor-background-linear-gradient);
 }
 .status-overview {
   display: grid;

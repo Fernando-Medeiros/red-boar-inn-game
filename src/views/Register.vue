@@ -101,53 +101,55 @@ export default defineComponent({
 
     <BannerSprites :sprite-left="'peasant'" :sprite-right="'peasant'" />
 
-    <div class="main-container">
-      <div class="background">
-        <form
-          class="form-login"
-          @submit.prevent="createAccount"
-          @submit="submitForm = true"
-        >
-          <InputName
-            :label="inputs.firstName.label"
-            :placeholder="inputs.firstName.placeholder"
-            :description="inputs.firstName.description"
-            @emit-content="receiveFirstName"
-          />
+    <div class="main-background">
+      <div class="main-container">
+        <div class="background">
+          <form
+            class="form-login"
+            @submit.prevent="createAccount"
+            @submit="submitForm = true"
+          >
+            <InputName
+              :label="inputs.firstName.label"
+              :placeholder="inputs.firstName.placeholder"
+              :description="inputs.firstName.description"
+              @emit-content="receiveFirstName"
+            />
 
-          <InputName
-            :label="inputs.lastName.label"
-            :placeholder="inputs.lastName.placeholder"
-            :description="inputs.lastName.description"
-            @emit-content="receiveLastName"
-          />
+            <InputName
+              :label="inputs.lastName.label"
+              :placeholder="inputs.lastName.placeholder"
+              :description="inputs.lastName.description"
+              @emit-content="receiveLastName"
+            />
 
-          <InputEmail
-            :label="inputs.email.label"
-            :placeholder="inputs.email.placeholder"
-            :description="inputs.email.description"
-            @emit-content="receiveEmail"
-          />
+            <InputEmail
+              :label="inputs.email.label"
+              :placeholder="inputs.email.placeholder"
+              :description="inputs.email.description"
+              @emit-content="receiveEmail"
+            />
 
-          <InputPassword
-            :label="inputs.password.label"
-            :placeholder="inputs.password.placeholder"
-            :description="inputs.password.description"
-            @emit-content="receivePassword"
-          />
+            <InputPassword
+              :label="inputs.password.label"
+              :placeholder="inputs.password.placeholder"
+              :description="inputs.password.description"
+              @emit-content="receivePassword"
+            />
 
-          <InputPassword
-            :label="inputs.confirmPassword.label"
-            :placeholder="inputs.confirmPassword.placeholder"
-            :description="inputs.confirmPassword.description"
-            @emit-content="receiveConfirmPassword"
-          />
+            <InputPassword
+              :label="inputs.confirmPassword.label"
+              :placeholder="inputs.confirmPassword.placeholder"
+              :description="inputs.confirmPassword.description"
+              @emit-content="receiveConfirmPassword"
+            />
 
-          <InputSubmit
-            :label="inputs.submit.placeholder"
-            :is-disabled="submitForm"
-          />
-        </form>
+            <InputSubmit
+              :label="inputs.submit.placeholder"
+              :is-disabled="submitForm"
+            />
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -157,15 +159,13 @@ export default defineComponent({
 .background {
   padding-block: 1rem;
   border-radius: 5px;
-  background: linear-gradient(#282828, #323232c0);
+  margin-top: 1rem;
+  background-color: var(--cor-background-color);
 }
 .form-login {
   z-index: 1;
   display: grid;
   width: 100%;
   gap: 1.4rem;
-}
-
-@media (max-width: 780px) {
 }
 </style>

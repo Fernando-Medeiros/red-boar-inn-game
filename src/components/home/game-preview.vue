@@ -38,11 +38,13 @@ export default defineComponent({
   grid-template-columns: 1fr 1fr;
   padding-block: 10px;
   margin-block: 10px;
+  margin-top: 1rem;
+  color: #e8e8e8;
 
   justify-items: center;
   border-radius: 1rem;
   transition: all 1s;
-  background: linear-gradient(#81818185, #32323262);
+  background: var(--cor-background-linear-gradient);
 }
 .container:hover {
   transition: all 1s;
@@ -64,7 +66,7 @@ export default defineComponent({
 }
 .template-image:hover {
   transition: all 1s;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 @media (max-width: 780px) {

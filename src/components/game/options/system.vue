@@ -3,12 +3,14 @@ import { defineComponent } from "vue";
 import { Helpers } from "core/helpers/helpers";
 import SetupOptions from "setup/page.options.json";
 import IconButton from "comp/global/button/icon-button.vue";
+import ThemeButton from "comp/global/button/theme-button.vue";
 import LanguageButton from "comp/global/button/language-button.vue";
 
 export default defineComponent({
   name: "SystemOptions",
   components: {
     IconButton,
+    ThemeButton,
     LanguageButton,
   },
   computed: {
@@ -30,6 +32,8 @@ export default defineComponent({
       <LanguageButton />
     </div>
 
+    <ThemeButton />
+
     <div>
       <IconButton
         :name="logout.icon"
@@ -44,7 +48,8 @@ export default defineComponent({
 .system-container {
   display: grid;
   gap: 1rem;
-  grid-template-columns: 1fr 1fr;
+  color: var(--cor-font-color);
+  grid-template-columns: 1fr 1fr 1fr;
 }
 .system-container > div {
   width: auto;
@@ -56,6 +61,11 @@ export default defineComponent({
   border-bottom: 1px solid white;
   border-right: 1px solid white;
 }
+
 @media (max-width: 780px) {
+  .system-container {
+    gap: 2rem;
+    grid-template-columns: auto;
+  }
 }
 </style>

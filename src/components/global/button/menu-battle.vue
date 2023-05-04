@@ -33,17 +33,17 @@ export default defineComponent({
   width: 100%;
   padding: 10px;
   cursor: pointer;
+  color: white;
 }
 .button {
   width: 2rem;
   height: 2rem;
 }
 .label {
-  color: white;
   font-size: 1.2rem;
 }
 .container:hover {
-  background-color: #5c5c5c;
+  background-color: #5c5c5c76;
 }
 @media (max-width: 780px) {
   .container {
@@ -52,7 +52,6 @@ export default defineComponent({
     padding: 10px 0;
   }
   .label {
-    color: white;
     font-size: 1rem;
   }
 }

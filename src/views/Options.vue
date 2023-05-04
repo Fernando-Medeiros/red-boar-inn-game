@@ -36,8 +36,8 @@ export default defineComponent({
 <template>
   <AlertMessage :message="alertMessage" />
 
-  <div class="background-game">
-    <div class="main-container">
+  <div class="main-background">
+    <div class="main-container background">
       <Guides @show-guide="showGuide" :current-guide="activeGuide" />
 
       <CharacterOptions
@@ -55,4 +55,9 @@ export default defineComponent({
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.background {
+  padding-bottom: 1rem;
+  background: var(--cor-background-color);
+}
+</style>

@@ -58,6 +58,7 @@ export default defineComponent({
   display: grid;
   margin: auto;
   margin-top: 10px;
+  color: var(--cor-font-color);
 }
 .label {
   margin-bottom: 1rem;
@@ -71,12 +72,17 @@ export default defineComponent({
   width: 500px;
   height: 20px;
   padding: 6px 5px;
-  color: white;
   border: none;
   border-radius: 5px;
   border-bottom: 3px solid #d9d9d9;
   background-color: transparent;
+  color: var(--cor-font-color);
 }
+.input:focus {
+  color: black;
+  background-color: #d9d9d9;
+}
+
 @media (max-width: 780px) {
   .container {
     max-width: 100%;

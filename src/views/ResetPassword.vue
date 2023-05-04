@@ -89,29 +89,31 @@ export default defineComponent({
 
   <BannerSprites :sprite-left="'thief'" :sprite-right="'thief'" />
 
-  <div class="main-container">
-    <div class="background">
-      <form
-        class="form-login"
-        @submit.prevent="updatePassword"
-        @submit="submitForm = !submitForm"
-      >
-        <InputPassword
-          :label="inputs.password.label"
-          :placeholder="inputs.password.placeholder"
-          :description="inputs.password.description"
-          @emit-content="receivePassword"
-        />
+  <div class="main-background">
+    <div class="main-container">
+      <div class="background">
+        <form
+          class="form-login"
+          @submit.prevent="updatePassword"
+          @submit="submitForm = !submitForm"
+        >
+          <InputPassword
+            :label="inputs.password.label"
+            :placeholder="inputs.password.placeholder"
+            :description="inputs.password.description"
+            @emit-content="receivePassword"
+          />
 
-        <InputPassword
-          :label="inputs.confirmPassword.label"
-          :placeholder="inputs.confirmPassword.placeholder"
-          :description="inputs.confirmPassword.description"
-          @emit-content="receiveConfirmPassword"
-        />
+          <InputPassword
+            :label="inputs.confirmPassword.label"
+            :placeholder="inputs.confirmPassword.placeholder"
+            :description="inputs.confirmPassword.description"
+            @emit-content="receiveConfirmPassword"
+          />
 
-        <InputSubmit :label="inputs.submit.label" :is-disabled="submitForm" />
-      </form>
+          <InputSubmit :label="inputs.submit.label" :is-disabled="submitForm" />
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -120,7 +122,8 @@ export default defineComponent({
 .background {
   padding-block: 1rem;
   border-radius: 5px;
-  background: linear-gradient(#282828, #323232c0);
+  margin-top: 1rem;
+  background-color: var(--cor-background-color);
 }
 .form-login {
   z-index: 1;

@@ -34,11 +34,28 @@ export default defineComponent({
 }
 
 html {
-  background-color: #222222;
+  background-color: var(--cor-background-color);
+}
+
+:root {
+  --cor-font-color: #e8e8e8;
+  --cor-background-color: #222222;
+  --cor-background-linear-gradient: linear-gradient(#282828, #323232c0);
+}
+
+[color-scheme="light"] {
+  --cor-font-color: black;
+  --cor-background-color: #e8e8e8;
+  --cor-background-linear-gradient: linear-gradient(#81818185, #32323262);
+}
+
+[color-scheme="dark"] {
+  --cor-font-color: #e8e8e8;
+  --cor-background-color: #222222;
+  --cor-background-linear-gradient: linear-gradient(#282828c9, #323232c0);
 }
 
 #app {
-  color: #e8e8e8;
   background-image: linear-gradient(#2222225b, #2222225b, #222222c0),
     url("assets/pictures/img2.webp");
   background-repeat: no-repeat;
@@ -53,14 +70,14 @@ html {
   width: 100%;
 }
 
-.view-container {
-  margin-bottom: 20px;
-}
-
-.background-game {
+.main-background {
   margin-top: 1rem;
   padding: 1rem 10px;
   border-radius: 5px;
-  background: linear-gradient(#282828e1, #323232a1);
+  background: var(--cor-background-linear-gradient);
+}
+
+.view-container {
+  margin-bottom: 20px;
 }
 </style>

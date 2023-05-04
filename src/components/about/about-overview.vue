@@ -33,6 +33,7 @@ export default defineComponent({
 .container {
   padding-block: 2rem;
   padding-inline: 5rem;
+  color: var(--cor-font-color);
 }
 .title {
   font-size: 20px;
@@ -53,7 +54,7 @@ export default defineComponent({
   justify-content: space-around;
 }
 .credits a {
-  color: white;
+  color: var(--cor-font-color);
 }
 .credits a:hover {
   color: burlywood;

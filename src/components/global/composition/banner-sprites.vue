@@ -35,11 +35,10 @@ export default defineComponent({
   z-index: 0;
   width: 100%;
   height: 180px;
-  background-color: #222222;
+  background-color: var(--cor-background-color);
 }
 .banner-container {
   display: flex;
-  margin-bottom: 3rem;
   justify-content: space-between;
 }
 

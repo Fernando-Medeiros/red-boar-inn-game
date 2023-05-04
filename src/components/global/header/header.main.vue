@@ -3,13 +3,14 @@ import { defineComponent } from "vue";
 import { Helpers } from "core/helpers/helpers";
 import SetupHeader from "setup/global.header.json";
 import SetupRoutes from "setup/global.routes.json";
+import ThemeButton from "../button/theme-button.vue";
 import LanguageButton from "../button/language-button.vue";
 
 const Setup = SetupHeader[Helpers.translate()];
 
 export default defineComponent({
   name: "HeaderComponent",
-  components: { LanguageButton },
+  components: { ThemeButton, LanguageButton },
   computed: {
     buttons() {
       const { login, register } = Setup;
@@ -42,6 +43,7 @@ export default defineComponent({
           </nav>
 
           <LanguageButton />
+          <ThemeButton />
         </div>
 
         <nav class="routes">
@@ -62,7 +64,7 @@ export default defineComponent({
 .header-background {
   width: 100%;
   height: auto;
-  background-color: #222222;
+  background-color: var(--cor-background-color);
 }
 .header-container {
   width: 100%;
@@ -84,7 +86,7 @@ export default defineComponent({
   align-items: center;
 }
 .routes a {
-  color: #e8e8e8;
+  color: var(--cor-font-color);
   text-decoration: none;
   margin-left: 2.5rem;
 }
@@ -93,7 +95,8 @@ export default defineComponent({
   transition: all 1s;
 }
 .routes a.router-link-exact-active {
-  color: burlywood;
+  text-decoration: underline 4px;
+  text-decoration-color: burlywood;
 }
 
 @media (max-width: 780px) {

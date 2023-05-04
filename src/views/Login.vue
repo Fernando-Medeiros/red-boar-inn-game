@@ -95,39 +95,44 @@ export default defineComponent({
 
     <BannerSprites :sprite-left="'peasant'" :sprite-right="'peasant'" />
 
-    <div class="main-container">
-      <div class="background">
-        <form
-          class="form-login"
-          @submit.prevent="login"
-          @submit="submitForm = !submitForm"
-        >
-          <InputEmail
-            :label="inputs.email.label"
-            :placeholder="inputs.email.placeholder"
-            :description="inputs.email.description"
-            @emit-content="receiveEmail"
-          />
-
-          <InputPassword
-            :label="inputs.password.label"
-            :placeholder="inputs.password.placeholder"
-            :description="inputs.password.description"
-            @emit-content="receivePassword"
-          />
-
-          <div class="form-options">
-            <InputCheckBox
-              :label="inputs.checkbox.label"
-              @click="receiveRemember"
+    <div class="main-background">
+      <div class="main-container">
+        <div class="background">
+          <form
+            class="form-login"
+            @submit.prevent="login"
+            @submit="submitForm = !submitForm"
+          >
+            <InputEmail
+              :label="inputs.email.label"
+              :placeholder="inputs.email.placeholder"
+              :description="inputs.email.description"
+              @emit-content="receiveEmail"
             />
-            <router-link :to="inputs.recover.route">
-              {{ inputs.recover.label }}
-            </router-link>
-          </div>
 
-          <InputSubmit :label="inputs.submit.label" :is-disabled="submitForm" />
-        </form>
+            <InputPassword
+              :label="inputs.password.label"
+              :placeholder="inputs.password.placeholder"
+              :description="inputs.password.description"
+              @emit-content="receivePassword"
+            />
+
+            <div class="form-options">
+              <InputCheckBox
+                :label="inputs.checkbox.label"
+                @click="receiveRemember"
+              />
+              <router-link :to="inputs.recover.route">
+                {{ inputs.recover.label }}
+              </router-link>
+            </div>
+
+            <InputSubmit
+              :label="inputs.submit.label"
+              :is-disabled="submitForm"
+            />
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -137,20 +142,21 @@ export default defineComponent({
 .background {
   padding-block: 1rem;
   border-radius: 5px;
-  background: linear-gradient(#282828, #323232c0);
+  margin-top: 1rem;
+  background-color: var(--cor-background-color);
 }
 .form-login {
   z-index: 1;
   display: grid;
-  justify-content: center;
   gap: 2rem;
+  justify-content: center;
 }
 .form-options {
   display: flex;
   justify-content: space-between;
 }
 .form-options a {
-  color: white;
+  color: var(--cor-font-color);
   text-decoration: none;
 }
 .form-options a:hover {

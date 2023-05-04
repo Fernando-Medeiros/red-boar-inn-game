@@ -79,6 +79,7 @@ export default defineComponent({
   display: grid;
   margin: auto;
   margin-top: 10px;
+  color: var(--cor-font-color);
 }
 .label {
   margin-bottom: 1rem;
@@ -95,6 +96,11 @@ export default defineComponent({
   border: none;
   border-radius: 5px 0px 0px 5px;
   border-bottom: 4px solid #d9d9d9;
+  background-color: transparent;
+  color: var(--cor-font-color);
+}
+.input:focus {
+  color: black;
   background-color: #d9d9d9;
 }
 .input-button-container {
@@ -106,7 +112,6 @@ export default defineComponent({
   align-self: center;
   border: none;
   cursor: pointer;
-  background-color: #d9d9d957;
 }
 
 @media (max-width: 780px) {

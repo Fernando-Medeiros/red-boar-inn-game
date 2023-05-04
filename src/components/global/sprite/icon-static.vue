@@ -23,6 +23,7 @@ export default defineComponent({
   display: flex;
   gap: 10px;
   align-items: center;
+  color: var(--cor-font-color);
 }
 .icon {
   width: 2rem;

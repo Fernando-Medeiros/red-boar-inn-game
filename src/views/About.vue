@@ -26,15 +26,17 @@ export default defineComponent({
 
     <BannerSprites :sprite-left="'merchant'" :sprite-right="'merchant'" />
 
-    <div class="main-container">
-      <div class="about-container">
-        <AboutOverview
-          v-for="article in articles"
-          :key="article.title"
-          :title="article.title"
-          :content="article.content"
-          :credits="article?.links"
-        />
+    <div class="main-background">
+      <div class="main-container">
+        <div class="about-container">
+          <AboutOverview
+            v-for="article in articles"
+            :key="article.title"
+            :title="article.title"
+            :content="article.content"
+            :credits="article?.links"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -43,10 +45,10 @@ export default defineComponent({
 <style scoped>
 .about-container {
   z-index: 1;
-  display: grid;
   gap: 2rem;
-  padding-bottom: 1rem;
+  display: grid;
+  margin-top: 1rem;
   border-radius: 5px;
-  background: linear-gradient(#282828, #323232c0);
+  background-color: var(--cor-background-color);
 }
 </style>

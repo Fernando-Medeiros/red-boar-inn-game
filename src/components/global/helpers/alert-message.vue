@@ -62,9 +62,9 @@ export default defineComponent({
   height: auto;
   display: grid;
   padding: 10px;
-  color: black;
+  color: var(--cor-font-color);
   border-radius: 1rem;
-  background-color: white;
+  background-color: var(--cor-background-color);
 }
 .progress-bar {
   position: relative;

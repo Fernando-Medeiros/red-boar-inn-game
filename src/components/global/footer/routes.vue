@@ -27,7 +27,7 @@ export default defineComponent({
   margin: 5px;
 }
 .footer-routes a {
-  color: #e8e8e8;
+  color: var(--cor-font-color);
   text-decoration: none;
 }
 .footer-routes a:hover {

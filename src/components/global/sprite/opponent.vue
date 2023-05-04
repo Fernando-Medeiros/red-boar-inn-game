@@ -50,11 +50,16 @@ export default defineComponent({
   display: flex;
   gap: 1rem;
   text-align: center;
+  color: white;
 }
 @media (max-width: 780px) {
   .sprite {
     width: 4rem;
     height: 4rem;
+  }
+  .label {
+    display: grid;
+    font-size: 14px;
   }
 }
 </style>

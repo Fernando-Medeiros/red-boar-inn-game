@@ -71,23 +71,25 @@ export default defineComponent({
 
   <BannerSprites :sprite-left="'thief'" :sprite-right="'thief'" />
 
-  <div class="main-container">
-    <div class="background">
-      <form
-        class="form-login"
-        @submit.prevent="checkCustomer"
-        @submit="submitForm = !submitForm"
-        autocomplete="on"
-      >
-        <InputEmail
-          :label="inputs.email.label"
-          :placeholder="inputs.email.placeholder"
-          :description="inputs.email.description"
-          @emit-content="receiveEmail"
-        />
+  <div class="main-background">
+    <div class="main-container">
+      <div class="background">
+        <form
+          class="form-login"
+          @submit.prevent="checkCustomer"
+          @submit="submitForm = !submitForm"
+          autocomplete="on"
+        >
+          <InputEmail
+            :label="inputs.email.label"
+            :placeholder="inputs.email.placeholder"
+            :description="inputs.email.description"
+            @emit-content="receiveEmail"
+          />
 
-        <InputSubmit :label="inputs.submit.label" :is-disabled="submitForm" />
-      </form>
+          <InputSubmit :label="inputs.submit.label" :is-disabled="submitForm" />
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -96,7 +98,8 @@ export default defineComponent({
 .background {
   padding-block: 1rem;
   border-radius: 5px;
-  background: linear-gradient(#282828, #323232c0);
+  margin-top: 1rem;
+  background-color: var(--cor-background-color);
 }
 .form-login {
   z-index: 1;

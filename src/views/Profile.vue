@@ -17,7 +17,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="background-game">
+  <div class="main-background">
     <div class="main-container">
       <div class="menu-container">
         <div class="menu-top-one-icon">
@@ -100,7 +100,11 @@ export default defineComponent({
 .menu-container {
   display: grid;
   gap: 1rem;
+  padding-block: 1rem;
   min-height: 500px;
+  border-radius: 1rem;
+  background: var(--cor-background-linear-gradient),
+    var(--cor-background-linear-gradient);
 }
 
 .menu-top-one-icon,

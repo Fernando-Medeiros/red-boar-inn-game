@@ -40,7 +40,7 @@ export default defineComponent({
 .guide-button {
   width: 100%;
   height: 2rem;
-  color: white;
+  color: var(--cor-font-color);
   font-size: 1.1rem;
   border: none;
   border-radius: 5px;

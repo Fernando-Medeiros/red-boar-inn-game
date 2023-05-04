@@ -29,7 +29,7 @@ export default defineComponent({
   align-items: center;
 }
 .label-checkbox {
-  color: white;
+  color: var(--cor-font-color);
   font-size: 1rem;
   font-weight: 300;
 }

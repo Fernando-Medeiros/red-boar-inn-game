@@ -55,7 +55,8 @@ export default defineComponent({
 <style scoped>
 .background-footer {
   width: 100%;
-  background-color: #222222;
+  color: var(--cor-font-color);
+  background-color: var(--cor-background-color);
 }
 .container {
   display: flex;
@@ -67,6 +68,7 @@ export default defineComponent({
 .image-logo {
   width: 1.2rem;
   height: 1.2rem;
+  padding-right: 10px;
 }
 .contact-icons {
   display: grid;
