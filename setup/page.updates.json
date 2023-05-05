@@ -1,8 +1,8 @@
 {
   "br": {
     "title": "Atualizações",
-    "updates": {
-      "1": {
+    "updates": [
+      {
         "version": 0.1,
         "date": "04-04-2023",
         "description": [
@@ -10,7 +10,7 @@
           "Impl -> Página de atualizações"
         ]
       },
-      "2": {
+      {
         "version": 0.2,
         "date": "05-04-2023",
         "description": [
@@ -18,7 +18,7 @@
           "Impl -> Página de login e registro"
         ]
       },
-      "3": {
+      {
         "version": 0.3,
         "date": "07-04-2023",
         "description": [
@@ -26,12 +26,12 @@
           "Fix -> Design responsivo"
         ]
       },
-      "4": {
+      {
         "version": 0.4,
         "date": "09-04-2023",
         "description": ["Impl -> Funcionalidade: tradução de idioma (br, en)"]
       },
-      "5": {
+      {
         "version": 0.5,
         "date": "10-04-2023",
         "description": [
@@ -39,7 +39,7 @@
           "Fix -> Organização dos componentes e paginas do projeto."
         ]
       },
-      "6": {
+      {
         "version": 0.6,
         "date": "12-04-2023",
         "description": [
@@ -48,7 +48,7 @@
           "Fix -> Header; Footer"
         ]
       },
-      "7": {
+      {
         "version": 0.7,
         "date": "14-04-2023",
         "description": [
@@ -59,7 +59,7 @@
           "Fix -> Permissões de acesso a paginas autenticadas"
         ]
       },
-      "8": {
+      {
         "version": 0.8,
         "date": "16-04-2023",
         "description": [
@@ -68,7 +68,7 @@
           "Fix -> LocalStorage, SessionStorage"
         ]
       },
-      "9": {
+      {
         "version": 0.9,
         "date": "17-04-2023",
         "description": [
@@ -79,7 +79,7 @@
           "Fix -> Gold e Jewel nullos na barra de navegação do jogo"
         ]
       },
-      "10": {
+      {
         "version": 1.0,
         "date": "19-04-2023",
         "description": [
@@ -88,7 +88,7 @@
           "Fix -> Nome aleatorio ao criar um personagem"
         ]
       },
-      "11": {
+      {
         "version": 1.1,
         "date": "20-04-2023",
         "description": [
@@ -100,7 +100,7 @@
           "Fix -> Otimização dos componentes"
         ]
       },
-      "12": {
+      {
         "version": 1.2,
         "date": "21-04-2023",
         "description": [
@@ -112,17 +112,17 @@
           "Fix -> Removi os Dados do personagem no localStorage"
         ]
       }
-    }
+    ]
   },
   "en": {
     "title": "Updates",
-    "updates": {
-      "1": {
+    "updates": [
+      {
         "version": 0.1,
         "date": "04-04-2023",
         "description": ["Impl -> Homepage", "Impl -> Updates Page"]
       },
-      "2": {
+      {
         "version": 0.2,
         "date": "05-04-2023",
         "description": [
@@ -130,7 +130,7 @@
           "Impl -> Login and Registration Page"
         ]
       },
-      "3": {
+      {
         "version": 0.3,
         "date": "07-04-2023",
         "description": [
@@ -138,12 +138,12 @@
           "Fix -> Responsive design"
         ]
       },
-      "4": {
+      {
         "version": 0.4,
         "date": "09-04-2023",
         "description": ["Impl -> Feature: language translation (br, en)"]
       },
-      "5": {
+      {
         "version": 0.5,
         "date": "10-04-2023",
         "description": [
@@ -151,7 +151,7 @@
           "Fix -> Organization of project components and views."
         ]
       },
-      "6": {
+      {
         "version": 0.6,
         "date": "12-04-2023",
         "description": [
@@ -160,7 +160,7 @@
           "Fix -> Header; Footer"
         ]
       },
-      "7": {
+      {
         "version": 0.7,
         "date": "14-04-2023",
         "description": [
@@ -171,7 +171,7 @@
           "Fix -> Permissions to access authenticated pages"
         ]
       },
-      "8": {
+      {
         "version": 0.8,
         "date": "16-04-2023",
         "description": [
@@ -180,7 +180,7 @@
           "Fix -> LocalStorage, SessionStorage"
         ]
       },
-      "9": {
+      {
         "version": 0.9,
         "date": "17-04-2023",
         "description": [
@@ -191,7 +191,7 @@
           "Fix -> Gold and Jewel voids in game navigation bar"
         ]
       },
-      "10": {
+      {
         "version": 1.0,
         "date": "19-04-2023",
         "description": [
@@ -200,7 +200,7 @@
           "Fix -> Random name when creating a character"
         ]
       },
-      "11": {
+      {
         "version": 1.1,
         "date": "20-04-2023",
         "description": [
@@ -212,7 +212,7 @@
           "Fix -> Component Optimization"
         ]
       },
-      "12": {
+      {
         "version": 1.2,
         "date": "21-04-2023",
         "description": [
@@ -224,6 +224,6 @@
           "Fix -> Removed Character Data in localStorage"
         ]
       }
-    }
+    ]
   }
 }

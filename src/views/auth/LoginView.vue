@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, defineExpose } from "vue";
 import { LocalSession } from "core/storage/session.storage";
 import { SessionService } from "core/services/session-service";
 import { CharacterService } from "core/services/character-service";
@@ -17,11 +17,12 @@ import InputCheckBox from "comp/global/inputs/InputCheckBox.vue";
 
 const Setup = SetupLogin[Helpers.translate()];
 
-const title = ref(Helpers.random(Setup.titleTips));
-
-const inputs = ref({ ...Setup.form });
+const title = Helpers.random(Setup.titleTips);
+const inputs = { ...Setup.form };
 
 const alertMessage = ref("");
+defineExpose({ alertMessage });
+
 const submitForm = ref(false);
 const redirectTo = ref("/character/profile");
 
@@ -52,18 +53,6 @@ function redirectAfterLoad() {
   router.push({ path: redirectTo.value });
   location.reload();
 }
-
-function receiveEmail(value: string) {
-  form.value.email = value;
-}
-
-function receivePassword(value: string) {
-  form.value.password = value;
-}
-
-function receiveRemember() {
-  form.value.remember = !form.value.remember;
-}
 </script>
 
 <template>
@@ -86,20 +75,20 @@ function receiveRemember() {
               :label="inputs.email.label"
               :placeholder="inputs.email.placeholder"
               :description="inputs.email.description"
-              @emit-content="receiveEmail"
+              @emit-content="(email) => (form.email = email)"
             />
 
             <InputPassword
               :label="inputs.password.label"
               :placeholder="inputs.password.placeholder"
               :description="inputs.password.description"
-              @emit-content="receivePassword"
+              @emit-content="(password) => (form.password = password)"
             />
 
             <div class="form-options">
               <InputCheckBox
                 :label="inputs.checkbox.label"
-                @click="receiveRemember"
+                @click="() => (form.remember = !form.remember)"
               />
               <router-link :to="inputs.recover.route">
                 {{ inputs.recover.label }}

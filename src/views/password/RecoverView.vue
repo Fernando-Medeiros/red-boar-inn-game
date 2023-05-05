@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, defineExpose } from "vue";
 import { PasswordService } from "core/services/password-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupPassword from "setup/page.recover-password.json";
@@ -15,10 +15,12 @@ const Setup = SetupPassword[Helpers.translate()];
 
 let { success, error } = SetupResponses[Helpers.translate()].recoverPassword;
 
-const title = ref(Setup.title);
-const inputs = ref({ ...Setup.form });
+const title = Setup.title;
+const inputs = { ...Setup.form };
 
 const alertMessage = ref("");
+defineExpose({ alertMessage });
+
 const submitForm = ref(false);
 const redirectTo = ref("/auth/login");
 const form = ref({ email: "" });
@@ -33,10 +35,6 @@ async function checkCustomer() {
       ? router.push({ path: redirectTo.value })
       : (submitForm.value = !submitForm.value);
   }, 2500);
-}
-
-function receiveEmail(email: string) {
-  form.value.email = email;
 }
 </script>
 
@@ -60,7 +58,7 @@ function receiveEmail(email: string) {
             :label="inputs.email.label"
             :placeholder="inputs.email.placeholder"
             :description="inputs.email.description"
-            @emit-content="receiveEmail"
+            @emit-content="(email) => (form.email = email)"
           />
 
           <InputSubmit :label="inputs.submit.label" :is-disabled="submitForm" />

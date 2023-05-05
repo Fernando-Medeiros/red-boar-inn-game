@@ -1,32 +1,22 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 
-defineProps<{ name: string; label: string }>();
+defineProps<{ name: string }>();
 </script>
 
 <template>
-  <div class="container">
-    <img class="icon" :alt="name" :src="require(`assets/icons/${name}.svg`)" />
-
-    <label :for="label">{{ label }}</label>
-  </div>
+  <span>
+    <img
+      class="iconSprite"
+      :alt="name"
+      :src="require(`assets/icons/${name}.svg`)"
+    />
+  </span>
 </template>
 
 <style scoped>
-.container {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  color: var(--cor-font-color);
-}
-.icon {
+.iconSprite {
   width: 2rem;
   height: 2rem;
-}
-@media (max-width: 780px) {
-  .icon {
-    width: 1rem;
-    height: 1rem;
-  }
 }
 </style>

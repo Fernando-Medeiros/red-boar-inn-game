@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, ref } from "vue";
+import { onBeforeMount, defineExpose, ref } from "vue";
 import { PasswordService } from "core/services/password-service";
 import { Helpers } from "core/helpers/helpers";
 import { useRoute } from "vue-router";
@@ -25,6 +25,8 @@ const title = Setup.title;
 const inputs = { ...Setup.form };
 
 const alertMessage = ref("");
+defineExpose({ alertMessage });
+
 const submitForm = ref(false);
 const redirectTo = ref("/auth/login");
 const form = ref({ password: "", confirmPassword: "" });
@@ -51,14 +53,6 @@ async function updatePassword() {
 function checkPassword() {
   return form.value.confirmPassword === form.value.password;
 }
-
-function receivePassword(password: string) {
-  form.value.password = password;
-}
-
-function receiveConfirmPassword(password: string) {
-  form.value.confirmPassword = password;
-}
 </script>
 
 <template>
@@ -80,14 +74,14 @@ function receiveConfirmPassword(password: string) {
             :label="inputs.password.label"
             :placeholder="inputs.password.placeholder"
             :description="inputs.password.description"
-            @emit-content="receivePassword"
+            @emit-content="(password) => (form.password = password)"
           />
 
           <InputPassword
             :label="inputs.confirmPassword.label"
             :placeholder="inputs.confirmPassword.placeholder"
             :description="inputs.confirmPassword.description"
-            @emit-content="receiveConfirmPassword"
+            @emit-content="(password) => (form.confirmPassword = password)"
           />
 
           <InputSubmit :label="inputs.submit.label" :is-disabled="submitForm" />

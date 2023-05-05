@@ -54,7 +54,8 @@
         "label": "Sair",
         "route": "/auth/logout"
       },
-      "language": { "label": "Escolha o idioma" }
+      "language": { "label": "Escolha o idioma" },
+      "theme": { "label": "Escolha o tema" }
     }
   },
 
@@ -113,7 +114,8 @@
         "label": "Logout",
         "route": "/auth/logout"
       },
-      "language": { "label": "Choose language" }
+      "language": { "label": "Choose language" },
+      "theme": { "label": "Choose theme" }
     }
   }
 }

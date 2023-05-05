@@ -1,24 +1,20 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from "vue";
 
-defineEmits(["changeAction"]);
+const emit = defineEmits(["changeAction"]);
 
-defineProps({
-  name: { type: String, required: true },
-  label: { type: String, required: true },
-  toRoute: { type: String, default: "" },
-});
+defineProps<{ name: string; label: string; toRoute?: string }>();
 </script>
 
 <template>
-  <router-link :to="toRoute" class="IconButton-link">
+  <router-link :to="toRoute || ''" class="IconButton-link">
     <div class="container">
       <img
         class="IconButton"
         :alt="name"
-        :src="require(`assets/icons/${name}.svg`)"
-        @click="$emit('changeAction')"
         :style="!toRoute ? 'filter: grayscale()' : ''"
+        :src="require(`assets/icons/${name}.svg`)"
+        @click="emit('changeAction')"
       />
       <span class="IconButton-label">
         <p :for="label">{{ label }}</p>
@@ -34,7 +30,6 @@ defineProps({
 .IconButton-link:hover {
   filter: brightness(1.3);
 }
-
 .container {
   display: grid;
   gap: 10px;

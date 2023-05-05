@@ -1,32 +1,19 @@
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import { Helpers } from "core/helpers/helpers";
 import SetupDungeon from "setup/page.dungeon.json";
 import OpponentsDatabase from "core/database/enemies.json";
-import CharacterPreview from "comp/game/profile/character-preview.vue";
+import CharacterPreview from "comp/game/Partials/CharacterPreview.vue";
 import OpponentSprite from "comp/global/sprites/OpponentSprite.vue";
 import BattleButton from "comp/global/buttons/BattleButton.vue";
 
 const Setup = SetupDungeon[Helpers.translate()];
 
-export default defineComponent({
-  name: "DungeonView",
-  components: { CharacterPreview, OpponentSprite, BattleButton },
-  computed: {
-    menu() {
-      return Setup.menu;
-    },
-    opponents() {
-      const { magic, melee } = OpponentsDatabase;
-      return { magic, melee };
-    },
-  },
-  methods: {
-    changeAction(action: string) {
-      console.log(action);
-    },
-  },
-});
+const menuActions = { ...Setup.menu };
+const opponents = { ...OpponentsDatabase };
+
+function changeAction(action: string) {
+  console.log(action);
+}
 </script>
 
 <template>
@@ -44,7 +31,7 @@ export default defineComponent({
 
       <div class="battle-menu">
         <BattleButton
-          v-for="button in menu"
+          v-for="button in menuActions"
           :key="button.icon"
           :name="button.icon"
           :label="button.label"

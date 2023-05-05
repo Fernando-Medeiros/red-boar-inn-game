@@ -12,9 +12,7 @@ const isAuthenticated = ref(LocalSession.isAuthenticated());
   <HeaderMain v-if="!isAuthenticated" />
   <HeaderGame v-if="isAuthenticated" />
 
-  <main class="view-container">
-    <router-view />
-  </main>
+  <router-view />
 
   <FooterMain />
 </template>
@@ -37,7 +35,7 @@ html {
 }
 
 [color-scheme="light"] {
-  --cor-font-color: black;
+  --cor-font-color: #222222;
   --cor-background-color: #e8e8e8;
   --cor-background-linear-gradient: linear-gradient(#81818185, #32323262);
 }
@@ -45,12 +43,16 @@ html {
 [color-scheme="dark"] {
   --cor-font-color: #e8e8e8;
   --cor-background-color: #222222;
-  --cor-background-linear-gradient: linear-gradient(#282828c9, #323232c0);
+  --cor-background-linear-gradient: linear-gradient(
+    #333333c9,
+    #323232a9,
+    #32323275
+  );
 }
 
 #app {
-  background-image: linear-gradient(#2222225b, #2222225b, #222222c0),
-    url("assets/pictures/img2.webp");
+  background-image: linear-gradient(#222222b6, #22222281, #22222275),
+    url("assets/pictures/img4.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
@@ -58,19 +60,12 @@ html {
 }
 
 .main-container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: auto;
-  width: 100%;
 }
 
 .main-background {
-  margin-top: 1rem;
-  padding: 1rem 10px;
-  border-radius: 5px;
-  background: var(--cor-background-linear-gradient);
-}
-
-.view-container {
-  margin-bottom: 20px;
+  padding: 10px;
+  padding-bottom: 2rem;
 }
 </style>

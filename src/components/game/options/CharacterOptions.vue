@@ -1,5 +1,5 @@
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { defineEmits, ref } from "vue";
 import { CharacterService } from "core/services/character-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupOptions from "setup/page.options.json";
@@ -15,48 +15,26 @@ const {
   },
 } = SetupResponses[Helpers.translate()];
 
-export default defineComponent({
-  name: "CharacterOptions",
-  emits: ["emitMessage"],
-  components: {
-    InputCharacterName,
-    InputSubmit,
-  },
-  computed: {
-    inputs() {
-      const {
-        forms: { characterName },
-      } = Setup.character;
+const emit = defineEmits(["emitMessage"]);
 
-      return characterName;
-    },
-  },
-  data() {
-    return {
-      submitForm: false,
+const inputs = { ...Setup.character.forms.characterName };
 
-      form: {
-        charName: "",
-      },
-    };
-  },
-  methods: {
-    async saveCharacterName() {
-      const { status } = await CharacterService.update(this.form);
-
-      this.$emit("emitMessage", status === 204 ? success : error);
-
-      this.submitForm = !this.submitForm;
-    },
-    receiveCharName(name: string) {
-      this.form.charName = name;
-    },
-  },
+const submitForm = ref(false);
+const form = ref({
+  charName: "",
 });
+
+async function saveCharacterName() {
+  const { status } = await CharacterService.update(form.value);
+
+  emit("emitMessage", status === 204 ? success : error);
+
+  submitForm.value = !submitForm.value;
+}
 </script>
 
 <template>
-  <div class="top-character-name">
+  <div>
     <form
       class="form-container"
       @submit.prevent="saveCharacterName"
@@ -66,7 +44,7 @@ export default defineComponent({
         :label="inputs.name.label"
         :placeholder="inputs.name.placeholder"
         :description="inputs.name.description"
-        @emit-content="receiveCharName"
+        @emit-content="(name) => (form.charName = name)"
       />
 
       <InputSubmit :label="inputs.submit.label" :is-disabled="submitForm" />
@@ -75,11 +53,8 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.top-character-name {
-  margin-bottom: 2rem;
-}
 .form-container {
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
 }
 </style>

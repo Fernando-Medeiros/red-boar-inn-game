@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { Helpers } from "core/helpers/helpers";
 import SetupHome from "setup/page.home.json";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
-import GamePreview from "comp/home/game-preview.vue";
+import HomePreview from "comp/home/HomePreview.vue";
 
-const title = ref(SetupHome[Helpers.translate()].title);
-
-const previews = ref(SetupHome[Helpers.translate()].preview);
+const title = SetupHome[Helpers.translate()].title;
+const previews = SetupHome[Helpers.translate()].preview;
 </script>
 
 <template>
@@ -19,7 +17,7 @@ const previews = ref(SetupHome[Helpers.translate()].preview);
 
     <div class="main-background">
       <div class="main-container previews-container">
-        <GamePreview
+        <HomePreview
           v-for="preview in previews"
           :key="preview.title"
           :title="preview.title"

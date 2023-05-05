@@ -25,7 +25,7 @@ export default defineComponent({
         seconds < -1
           ? [
               clearInterval(interval),
-              (Object(this.$parent?.$data).alertMessage = ""),
+              (Object(this.$parent?.$.exposed).alertMessage.value = ""),
             ]
           : (progress.style.width = (seconds / duration) * duration + "0%");
       }, 500);

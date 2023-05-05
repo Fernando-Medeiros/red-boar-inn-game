@@ -1,5 +1,5 @@
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { defineEmits, ref } from "vue";
 import { AccountService } from "core/services/account-service";
 import { PasswordService } from "core/services/password-service";
 import { Helpers } from "core/helpers/helpers";
@@ -17,79 +17,47 @@ const {
   resetPassword: { success: pwdSuccess },
 } = SetupResponses[Helpers.translate()];
 
-export default defineComponent({
-  name: "AccountOptions",
-  emits: ["emitMessage"],
-  components: {
-    InputName,
-    InputEmail,
-    InputPassword,
-    InputSubmit,
-  },
-  computed: {
-    inputs() {
-      const { firstName, lastName, email, password, submit } =
-        Setup.account.form;
+const emit = defineEmits(["emitMessage"]);
 
-      return { firstName, lastName, email, password, submit };
-    },
-  },
-  data() {
-    return {
-      nameForm: false,
-      emailForm: false,
-      passwordForm: false,
+const inputs = { ...Setup.account.form };
 
-      form: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-      },
-    };
-  },
-  methods: {
-    async updateFullName() {
-      const { firstName, lastName } = this.form;
-      const { status, message } = await AccountService.update({
-        firstName,
-        lastName,
-      });
+const nameForm = ref(false);
+const emailForm = ref(false);
+const passwordForm = ref(false);
 
-      this.$emit("emitMessage", status === 204 ? accSuccess : message);
-      this.nameForm = !this.nameForm;
-    },
-
-    async updateEmail() {
-      const { email } = this.form;
-      const { status, message } = await AccountService.update({ email });
-
-      this.$emit("emitMessage", status === 204 ? accSuccess : message);
-      this.emailForm = !this.emailForm;
-    },
-
-    async updatePassword() {
-      const { password } = this.form;
-      const { status, message } = await PasswordService.update({ password });
-
-      this.$emit("emitMessage", status === 204 ? pwdSuccess : message);
-      this.passwordForm = !this.passwordForm;
-    },
-
-    receiveFirstName(name: string) {
-      this.form.firstName = name;
-    },
-    receiveLastName(name: string) {
-      this.form.lastName = name;
-    },
-    receiveEmail(email: string) {
-      this.form.email = email;
-    },
-    receivePassword(password: string) {
-      this.form.password = password;
-    },
-  },
+const form = ref({
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
 });
+
+async function updateFullName() {
+  const { firstName, lastName } = form.value;
+  const { status, message } = await AccountService.update({
+    firstName,
+    lastName,
+  });
+
+  emit("emitMessage", status === 204 ? accSuccess : message);
+  nameForm.value = !nameForm.value;
+}
+
+async function updateEmail() {
+  const { email } = form.value;
+  const { status, message } = await AccountService.update({ email });
+
+  emit("emitMessage", status === 204 ? accSuccess : message);
+  emailForm.value = !emailForm.value;
+}
+
+async function updatePassword() {
+  const { password } = form.value;
+  const { status, message } = await PasswordService.update({ password });
+
+  emit("emitMessage", status === 204 ? pwdSuccess : message);
+  passwordForm.value = !passwordForm.value;
+}
 </script>
 
 <template>
@@ -104,13 +72,13 @@ export default defineComponent({
           :label="inputs.firstName.label"
           :placeholder="inputs.firstName.placeholder"
           :description="inputs.firstName.description"
-          @emit-content="receiveFirstName"
+          @emit-content="(name) => (form.firstName = name)"
         />
         <InputName
           :label="inputs.lastName.label"
           :placeholder="inputs.lastName.placeholder"
           :description="inputs.lastName.description"
-          @emit-content="receiveLastName"
+          @emit-content="(name) => (form.lastName = name)"
         />
         <InputSubmit
           class="InputSubmit"
@@ -130,7 +98,7 @@ export default defineComponent({
           :label="inputs.email.label"
           :placeholder="inputs.email.placeholder"
           :description="inputs.email.description"
-          @emit-content="receiveEmail"
+          @emit-content="(email) => (form.email = email)"
         />
         <InputSubmit
           class="InputSubmit"
@@ -150,13 +118,10 @@ export default defineComponent({
           :label="inputs.password.label"
           :placeholder="inputs.password.placeholder"
           :description="inputs.password.description"
-          @emit-content="receivePassword"
+          @emit-content="(password) => (form.password = password)"
         />
-        <InputSubmit
-          class="InputSubmit"
-          :label="inputs.submit.label"
-          :is-disabled="passwordForm"
-        />
+
+        <InputSubmit :label="inputs.submit.label" :is-disabled="passwordForm" />
       </form>
     </div>
   </div>
@@ -165,9 +130,6 @@ export default defineComponent({
 <style scoped>
 .form-container {
   display: grid;
-  gap: 1.5rem;
-}
-.InputSubmit {
-  margin-top: 1rem;
+  gap: 2rem;
 }
 </style>

@@ -1,104 +1,90 @@
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { defineEmits, onBeforeMount, ref } from "vue";
 import { StatusService } from "core/services/status-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupStatus from "setup/page.status.json";
 import SetupResponses from "setup/global.responses.json";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 import IncrDecrButton from "comp/global/buttons/IncrDecrButton.vue";
+
+type attributes = "strength" | "intelligence" | "dexterity" | "vitality";
+
 const {
   updates: {
     status: { success, error },
   },
 } = SetupResponses[Helpers.translate()];
 
-export default defineComponent({
-  name: "StatusOverview",
-  emits: ["emitMessage"],
-  components: { IncrDecrButton, InputSubmit },
+const emit = defineEmits(["emitMessage"]);
 
-  async beforeCreate() {
-    const {
-      experience,
-      health,
-      energy,
-      currentHealth,
-      currentEnergy,
-      points,
-      strength,
-      intelligence,
-      dexterity,
-      vitality,
-    } = await StatusService.get();
+onBeforeMount(async () => {
+  const {
+    experience,
+    health,
+    energy,
+    currentHealth,
+    currentEnergy,
+    points,
+    strength,
+    intelligence,
+    dexterity,
+    vitality,
+  } = await StatusService.get();
 
-    Object.assign(this.statusPrimary, {
-      points,
-      strength,
-      intelligence,
-      vitality,
-      dexterity,
-    });
-    Object.assign(this.statusSecondary, {
-      experience,
-      health,
-      energy,
-      currentHealth,
-      currentEnergy,
-    });
-  },
-
-  computed: {
-    statusInfo() {
-      return { ...SetupStatus[Helpers.translate()] };
-    },
-  },
-
-  data() {
-    return {
-      submitForm: false,
-
-      statusPrimary: {
-        points: 1,
-        strength: 1,
-        intelligence: 1,
-        dexterity: 1,
-        vitality: 1,
-      },
-      statusSecondary: {
-        experience: 1,
-        health: 1,
-        energy: 1,
-        currentHealth: 1,
-        currentEnergy: 1,
-      },
-    };
-  },
-  methods: {
-    async updateStatus() {
-      const { status } = await StatusService.update(this.statusPrimary);
-
-      this.$emit("emitMessage", status === 204 ? success : error);
-
-      this.submitForm = !this.submitForm;
-    },
-
-    incrementPoints(
-      value: "strength" | "intelligence" | "dexterity" | "vitality"
-    ) {
-      this.statusPrimary.points > 1
-        ? [this.statusPrimary.points--, this.statusPrimary[value]++]
-        : "";
-    },
-
-    decrementPoints(
-      value: "strength" | "intelligence" | "dexterity" | "vitality"
-    ) {
-      this.statusPrimary[value] > 1
-        ? [this.statusPrimary.points++, this.statusPrimary[value]--]
-        : "";
-    },
-  },
+  Object.assign(statusPrimary.value, {
+    points,
+    strength,
+    intelligence,
+    vitality,
+    dexterity,
+  });
+  Object.assign(statusSecondary.value, {
+    experience,
+    health,
+    energy,
+    currentHealth,
+    currentEnergy,
+  });
 });
+
+const statusInfo = { ...SetupStatus[Helpers.translate()] };
+
+const submitForm = ref(false);
+
+const statusPrimary = ref({
+  points: 1,
+  strength: 1,
+  intelligence: 1,
+  dexterity: 1,
+  vitality: 1,
+});
+const statusSecondary = ref({
+  experience: 1,
+  health: 1,
+  energy: 1,
+  currentHealth: 1,
+  currentEnergy: 1,
+});
+
+async function updateStatus() {
+  const { status } = await StatusService.update(statusPrimary.value);
+
+  emit("emitMessage", status === 204 ? success : error);
+
+  submitForm.value = !submitForm.value;
+}
+
+function incrementStatus(value: attributes) {
+  statusPrimary.value.points > 1
+    ? [statusPrimary.value.points--, statusPrimary.value[value]++]
+    : "";
+}
+
+function decrementStatus(value: attributes) {
+  statusPrimary.value[value] > 1
+    ? [statusPrimary.value.points++, statusPrimary.value[value]--]
+    : "";
+}
 </script>
 
 <template>
@@ -118,13 +104,13 @@ export default defineComponent({
             :type="'decrement'"
             :attr-name="name"
             :max-value="statusPrimary.points"
-            @update-value="decrementPoints"
+            @update-value="decrementStatus"
           />
           <IncrDecrButton
             :type="'increment'"
             :attr-name="name"
             :max-value="statusPrimary.points"
-            @update-value="incrementPoints"
+            @update-value="incrementStatus"
           />
         </div>
       </div>

@@ -20,8 +20,8 @@ let { success, error } = SetupResponses[Helpers.translate()].register;
 const alertMessage = ref("");
 defineExpose({ alertMessage });
 
-const title = ref(Setup.title);
-const inputs = ref({ ...Setup.form });
+const title = Setup.title;
+const inputs = { ...Setup.form };
 
 const submitForm = ref(false);
 const redirectTo = ref("/auth/login");
@@ -36,7 +36,7 @@ const form = ref({
 async function createAccount() {
   checkPassword()
     ? (error = (await AccountService.create(form.value))?.message || "")
-    : (error = inputs.value.confirmPassword.message);
+    : (error = inputs.confirmPassword.message);
 
   alertMessage.value = error || success;
 
@@ -49,26 +49,6 @@ async function createAccount() {
 
 function checkPassword() {
   return form.value.confirmPassword === form.value.password;
-}
-
-function receiveFirstName(value: string) {
-  form.value.firstName = value;
-}
-
-function receiveLastName(value: string) {
-  form.value.lastName = value;
-}
-
-function receiveEmail(value: string) {
-  form.value.email = value;
-}
-
-function receivePassword(value: string) {
-  form.value.password = value;
-}
-
-function receiveConfirmPassword(value: string) {
-  form.value.confirmPassword = value;
 }
 </script>
 
@@ -92,35 +72,35 @@ function receiveConfirmPassword(value: string) {
               :label="inputs.firstName.label"
               :placeholder="inputs.firstName.placeholder"
               :description="inputs.firstName.description"
-              @emit-content="receiveFirstName"
+              @emit-content="(name) => (form.firstName = name)"
             />
 
             <InputName
               :label="inputs.lastName.label"
               :placeholder="inputs.lastName.placeholder"
               :description="inputs.lastName.description"
-              @emit-content="receiveLastName"
+              @emit-content="(name) => (form.lastName = name)"
             />
 
             <InputEmail
               :label="inputs.email.label"
               :placeholder="inputs.email.placeholder"
               :description="inputs.email.description"
-              @emit-content="receiveEmail"
+              @emit-content="(email) => (form.email = email)"
             />
 
             <InputPassword
               :label="inputs.password.label"
               :placeholder="inputs.password.placeholder"
               :description="inputs.password.description"
-              @emit-content="receivePassword"
+              @emit-content="(password) => (form.password = password)"
             />
 
             <InputPassword
               :label="inputs.confirmPassword.label"
               :placeholder="inputs.confirmPassword.placeholder"
               :description="inputs.confirmPassword.description"
-              @emit-content="receiveConfirmPassword"
+              @emit-content="(password) => (form.confirmPassword = password)"
             />
 
             <InputSubmit

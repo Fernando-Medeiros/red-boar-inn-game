@@ -1,19 +1,10 @@
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import { Helpers } from "core/helpers/helpers";
 import SetupProfile from "setup/page.profile.json";
-import CharacterPreview from "comp/game/profile/character-preview.vue";
+import CharacterPreview from "comp/game/Partials/CharacterPreview.vue";
 import IconButton from "comp/global/buttons/IconButton.vue";
 
-export default defineComponent({
-  name: "ProfileView",
-  components: { CharacterPreview, IconButton },
-  computed: {
-    menuInfo() {
-      return SetupProfile[Helpers.translate()].menu;
-    },
-  },
-});
+const menuInfo = SetupProfile[Helpers.translate()].menu;
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useDark, useToggle } from "@vueuse/core";
 import { ref } from "vue";
+import { useDark, useToggle } from "@vueuse/core";
 
 const isDark = ref(
   useDark({
@@ -33,18 +33,15 @@ function toggleTheme() {
 .button {
   padding-inline: 10px;
   border: none;
-  background-color: transparent;
   cursor: pointer;
+  background-color: transparent;
 }
 .button > img {
-  width: 2rem;
-  height: 2rem;
+  width: 1.8rem;
+  border-radius: 1rem;
 }
 .button:hover {
-  filter: sepia();
-  transform: scale(1.2);
-}
-
-@media (max-width: 768px) {
+  filter: brightness(1.2);
+  transform: scale(1.1);
 }
 </style>

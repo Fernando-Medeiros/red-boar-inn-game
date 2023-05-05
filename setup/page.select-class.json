@@ -2,7 +2,7 @@
   "br": {
     "defaultClass": "peasant",
     "defaultGender": "man",
-    "buttonSave": { "label": "Salvar" },
+    "saveButton": { "label": "Salvar" },
     "classes": {
       "peasant": [
         "O camponês é uma classe que não segue uma tradição específica ou possui habilidades especializadas.",
@@ -49,7 +49,7 @@
   "en": {
     "defaultClass": "peasant",
     "defaultGender": "woman",
-    "buttonSave": { "label": "Save" },
+    "saveButton": { "label": "Save" },
     "classes": {
       "peasant": [
         "The Peasant is a class that does not follow a specific tradition or have specialized skills.",

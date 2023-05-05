@@ -26,6 +26,7 @@ defineProps<{ spriteLeft: string; spriteRight: string }>();
 }
 .banner-container {
   display: flex;
+  margin-bottom: 2rem;
   justify-content: space-between;
 }
 
@@ -34,7 +35,7 @@ defineProps<{ spriteLeft: string; spriteRight: string }>();
     height: 120px;
   }
   .banner-container {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 }
 </style>

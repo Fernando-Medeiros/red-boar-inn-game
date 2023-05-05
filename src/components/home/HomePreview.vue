@@ -1,18 +1,15 @@
-<script lang="ts">
-import { defineComponent, PropType } from "vue";
+<script setup lang="ts">
+import { defineProps } from "vue";
 
-export default defineComponent({
-  name: "GamePreview",
-  props: {
-    title: { type: String, required: true },
-    content: { type: Array as PropType<string[]>, required: true },
-    image: { type: String, required: true },
-  },
-});
+defineProps<{
+  title: string;
+  content: string[];
+  image: string;
+}>();
 </script>
 
 <template>
-  <div class="container">
+  <div class="home-preview-container">
     <div class="content">
       <p class="title">{{ title }}</p>
       <p v-for="paragraph in content" :key="paragraph">
@@ -33,7 +30,7 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.container {
+.home-preview-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding-block: 10px;
@@ -46,10 +43,7 @@ export default defineComponent({
   transition: all 1s;
   background: var(--cor-background-linear-gradient);
 }
-.container:hover {
-  transition: all 1s;
-  background: linear-gradient(#7e7e7e9f, #32323262);
-}
+
 .title {
   font-size: 2rem;
   text-align: center;

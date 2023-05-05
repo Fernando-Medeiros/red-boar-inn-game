@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import { isNotAuthenticated, isAuthenticated } from "./constraints";
-import HomeView from "view/HomeView.vue";
+import HomeView from "view/home/HomeView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -13,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "updates",
         name: "updates",
-        component: () => import("view/UpdateView.vue"),
+        component: () => import("view/home/UpdatesView.vue"),
         meta: {
           global: true,
         },
@@ -21,7 +21,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "about",
         name: "about",
-        component: () => import("view/AboutView.vue"),
+        component: () => import("view/home/AboutView.vue"),
         meta: {
           global: true,
         },
@@ -34,12 +34,12 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "login",
         name: "login",
-        component: () => import("view/LoginView.vue"),
+        component: () => import("view/auth/LoginView.vue"),
       },
       {
         path: "logout",
         name: "logout",
-        component: () => import("view/LogoutView.vue"),
+        component: () => import("view/auth/LogoutView.vue"),
         meta: {
           requiresAuth: true,
         },
@@ -47,7 +47,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "register",
         name: "register",
-        component: () => import("view/RegisterView.vue"),
+        component: () => import("view/auth/RegisterView.vue"),
       },
     ],
   },
@@ -57,12 +57,12 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "recover",
         name: "recover",
-        component: () => import("view/RecoverPwdView.vue"),
+        component: () => import("view/password/RecoverView.vue"),
       },
       {
         path: "reset/:token",
         name: "reset",
-        component: () => import("view/ResetPwdView.vue"),
+        component: () => import("view/password/ResetView.vue"),
       },
     ],
   },
@@ -75,22 +75,22 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "profile",
         name: "profile",
-        component: async () => await import("view/Profile.vue"),
+        component: async () => await import("view/game/ProfileView.vue"),
       },
       {
         path: "status",
         name: "status",
-        component: async () => await import("view/Status.vue"),
+        component: async () => await import("view/game/StatusView.vue"),
       },
       {
         path: "class",
         name: "class",
-        component: async () => await import("view/SelectClass.vue"),
+        component: async () => await import("view/game/SelectClassView.vue"),
       },
       {
         path: "options",
         name: "options",
-        component: async () => await import("view/Options.vue"),
+        component: async () => await import("view/game/OptionsView.vue"),
       },
     ],
   },
@@ -103,7 +103,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "",
         name: "dungeon",
-        component: async () => await import("view/Dungeon.vue"),
+        component: async () => await import("view/game/DungeonView.vue"),
       },
     ],
   },

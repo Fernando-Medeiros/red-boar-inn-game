@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { Helpers } from "core/helpers/helpers";
 import SetupUpdates from "setup/page.updates.json";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
-import UpdatePreview from "comp/update/update.preview.vue";
+import UpdatePreview from "comp/home/UpdatePreview.vue";
 
-const title = ref(SetupUpdates[Helpers.translate()].title);
-
-const updates = ref(SetupUpdates[Helpers.translate()].updates);
+const title = SetupUpdates[Helpers.translate()].title;
+const updates = SetupUpdates[Helpers.translate()].updates;
 </script>
 
 <template>
@@ -20,7 +18,7 @@ const updates = ref(SetupUpdates[Helpers.translate()].updates);
     <div class="main-background">
       <div class="main-container">
         <div class="updates-container">
-          <UpdatePreview :updates="updates" />
+          <UpdatePreview :updates="updates.reverse()" />
         </div>
       </div>
     </div>
