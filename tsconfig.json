@@ -18,6 +18,7 @@
       "setup/*": ["setup/*"],
       "assets/*": ["assets/*"],
       "core/*": ["src/core/*"],
+      "router/*": ["src/router/*"],
       "comp/*": ["src/components/*"],
       "view/*": ["src/views/*"]
     },

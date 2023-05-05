@@ -10,6 +10,7 @@ module.exports = defineConfig({
         setup: path.resolve(__dirname, "setup/"),
         assets: path.resolve(__dirname, "assets/"),
         core: path.resolve(__dirname, "src/core/"),
+        router: path.resolve(__dirname, "src/router/"),
         comp: path.resolve(__dirname, "src/components/"),
         view: path.resolve(__dirname, "src/views/"),
       },
