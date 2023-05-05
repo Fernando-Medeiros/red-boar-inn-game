@@ -2,9 +2,9 @@
 import { defineComponent } from "vue";
 import { Helpers } from "core/helpers/helpers";
 import SetupOptions from "setup/page.options.json";
-import IconButton from "comp/global/button/icon-button.vue";
-import ThemeButton from "comp/global/button/theme-button.vue";
-import LanguageButton from "comp/global/button/language-button.vue";
+import IconButton from "comp/global/buttons/IconButton.vue";
+import ThemeButton from "comp/global/buttons/ThemeButton.vue";
+import LanguageButton from "comp/global/buttons/LanguageButton.vue";
 
 export default defineComponent({
   name: "SystemOptions",

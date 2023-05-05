@@ -1,29 +1,22 @@
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { LocalSession } from "./core/storage/session.storage";
-import Header from "comp/global/header/header.main.vue";
-import Footer from "comp/global/footer/footer.main.vue";
-import HeaderGame from "comp/global/header-game/header-game.vue";
+import HeaderMain from "comp/global/headers/HeaderMain.vue";
+import HeaderGame from "comp/global/headers/HeaderGame.vue";
+import FooterMain from "comp/global/footer/FooterMain.vue";
 
-export default defineComponent({
-  name: "MainComponent",
-  components: { Header, Footer, HeaderGame },
-  computed: {
-    isAuthenticated() {
-      return LocalSession.isAuthenticated();
-    },
-  },
-});
+const isAuthenticated = ref(LocalSession.isAuthenticated());
 </script>
 
 <template>
-  <Header v-if="!isAuthenticated" />
+  <HeaderMain v-if="!isAuthenticated" />
   <HeaderGame v-if="isAuthenticated" />
 
   <main class="view-container">
     <router-view />
   </main>
-  <Footer />
+
+  <FooterMain />
 </template>
 
 <style>

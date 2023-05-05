@@ -3,7 +3,7 @@ import { defineComponent } from "vue";
 import { Helpers } from "core/helpers/helpers";
 import SetupProfile from "setup/page.profile.json";
 import CharacterPreview from "comp/game/profile/character-preview.vue";
-import IconButton from "comp/global/button/icon-button.vue";
+import IconButton from "comp/global/buttons/IconButton.vue";
 
 export default defineComponent({
   name: "ProfileView",

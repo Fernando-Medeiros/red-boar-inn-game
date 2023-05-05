@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import AlertMessage from "comp/global/helpers/alert-message.vue";
+import AlertMessage from "comp/global/helpers/AlertMessage.vue";
 import Guides from "comp/game/options/guides.vue";
 import CharacterOptions from "comp/game/options/character.vue";
 import SystemOptions from "comp/game/options/system.vue";

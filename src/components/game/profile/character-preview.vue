@@ -3,7 +3,7 @@ import { defineComponent } from "vue";
 import { CharacterService } from "core/services/character-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupProfile from "setup/page.profile.json";
-import CharacterSprite from "comp/global/sprite/character.vue";
+import CharacterSprite from "comp/global/sprites/CharacterSprite.vue";
 
 export default defineComponent({
   name: "CharacterPreview",

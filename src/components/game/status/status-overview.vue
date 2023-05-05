@@ -4,8 +4,8 @@ import { StatusService } from "core/services/status-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupStatus from "setup/page.status.json";
 import SetupResponses from "setup/global.responses.json";
-import InputSubmit from "comp/global/input/input-submit.vue";
-import AddButton from "comp/global/button/add-button.vue";
+import InputSubmit from "comp/global/inputs/InputSubmit.vue";
+import IncrDecrButton from "comp/global/buttons/IncrDecrButton.vue";
 const {
   updates: {
     status: { success, error },
@@ -15,7 +15,7 @@ const {
 export default defineComponent({
   name: "StatusOverview",
   emits: ["emitMessage"],
-  components: { AddButton, InputSubmit },
+  components: { IncrDecrButton, InputSubmit },
 
   async beforeCreate() {
     const {
@@ -114,13 +114,13 @@ export default defineComponent({
         <p>{{ value }}</p>
 
         <div class="status-buttons" v-if="!name.includes('points')">
-          <AddButton
+          <IncrDecrButton
             :type="'decrement'"
             :attr-name="name"
             :max-value="statusPrimary.points"
             @update-value="decrementPoints"
           />
-          <AddButton
+          <IncrDecrButton
             :type="'increment'"
             :attr-name="name"
             :max-value="statusPrimary.points"

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import { isNotAuthenticated, isAuthenticated } from "./constraints";
-import HomeView from "view/Home.vue";
+import HomeView from "view/HomeView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -13,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "updates",
         name: "updates",
-        component: () => import("view/Update.vue"),
+        component: () => import("view/UpdateView.vue"),
         meta: {
           global: true,
         },
@@ -21,7 +21,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "about",
         name: "about",
-        component: () => import("view/About.vue"),
+        component: () => import("view/AboutView.vue"),
         meta: {
           global: true,
         },
@@ -34,12 +34,12 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "login",
         name: "login",
-        component: () => import("view/Login.vue"),
+        component: () => import("view/LoginView.vue"),
       },
       {
         path: "logout",
         name: "logout",
-        component: () => import("view/Logout.vue"),
+        component: () => import("view/LogoutView.vue"),
         meta: {
           requiresAuth: true,
         },
@@ -47,7 +47,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "register",
         name: "register",
-        component: () => import("view/Register.vue"),
+        component: () => import("view/RegisterView.vue"),
       },
     ],
   },
@@ -57,12 +57,12 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "recover",
         name: "recover",
-        component: () => import("view/RecoverPassword.vue"),
+        component: () => import("view/RecoverPwdView.vue"),
       },
       {
         path: "reset/:token",
         name: "reset",
-        component: () => import("view/ResetPassword.vue"),
+        component: () => import("view/ResetPwdView.vue"),
       },
     ],
   },

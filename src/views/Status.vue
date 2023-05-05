@@ -2,7 +2,7 @@
 import { defineComponent } from "vue";
 import CharacterPreview from "comp/game/profile/character-preview.vue";
 import StatusOverview from "comp/game/status/status-overview.vue";
-import AlertMessage from "comp/global/helpers/alert-message.vue";
+import AlertMessage from "comp/global/helpers/AlertMessage.vue";
 
 export default defineComponent({
   name: "StatusView",

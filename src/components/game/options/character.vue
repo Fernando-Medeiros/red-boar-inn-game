@@ -4,8 +4,8 @@ import { CharacterService } from "core/services/character-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupOptions from "setup/page.options.json";
 import SetupResponses from "setup/global.responses.json";
-import InputCharacterName from "comp/global/input/input-character-name.vue";
-import InputSubmit from "comp/global/input/input-submit.vue";
+import InputCharacterName from "comp/global/inputs/InputCharacterName.vue";
+import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 
 const Setup = SetupOptions[Helpers.translate()];
 

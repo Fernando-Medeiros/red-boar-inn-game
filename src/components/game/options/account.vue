@@ -5,10 +5,10 @@ import { PasswordService } from "core/services/password-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupOptions from "setup/page.options.json";
 import SetupResponses from "setup/global.responses.json";
-import InputName from "comp/global/input/input-name.vue";
-import InputEmail from "comp/global/input/input-email.vue";
-import InputPassword from "comp/global/input/input-password.vue";
-import InputSubmit from "comp/global/input/input-submit.vue";
+import InputName from "comp/global/inputs/InputName.vue";
+import InputEmail from "comp/global/inputs/InputEmail.vue";
+import InputPassword from "comp/global/inputs/InputPassword.vue";
+import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 
 const Setup = SetupOptions[Helpers.translate()];
 
@@ -113,7 +113,7 @@ export default defineComponent({
           @emit-content="receiveLastName"
         />
         <InputSubmit
-          class="input-submit"
+          class="InputSubmit"
           :label="inputs.submit.label"
           :is-disabled="nameForm"
         />
@@ -133,7 +133,7 @@ export default defineComponent({
           @emit-content="receiveEmail"
         />
         <InputSubmit
-          class="input-submit"
+          class="InputSubmit"
           :label="inputs.submit.label"
           :is-disabled="emailForm"
         />
@@ -153,7 +153,7 @@ export default defineComponent({
           @emit-content="receivePassword"
         />
         <InputSubmit
-          class="input-submit"
+          class="InputSubmit"
           :label="inputs.submit.label"
           :is-disabled="passwordForm"
         />
@@ -167,7 +167,7 @@ export default defineComponent({
   display: grid;
   gap: 1.5rem;
 }
-.input-submit {
+.InputSubmit {
   margin-top: 1rem;
 }
 </style>
