@@ -16,12 +16,6 @@ yarn serve
 yarn build
 ```
 
-## Run your unit tests
-
-```sh
-yarn test:unit
-```
-
 ## Lints and fixes files
 
 ```sh
