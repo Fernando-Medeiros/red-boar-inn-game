@@ -3,6 +3,7 @@ import { defineProps, watch } from "vue";
 
 const props = defineProps<{
   type: "health" | "energy" | "experience";
+  size: "large" | "medium" | "small";
   maxStatus: number;
   currentStatus: number;
 }>();
@@ -11,6 +12,12 @@ const colors = {
   health: "tomato",
   energy: "deepskyblue",
   experience: "#00B5A3",
+};
+
+const width = {
+  large: "300px",
+  medium: "150px",
+  small: "100px",
 };
 
 const id = Math.random().toString();
@@ -23,11 +30,13 @@ watch(props, () => {
 </script>
 
 <template>
-  <div class="status-bar">
+  <div class="status-bar" :style="`width:${width[props.size]}`">
     <span
       class="current-status"
       :id="id"
-      :style="`background-color: ${colors[props.type]}`"
+      :style="`background-color: ${colors[props.type]}; width:${
+        width[props.size]
+      }`"
     >
     </span>
 

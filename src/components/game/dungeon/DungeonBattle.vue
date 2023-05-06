@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { Helpers } from "core/helpers/helpers";
 import SetupDungeon from "setup/page.dungeon.json";
 import OpponentsDatabase from "core/database/enemies.json";
@@ -6,7 +7,6 @@ import CharacterPreview from "comp/game/Partials/CharacterPreview.vue";
 import OpponentSprite from "comp/global/sprites/OpponentSprite.vue";
 import BattleButton from "comp/global/buttons/BattleButton.vue";
 import StatusBar from "comp/global/helpers/StatusBar.vue";
-import { ref } from "vue";
 
 const Setup = SetupDungeon[Helpers.translate()];
 
@@ -40,11 +40,13 @@ function changeAction(action: string) {
           <span class="statusBar-container">
             <StatusBar
               :type="'health'"
+              :size="'medium'"
               :max-status="statusSecondary.health"
               :current-status="statusSecondary.currentHealth"
             />
             <StatusBar
               :type="'energy'"
+              :size="'medium'"
               :max-status="statusSecondary.energy"
               :current-status="statusSecondary.currentEnergy"
             />
@@ -61,11 +63,13 @@ function changeAction(action: string) {
           <span class="statusBar-container">
             <StatusBar
               :type="'health'"
+              :size="'medium'"
               :max-status="opponentTest.health"
               :current-status="opponentTest.currentHealth"
             />
             <StatusBar
               :type="'energy'"
+              :size="'medium'"
               :max-status="opponentTest.energy"
               :current-status="opponentTest.currentEnergy"
             />

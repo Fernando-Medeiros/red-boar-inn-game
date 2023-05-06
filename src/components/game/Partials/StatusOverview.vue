@@ -66,7 +66,10 @@ const statusSecondary = ref({
 });
 
 async function updateStatus() {
-  const { status } = await StatusService.update(statusPrimary.value);
+  const { status } = await StatusService.update({
+    ...statusPrimary.value,
+    ...statusSecondary.value,
+  });
 
   emit("emitMessage", status === 204 ? success : error);
 
@@ -74,15 +77,13 @@ async function updateStatus() {
 }
 
 function incrementStatus(value: attributes) {
-  statusPrimary.value.points > 1
-    ? [statusPrimary.value.points--, statusPrimary.value[value]++]
-    : "";
+  if (statusPrimary.value.points > 1)
+    statusPrimary.value.points--, statusPrimary.value[value]++;
 }
 
 function decrementStatus(value: attributes) {
-  statusPrimary.value[value] > 1
-    ? [statusPrimary.value.points++, statusPrimary.value[value]--]
-    : "";
+  if (statusPrimary.value[value] > 1)
+    statusPrimary.value.points++, statusPrimary.value[value]--;
 }
 
 watch(statusPrimary.value, () => {
@@ -98,16 +99,19 @@ watch(statusPrimary.value, () => {
     <div class="status-secondary-container">
       <StatusBar
         :type="'health'"
+        :size="'large'"
         :max-status="statusSecondary.health"
         :current-status="statusSecondary.currentHealth"
       />
       <StatusBar
         :type="'energy'"
+        :size="'large'"
         :max-status="statusSecondary.energy"
         :current-status="statusSecondary.currentEnergy"
       />
       <StatusBar
         :type="'experience'"
+        :size="'large'"
         :max-status="statusSecondary.experience"
         :current-status="statusSecondary.experience"
       />
