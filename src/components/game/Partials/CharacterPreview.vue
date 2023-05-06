@@ -31,7 +31,7 @@ const data = ref({
       :rotate-y="rotateY || false"
     />
     <span>
-      <p>{{ data.charName }}</p>
+      <strong>{{ data.charName }}</strong>
       <span>
         <p>
           {{ spriteInfo.levelLabel }} - {{ data.level }} /

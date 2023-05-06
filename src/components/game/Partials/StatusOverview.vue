@@ -1,19 +1,18 @@
 <script setup lang="ts">
-import { defineEmits, onBeforeMount, ref } from "vue";
+import { defineEmits, onBeforeMount, ref, watch } from "vue";
 import { StatusService } from "core/services/status-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupStatus from "setup/page.status.json";
 import SetupResponses from "setup/global.responses.json";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 import IncrDecrButton from "comp/global/buttons/IncrDecrButton.vue";
+import StatusBar from "comp/global/helpers/StatusBar.vue";
 
 type attributes = "strength" | "intelligence" | "dexterity" | "vitality";
 
 const {
-  updates: {
-    status: { success, error },
-  },
-} = SetupResponses[Helpers.translate()];
+  status: { success, error },
+} = SetupResponses[Helpers.translate()].updates;
 
 const emit = defineEmits(["emitMessage"]);
 
@@ -85,10 +84,35 @@ function decrementStatus(value: attributes) {
     ? [statusPrimary.value.points++, statusPrimary.value[value]--]
     : "";
 }
+
+watch(statusPrimary.value, () => {
+  statusSecondary.value.health = statusPrimary.value.vitality * 10;
+  statusSecondary.value.energy = statusPrimary.value.intelligence * 10;
+  statusSecondary.value.currentHealth = statusSecondary.value.health;
+  statusSecondary.value.currentEnergy = statusSecondary.value.energy;
+});
 </script>
 
 <template>
-  <div class="status-container">
+  <div class="status-overview-container">
+    <div class="status-secondary-container">
+      <StatusBar
+        :type="'health'"
+        :max-status="statusSecondary.health"
+        :current-status="statusSecondary.currentHealth"
+      />
+      <StatusBar
+        :type="'energy'"
+        :max-status="statusSecondary.energy"
+        :current-status="statusSecondary.currentEnergy"
+      />
+      <StatusBar
+        :type="'experience'"
+        :max-status="statusSecondary.experience"
+        :current-status="statusSecondary.experience"
+      />
+    </div>
+
     <form @submit.prevent="updateStatus" @submit="submitForm = !submitForm">
       <div
         class="status-overview"
@@ -121,30 +145,19 @@ function decrementStatus(value: attributes) {
         :style="'margin-top: 2rem;'"
       />
     </form>
-
-    <div>
-      <div
-        class="status-overview"
-        v-for="(value, name) in statusSecondary"
-        :key="name"
-      >
-        <p>{{ statusInfo[name].label }}</p>
-
-        <p>{{ value }}</p>
-      </div>
-    </div>
   </div>
 </template>
 
 <style scoped>
-.status-container {
+.status-overview-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
   padding-block: 1rem;
   color: white;
   background: var(--cor-background-linear-gradient),
     var(--cor-background-linear-gradient);
 }
+
 .status-overview {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
@@ -155,14 +168,18 @@ function decrementStatus(value: attributes) {
   justify-content: space-between;
   border-bottom: 1px solid whitesmoke;
 }
+
 .status-buttons {
   display: flex;
   justify-content: space-between;
 }
+
+.status-secondary-container {
+  display: grid;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
 @media (max-width: 780px) {
-  .status-container {
-    display: grid;
-    grid-template-columns: auto;
-  }
 }
 </style>

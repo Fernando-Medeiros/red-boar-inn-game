@@ -4,10 +4,12 @@
       "name": "thief",
       "level": 1,
       "experience": 2,
-      "health": 15,
-      "energy": 1,
       "attack": 3,
       "defense": 1,
+      "health": 30,
+      "energy": 10,
+      "currentHealth": 30,
+      "currentEnergy": 10,
       "loot": [{ "gold": 2 }]
     }
   ],
@@ -16,10 +18,12 @@
       "name": "merchant",
       "level": 1,
       "experience": 2,
-      "health": 10,
-      "energy": 5,
       "attack": 2,
       "defense": 1,
+      "health": 20,
+      "energy": 25,
+      "currentHealth": 20,
+      "currentEnergy": 25,
       "loot": [{ "gold": 3 }]
     }
   ]
