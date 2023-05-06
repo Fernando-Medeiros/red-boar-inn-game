@@ -1,4 +1,4 @@
-import type { Armor, Weapon, Accessory } from "core/schemas/items.schema";
+import type { Armor, Weapon, Accessory } from "./items.schema";
 
 export type PropsEquipment = {
   head: Armor | object;

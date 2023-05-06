@@ -1,5 +1,5 @@
 import type { Message, StatusCode } from "core/services/schemas/responses";
-import type { PropsSkills } from "core/entities/skills/skills.interface";
+import type { PropsSkills } from "core/schemas/skills.schema";
 import { LocalSession } from "core/storage/session.storage";
 import { AuthHeader } from "./headers/authorization";
 import { postMethod } from "./methods/post";

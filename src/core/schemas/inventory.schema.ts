@@ -4,7 +4,7 @@ import type {
   Weapon,
   Consumable,
   Material,
-} from "core/schemas/items.schema";
+} from "./items.schema";
 
 export type PropsInventory = {
   armors: Armor[];
