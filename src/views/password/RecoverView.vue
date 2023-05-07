@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineExpose } from "vue";
+import { ref, defineExpose, reactive } from "vue";
 import { PasswordService } from "core/services/password-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupPassword from "setup/page.recover-password.json";
@@ -23,15 +23,15 @@ defineExpose({ alertMessage });
 
 const submitForm = ref(false);
 const redirectTo = ref("/auth/login");
-const form = ref({ email: "" });
+const form = reactive({ email: "" });
 
 async function checkCustomer() {
-  const { status } = await PasswordService.recover(form.value);
+  const { statusCode } = await PasswordService.recover(form);
 
-  alertMessage.value = status === 200 ? success : error;
+  alertMessage.value = statusCode === 200 ? success : error;
 
   setTimeout(async () => {
-    status === 200
+    statusCode === 200
       ? router.push({ path: redirectTo.value })
       : (submitForm.value = !submitForm.value);
   }, 2500);

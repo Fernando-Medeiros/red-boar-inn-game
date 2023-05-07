@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineExpose } from "vue";
+import { ref, defineExpose, reactive } from "vue";
 import { LocalSession } from "core/storage/session.storage";
 import { SessionService } from "core/services/session-service";
 import { CharacterService } from "core/services/character-service";
@@ -26,27 +26,30 @@ defineExpose({ alertMessage });
 const submitForm = ref(false);
 const redirectTo = ref("/character/profile");
 
-const form = ref({
+const form = reactive({
   email: "",
   password: "",
   remember: false,
 });
 
 async function login() {
-  const { message, status, pubId, access, refresh, type } =
-    await SessionService.login(form.value);
+  await SessionService.login({ ...form }).then(
+    async ({ message, statusCode, pubId, access, refresh, type }) => {
+      alertMessage.value = message || "";
 
-  alertMessage.value = message || "";
+      if (statusCode === 200) {
+        LocalSession.set({ pubId, access, refresh, type });
 
-  if (status === 200) {
-    LocalSession.set({ pubId, access, refresh, type });
+        await CharacterService.get().then(async (pubId) => {
+          if (pubId) redirectAfterLoad();
 
-    (await CharacterService.get())?.pubId
-      ? redirectAfterLoad()
-      : [await CharacterDependencies.create(), redirectAfterLoad()];
-  }
+          await CharacterDependencies.create(), redirectAfterLoad();
+        });
+      }
 
-  submitForm.value = !submitForm.value;
+      submitForm.value = !submitForm.value;
+    }
+  );
 }
 
 function redirectAfterLoad() {

@@ -34,9 +34,9 @@ const form = ref({
 });
 
 async function saveClass() {
-  const { status } = await CharacterService.update(form.value);
+  const { statusCode } = await CharacterService.update(form.value);
 
-  alertMessage.value = status === 204 ? success : error;
+  alertMessage.value = statusCode === 204 ? success : error;
 
   submitForm.value = !submitForm.value;
 }

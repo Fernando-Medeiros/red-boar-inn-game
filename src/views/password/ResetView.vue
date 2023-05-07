@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, defineExpose, ref } from "vue";
+import { onBeforeMount, defineExpose, ref, reactive } from "vue";
 import { PasswordService } from "core/services/password-service";
 import { Helpers } from "core/helpers/helpers";
 import { useRoute } from "vue-router";
@@ -29,17 +29,17 @@ defineExpose({ alertMessage });
 
 const submitForm = ref(false);
 const redirectTo = ref("/auth/login");
-const form = ref({ password: "", confirmPassword: "" });
+const form = reactive({ password: "", confirmPassword: "" });
 
 async function updatePassword() {
   if (checkPassword()) {
     const { token } = useRoute().params;
-    const { status } = await PasswordService.reset(form.value, String(token));
+    const { statusCode } = await PasswordService.reset(form, String(token));
 
-    alertMessage.value = status === 204 ? success : error;
+    alertMessage.value = statusCode === 204 ? success : error;
 
     setTimeout(async () => {
-      status === 204
+      statusCode === 204
         ? router.push({ path: redirectTo.value })
         : (submitForm.value = false);
     }, 2500);
@@ -51,7 +51,7 @@ async function updatePassword() {
 }
 
 function checkPassword() {
-  return form.value.confirmPassword === form.value.password;
+  return form.confirmPassword === form.password;
 }
 </script>
 

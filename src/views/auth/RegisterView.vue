@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineExpose } from "vue";
+import { ref, defineExpose, reactive } from "vue";
 import { AccountService } from "core/services/account-service";
 import { Helpers } from "core/helpers/helpers";
 import router from "router/index";
@@ -25,7 +25,7 @@ const inputs = { ...Setup.form };
 
 const submitForm = ref(false);
 const redirectTo = ref("/auth/login");
-const form = ref({
+const form = reactive({
   firstName: "",
   lastName: "",
   email: "",
@@ -35,7 +35,7 @@ const form = ref({
 
 async function createAccount() {
   checkPassword()
-    ? (error = (await AccountService.create(form.value))?.message || "")
+    ? (error = (await AccountService.create(form))?.message || "")
     : (error = inputs.confirmPassword.message);
 
   alertMessage.value = error || success;
@@ -48,7 +48,7 @@ async function createAccount() {
 }
 
 function checkPassword() {
-  return form.value.confirmPassword === form.value.password;
+  return form.confirmPassword === form.password;
 }
 </script>
 
