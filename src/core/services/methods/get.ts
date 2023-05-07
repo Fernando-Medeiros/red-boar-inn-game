@@ -10,13 +10,12 @@ export async function getMethod<Response = object>(
     .get(String(URL), { headers: { ...SecretHeader(), ...headers } })
 
     .then((response) => {
-      const { data, status } = response;
+      const { data, status: statusCode } = response;
 
-      return Object({ ...data, status });
+      return Object({ ...data, statusCode });
     })
-    .catch((error: AxiosError) => {
-      CheckSession(Object(error.response));
-
-      return error.response?.data;
+    .catch(({ response }: AxiosError) => {
+      CheckSession(response?.status);
+      return response?.data;
     });
 }

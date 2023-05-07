@@ -1,7 +1,5 @@
-import type { StatusCode } from "../schemas/responses";
+import router from "router/index";
 
-export function CheckSession(response: StatusCode): void {
-  if (response.status === 401) {
-    location.assign("/auth/logout");
-  }
+export function CheckSession(statusCode?: number): void {
+  if (statusCode === 401) router.push({ path: "/auth/logout" });
 }
