@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineEmits, ref } from "vue";
+import { defineEmits, reactive, ref } from "vue";
 import { AccountService } from "core/services/account-service";
 import { PasswordService } from "core/services/password-service";
 import { Helpers } from "core/helpers/helpers";
@@ -25,7 +25,7 @@ const nameForm = ref(false);
 const emailForm = ref(false);
 const passwordForm = ref(false);
 
-const form = ref({
+const form = reactive({
   firstName: "",
   lastName: "",
   email: "",
@@ -33,29 +33,33 @@ const form = ref({
 });
 
 async function updateFullName() {
-  const { firstName, lastName } = form.value;
-  const { status, message } = await AccountService.update({
+  const { firstName, lastName } = form;
+  const { statusCode, message } = await AccountService.update({
     firstName,
     lastName,
   });
 
-  emit("emitMessage", status === 204 ? accSuccess : message);
+  emit("emitMessage", statusCode === 204 ? accSuccess : message);
   nameForm.value = !nameForm.value;
 }
 
 async function updateEmail() {
-  const { email } = form.value;
-  const { status, message } = await AccountService.update({ email });
+  const { email } = form;
+  const { statusCode, message } = await AccountService.update({
+    email,
+  });
 
-  emit("emitMessage", status === 204 ? accSuccess : message);
+  emit("emitMessage", statusCode === 204 ? accSuccess : message);
   emailForm.value = !emailForm.value;
 }
 
 async function updatePassword() {
-  const { password } = form.value;
-  const { status, message } = await PasswordService.update({ password });
+  const { password } = form;
+  const { statusCode, message } = await PasswordService.update({
+    password,
+  });
 
-  emit("emitMessage", status === 204 ? pwdSuccess : message);
+  emit("emitMessage", statusCode === 204 ? pwdSuccess : message);
   passwordForm.value = !passwordForm.value;
 }
 </script>

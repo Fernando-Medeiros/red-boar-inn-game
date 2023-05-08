@@ -14,7 +14,7 @@ defineProps<{ name: string; level: number; rotateY: boolean }>();
     />
 
     <span class="label">
-      <p>{{ name }}</p>
+      <strong>{{ name }}</strong>
       <span>
         <p>level - {{ level }}</p>
       </span>

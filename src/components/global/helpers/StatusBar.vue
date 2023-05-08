@@ -41,7 +41,7 @@ watch(props, () => {
     </span>
 
     <span class="label-status">
-      <strong> {{ currentStatus }} </strong>
+      <strong> {{ currentStatus.toFixed(1) }} </strong>
       <strong> / </strong>
       <strong> {{ maxStatus }} </strong>
     </span>

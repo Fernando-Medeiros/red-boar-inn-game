@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineEmits, onBeforeMount, ref, watch } from "vue";
+import { defineEmits, onBeforeMount, reactive, ref, watch } from "vue";
 import { StatusService } from "core/services/status-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupStatus from "setup/page.status.json";
@@ -17,47 +17,49 @@ const {
 const emit = defineEmits(["emitMessage"]);
 
 onBeforeMount(async () => {
-  const {
-    experience,
-    health,
-    energy,
-    currentHealth,
-    currentEnergy,
-    points,
-    strength,
-    intelligence,
-    dexterity,
-    vitality,
-  } = await StatusService.get();
-
-  Object.assign(statusPrimary.value, {
-    points,
-    strength,
-    intelligence,
-    vitality,
-    dexterity,
-  });
-  Object.assign(statusSecondary.value, {
-    experience,
-    health,
-    energy,
-    currentHealth,
-    currentEnergy,
-  });
+  await StatusService.get().then(
+    ({
+      experience,
+      health,
+      energy,
+      currentHealth,
+      currentEnergy,
+      points,
+      strength,
+      intelligence,
+      dexterity,
+      vitality,
+    }) => {
+      Object.assign(statusPrimary, {
+        points,
+        strength,
+        intelligence,
+        vitality,
+        dexterity,
+      });
+      Object.assign(statusSecondary, {
+        experience,
+        health,
+        energy,
+        currentHealth,
+        currentEnergy,
+      });
+    }
+  );
 });
 
 const statusInfo = { ...SetupStatus[Helpers.translate()] };
 
 const submitForm = ref(false);
 
-const statusPrimary = ref({
+const statusPrimary = reactive({
   points: 1,
   strength: 1,
   intelligence: 1,
   dexterity: 1,
   vitality: 1,
 });
-const statusSecondary = ref({
+const statusSecondary = reactive({
   experience: 1,
   health: 1,
   energy: 1,
@@ -66,31 +68,27 @@ const statusSecondary = ref({
 });
 
 async function updateStatus() {
-  const { status } = await StatusService.update({
-    ...statusPrimary.value,
-    ...statusSecondary.value,
+  const { statusCode } = await StatusService.update({
+    ...statusPrimary,
+    ...statusSecondary,
   });
 
-  emit("emitMessage", status === 204 ? success : error);
+  emit("emitMessage", statusCode === 204 ? success : error);
 
   submitForm.value = !submitForm.value;
 }
 
 function incrementStatus(value: attributes) {
-  if (statusPrimary.value.points > 1)
-    statusPrimary.value.points--, statusPrimary.value[value]++;
+  if (statusPrimary.points > 1) statusPrimary.points--, statusPrimary[value]++;
 }
 
 function decrementStatus(value: attributes) {
-  if (statusPrimary.value[value] > 1)
-    statusPrimary.value.points++, statusPrimary.value[value]--;
+  if (statusPrimary[value] > 1) statusPrimary.points++, statusPrimary[value]--;
 }
 
-watch(statusPrimary.value, () => {
-  statusSecondary.value.health = statusPrimary.value.vitality * 10;
-  statusSecondary.value.energy = statusPrimary.value.intelligence * 10;
-  statusSecondary.value.currentHealth = statusSecondary.value.health;
-  statusSecondary.value.currentEnergy = statusSecondary.value.energy;
+watch(statusPrimary, () => {
+  statusSecondary.health = statusPrimary.vitality * 10;
+  statusSecondary.energy = statusPrimary.intelligence * 10;
 });
 </script>
 

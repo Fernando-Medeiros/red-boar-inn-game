@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineEmits, ref } from "vue";
+import { defineEmits, reactive, ref } from "vue";
 import { CharacterService } from "core/services/character-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupOptions from "setup/page.options.json";
@@ -20,14 +20,14 @@ const emit = defineEmits(["emitMessage"]);
 const inputs = { ...Setup.character.forms.characterName };
 
 const submitForm = ref(false);
-const form = ref({
+const form = reactive({
   charName: "",
 });
 
 async function saveCharacterName() {
-  const { status } = await CharacterService.update(form.value);
+  const { statusCode } = await CharacterService.update(form);
 
-  emit("emitMessage", status === 204 ? success : error);
+  emit("emitMessage", statusCode === 204 ? success : error);
 
   submitForm.value = !submitForm.value;
 }
