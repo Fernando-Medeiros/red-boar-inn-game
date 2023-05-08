@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import { defineEmits, onBeforeMount, reactive, ref, watch } from "vue";
+import {
+  defineEmits,
+  defineProps,
+  onBeforeMount,
+  reactive,
+  ref,
+  watch,
+} from "vue";
 import { StatusService } from "core/services/status-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupStatus from "setup/page.status.json";
@@ -7,12 +14,15 @@ import SetupResponses from "setup/global.responses.json";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 import IncrDecrButton from "comp/global/buttons/IncrDecrButton.vue";
 import StatusBar from "comp/global/helpers/StatusBar.vue";
+import StatusPreview from "./StatusPreview.vue";
 
 type attributes = "strength" | "intelligence" | "dexterity" | "vitality";
 
 const {
   status: { success, error },
 } = SetupResponses[Helpers.translate()].updates;
+
+const props = defineProps<{ level?: number }>();
 
 const emit = defineEmits(["emitMessage"]);
 
@@ -30,14 +40,14 @@ onBeforeMount(async () => {
       dexterity,
       vitality,
     }) => {
-      Object.assign(statusPrimary, {
+      Object.assign(primary, {
         points,
         strength,
         intelligence,
         vitality,
         dexterity,
       });
-      Object.assign(statusSecondary, {
+      Object.assign(secondary, {
         experience,
         health,
         energy,
@@ -52,15 +62,16 @@ const statusInfo = { ...SetupStatus[Helpers.translate()] };
 
 const submitForm = ref(false);
 
-const statusPrimary = reactive({
+const primary = reactive({
   points: 1,
   strength: 1,
   intelligence: 1,
   dexterity: 1,
   vitality: 1,
 });
-const statusSecondary = reactive({
+const secondary = reactive({
   experience: 1,
+  nextLevel: 1,
   health: 1,
   energy: 1,
   currentHealth: 1,
@@ -69,84 +80,87 @@ const statusSecondary = reactive({
 
 async function updateStatus() {
   const { statusCode } = await StatusService.update({
-    ...statusPrimary,
-    ...statusSecondary,
+    ...primary,
+    ...secondary,
   });
-
   emit("emitMessage", statusCode === 204 ? success : error);
-
   submitForm.value = !submitForm.value;
 }
 
 function incrementStatus(value: attributes) {
-  if (statusPrimary.points > 1) statusPrimary.points--, statusPrimary[value]++;
+  if (primary.points > 1) primary.points--, primary[value]++;
 }
 
 function decrementStatus(value: attributes) {
-  if (statusPrimary[value] > 1) statusPrimary.points++, statusPrimary[value]--;
+  if (primary[value] > 1) primary.points++, primary[value]--;
 }
 
-watch(statusPrimary, () => {
-  statusSecondary.health = statusPrimary.vitality * 10;
-  statusSecondary.energy = statusPrimary.intelligence * 10;
+watch(primary, () => {
+  secondary.health = primary.vitality * 10;
+  secondary.energy = primary.intelligence * 10;
+  secondary.nextLevel = Number(props.level || 1) * 10;
 });
 </script>
 
 <template>
   <div class="status-overview-container">
-    <div class="status-secondary-container">
+    <div class="status-secondary">
       <StatusBar
         :type="'health'"
         :size="'large'"
-        :max-status="statusSecondary.health"
-        :current-status="statusSecondary.currentHealth"
+        :max-status="secondary.health"
+        :current-status="secondary.currentHealth"
       />
       <StatusBar
         :type="'energy'"
         :size="'large'"
-        :max-status="statusSecondary.energy"
-        :current-status="statusSecondary.currentEnergy"
+        :max-status="secondary.energy"
+        :current-status="secondary.currentEnergy"
       />
       <StatusBar
         :type="'experience'"
         :size="'large'"
-        :max-status="statusSecondary.experience"
-        :current-status="statusSecondary.experience"
+        :max-status="secondary.nextLevel"
+        :current-status="secondary.experience"
       />
     </div>
 
-    <form @submit.prevent="updateStatus" @submit="submitForm = !submitForm">
-      <div
-        class="status-overview"
-        v-for="(value, name) in statusPrimary"
-        :key="name"
-      >
-        <p>{{ statusInfo[name].label }}</p>
+    <div class="status-primary-and-computed-container">
+      <form @submit.prevent="updateStatus" @submit="submitForm = !submitForm">
+        <div
+          class="status-primary"
+          v-for="(value, name) in primary"
+          :key="name"
+        >
+          <p>{{ statusInfo[name].label }}</p>
 
-        <p>{{ value }}</p>
+          <p>{{ value }}</p>
 
-        <div class="status-buttons" v-if="!name.includes('points')">
-          <IncrDecrButton
-            :type="'decrement'"
-            :attr-name="name"
-            :max-value="statusPrimary.points"
-            @update-value="decrementStatus"
-          />
-          <IncrDecrButton
-            :type="'increment'"
-            :attr-name="name"
-            :max-value="statusPrimary.points"
-            @update-value="incrementStatus"
-          />
+          <div class="status-buttons" v-if="!name.includes('points')">
+            <IncrDecrButton
+              :type="'decrement'"
+              :attr-name="name"
+              :max-value="primary.points"
+              @update-value="decrementStatus"
+            />
+            <IncrDecrButton
+              :type="'increment'"
+              :attr-name="name"
+              :max-value="primary.points"
+              @update-value="incrementStatus"
+            />
+          </div>
         </div>
-      </div>
 
-      <InputSubmit
-        :label="statusInfo.form.submit.label"
-        :is-disabled="submitForm"
-        :style="'margin-top: 2rem;'"
-      />
-    </form>
+        <InputSubmit
+          :label="statusInfo.form.submit.label"
+          :is-disabled="submitForm"
+          :style="'margin-top: 2rem;'"
+        />
+      </form>
+
+      <StatusPreview :status="reactive({ ...primary, ...secondary })" />
+    </div>
   </div>
 </template>
 
@@ -159,8 +173,7 @@ watch(statusPrimary, () => {
   background: var(--cor-background-linear-gradient),
     var(--cor-background-linear-gradient);
 }
-
-.status-overview {
+.status-primary {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   padding: 10px;
@@ -170,18 +183,25 @@ watch(statusPrimary, () => {
   justify-content: space-between;
   border-bottom: 1px solid whitesmoke;
 }
-
-.status-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.status-secondary-container {
+.status-secondary {
   display: grid;
   justify-content: center;
   gap: 1.5rem;
 }
+.status-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.status-primary-and-computed-container {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+}
 
 @media (max-width: 780px) {
+  .status-primary-and-computed-container {
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
 }
 </style>

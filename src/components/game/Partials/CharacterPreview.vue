@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, onBeforeMount, ref } from "vue";
+import { defineProps, defineEmits, onBeforeMount, reactive } from "vue";
 import { CharacterService } from "core/services/character-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupProfile from "setup/page.profile.json";
@@ -7,35 +7,39 @@ import CharacterSprite from "comp/global/sprites/CharacterSprite.vue";
 
 defineProps<{ rotateY?: boolean }>();
 
+const emit = defineEmits(["emitCharacter"]);
+
 onBeforeMount(async () => {
   const { charName, className, level, gender } = await CharacterService.get();
 
-  Object.assign(data.value, { charName, className, level, gender });
+  Object.assign(character, { charName, className, level, gender });
 });
 
 const spriteInfo = SetupProfile[Helpers.translate()].sprite;
 
-const data = ref({
+const character = reactive({
   level: "1",
   gender: "man",
   charName: "loading",
   className: "peasant",
 });
+
+emit("emitCharacter", character);
 </script>
 
 <template>
   <div class="sprite-character">
     <CharacterSprite
-      :name="data.className"
-      :gender="data.gender"
+      :name="character.className"
+      :gender="character.gender"
       :rotate-y="rotateY || false"
     />
     <span>
-      <strong>{{ data.charName }}</strong>
+      <strong>{{ character.charName }}</strong>
       <span>
         <p>
-          {{ spriteInfo.levelLabel }} - {{ data.level }} /
-          {{ data.className }}
+          {{ spriteInfo.levelLabel }} - {{ character.level }} /
+          {{ character.className }}
         </p>
       </span>
     </span>
