@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { defineEmits } from "vue";
 import { Helpers } from "core/helpers/helpers";
-import SetupDungeon from "setup/page.dungeon.json";
+import SetupDungeon from "setup/page.dungeon-battle.json";
 import BattleButton from "comp/global/buttons/BattleButton.vue";
 
-const menuActions = { ...SetupDungeon[Helpers.translate()].menu };
-
 const emit = defineEmits(["emitAction"]);
+
+const menuActions = { ...SetupDungeon[Helpers.translate()].menu };
 </script>
 
 <template>

@@ -75,6 +75,11 @@ const props = defineProps<{
   padding-block: 1rem;
   justify-items: center;
   grid-template-columns: 1fr 1fr;
+
+  background-image: linear-gradient(#222222b6, #22222281, #18002775),
+    url("assets/pictures/img1.webp");
+  background-size: cover;
+  background-position: bottom;
 }
 .statusBar-container {
   display: grid;

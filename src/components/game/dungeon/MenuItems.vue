@@ -15,7 +15,7 @@ function consumeItem(itemName: string) {
 </script>
 
 <template>
-  <div class="menu-items-container">
+  <div class="items-container">
     <div class="item-box" v-for="item in items" :key="item.name">
       <div class="item-name">
         <ItemSprite :name="item.name" />
@@ -24,28 +24,31 @@ function consumeItem(itemName: string) {
       </div>
 
       <div class="item-description">
-        <span>
+        <span class="item-attribute">
           <p>type</p>
           <p>{{ item.type }}</p>
         </span>
 
-        <span>
+        <span class="item-attribute">
           <p>total</p>
           <p>{{ item.total }}</p>
         </span>
 
-        <span>
+        <span class="item-attribute">
           <p>restore</p>
           <p>{{ item.restore }}</p>
         </span>
 
-        <span>
+        <span class="item-attribute">
           <p>value</p>
           <p>{{ item.value }}</p>
         </span>
       </div>
 
-      <button @click="$emit('emitItem', item), consumeItem(item.name)">
+      <button
+        class="item-button"
+        @click="$emit('emitItem', item), consumeItem(item.name)"
+      >
         use
       </button>
     </div>
@@ -53,12 +56,12 @@ function consumeItem(itemName: string) {
 </template>
 
 <style scoped>
-.menu-items-container {
-  color: white;
+.items-container {
   display: flex;
+  gap: 1rem;
   padding-block: 1rem;
-  justify-content: space-evenly;
-  border-block: 1px solid var(--cor-font-color);
+  height: max-content;
+  margin: auto;
 }
 .item-box {
   display: grid;
@@ -71,14 +74,14 @@ function consumeItem(itemName: string) {
   gap: 10px;
   justify-items: center;
 }
-.item-box div > span {
+.item-attribute {
   display: flex;
   gap: 1rem;
   padding: 5px;
   justify-content: space-between;
   border-bottom: 1px solid rgba(245, 245, 245, 0.356);
 }
-.item-box > button {
+.item-button {
   padding: 10px;
   color: white;
   border-radius: 10px;
@@ -86,12 +89,12 @@ function consumeItem(itemName: string) {
   background: transparent;
   cursor: pointer;
 }
-.item-box > button:hover {
+.item-button:hover {
   background-color: rgba(245, 245, 245, 0.356);
 }
 
 @media (max-width: 780px) {
-  .menu-items-container {
+  .items-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
