@@ -23,7 +23,23 @@
       "name": "apple",
       "type": "health",
       "restore": 2,
-      "total": 1,
+      "total": 999,
+      "value": 1,
+      "description": "..."
+    },
+    {
+      "name": "energy potion",
+      "type": "energy",
+      "restore": 6,
+      "total": 999,
+      "value": 1,
+      "description": "..."
+    },
+    {
+      "name": "health potion",
+      "type": "health",
+      "restore": 6,
+      "total": 999,
       "value": 1,
       "description": "..."
     }
