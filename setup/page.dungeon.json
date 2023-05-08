@@ -2,8 +2,10 @@
   "br": {
     "menu": [
       { "label": "ataque", "icon": "attack" },
+      { "label": "inventario", "icon": "inventory" },
       { "label": "habilidades", "icon": "skills" },
-      { "label": "items", "icon": "items" },
+      { "label": "status", "icon": "status" },
+      { "label": "registro", "icon": "quests" },
       { "label": "fugir", "icon": "flee" }
     ]
   },
@@ -11,8 +13,10 @@
   "en": {
     "menu": [
       { "label": "attack", "icon": "attack" },
+      { "label": "inventory", "icon": "inventory" },
       { "label": "skills", "icon": "skills" },
-      { "label": "items", "icon": "items" },
+      { "label": "status", "icon": "status" },
+      { "label": "logs", "icon": "quests" },
       { "label": "flee", "icon": "flee" }
     ]
   }

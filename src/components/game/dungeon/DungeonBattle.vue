@@ -1,111 +1,67 @@
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <script setup lang="ts">
-import { ref } from "vue";
-import { Helpers } from "core/helpers/helpers";
-import SetupDungeon from "setup/page.dungeon.json";
-import OpponentsDatabase from "core/database/enemies.json";
-import CharacterPreview from "comp/game/Partials/CharacterPreview.vue";
-import OpponentSprite from "comp/global/sprites/OpponentSprite.vue";
-import BattleButton from "comp/global/buttons/BattleButton.vue";
-import StatusBar from "comp/global/helpers/StatusBar.vue";
+import type { Consumable } from "core/schemas/items.schema";
+import { onBeforeMount, reactive, ref } from "vue";
+import { StatusService } from "core/services/status-service";
+import { Character } from "core/domain/Character";
+import { Opponent } from "core/domain/Opponent";
+import AreaBattle from "./AreaBattle.vue";
+import MenuBattle from "./MenuBattle.vue";
+import MenuItems from "./MenuItems.vue";
 
-const Setup = SetupDungeon[Helpers.translate()];
+type Actions = "attack" | "skills" | "inventory" | "logs" | "flee" | "status";
 
-const menuActions = { ...Setup.menu };
-
-const opponentTest = ref({ ...OpponentsDatabase.magic[0] });
-
-const statusSecondary = ref({
-  experience: 1,
-  health: 10,
-  energy: 10,
-  currentHealth: 10,
-  currentEnergy: 10,
+onBeforeMount(async () => {
+  await StatusService.get().then(({ statusCode, message, ...status }) => {
+    character.loadStatus({
+      ...status,
+    });
+  });
 });
 
-function changeAction(action: string) {
+const menuOptions = reactive({
+  attack: false,
+  skills: false,
+  inventory: false,
+  status: false,
+  logs: false,
+  flee: false,
+});
+
+const character = reactive(new Character());
+const opponent = reactive(new Opponent());
+
+function changeAction(action: Actions) {
+  menuOptions[action] = !menuOptions[action];
+
   if (action === "attack") {
-    opponentTest.value.currentHealth--;
-    statusSecondary.value.currentHealth--;
+    character.Actions.executeAttackMelee(opponent);
+    opponent.Actions.executeAttackMelee(character);
   }
+}
+
+function useItem({ type, restore }: Consumable) {
+  if (type === "energy") character.Actions.restoreCurrentEnergy(restore);
+  if (type === "health") character.Actions.restoreCurrentHealth(restore);
 }
 </script>
 
 <template>
   <div class="main-background">
-    <div class="main-container">
-      <div class="battle-container">
-        <div>
-          <CharacterPreview :rotate-y="true" />
+    <div class="main-container dungeon-battle-background">
+      <AreaBattle :character="character" :opponent="opponent" />
 
-          <span class="statusBar-container">
-            <StatusBar
-              :type="'health'"
-              :size="'medium'"
-              :max-status="statusSecondary.health"
-              :current-status="statusSecondary.currentHealth"
-            />
-            <StatusBar
-              :type="'energy'"
-              :size="'medium'"
-              :max-status="statusSecondary.energy"
-              :current-status="statusSecondary.currentEnergy"
-            />
-          </span>
-        </div>
+      <MenuBattle @emit-action="changeAction" />
 
-        <div>
-          <OpponentSprite
-            :name="opponentTest.name"
-            :level="opponentTest.level"
-            :rotate-y="false"
-          />
-
-          <span class="statusBar-container">
-            <StatusBar
-              :type="'health'"
-              :size="'medium'"
-              :max-status="opponentTest.health"
-              :current-status="opponentTest.currentHealth"
-            />
-            <StatusBar
-              :type="'energy'"
-              :size="'medium'"
-              :max-status="opponentTest.energy"
-              :current-status="opponentTest.currentEnergy"
-            />
-          </span>
-        </div>
-      </div>
-
-      <div class="battle-menu">
-        <BattleButton
-          v-for="button in menuActions"
-          :key="button.icon"
-          :name="button.icon"
-          :label="button.label"
-          @change-action="changeAction"
-        />
-      </div>
+      <MenuItems @emit-item="useItem" v-if="menuOptions.inventory" />
     </div>
   </div>
 </template>
 
 <style scoped>
-.battle-container,
-.battle-menu {
-  display: grid;
-  padding-block: 1rem;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr;
+.dungeon-battle-background {
+  background: linear-gradient(#81818157, #292929);
 }
-.battle-menu {
-  background-image: var(--cor-background-linear-gradient);
-}
-
-.statusBar-container {
-  display: grid;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 10px;
+@media (max-width: 780px) {
 }
 </style>
