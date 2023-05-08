@@ -1,9 +1,7 @@
 import type { PropsStatus } from "core/schemas/status.schema";
-import ComputedActions from "./BattleActions";
+import BattleActions from "./BattleActions";
 
-ComputedActions;
-
-export class Opponent {
+export default class Opponent {
   name = "thief";
   level = 1;
   loot = [{}];
@@ -19,12 +17,23 @@ export class Opponent {
   currentHealth = 10;
   currentEnergy = 10;
 
-  Actions = new ComputedActions(this);
+  Actions = new BattleActions(this);
 
   loadStatus(status: PropsStatus) {
-    Object.assign(this, { ...status }, { Actions: new ComputedActions(this) });
+    Object.assign(this, { ...status }, { Actions: new BattleActions(this) });
   }
   toJson(): PropsStatus {
-    return { ...this };
+    return {
+      points: this.points,
+      experience: this.experience,
+      strength: this.strength,
+      intelligence: this.intelligence,
+      dexterity: this.dexterity,
+      vitality: this.vitality,
+      health: this.health,
+      energy: this.energy,
+      currentHealth: this.currentHealth,
+      currentEnergy: this.currentEnergy,
+    };
   }
 }
