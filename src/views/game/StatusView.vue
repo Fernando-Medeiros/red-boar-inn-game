@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { defineExpose, ref } from "vue";
+import type { PropsCharacter } from "core/schemas/character.schema";
+import { defineExpose, reactive, ref } from "vue";
 import CharacterPreview from "comp/game/Partials/CharacterPreview.vue";
 import StatusOverview from "comp/game/Partials/StatusOverview.vue";
 import AlertMessage from "comp/global/helpers/AlertMessage.vue";
 
 const alertMessage = ref("");
 defineExpose({ alertMessage });
+
+const character = reactive<PropsCharacter>({} as PropsCharacter);
 </script>
 
 <template>
@@ -13,13 +16,13 @@ defineExpose({ alertMessage });
 
   <div class="main-background">
     <div class="main-container">
-      <div
-        class="status-container"
-        style="background: linear-gradient(#81818157, #292929)"
-      >
-        <CharacterPreview />
+      <div class="status-container">
+        <CharacterPreview @emitCharacter="(data) => (character = data)" />
 
-        <StatusOverview @emit-message="(message) => (alertMessage = message)" />
+        <StatusOverview
+          :level="character?.level"
+          @emit-message="(message) => (alertMessage = message)"
+        />
       </div>
     </div>
   </div>
@@ -29,5 +32,6 @@ defineExpose({ alertMessage });
 .status-container {
   display: grid;
   gap: 1rem;
+  background: linear-gradient(#81818157, #292929);
 }
 </style>
