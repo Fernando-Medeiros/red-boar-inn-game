@@ -81,15 +81,12 @@ function showPassword() {
   font-size: 14px;
   margin-top: 1rem;
 }
+
 .input {
   font-size: 1.1rem;
   width: 465px;
   height: 20px;
   padding: 6px 5px;
-  border: none;
-  border-radius: 5px 0px 0px 5px;
-  border-bottom: 4px solid #d9d9d9;
-  background-color: transparent;
   color: var(--cor-font-color);
 }
 .input:focus {

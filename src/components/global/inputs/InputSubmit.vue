@@ -21,8 +21,6 @@ defineProps<{ label: string; isDisabled?: boolean }>();
   width: 180px;
   height: 40px;
   align-content: center;
-  border: none;
-  border-radius: 5px;
   background: #d9d9d9;
   cursor: pointer;
   font-size: 20px;

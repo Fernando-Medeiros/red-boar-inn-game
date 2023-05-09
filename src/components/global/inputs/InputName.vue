@@ -67,10 +67,6 @@ watch(content, () => {
   width: 500px;
   height: 20px;
   padding: 6px 5px;
-  border: none;
-  border-radius: 5px;
-  border-bottom: 4px solid #d9d9d9;
-  background-color: transparent;
   color: var(--cor-font-color);
 }
 .input:focus {

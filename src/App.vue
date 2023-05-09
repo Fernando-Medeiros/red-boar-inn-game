@@ -11,9 +11,7 @@ const isAuthenticated = ref(LocalSession.isAuthenticated());
 <template>
   <HeaderMain v-if="!isAuthenticated" />
   <HeaderGame v-if="isAuthenticated" />
-
   <router-view />
-
   <FooterMain />
 </template>
 
@@ -26,6 +24,14 @@ const isAuthenticated = ref(LocalSession.isAuthenticated());
 
 html {
   background-color: var(--cor-background-color);
+}
+
+input {
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  border-bottom: 4px solid #d9d9d9;
+  background-color: transparent;
 }
 
 :root {

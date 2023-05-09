@@ -28,6 +28,5 @@ defineProps<{ label: string }>();
 .input {
   height: 1.2rem;
   width: 1.2rem;
-  border-radius: 0.8rem;
 }
 </style>
