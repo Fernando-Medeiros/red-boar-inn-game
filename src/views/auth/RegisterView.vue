@@ -8,9 +8,7 @@ import SetupResponses from "setup/global.responses.json";
 import AlertMessage from "comp/global/helpers/AlertMessage.vue";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
-import InputName from "comp/global/inputs/InputName.vue";
-import InputEmail from "comp/global/inputs/InputEmail.vue";
-import InputPassword from "comp/global/inputs/InputPassword.vue";
+import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 
 const Setup = SetupRegister[Helpers.translate()];
@@ -68,35 +66,45 @@ function checkPassword() {
             @submit.prevent="createAccount"
             @submit="submitForm = true"
           >
-            <InputName
+            <InputComp
+              :type="'name'"
+              :regex="'name'"
               :label="inputs.firstName.label"
               :placeholder="inputs.firstName.placeholder"
               :description="inputs.firstName.description"
               @emit-content="(name) => (form.firstName = name)"
             />
 
-            <InputName
+            <InputComp
+              :type="'name'"
+              :regex="'name'"
               :label="inputs.lastName.label"
               :placeholder="inputs.lastName.placeholder"
               :description="inputs.lastName.description"
               @emit-content="(name) => (form.lastName = name)"
             />
 
-            <InputEmail
+            <InputComp
+              :type="'email'"
+              :regex="'email'"
               :label="inputs.email.label"
               :placeholder="inputs.email.placeholder"
               :description="inputs.email.description"
               @emit-content="(email) => (form.email = email)"
             />
 
-            <InputPassword
+            <InputComp
+              :type="'password'"
+              :regex="'password'"
               :label="inputs.password.label"
               :placeholder="inputs.password.placeholder"
               :description="inputs.password.description"
               @emit-content="(password) => (form.password = password)"
             />
 
-            <InputPassword
+            <InputComp
+              :type="'password'"
+              :regex="'password'"
               :label="inputs.confirmPassword.label"
               :placeholder="inputs.confirmPassword.placeholder"
               :description="inputs.confirmPassword.description"

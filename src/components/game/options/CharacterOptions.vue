@@ -4,7 +4,7 @@ import { CharacterService } from "core/services/character-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupOptions from "setup/page.options.json";
 import SetupResponses from "setup/global.responses.json";
-import InputCharacterName from "comp/global/inputs/InputCharacterName.vue";
+import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 
 const Setup = SetupOptions[Helpers.translate()];
@@ -40,7 +40,9 @@ async function saveCharacterName() {
       @submit.prevent="saveCharacterName"
       @submit="submitForm = !submitForm"
     >
-      <InputCharacterName
+      <InputComp
+        :type="'text'"
+        :regex="'charName'"
         :label="inputs.name.label"
         :placeholder="inputs.name.placeholder"
         :description="inputs.name.description"

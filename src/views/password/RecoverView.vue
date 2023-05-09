@@ -7,7 +7,7 @@ import SetupResponses from "setup/global.responses.json";
 import AlertMessage from "comp/global/helpers/AlertMessage.vue";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
-import InputEmail from "comp/global/inputs/InputEmail.vue";
+import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 import router from "router/index";
 
@@ -54,7 +54,9 @@ async function checkCustomer() {
           @submit="submitForm = !submitForm"
           autocomplete="on"
         >
-          <InputEmail
+          <InputComp
+            :type="'email'"
+            :regex="'email'"
             :label="inputs.email.label"
             :placeholder="inputs.email.placeholder"
             :description="inputs.email.description"

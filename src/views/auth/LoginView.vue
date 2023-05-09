@@ -10,8 +10,7 @@ import SetupLogin from "setup/page.login.json";
 import AlertMessage from "comp/global/helpers/AlertMessage.vue";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
-import InputEmail from "comp/global/inputs/InputEmail.vue";
-import InputPassword from "comp/global/inputs/InputPassword.vue";
+import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 import InputCheckBox from "comp/global/inputs/InputCheckBox.vue";
 
@@ -74,14 +73,18 @@ function redirectAfterLoad() {
             @submit.prevent="login"
             @submit="submitForm = !submitForm"
           >
-            <InputEmail
+            <InputComp
+              :type="'email'"
+              :regex="'email'"
               :label="inputs.email.label"
               :placeholder="inputs.email.placeholder"
               :description="inputs.email.description"
               @emit-content="(email) => (form.email = email)"
             />
 
-            <InputPassword
+            <InputComp
+              :type="'password'"
+              :regex="'password'"
               :label="inputs.password.label"
               :placeholder="inputs.password.placeholder"
               :description="inputs.password.description"

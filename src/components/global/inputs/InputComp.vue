@@ -1,10 +1,17 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, ref, watch } from "vue";
-import { PasswordRegex } from "core/validators/regex.validators";
+import { defineProps, defineEmits, ref, watch, reactive } from "vue";
+import {
+  CharacterNameRegex,
+  EmailRegex,
+  NameRegex,
+  PasswordRegex,
+} from "core/validators/regex";
 
 const emit = defineEmits(["emitContent"]);
 
-defineProps<{
+const props = defineProps<{
+  type: "email" | "name" | "text" | "password";
+  regex: "email" | "name" | "charName" | "password";
   label: string;
   placeholder: string;
   description: string;
@@ -12,11 +19,20 @@ defineProps<{
 }>();
 
 const content = ref("");
+
 const alert = ref(false);
-const inputType = ref("password");
+
+const regex = reactive({
+  charName: CharacterNameRegex,
+  email: EmailRegex,
+  name: NameRegex,
+  password: PasswordRegex,
+});
+
+const inputType = ref(props.type);
 
 watch(content, () => {
-  PasswordRegex.test(content.value)
+  regex[props.regex].test(content.value)
     ? [emit("emitContent", content.value), (alert.value = false)]
     : (alert.value = true);
 });
@@ -27,17 +43,17 @@ function showPassword() {
 </script>
 
 <template>
-  <div class="container">
-    <label class="label" :for="label">{{ label }}</label>
+  <div class="input-comp-container">
+    <label :for="label">{{ label }}</label>
 
     <div class="input-button-container">
       <input
-        class="input"
+        :class="['input', type === 'password' ? 'input-password' : '']"
         v-model="content"
-        autocomplete="password"
+        :autocomplete="type"
         :type="inputType"
-        :required="isRequired || true"
         :placeholder="placeholder"
+        :required="isRequired || true"
         :style="
           !content
             ? 'border-color: white'
@@ -46,9 +62,10 @@ function showPassword() {
             : 'border-color: green'
         "
       />
-      <div>
+
+      <div v-if="type === 'password'">
         <img
-          class="button"
+          class="btn-password"
           alt="show-password"
           @click="showPassword"
           :src="
@@ -67,24 +84,25 @@ function showPassword() {
 </template>
 
 <style scoped>
-.container {
+.input-comp-container {
   max-width: 500px;
   display: grid;
   margin: auto;
   margin-top: 10px;
   color: var(--cor-font-color);
 }
-.label {
+
+.input-comp-container label {
   margin-bottom: 1rem;
 }
+
 .description {
   font-size: 14px;
   margin-top: 1rem;
 }
-
 .input {
   font-size: 1.1rem;
-  width: 465px;
+  width: 500px;
   height: 20px;
   padding: 6px 5px;
   color: var(--cor-font-color);
@@ -93,19 +111,24 @@ function showPassword() {
   color: black;
   background-color: #d9d9d9;
 }
+
+/* password */
+.input-password {
+  width: 465px;
+}
 .input-button-container {
   display: flex;
 }
-.button {
+.btn-password {
   width: min-content;
-  height: 36px;
+  height: 2rem;
   align-self: center;
   border: none;
   cursor: pointer;
 }
 
 @media (max-width: 780px) {
-  .container {
+  .input-comp-container {
     max-width: 100%;
     justify-self: center;
   }
@@ -114,7 +137,13 @@ function showPassword() {
   }
   .input {
     font-size: 14px;
-    width: 265px;
+    width: 300px;
+  }
+  .input-password {
+    width: 275px;
+  }
+  .btn-password {
+    height: 1.5rem;
   }
 }
 </style>

@@ -5,9 +5,7 @@ import { PasswordService } from "core/services/password-service";
 import { Helpers } from "core/helpers/helpers";
 import SetupOptions from "setup/page.options.json";
 import SetupResponses from "setup/global.responses.json";
-import InputName from "comp/global/inputs/InputName.vue";
-import InputEmail from "comp/global/inputs/InputEmail.vue";
-import InputPassword from "comp/global/inputs/InputPassword.vue";
+import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 
 const Setup = SetupOptions[Helpers.translate()];
@@ -72,13 +70,18 @@ async function updatePassword() {
         @submit.prevent="updateFullName"
         @submit="nameForm = !nameForm"
       >
-        <InputName
+        <InputComp
+          :type="'name'"
+          :regex="'name'"
           :label="inputs.firstName.label"
           :placeholder="inputs.firstName.placeholder"
           :description="inputs.firstName.description"
           @emit-content="(name) => (form.firstName = name)"
         />
-        <InputName
+
+        <InputComp
+          :type="'name'"
+          :regex="'name'"
           :label="inputs.lastName.label"
           :placeholder="inputs.lastName.placeholder"
           :description="inputs.lastName.description"
@@ -98,7 +101,9 @@ async function updatePassword() {
         @submit.prevent="updateEmail"
         @submit="emailForm = !emailForm"
       >
-        <InputEmail
+        <InputComp
+          :type="'email'"
+          :regex="'email'"
           :label="inputs.email.label"
           :placeholder="inputs.email.placeholder"
           :description="inputs.email.description"
@@ -118,13 +123,14 @@ async function updatePassword() {
         @submit.prevent="updatePassword"
         @submit="passwordForm = !passwordForm"
       >
-        <InputPassword
+        <InputComp
+          :type="'password'"
+          :regex="'password'"
           :label="inputs.password.label"
           :placeholder="inputs.password.placeholder"
           :description="inputs.password.description"
           @emit-content="(password) => (form.password = password)"
         />
-
         <InputSubmit :label="inputs.submit.label" :is-disabled="passwordForm" />
       </form>
     </div>

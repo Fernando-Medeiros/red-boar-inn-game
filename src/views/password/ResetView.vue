@@ -9,7 +9,7 @@ import SetupResponses from "setup/global.responses.json";
 import AlertMessage from "comp/global/helpers/AlertMessage.vue";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
-import InputPassword from "comp/global/inputs/InputPassword.vue";
+import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 
 const Setup = SetupPassword[Helpers.translate()];
@@ -70,20 +70,23 @@ function checkPassword() {
           @submit.prevent="updatePassword"
           @submit="submitForm = !submitForm"
         >
-          <InputPassword
+          <InputComp
+            :type="'password'"
+            :regex="'password'"
             :label="inputs.password.label"
             :placeholder="inputs.password.placeholder"
             :description="inputs.password.description"
             @emit-content="(password) => (form.password = password)"
           />
 
-          <InputPassword
+          <InputComp
+            :type="'password'"
+            :regex="'password'"
             :label="inputs.confirmPassword.label"
             :placeholder="inputs.confirmPassword.placeholder"
             :description="inputs.confirmPassword.description"
             @emit-content="(password) => (form.confirmPassword = password)"
           />
-
           <InputSubmit :label="inputs.submit.label" :is-disabled="submitForm" />
         </form>
       </div>
