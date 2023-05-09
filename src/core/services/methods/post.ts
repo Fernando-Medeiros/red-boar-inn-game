@@ -1,20 +1,22 @@
+import type { Message, StatusCode } from "../schemas/responses-schemas";
 import axios, { AxiosError } from "axios";
-import { SecretHeader } from "../headers/api-secret-key";
+import { authorizationHeader } from "../headers/authorization";
+import { apiTokenHeader } from "../headers/token-key";
 import { CheckSession } from "../helpers/check-session";
 
-export async function postMethod<Response = object>(
-  URL: string | undefined,
-  body?: object,
-  headers?: object
-): Promise<Response> {
+export async function postMethod<R = object, D = Message & StatusCode>(
+  API?: string,
+  body?: object
+): Promise<R & D> {
   return await axios
-    .post(String(URL), body, { headers: { ...SecretHeader(), ...headers } })
-
-    .then((response) => {
-      const { data, status: statusCode } = response;
-
-      return Object({ ...data, statusCode });
+    .post(String(API), body, {
+      headers: { ...apiTokenHeader(), ...authorizationHeader() },
     })
+
+    .then(({ data, status: statusCode }) => {
+      return { ...data, statusCode };
+    })
+
     .catch(({ response }: AxiosError) => {
       CheckSession(response?.status);
       return response?.data;
