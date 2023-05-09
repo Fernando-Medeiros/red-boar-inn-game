@@ -25,6 +25,15 @@
           "Escolha livremente a classe do seu personagem, podendo trocá-la a qualquer momento.",
           "Cada classe terá vantagens únicas, como habilidades especiais e equipamentos exclusivos, oferecendo ainda mais possibilidades de personalização."
         ]
+      },
+      {
+        "title": "Masmorra",
+        "image": "dungeon.webp",
+        "content": [
+          "A Masmorra apresenta oponentes e itens aleatórios, adicionando imprevisibilidade e desafio às explorações.",
+          "Além disso, foi incluído um menu de opções com diversas funcionalidades, como visualização dos status dos personagens, uso de itens durante a batalha, verificação do log das ações tomadas, possibilidade de fugir da batalha e atacar oponentes.",
+          "Essas adições tornam as masmorras ainda mais emocionantes e estratégicas para os jogadores."
+        ]
       }
     ]
   },
@@ -53,6 +62,15 @@
         "content": [
           "Freely choose your character's class, being able to change it at any time.",
           "Each class will have unique perks like special abilities and unique gear, offering even more customization possibilities."
+        ]
+      },
+      {
+        "title": "Dungeon",
+        "image": "dungeon.webp",
+        "content": [
+          "Dungeons feature random opponents and items, adding unpredictability and challenge to explorations.",
+          "In addition, an options menu was included with various features, such as viewing the status of the characters, using items during battle, checking the log of actions taken, the possibility of escaping from battle and attacking opponents.",
+          "These additions make dungeons even more exciting and strategic for players."
         ]
       }
     ]

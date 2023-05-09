@@ -14,7 +14,7 @@
       "codex": { "label": "Codex", "icon": "codex", "route": "" },
       "inventory": { "label": "Inventário", "icon": "inventory", "route": "" },
       "dungeon": {
-        "label": "Labirinto",
+        "label": "masmorra",
         "icon": "dungeon",
         "route": "/dungeon"
       },
