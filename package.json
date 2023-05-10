@@ -12,6 +12,7 @@
     "@vueuse/core": "^10.1.2",
     "axios": "^1.4.0",
     "core-js": "^3.30.2",
+    "sweetalert2": "^11.7.5",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },
