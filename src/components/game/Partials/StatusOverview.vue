@@ -1,14 +1,8 @@
 <script setup lang="ts">
-import {
-  defineEmits,
-  defineProps,
-  onBeforeMount,
-  reactive,
-  ref,
-  watch,
-} from "vue";
+import { defineProps, onBeforeMount, reactive, ref, watch } from "vue";
 import { StatusService } from "core/services/status-service";
 import { Helpers } from "core/helpers/helpers";
+import AlertMessage from "core/helpers/alert-message";
 import SetupStatus from "setup/page.status.json";
 import SetupResponses from "setup/global.responses.json";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
@@ -17,14 +11,6 @@ import StatusBar from "comp/global/helpers/StatusBar.vue";
 import StatusPreview from "./StatusPreview.vue";
 
 type attributes = "strength" | "intelligence" | "dexterity" | "vitality";
-
-const {
-  status: { success, error },
-} = SetupResponses[Helpers.translate()].updates;
-
-const props = defineProps<{ level?: number }>();
-
-const emit = defineEmits(["emitMessage"]);
 
 onBeforeMount(async () => {
   await StatusService.get().then(
@@ -58,6 +44,12 @@ onBeforeMount(async () => {
   );
 });
 
+const {
+  status: { success, error },
+} = SetupResponses[Helpers.translate()].updates;
+
+const props = defineProps<{ level?: number }>();
+
 const statusInfo = { ...SetupStatus[Helpers.translate()] };
 
 const submitForm = ref(false);
@@ -83,7 +75,8 @@ async function updateStatus() {
     ...primary,
     ...secondary,
   });
-  emit("emitMessage", statusCode === 204 ? success : error);
+  AlertMessage.alertWithTimer(statusCode === 204 ? success : error, statusCode);
+
   submitForm.value = !submitForm.value;
 }
 

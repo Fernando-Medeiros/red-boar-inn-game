@@ -5,17 +5,16 @@ import { Helpers } from "core/helpers/helpers";
 import SetupProfile from "setup/page.profile.json";
 import CharacterSprite from "comp/global/sprites/CharacterSprite.vue";
 
+onBeforeMount(async () => {
+  const { charName, className, level, gender } = await CharacterService.get();
+  Object.assign(character, { charName, className, level, gender });
+});
+
 defineProps<{ rotateY?: boolean }>();
 
 const emit = defineEmits(["emitCharacter"]);
 
-onBeforeMount(async () => {
-  const { charName, className, level, gender } = await CharacterService.get();
-
-  Object.assign(character, { charName, className, level, gender });
-});
-
-const spriteInfo = SetupProfile[Helpers.translate()].sprite;
+const { sprite: spriteInfo } = SetupProfile[Helpers.translate()];
 
 const character = reactive({
   level: "1",

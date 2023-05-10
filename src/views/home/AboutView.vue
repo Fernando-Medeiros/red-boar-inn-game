@@ -4,8 +4,8 @@ import SetupAbout from "setup/page.about.json";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
 
-const title = SetupAbout[Helpers.translate()].title;
-const articles = SetupAbout[Helpers.translate()].articles;
+const { title } = SetupAbout[Helpers.translate()];
+const { articles } = SetupAbout[Helpers.translate()];
 </script>
 
 <template>

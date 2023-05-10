@@ -1,20 +1,14 @@
 <script setup lang="ts">
-import { defineExpose, ref } from "vue";
-import AlertMessage from "comp/global/helpers/AlertMessage.vue";
+import { ref } from "vue";
 import GuidesOptions from "comp/game/options/GuidesOptions.vue";
 import CharacterOptions from "comp/game/options/CharacterOptions.vue";
 import SystemOptions from "comp/game/options/SystemOptions.vue";
 import AccountOptions from "comp/game/options/AccountOptions.vue";
 
-const alertMessage = ref("");
-defineExpose({ alertMessage });
-
 const activeGuide = ref("character");
 </script>
 
 <template>
-  <AlertMessage :message="alertMessage" />
-
   <div class="main-background">
     <div class="main-container">
       <GuidesOptions
@@ -23,15 +17,9 @@ const activeGuide = ref("character");
       />
 
       <div class="background">
-        <CharacterOptions
-          v-show="activeGuide === 'character'"
-          @emit-message="(message) => (alertMessage = message)"
-        />
+        <CharacterOptions v-show="activeGuide === 'character'" />
 
-        <AccountOptions
-          v-show="activeGuide === 'account'"
-          @emit-message="(message) => (alertMessage = message)"
-        />
+        <AccountOptions v-show="activeGuide === 'account'" />
 
         <SystemOptions v-show="activeGuide === 'system'" />
       </div>

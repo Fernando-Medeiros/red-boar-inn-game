@@ -3,11 +3,11 @@ import { defineProps, defineEmits } from "vue";
 import { Helpers } from "core/helpers/helpers";
 import SetupOptions from "setup/page.options.json";
 
-const emit = defineEmits(["showGuide"]);
-
 defineProps<{ currentGuide: string }>();
 
-const guides = SetupOptions[Helpers.translate()].guides;
+const emit = defineEmits(["showGuide"]);
+
+const { guides } = SetupOptions[Helpers.translate()];
 </script>
 
 <template>

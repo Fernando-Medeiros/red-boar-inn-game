@@ -4,7 +4,7 @@ import SetupOptions from "setup/page.options.json";
 import ThemeButton from "comp/global/buttons/ThemeButton.vue";
 import LanguageButton from "comp/global/buttons/LanguageButton.vue";
 
-const system = SetupOptions[Helpers.translate()].system;
+const { system } = SetupOptions[Helpers.translate()];
 </script>
 
 <template>

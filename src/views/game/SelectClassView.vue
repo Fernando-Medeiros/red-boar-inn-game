@@ -1,50 +1,43 @@
 <script setup lang="ts">
 import type { ClassesSchema } from "core/schemas/classes-schema";
-import { ref, defineExpose } from "vue";
+import { reactive, ref } from "vue";
 import { CharacterService } from "core/services/character-service";
 import { Helpers } from "core/helpers/helpers";
+import AlertMessage from "core/helpers/alert-message";
 import SetupSelectClass from "setup/page.select-class.json";
 import SetupResponses from "setup/global.responses.json";
-import AlertMessage from "comp/global/helpers/AlertMessage.vue";
 import CharacterSprite from "comp/global/sprites/CharacterSprite.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 import ClassSprite from "comp/global/sprites/ClassSprite.vue";
 import IconSprite from "comp/global/sprites/IconSprite.vue";
 
-const Setup = SetupSelectClass[Helpers.translate()];
+const [
+  { classes, defaultClass, defaultGender, saveButton },
+  { success, error },
+] = [
+  SetupSelectClass[Helpers.translate()],
+  SetupResponses[Helpers.translate()].updates.className,
+];
 
-const {
-  updates: {
-    className: { success, error },
-  },
-} = SetupResponses[Helpers.translate()];
-
-const alertMessage = ref("");
-defineExpose({ alertMessage });
-
-const saveButton = Setup.saveButton;
-const classOptions = Object.keys(Setup.classes);
-
-const submitForm = ref(false);
-const classDescription = ref(Setup.classes.peasant);
-
-const form = ref({
-  gender: Setup.defaultGender,
-  className: Setup.defaultClass,
-});
+const [submitForm, classDescription, form] = [
+  ref(false),
+  ref(classes.peasant),
+  reactive({
+    gender: defaultGender,
+    className: defaultClass,
+  }),
+];
 
 async function saveClass() {
-  const { statusCode } = await CharacterService.update(form.value);
+  const { statusCode } = await CharacterService.update(form);
 
-  alertMessage.value = statusCode === 204 ? success : error;
+  AlertMessage.alertWithTimer(statusCode === 204 ? success : error, statusCode);
 
   submitForm.value = !submitForm.value;
 }
 </script>
 
 <template>
-  <AlertMessage :message="alertMessage" />
-
   <div class="main-background">
     <div
       class="main-container"
@@ -60,7 +53,7 @@ async function saveClass() {
 
       <div class="choice-classes-container">
         <ClassSprite
-          v-for="className in classOptions"
+          v-for="className in Object.keys(classes)"
           :key="className"
           :name="className"
           :gender="form.gender"
@@ -69,7 +62,7 @@ async function saveClass() {
           @active-class="
             (className: ClassesSchema) => {
               form.className = className;
-              classDescription = Setup.classes[className];
+              classDescription = classes[className];
             }
           "
         />

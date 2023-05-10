@@ -1,63 +1,56 @@
 <script setup lang="ts">
-import { onBeforeMount, defineExpose, ref, reactive } from "vue";
+import { onBeforeMount, ref, reactive } from "vue";
 import { PasswordService } from "core/services/password-service";
 import { Helpers } from "core/helpers/helpers";
 import { useRoute } from "vue-router";
-import router from "router/index";
+import AlertMessage from "core/helpers/alert-message";
 import SetupPassword from "setup/page.reset-password.json";
 import SetupResponses from "setup/global.responses.json";
-import AlertMessage from "comp/global/helpers/AlertMessage.vue";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
 import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
-
-const Setup = SetupPassword[Helpers.translate()];
-
-let { success, error } = SetupResponses[Helpers.translate()].resetPassword;
+import router from "router/index";
 
 onBeforeMount(() => {
   const { token } = useRoute().params;
   if (String(token).length < 110) return router.push({ path: "/" });
 });
 
-const title = Setup.title;
-const inputs = { ...Setup.form };
+const [{ title, form: inputs }, { success, error }, submitForm, form] = [
+  SetupPassword[Helpers.translate()],
 
-const alertMessage = ref("");
-defineExpose({ alertMessage });
+  SetupResponses[Helpers.translate()].resetPassword,
 
-const submitForm = ref(false);
-const redirectTo = ref("/auth/login");
-const form = reactive({ password: "", confirmPassword: "" });
+  ref(false),
+
+  reactive({ password: "", confirmPassword: "" }),
+];
 
 async function updatePassword() {
-  if (checkPassword()) {
+  if (form.confirmPassword === form.password) {
     const { token } = useRoute().params;
     const { statusCode } = await PasswordService.reset(form, String(token));
 
-    alertMessage.value = statusCode === 204 ? success : error;
+    AlertMessage.alertWithTimer(
+      statusCode === 204 ? success : error,
+      statusCode
+    );
 
     setTimeout(async () => {
       statusCode === 204
-        ? router.push({ path: redirectTo.value })
+        ? router.push({ path: "/auth/login" })
         : (submitForm.value = false);
-    }, 2500);
+    }, 1500);
   } else {
     submitForm.value = !submitForm.value;
 
-    alertMessage.value = inputs.confirmPassword.message;
+    AlertMessage.alertWithTimer(inputs.confirmPassword.message, 400);
   }
-}
-
-function checkPassword() {
-  return form.confirmPassword === form.password;
 }
 </script>
 
 <template>
-  <AlertMessage :message="alertMessage" />
-
   <BannerTitle :title="title" />
 
   <BannerSprites :sprite-left="'thief'" :sprite-right="'thief'" />

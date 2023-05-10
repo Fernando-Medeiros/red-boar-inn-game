@@ -1,59 +1,53 @@
 <script setup lang="ts">
-import { ref, defineExpose, reactive } from "vue";
+import { ref, reactive } from "vue";
 import { AccountService } from "core/services/account-service";
 import { Helpers } from "core/helpers/helpers";
-import router from "router/index";
+import AlertMessage from "core/helpers/alert-message";
 import SetupRegister from "setup/page.register.json";
 import SetupResponses from "setup/global.responses.json";
-import AlertMessage from "comp/global/helpers/AlertMessage.vue";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
 import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
+import router from "router/index";
 
-const Setup = SetupRegister[Helpers.translate()];
+const [{ title, form: inputs }, { success }, submitForm, form] = [
+  SetupRegister[Helpers.translate()],
 
-let { success, error } = SetupResponses[Helpers.translate()].register;
+  SetupResponses[Helpers.translate()].register,
 
-const alertMessage = ref("");
-defineExpose({ alertMessage });
+  ref(false),
 
-const title = Setup.title;
-const inputs = { ...Setup.form };
-
-const submitForm = ref(false);
-const redirectTo = ref("/auth/login");
-const form = reactive({
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-});
+  reactive({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  }),
+];
 
 async function createAccount() {
-  checkPassword()
-    ? (error = (await AccountService.create(form))?.message || "")
-    : (error = inputs.confirmPassword.message);
+  if (form.confirmPassword === form.password) {
+    submitForm.value = true;
 
-  alertMessage.value = error || success;
+    await AccountService.create(form).then(({ message, statusCode }) => {
+      AlertMessage.alertWithTimer(message || success, statusCode);
 
-  setTimeout(() => {
-    error
-      ? (submitForm.value = false)
-      : router.push({ path: redirectTo.value });
-  }, 2500);
-}
+      setTimeout(() => {
+        if (statusCode === 201) router.push({ path: "/auth/login" });
+      }, 1500);
+    });
+  } else {
+    AlertMessage.alertWithTimer(inputs.confirmPassword.message, 400);
+  }
 
-function checkPassword() {
-  return form.confirmPassword === form.password;
+  submitForm.value = false;
 }
 </script>
 
 <template>
   <div>
-    <AlertMessage :message="alertMessage" />
-
     <BannerTitle :title="title" />
 
     <BannerSprites :sprite-left="'peasant'" :sprite-right="'peasant'" />
@@ -61,11 +55,7 @@ function checkPassword() {
     <div class="main-background">
       <div class="main-container">
         <div class="background">
-          <form
-            class="form-login"
-            @submit.prevent="createAccount"
-            @submit="submitForm = true"
-          >
+          <form class="form-login" @submit.prevent="createAccount">
             <InputComp
               :type="'name'"
               :regex="'name'"

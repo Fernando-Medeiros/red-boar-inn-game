@@ -1,46 +1,40 @@
 <script setup lang="ts">
-import { ref, defineExpose, reactive } from "vue";
+import { ref, reactive } from "vue";
 import { PasswordService } from "core/services/password-service";
 import { Helpers } from "core/helpers/helpers";
+import AlertMessage from "core/helpers/alert-message";
 import SetupPassword from "setup/page.recover-password.json";
 import SetupResponses from "setup/global.responses.json";
-import AlertMessage from "comp/global/helpers/AlertMessage.vue";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
 import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 import router from "router/index";
 
-const Setup = SetupPassword[Helpers.translate()];
+const [{ title, form: inputs }, { success, error }, submitForm, form] = [
+  SetupPassword[Helpers.translate()],
 
-let { success, error } = SetupResponses[Helpers.translate()].recoverPassword;
+  SetupResponses[Helpers.translate()].recoverPassword,
 
-const title = Setup.title;
-const inputs = { ...Setup.form };
+  ref(false),
 
-const alertMessage = ref("");
-defineExpose({ alertMessage });
-
-const submitForm = ref(false);
-const redirectTo = ref("/auth/login");
-const form = reactive({ email: "" });
+  reactive({ email: "" }),
+];
 
 async function checkCustomer() {
   const { statusCode } = await PasswordService.recover(form);
 
-  alertMessage.value = statusCode === 200 ? success : error;
+  AlertMessage.alertWithTimer(statusCode === 200 ? success : error, statusCode);
 
   setTimeout(async () => {
     statusCode === 200
-      ? router.push({ path: redirectTo.value })
+      ? router.push({ path: "/auth/login" })
       : (submitForm.value = !submitForm.value);
-  }, 2500);
+  }, 1500);
 }
 </script>
 
 <template>
-  <AlertMessage :message="alertMessage" />
-
   <BannerTitle :title="title" />
 
   <BannerSprites :sprite-left="'thief'" :sprite-right="'thief'" />

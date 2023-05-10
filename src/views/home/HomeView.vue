@@ -5,8 +5,8 @@ import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
 import HomePreview from "comp/home/HomePreview.vue";
 
-const title = SetupHome[Helpers.translate()].title;
-const previews = SetupHome[Helpers.translate()].preview;
+const { title } = SetupHome[Helpers.translate()];
+const { preview } = SetupHome[Helpers.translate()];
 </script>
 
 <template>
@@ -18,11 +18,11 @@ const previews = SetupHome[Helpers.translate()].preview;
     <div class="main-background">
       <div class="main-container previews-container">
         <HomePreview
-          v-for="preview in previews"
-          :key="preview.title"
-          :title="preview.title"
-          :content="preview.content"
-          :image="preview.image"
+          v-for="view in preview"
+          :key="view.title"
+          :title="view.title"
+          :content="view.content"
+          :image="view.image"
         />
       </div>
     </div>

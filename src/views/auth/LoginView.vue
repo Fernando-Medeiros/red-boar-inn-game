@@ -1,67 +1,56 @@
 <script setup lang="ts">
-import { ref, defineExpose, reactive } from "vue";
+import { ref, reactive } from "vue";
 import { SessionStorage } from "core/storage/session-storage";
 import { SessionService } from "core/services/session-service";
 import { CharacterService } from "core/services/character-service";
 import { CharacterDependencies } from "core/services/helpers/character-dependencies";
 import { Helpers } from "core/helpers/helpers";
-import router from "router/index";
+import AlertMessage from "core/helpers/alert-message";
 import SetupLogin from "setup/page.login.json";
-import AlertMessage from "comp/global/helpers/AlertMessage.vue";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
 import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 import InputCheckBox from "comp/global/inputs/InputCheckBox.vue";
+import router from "router/index";
 
-const Setup = SetupLogin[Helpers.translate()];
+const [{ titleTips: tips, form: inputs }, submitForm, form] = [
+  SetupLogin[Helpers.translate()],
 
-const title = Helpers.random(Setup.titleTips);
-const inputs = { ...Setup.form };
+  ref(false),
 
-const alertMessage = ref("");
-defineExpose({ alertMessage });
-
-const submitForm = ref(false);
-const redirectTo = ref("/character/profile");
-
-const form = reactive({
-  email: "",
-  password: "",
-  remember: false,
-});
+  reactive({
+    email: "",
+    password: "",
+    remember: false,
+  }),
+];
 
 async function login() {
   await SessionService.login({ ...form }).then(
     async ({ message, statusCode, pubId, access, refresh, type }) => {
-      alertMessage.value = message || "";
+      AlertMessage.alertWithTimer(message, statusCode);
 
       if (statusCode === 200) {
         SessionStorage.set({ pubId, access, refresh, type });
 
-        await CharacterService.get().then(async (pubId) => {
-          if (pubId) redirectAfterLoad();
+        await CharacterService.get().then(async (resp) => {
+          if (!resp?.pubId) await CharacterDependencies.create();
 
-          await CharacterDependencies.create(), redirectAfterLoad();
+          router.push({ path: "/character/profile" });
+          location.reload();
         });
       }
 
-      submitForm.value = !submitForm.value;
+      submitForm.value = false;
     }
   );
-}
-
-function redirectAfterLoad() {
-  router.push({ path: redirectTo.value });
-  location.reload();
 }
 </script>
 
 <template>
   <div>
-    <AlertMessage :message="alertMessage" />
-
-    <BannerTitle :title="title" />
+    <BannerTitle :title="Helpers.random(tips)" />
 
     <BannerSprites :sprite-left="'peasant'" :sprite-right="'peasant'" />
 

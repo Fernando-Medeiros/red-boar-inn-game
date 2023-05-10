@@ -5,8 +5,8 @@ import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
 import UpdatePreview from "comp/home/UpdatePreview.vue";
 
-const title = SetupUpdates[Helpers.translate()].title;
-const updates = SetupUpdates[Helpers.translate()].updates;
+const { title } = SetupUpdates[Helpers.translate()];
+const { updates } = SetupUpdates[Helpers.translate()];
 </script>
 
 <template>

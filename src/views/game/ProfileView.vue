@@ -4,7 +4,7 @@ import SetupProfile from "setup/page.profile.json";
 import CharacterPreview from "comp/game/Partials/CharacterPreview.vue";
 import IconButton from "comp/global/buttons/IconButton.vue";
 
-const menuInfo = SetupProfile[Helpers.translate()].menu;
+const { menu } = SetupProfile[Helpers.translate()];
 </script>
 
 <template>
@@ -13,36 +13,36 @@ const menuInfo = SetupProfile[Helpers.translate()].menu;
       <div class="menu-container">
         <div class="menu-top-one-icon">
           <IconButton
-            :name="menuInfo.status.icon"
-            :label="menuInfo.status.label"
-            :to-route="menuInfo.status.route"
+            :name="menu.status.icon"
+            :label="menu.status.label"
+            :to-route="menu.status.route"
           />
         </div>
 
         <div class="menu-top-two-icon">
           <IconButton
-            :name="menuInfo.skills.icon"
-            :label="menuInfo.skills.label"
-            :to-route="menuInfo.skills.route"
+            :name="menu.skills.icon"
+            :label="menu.skills.label"
+            :to-route="menu.skills.route"
           />
           <IconButton
-            :name="menuInfo.equipment.icon"
-            :label="menuInfo.equipment.label"
-            :to-route="menuInfo.equipment.route"
+            :name="menu.equipment.icon"
+            :label="menu.equipment.label"
+            :to-route="menu.equipment.route"
           />
         </div>
 
         <div class="menu-middle-four-icon-and-sprite">
           <div class="menu-middle-two-icon">
             <IconButton
-              :name="menuInfo.codex.icon"
-              :label="menuInfo.codex.label"
-              :to-route="menuInfo.codex.route"
+              :name="menu.codex.icon"
+              :label="menu.codex.label"
+              :to-route="menu.codex.route"
             />
             <IconButton
-              :name="menuInfo.dungeon.icon"
-              :label="menuInfo.dungeon.label"
-              :to-route="menuInfo.dungeon.route"
+              :name="menu.dungeon.icon"
+              :label="menu.dungeon.label"
+              :to-route="menu.dungeon.route"
             />
           </div>
 
@@ -50,36 +50,36 @@ const menuInfo = SetupProfile[Helpers.translate()].menu;
 
           <div class="menu-middle-two-icon">
             <IconButton
-              :name="menuInfo.inventory.icon"
-              :label="menuInfo.inventory.label"
-              :to-route="menuInfo.inventory.route"
+              :name="menu.inventory.icon"
+              :label="menu.inventory.label"
+              :to-route="menu.inventory.route"
             />
             <IconButton
-              :name="menuInfo.arena.icon"
-              :label="menuInfo.arena.label"
-              :to-route="menuInfo.arena.route"
+              :name="menu.arena.icon"
+              :label="menu.arena.label"
+              :to-route="menu.arena.route"
             />
           </div>
         </div>
 
         <div class="menu-bottom-two-icon">
           <IconButton
-            :name="menuInfo.quests.icon"
-            :label="menuInfo.quests.label"
-            :to-route="menuInfo.quests.route"
+            :name="menu.quests.icon"
+            :label="menu.quests.label"
+            :to-route="menu.quests.route"
           />
           <IconButton
-            :name="menuInfo.options.icon"
-            :label="menuInfo.options.label"
-            :to-route="menuInfo.options.route"
+            :name="menu.options.icon"
+            :label="menu.options.label"
+            :to-route="menu.options.route"
           />
         </div>
 
         <div class="menu-bottom-one-icon">
           <IconButton
-            :name="menuInfo.classes.icon"
-            :label="menuInfo.classes.label"
-            :to-route="menuInfo.classes.route"
+            :name="menu.classes.icon"
+            :label="menu.classes.label"
+            :to-route="menu.classes.route"
           />
         </div>
       </div>
