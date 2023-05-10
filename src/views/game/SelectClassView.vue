@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { ClassesSchema } from "core/schemas/classes-schema";
 import { reactive, ref } from "vue";
-import { CharacterService } from "core/services/character-service";
 import { Helpers } from "core/helpers/helpers";
-import AlertMessage from "core/helpers/alert-message";
+import useUpdateClass from "composable/useUpdateClass";
 import SetupSelectClass from "setup/page.select-class.json";
 import SetupResponses from "setup/global.responses.json";
 import CharacterSprite from "comp/global/sprites/CharacterSprite.vue";
@@ -11,10 +10,7 @@ import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 import ClassSprite from "comp/global/sprites/ClassSprite.vue";
 import IconSprite from "comp/global/sprites/IconSprite.vue";
 
-const [
-  { classes, defaultClass, defaultGender, saveButton },
-  { success, error },
-] = [
+const [{ classes, defaultClass, defaultGender, saveButton }, { success }] = [
   SetupSelectClass[Helpers.translate()],
   SetupResponses[Helpers.translate()].updates.className,
 ];
@@ -29,20 +25,17 @@ const [submitForm, classDescription, form] = [
 ];
 
 async function saveClass() {
-  const { statusCode } = await CharacterService.update(form);
+  submitForm.value = true;
 
-  AlertMessage.alertWithTimer(statusCode === 204 ? success : error, statusCode);
+  await useUpdateClass(form, success);
 
-  submitForm.value = !submitForm.value;
+  submitForm.value = false;
 }
 </script>
 
 <template>
   <div class="main-background">
-    <div
-      class="main-container"
-      style="background: linear-gradient(#81818157, #292929)"
-    >
+    <div class="main-container class-background">
       <div class="sprite-container">
         <CharacterSprite
           :name="form.className"
@@ -72,7 +65,7 @@ async function saveClass() {
         <div class="className-and-button-container">
           <h2>{{ form.className }}</h2>
 
-          <form @submit.prevent="saveClass" @submit="submitForm = !submitForm">
+          <form @submit.prevent="saveClass">
             <InputSubmit :label="saveButton.label" :is-disabled="submitForm" />
           </form>
         </div>
@@ -102,6 +95,9 @@ async function saveClass() {
 </template>
 
 <style scoped>
+.class-background {
+  background: linear-gradient(#81818157, #292929);
+}
 .sprite-container {
   display: grid;
   padding: 10px;

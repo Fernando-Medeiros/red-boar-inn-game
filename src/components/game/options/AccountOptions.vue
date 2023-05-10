@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
-import { AccountService } from "core/services/account-service";
-import { PasswordService } from "core/services/password-service";
 import { Helpers } from "core/helpers/helpers";
-import AlertMessage from "core/helpers/alert-message";
 import SetupOptions from "setup/page.options.json";
 import SetupResponses from "setup/global.responses.json";
 import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
+import useUpdateFullName from "composable/useUpdateFullName";
+import useUpdateEmail from "composable/useUpdateEmail";
 
 const [
   { form: inputs },
@@ -36,40 +35,18 @@ const [
 ];
 
 async function updateFullName() {
-  const { firstName, lastName } = form;
-  const { statusCode, message } = await AccountService.update({
-    firstName,
-    lastName,
-  });
-  AlertMessage.alertWithTimer(
-    statusCode === 204 ? accSuccess : message,
-    statusCode
-  );
-  submitNameForm.value = !submitNameForm.value;
+  await useUpdateFullName(form, accSuccess);
+  submitNameForm.value = false;
 }
 
 async function updateEmail() {
-  const { email } = form;
-  const { statusCode, message } = await AccountService.update({
-    email,
-  });
-  AlertMessage.alertWithTimer(
-    statusCode === 204 ? accSuccess : message,
-    statusCode
-  );
-  submitEmailForm.value = !submitEmailForm.value;
+  await useUpdateEmail(form, accSuccess);
+  submitEmailForm.value = false;
 }
 
 async function updatePassword() {
-  const { password } = form;
-  const { statusCode, message } = await PasswordService.update({
-    password,
-  });
-  AlertMessage.alertWithTimer(
-    statusCode === 204 ? pwdSuccess : message,
-    statusCode
-  );
-  submitPasswordForm.value = !submitPasswordForm.value;
+  await useUpdateEmail(form, pwdSuccess);
+  submitPasswordForm.value = false;
 }
 </script>
 

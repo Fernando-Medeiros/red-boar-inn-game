@@ -1,16 +1,13 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { SessionStorage } from "./core/storage/session-storage";
 import HeaderMain from "comp/global/headers/HeaderMain.vue";
 import HeaderGame from "comp/global/headers/HeaderGame.vue";
 import FooterMain from "comp/global/footer/FooterMain.vue";
-
-const isAuthenticated = ref(SessionStorage.isAuthenticated());
 </script>
 
 <template>
-  <HeaderMain v-if="!isAuthenticated" />
-  <HeaderGame v-if="isAuthenticated" />
+  <HeaderMain v-if="!SessionStorage.isAuthenticated()" />
+  <HeaderGame v-else />
   <router-view />
   <FooterMain />
 </template>

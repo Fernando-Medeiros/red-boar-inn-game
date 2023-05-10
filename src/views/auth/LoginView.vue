@@ -1,24 +1,17 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import { SessionStorage } from "core/storage/session-storage";
-import { SessionService } from "core/services/session-service";
-import { CharacterService } from "core/services/character-service";
-import { CharacterDependencies } from "core/services/helpers/character-dependencies";
 import { Helpers } from "core/helpers/helpers";
-import AlertMessage from "core/helpers/alert-message";
+import useLogin from "composable/useLogin";
 import SetupLogin from "setup/page.login.json";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
 import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
 import InputCheckBox from "comp/global/inputs/InputCheckBox.vue";
-import router from "router/index";
 
 const [{ titleTips: tips, form: inputs }, submitForm, form] = [
   SetupLogin[Helpers.translate()],
-
   ref(false),
-
   reactive({
     email: "",
     password: "",
@@ -27,24 +20,11 @@ const [{ titleTips: tips, form: inputs }, submitForm, form] = [
 ];
 
 async function login() {
-  await SessionService.login({ ...form }).then(
-    async ({ message, statusCode, pubId, access, refresh, type }) => {
-      AlertMessage.alertWithTimer(message, statusCode);
+  submitForm.value = true;
 
-      if (statusCode === 200) {
-        SessionStorage.set({ pubId, access, refresh, type });
+  await useLogin(form);
 
-        await CharacterService.get().then(async (resp) => {
-          if (!resp?.pubId) await CharacterDependencies.create();
-
-          router.push({ path: "/character/profile" });
-          location.reload();
-        });
-      }
-
-      submitForm.value = false;
-    }
-  );
+  submitForm.value = false;
 }
 </script>
 
@@ -57,11 +37,7 @@ async function login() {
     <div class="main-background">
       <div class="main-container">
         <div class="background">
-          <form
-            class="form-login"
-            @submit.prevent="login"
-            @submit="submitForm = !submitForm"
-          >
+          <form class="form-login" @submit.prevent="login">
             <InputComp
               :type="'email'"
               :regex="'email'"

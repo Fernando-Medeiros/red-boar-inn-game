@@ -1,8 +1,4 @@
-import type {
-  LoginSchema,
-  AccessTokenSchema,
-  RefreshTokenSchema,
-} from "./schemas/auth-schemas";
+import type { SessionSchema } from "core/schemas/session-schema";
 import { postMethod } from "./methods/post";
 
 const {
@@ -11,11 +7,11 @@ const {
 } = process.env;
 
 export class SessionService {
-  static async login(form: LoginSchema) {
-    return await postMethod<AccessTokenSchema>(API_LOGIN, form);
+  static async login(form: object) {
+    return await postMethod<SessionSchema>(API_LOGIN, form);
   }
 
-  static async refresh(token: RefreshTokenSchema) {
-    return await postMethod<RefreshTokenSchema>(API_REFRESH, token);
+  static async refresh(token: object) {
+    return await postMethod<SessionSchema>(API_REFRESH, token);
   }
 }

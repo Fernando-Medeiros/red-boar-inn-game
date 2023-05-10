@@ -1,23 +1,19 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import { AccountService } from "core/services/account-service";
 import { Helpers } from "core/helpers/helpers";
 import AlertMessage from "core/helpers/alert-message";
+import useRegister from "composable/useRegister";
 import SetupRegister from "setup/page.register.json";
 import SetupResponses from "setup/global.responses.json";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
 import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
-import router from "router/index";
 
 const [{ title, form: inputs }, { success }, submitForm, form] = [
   SetupRegister[Helpers.translate()],
-
   SetupResponses[Helpers.translate()].register,
-
   ref(false),
-
   reactive({
     firstName: "",
     lastName: "",
@@ -27,17 +23,11 @@ const [{ title, form: inputs }, { success }, submitForm, form] = [
   }),
 ];
 
-async function createAccount() {
+async function register() {
   if (form.confirmPassword === form.password) {
     submitForm.value = true;
 
-    await AccountService.create(form).then(({ message, statusCode }) => {
-      AlertMessage.alertWithTimer(message || success, statusCode);
-
-      setTimeout(() => {
-        if (statusCode === 201) router.push({ path: "/auth/login" });
-      }, 1500);
-    });
+    await useRegister(form, success);
   } else {
     AlertMessage.alertWithTimer(inputs.confirmPassword.message, 400);
   }
@@ -55,7 +45,7 @@ async function createAccount() {
     <div class="main-background">
       <div class="main-container">
         <div class="background">
-          <form class="form-login" @submit.prevent="createAccount">
+          <form class="form-login" @submit.prevent="register">
             <InputComp
               :type="'name'"
               :regex="'name'"

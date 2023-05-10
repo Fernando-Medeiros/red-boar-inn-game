@@ -1,36 +1,27 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import { PasswordService } from "core/services/password-service";
 import { Helpers } from "core/helpers/helpers";
-import AlertMessage from "core/helpers/alert-message";
 import SetupPassword from "setup/page.recover-password.json";
 import SetupResponses from "setup/global.responses.json";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";
 import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
-import router from "router/index";
+import useRecoverPassword from "composable/useRecoverPassword";
 
-const [{ title, form: inputs }, { success, error }, submitForm, form] = [
+const [{ title, form: inputs }, { success }, submitForm, form] = [
   SetupPassword[Helpers.translate()],
-
   SetupResponses[Helpers.translate()].recoverPassword,
-
   ref(false),
-
   reactive({ email: "" }),
 ];
 
-async function checkCustomer() {
-  const { statusCode } = await PasswordService.recover(form);
+async function recover() {
+  submitForm.value = true;
 
-  AlertMessage.alertWithTimer(statusCode === 200 ? success : error, statusCode);
+  await useRecoverPassword(form, success);
 
-  setTimeout(async () => {
-    statusCode === 200
-      ? router.push({ path: "/auth/login" })
-      : (submitForm.value = !submitForm.value);
-  }, 1500);
+  submitForm.value = false;
 }
 </script>
 
@@ -42,12 +33,7 @@ async function checkCustomer() {
   <div class="main-background">
     <div class="main-container">
       <div class="background">
-        <form
-          class="form-login"
-          @submit.prevent="checkCustomer"
-          @submit="submitForm = !submitForm"
-          autocomplete="on"
-        >
+        <form class="form-login" @submit.prevent="recover" autocomplete="on">
           <InputComp
             :type="'email'"
             :regex="'email'"

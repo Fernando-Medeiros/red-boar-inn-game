@@ -20,6 +20,7 @@
       "core/*": ["src/core/*"],
       "router/*": ["src/router/*"],
       "comp/*": ["src/components/*"],
+      "composable/*": ["src/composables/*"],
       "view/*": ["src/views/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]

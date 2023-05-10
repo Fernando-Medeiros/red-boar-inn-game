@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onBeforeMount, ref, reactive } from "vue";
-import { PasswordService } from "core/services/password-service";
 import { Helpers } from "core/helpers/helpers";
 import { useRoute } from "vue-router";
+import useResetPassword from "composable/useResetPassword";
 import AlertMessage from "core/helpers/alert-message";
 import SetupPassword from "setup/page.reset-password.json";
 import SetupResponses from "setup/global.responses.json";
@@ -17,33 +17,21 @@ onBeforeMount(() => {
   if (String(token).length < 110) return router.push({ path: "/" });
 });
 
-const [{ title, form: inputs }, { success, error }, submitForm, form] = [
+const [{ title, form: inputs }, { success }, { token }, submitForm, form] = [
   SetupPassword[Helpers.translate()],
-
   SetupResponses[Helpers.translate()].resetPassword,
-
+  useRoute().params,
   ref(false),
-
   reactive({ password: "", confirmPassword: "" }),
 ];
 
-async function updatePassword() {
+async function reset() {
   if (form.confirmPassword === form.password) {
-    const { token } = useRoute().params;
-    const { statusCode } = await PasswordService.reset(form, String(token));
+    submitForm.value = true;
 
-    AlertMessage.alertWithTimer(
-      statusCode === 204 ? success : error,
-      statusCode
-    );
-
-    setTimeout(async () => {
-      statusCode === 204
-        ? router.push({ path: "/auth/login" })
-        : (submitForm.value = false);
-    }, 1500);
+    await useResetPassword(form, String(token), success);
   } else {
-    submitForm.value = !submitForm.value;
+    submitForm.value = false;
 
     AlertMessage.alertWithTimer(inputs.confirmPassword.message, 400);
   }
@@ -58,11 +46,7 @@ async function updatePassword() {
   <div class="main-background">
     <div class="main-container">
       <div class="background">
-        <form
-          class="form-login"
-          @submit.prevent="updatePassword"
-          @submit="submitForm = !submitForm"
-        >
+        <form class="form-login" @submit.prevent="reset">
           <InputComp
             :type="'password'"
             :regex="'password'"
