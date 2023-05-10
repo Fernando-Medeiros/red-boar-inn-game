@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, defineExpose, reactive } from "vue";
-import { LocalSession } from "core/storage/session.storage";
+import { SessionStorage } from "core/storage/session-storage";
 import { SessionService } from "core/services/session-service";
 import { CharacterService } from "core/services/character-service";
 import { CharacterDependencies } from "core/services/helpers/character-dependencies";
@@ -37,7 +37,7 @@ async function login() {
       alertMessage.value = message || "";
 
       if (statusCode === 200) {
-        LocalSession.set({ pubId, access, refresh, type });
+        SessionStorage.set({ pubId, access, refresh, type });
 
         await CharacterService.get().then(async (pubId) => {
           if (pubId) redirectAfterLoad();

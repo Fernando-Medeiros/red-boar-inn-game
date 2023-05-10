@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { PropsStatus } from "core/schemas/status.schema";
+import type { StatusProps } from "core/domain/props/character/status-props";
 import { defineProps } from "vue";
 import StatusPreview from "../Partials/StatusPreview.vue";
 
-defineProps<{ status: PropsStatus }>();
+defineProps<{ status: StatusProps }>();
 </script>
 
 <template>

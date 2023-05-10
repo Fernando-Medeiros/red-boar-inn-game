@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ClassesSchema } from "core/schemas/classes.schema";
+import type { ClassesSchema } from "core/schemas/classes-schema";
 import { ref, defineExpose } from "vue";
 import { CharacterService } from "core/services/character-service";
 import { Helpers } from "core/helpers/helpers";

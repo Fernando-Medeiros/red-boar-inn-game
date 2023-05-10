@@ -1,4 +1,4 @@
-import type { PropsStatus } from "core/schemas/status.schema";
+import type { StatusProps } from "./props/character/status-props";
 import BattleActions from "./BattleActions";
 
 export default class Character {
@@ -15,10 +15,10 @@ export default class Character {
 
   Actions = new BattleActions(this);
 
-  loadStatus(status: PropsStatus) {
+  loadStatus(status: StatusProps) {
     Object.assign(this, { ...status }, { Actions: new BattleActions(this) });
   }
-  toJson(): PropsStatus {
+  toJson(): StatusProps {
     return {
       points: this.points,
       experience: this.experience,

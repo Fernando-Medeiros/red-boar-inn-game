@@ -1,4 +1,4 @@
-import type { PropsStatus } from "core/schemas/status.schema";
+import type { StatusProps } from "./props/character/status-props";
 
 function computedCurrentStatus(current: number, max: number, newValue: number) {
   if (current + newValue >= max) return max;
@@ -10,7 +10,7 @@ function computedCurrentAttack(
   attack: number,
   oppDefense: number,
   oppHealth: number
-): number[] {
+): [number, number] {
   const hit = attack - oppDefense <= 0 ? 0 : attack - oppDefense;
   const damage = oppHealth - hit <= 0 ? 0 : oppHealth - hit;
 
@@ -18,9 +18,9 @@ function computedCurrentAttack(
 }
 
 export default class BattleActions {
-  constructor(private props: PropsStatus) {}
+  constructor(private props: StatusProps) {}
 
-  executeAttackMelee(opponent: PropsStatus): number {
+  executeAttackMelee(opponent: StatusProps): number {
     const [hit, damage] = computedCurrentAttack(
       this.props.strength + this.props.dexterity / 10,
       opponent.dexterity / 2,
@@ -30,7 +30,7 @@ export default class BattleActions {
 
     return hit;
   }
-  executeAttackMagic(opponent: PropsStatus): number {
+  executeAttackMagic(opponent: StatusProps): number {
     const [hit, damage] = computedCurrentAttack(
       this.props.intelligence + this.props.dexterity / 10,
       opponent.dexterity / 2,

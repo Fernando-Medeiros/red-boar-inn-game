@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-import { LocalSession } from "core/storage/session.storage";
+import { SessionStorage } from "core/storage/session-storage";
 
 onMounted(() => {
-  LocalSession.remove();
+  SessionStorage.remove();
   location.reload();
 });
 </script>

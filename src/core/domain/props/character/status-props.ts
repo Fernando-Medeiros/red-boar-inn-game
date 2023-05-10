@@ -1,4 +1,4 @@
-export type PropsStatus = {
+export type StatusProps = {
   points: number;
   experience: number;
   strength: number;

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { PropsStatus } from "core/schemas/status.schema";
+import type { StatusProps } from "core/domain/props/character/status-props";
 import { defineProps, reactive, watch } from "vue";
 import { Helpers } from "core/helpers/helpers";
 import SetupStatus from "setup/page.status.json";
 
 const setup = { ...SetupStatus[Helpers.translate()] };
 
-const props = defineProps<{ status: PropsStatus }>();
+const props = defineProps<{ status: StatusProps }>();
 
-const primary = reactive({} as PropsStatus);
+const primary = reactive({} as StatusProps);
 
 const computedStatus = reactive({
   attackMelee: 1,

@@ -1,7 +1,7 @@
 <!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <script setup lang="ts">
-import type { Consumable } from "core/schemas/items.schema";
-import type { BattleActionsSchema } from "core/schemas/battleActions.schema";
+import type { ConsumableProps } from "core/domain/props/items/consumable-props";
+import type { BattleActionsSchema } from "core/schemas/battle-actions-schema";
 import { onBeforeMount, reactive } from "vue";
 import { StatusService } from "core/services/status-service";
 import router from "router/index";
@@ -58,7 +58,7 @@ function changeAction(action: BattleActionsSchema) {
 
   if (action === "flee") confirmLeaveBattle();
 }
-function useItem({ type, restore }: Consumable) {
+function useItem({ type, restore }: ConsumableProps) {
   if (type === "energy") character.Actions.restoreCurrentEnergy(restore);
   if (type === "health") character.Actions.restoreCurrentHealth(restore);
 

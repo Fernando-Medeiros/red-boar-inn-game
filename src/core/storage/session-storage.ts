@@ -1,8 +1,8 @@
-import type { SessionSchema } from "core/schemas/session.schema";
+import type { SessionSchema } from "core/schemas/session-schema";
 
 const storage = window.sessionStorage;
 
-export class LocalSession {
+export class SessionStorage {
   static isAuthenticated(): boolean {
     return storage.getItem("session") ? true : false;
   }

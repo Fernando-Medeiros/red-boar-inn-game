@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PropsCharacter } from "core/schemas/character.schema";
+import type { CharacterProps } from "core/domain/props/character/character-props";
 import { defineExpose, reactive, ref } from "vue";
 import CharacterPreview from "comp/game/Partials/CharacterPreview.vue";
 import StatusOverview from "comp/game/Partials/StatusOverview.vue";
@@ -8,7 +8,7 @@ import AlertMessage from "comp/global/helpers/AlertMessage.vue";
 const alertMessage = ref("");
 defineExpose({ alertMessage });
 
-const character = reactive<PropsCharacter>({} as PropsCharacter);
+const character = reactive({} as CharacterProps);
 </script>
 
 <template>

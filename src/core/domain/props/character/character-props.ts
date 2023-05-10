@@ -1,4 +1,4 @@
-export type PropsCharacter = {
+export type CharacterProps = {
   pubId: string;
   level: number;
   charName: string;
