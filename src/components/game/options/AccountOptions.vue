@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import { Helpers } from "core/helpers/helpers";
+import useUpdateFullName from "composable/useUpdateFullName";
+import useUpdateEmail from "composable/useUpdateEmail";
+import useUpdatePassword from "composable/useUpdatePassword";
 import SetupOptions from "setup/page.options.json";
 import SetupResponses from "setup/global.responses.json";
 import InputComp from "comp/global/inputs/InputComp.vue";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
-import useUpdateFullName from "composable/useUpdateFullName";
-import useUpdateEmail from "composable/useUpdateEmail";
 
 const [
   { form: inputs },
@@ -45,7 +46,7 @@ async function updateEmail() {
 }
 
 async function updatePassword() {
-  await useUpdateEmail(form, pwdSuccess);
+  await useUpdatePassword(form, pwdSuccess);
   submitPasswordForm.value = false;
 }
 </script>
