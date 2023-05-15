@@ -50,7 +50,6 @@ function changeAction(action: BattleActionsSchema) {
     ];
 
     logs.registerBattleAction(
-      action,
       { hit: hitCharacter },
       { name: opponent.name, hit: hitOpponent }
     );

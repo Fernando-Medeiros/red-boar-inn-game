@@ -11,16 +11,15 @@ export default class BattleLogs {
   }
 
   registerBattleAction(
-    action: string,
     character: { hit: number },
     opponent: { name: string; hit: number }
   ) {
     this.logs.push(
-      `${action}:
-      
+      `
       ${attack} ${character.hit.toFixed(1)}! || 
 
-      ${opponent.name} ${defense} ${opponent.hit.toFixed(1)}!`
+      ${opponent.name} ${defense} ${opponent.hit.toFixed(1)}!
+      `
     );
   }
 
