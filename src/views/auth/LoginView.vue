@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import { Helpers } from "core/helpers/helpers";
+import Helpers from "core/helpers/Helpers";
 import useLogin from "composable/useLogin";
 import SetupLogin from "setup/page.login.json";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";

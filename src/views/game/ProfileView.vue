@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Helpers } from "core/helpers/helpers";
+import Helpers from "core/helpers/Helpers";
 import SetupProfile from "setup/page.profile.json";
 import CharacterPreview from "comp/game/Partials/CharacterPreview.vue";
 import IconButton from "comp/global/buttons/IconButton.vue";

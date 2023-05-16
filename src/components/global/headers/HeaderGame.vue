@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { Helpers } from "core/helpers/helpers";
+import Helpers from "core/helpers/Helpers";
 import SetupHeaderGame from "setup/global.header-game.json";
 import IconButton from "comp/global/buttons/IconButton.vue";
 

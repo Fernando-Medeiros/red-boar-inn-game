@@ -1,6 +1,6 @@
 import type { UpdatePasswordSchema } from "core/services/schemas/password-schemas";
 import { PasswordService } from "core/services/password-service";
-import AlertMessage from "core/helpers/alert-message";
+import Helpers from "core/helpers/Helpers";
 import router from "router/index";
 
 export default async function (
@@ -13,7 +13,7 @@ export default async function (
     String(token)
   );
 
-  AlertMessage.alertWithTimer(
+  Helpers.alertWithTimer(
     statusCode === 204 ? compMessage : message,
     statusCode
   );

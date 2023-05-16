@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { onBeforeMount, ref, reactive } from "vue";
-import { Helpers } from "core/helpers/helpers";
+import Helpers from "core/helpers/Helpers";
 import { useRoute } from "vue-router";
 import useResetPassword from "composable/useResetPassword";
-import AlertMessage from "core/helpers/alert-message";
 import SetupPassword from "setup/page.reset-password.json";
 import SetupResponses from "setup/global.responses.json";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
@@ -33,7 +32,7 @@ async function reset() {
   } else {
     submitForm.value = false;
 
-    AlertMessage.alertWithTimer(inputs.confirmPassword.message, 400);
+    Helpers.alertWithTimer(inputs.confirmPassword.message, 400);
   }
 }
 </script>

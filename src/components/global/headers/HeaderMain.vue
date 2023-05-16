@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { Helpers } from "core/helpers/helpers";
+import Helpers from "core/helpers/Helpers";
 import SetupHeader from "setup/global.header.json";
 import SetupRoutes from "setup/global.routes.json";
 import ThemeButton from "../buttons/ThemeButton.vue";

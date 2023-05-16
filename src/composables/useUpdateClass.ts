@@ -1,6 +1,6 @@
 import type { CharacterUpdateSchema } from "core/services/schemas/character-schemas";
 import { CharacterService } from "core/services/character-service";
-import AlertMessage from "core/helpers/alert-message";
+import Helpers from "core/helpers/Helpers";
 
 export default async function (
   form: CharacterUpdateSchema,
@@ -8,7 +8,7 @@ export default async function (
 ) {
   const { message, statusCode } = await CharacterService.update(form);
 
-  AlertMessage.alertWithTimer(
+  Helpers.alertWithTimer(
     statusCode === 204 ? compMessage : message,
     statusCode
   );

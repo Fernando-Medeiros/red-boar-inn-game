@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ClassesSchema } from "core/schemas/classes-schema";
 import { reactive, ref } from "vue";
-import { Helpers } from "core/helpers/helpers";
+import Helpers from "core/helpers/Helpers";
 import useUpdateClass from "composable/useUpdateClass";
 import SetupSelectClass from "setup/page.select-class.json";
 import SetupResponses from "setup/global.responses.json";

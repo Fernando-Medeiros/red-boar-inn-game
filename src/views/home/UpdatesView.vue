@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Helpers } from "core/helpers/helpers";
+import Helpers from "core/helpers/Helpers";
 import SetupUpdates from "setup/page.updates.json";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";
 import BannerSprites from "comp/global/banners/BannerSprites.vue";

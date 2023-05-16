@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import { Helpers } from "core/helpers/helpers";
+import Helpers from "core/helpers/Helpers";
 import SetupPassword from "setup/page.recover-password.json";
 import SetupResponses from "setup/global.responses.json";
 import BannerTitle from "comp/global/banners/BannerTitle.vue";

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { Helpers } from "core/helpers/helpers";
+import Helpers from "core/helpers/Helpers";
 import SetupDungeon from "setup/page.dungeon-battle.json";
 
 const setup = SetupDungeon[Helpers.translate()].areaInfo;

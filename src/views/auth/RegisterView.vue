@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
-import { Helpers } from "core/helpers/helpers";
-import AlertMessage from "core/helpers/alert-message";
+import Helpers from "core/helpers/Helpers";
 import useRegister from "composable/useRegister";
 import SetupRegister from "setup/page.register.json";
 import SetupResponses from "setup/global.responses.json";
@@ -29,7 +28,7 @@ async function register() {
 
     await useRegister(form, success);
   } else {
-    AlertMessage.alertWithTimer(inputs.confirmPassword.message, 400);
+    Helpers.alertWithTimer(inputs.confirmPassword.message, 400);
   }
 
   submitForm.value = false;

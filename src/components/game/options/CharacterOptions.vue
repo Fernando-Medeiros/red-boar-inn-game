@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import { CharacterService } from "core/services/character-service";
-import { Helpers } from "core/helpers/helpers";
-import AlertMessage from "core/helpers/alert-message";
+import Helpers from "core/helpers/Helpers";
 import SetupOptions from "setup/page.options.json";
 import SetupResponses from "setup/global.responses.json";
 import InputComp from "comp/global/inputs/InputComp.vue";
@@ -23,7 +22,7 @@ const [{ characterName: inputs }, { success, error }, submitForm, form] = [
 async function saveCharacterName() {
   const { statusCode } = await CharacterService.update(form);
 
-  AlertMessage.alertWithTimer(statusCode === 204 ? success : error, statusCode);
+  Helpers.alertWithTimer(statusCode === 204 ? success : error, statusCode);
 
   submitForm.value = !submitForm.value;
 }

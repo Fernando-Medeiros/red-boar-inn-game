@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { defineProps, onBeforeMount, reactive, ref, watch } from "vue";
 import { StatusService } from "core/services/status-service";
-import { Helpers } from "core/helpers/helpers";
-import AlertMessage from "core/helpers/alert-message";
+import Helpers from "core/helpers/Helpers";
 import SetupStatus from "setup/page.status.json";
 import SetupResponses from "setup/global.responses.json";
 import InputSubmit from "comp/global/inputs/InputSubmit.vue";
@@ -75,7 +74,7 @@ async function updateStatus() {
     ...primary,
     ...secondary,
   });
-  AlertMessage.alertWithTimer(statusCode === 204 ? success : error, statusCode);
+  Helpers.alertWithTimer(statusCode === 204 ? success : error, statusCode);
 
   submitForm.value = !submitForm.value;
 }

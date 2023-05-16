@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from "vue";
-import { Helpers } from "core/helpers/helpers";
+import Helpers from "core/helpers/Helpers";
 import SetupOptions from "setup/page.options.json";
 
 defineProps<{ currentGuide: string }>();

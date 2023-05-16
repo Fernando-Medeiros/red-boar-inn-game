@@ -1,6 +1,6 @@
 import type { UpdatePasswordSchema } from "core/services/schemas/password-schemas";
 import { PasswordService } from "core/services/password-service";
-import AlertMessage from "core/helpers/alert-message";
+import Helpers from "core/helpers/Helpers";
 
 export default async function (
   form: UpdatePasswordSchema,
@@ -11,7 +11,7 @@ export default async function (
     password,
   });
 
-  AlertMessage.alertWithTimer(
+  Helpers.alertWithTimer(
     statusCode === 204 ? compMessage : message,
     statusCode
   );

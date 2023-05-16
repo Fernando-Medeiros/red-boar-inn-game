@@ -5,7 +5,7 @@ import type { BattleActionsSchema } from "core/schemas/battle-actions-schema";
 import type { ConsumableProps } from "core/domain/props/items/consumable-props";
 import { reactive, watch, onBeforeMount } from "vue";
 import { StatusService } from "core/services/status-service";
-import { Helpers } from "core/helpers/helpers";
+import Helpers from "core/helpers/Helpers";
 import DungeonBattle from "core/domain/DungeonBattle";
 
 import SetupDungeons from "setup/page.dungeon.json";

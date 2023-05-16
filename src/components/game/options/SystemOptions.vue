@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Helpers } from "core/helpers/helpers";
+import Helpers from "core/helpers/Helpers";
 import SetupOptions from "setup/page.options.json";
 import ThemeButton from "comp/global/buttons/ThemeButton.vue";
 import LanguageButton from "comp/global/buttons/LanguageButton.vue";

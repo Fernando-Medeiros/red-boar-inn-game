@@ -17,7 +17,7 @@ function computedCurrentAttack(
   return [hit, damage];
 }
 
-export default class BattleActions {
+export default class {
   constructor(private props: StatusProps) {}
 
   executeAttackMelee(opponent: StatusProps): number {

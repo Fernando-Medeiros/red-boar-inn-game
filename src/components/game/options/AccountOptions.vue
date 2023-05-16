@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
-import { Helpers } from "core/helpers/helpers";
+import Helpers from "core/helpers/Helpers";
 import useUpdateFullName from "composable/useUpdateFullName";
 import useUpdateEmail from "composable/useUpdateEmail";
 import useUpdatePassword from "composable/useUpdatePassword";

@@ -1,6 +1,6 @@
 import type { UpdateAccountSchema } from "core/services/schemas/account-schemas";
 import { AccountService } from "core/services/account-service";
-import AlertMessage from "core/helpers/alert-message";
+import Helpers from "core/helpers/Helpers";
 
 export default async function (
   form: UpdateAccountSchema,
@@ -11,7 +11,7 @@ export default async function (
     email,
   });
 
-  AlertMessage.alertWithTimer(
+  Helpers.alertWithTimer(
     statusCode === 204 ? compMessage : message,
     statusCode
   );
