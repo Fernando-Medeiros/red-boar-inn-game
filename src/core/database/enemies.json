@@ -3,28 +3,50 @@
     {
       "name": "thief",
       "level": 1,
+      "loot": [
+        {
+          "name": "gold",
+          "type": "trade",
+          "total": 1,
+          "value": 1,
+          "description": "..."
+        }
+      ],
+      "points": 1,
       "experience": 2,
-      "attack": 3,
-      "defense": 1,
+      "strength": 3,
+      "intelligence": 1,
+      "dexterity": 1,
+      "vitality": 3,
       "health": 30,
       "energy": 10,
       "currentHealth": 30,
-      "currentEnergy": 10,
-      "loot": [{ "gold": 2 }]
+      "currentEnergy": 10
     }
   ],
   "magic": [
     {
       "name": "merchant",
       "level": 1,
+      "loot": [
+        {
+          "name": "gold",
+          "type": "trade",
+          "total": 1,
+          "value": 1,
+          "description": "..."
+        }
+      ],
+      "points": 1,
       "experience": 2,
-      "attack": 2,
-      "defense": 1,
+      "strength": 1,
+      "intelligence": 3,
+      "dexterity": 1,
+      "vitality": 2,
       "health": 20,
-      "energy": 25,
+      "energy": 30,
       "currentHealth": 20,
-      "currentEnergy": 25,
-      "loot": [{ "gold": 3 }]
+      "currentEnergy": 30
     }
   ]
 }

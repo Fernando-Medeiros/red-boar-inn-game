@@ -15,20 +15,15 @@ export default class BattleLogs {
     opponent: { name: string; hit: number }
   ) {
     this.logs.push(
-      `
-      ${attack} ${character.hit.toFixed(1)}! || 
-
-      ${opponent.name} ${defense} ${opponent.hit.toFixed(1)}!
-      `
+      `${attack} ${character.hit.toFixed(1)}!`,
+      `${opponent.name} ${defense} ${opponent.hit.toFixed(1)}!`
     );
   }
 
   clear(): void {
     this.logs = [""];
   }
-  lastLogs(): string[] {
-    return this.logs.slice(-2);
-  }
+
   getLogs(limit?: number): string[] {
     return this.logs.slice(limit || 1);
   }
