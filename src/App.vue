@@ -70,5 +70,6 @@ input {
 .main-background {
   padding: 10px;
   padding-bottom: 2rem;
+  background: linear-gradient(#81818157, #292929);
 }
 </style>

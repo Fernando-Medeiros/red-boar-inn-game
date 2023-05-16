@@ -1,0 +1,7 @@
+{
+  "br": [
+    { "title": "Catacumbas", "template": "catacombs", "description": [""] }
+  ],
+
+  "en": [{ "title": "Catacombs", "template": "catacombs", "description": [""] }]
+}

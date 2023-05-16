@@ -19,4 +19,7 @@ defineProps<{ name: string }>();
   width: 2rem;
   height: 2rem;
 }
+.iconSprite:hover {
+  filter: brightness(1.3);
+}
 </style>

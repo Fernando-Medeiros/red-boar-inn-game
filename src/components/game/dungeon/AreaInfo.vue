@@ -6,9 +6,10 @@ import SetupDungeon from "setup/page.dungeon-battle.json";
 const setup = SetupDungeon[Helpers.translate()].areaInfo;
 
 defineProps<{
+  dungeonName: string;
+  dungeonOpponents: object[];
+  battleLogs: string[];
   battleInfo: { currentBattle: number; turn: boolean };
-  opponents: object[];
-  logs: string[];
 }>();
 </script>
 
@@ -16,8 +17,12 @@ defineProps<{
   <div class="area-info-container">
     <div class="info-area">
       <span>
+        <h3>{{ dungeonName }}</h3>
+      </span>
+
+      <span>
         <p>{{ setup.opponents }}:</p>
-        <p>{{ battleInfo?.currentBattle }} / {{ opponents.length }}</p>
+        <p>{{ battleInfo?.currentBattle }} / {{ dungeonOpponents.length }}</p>
       </span>
 
       <span>
@@ -27,7 +32,7 @@ defineProps<{
     </div>
 
     <div class="info-logs">
-      <p v-for="log in logs" :key="log">{{ log }}</p>
+      <p v-for="log in battleLogs" :key="log">{{ log }}</p>
     </div>
   </div>
 </template>

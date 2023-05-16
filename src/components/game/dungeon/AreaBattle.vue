@@ -4,7 +4,7 @@ import CharacterPreview from "comp/game/Partials/CharacterPreview.vue";
 import OpponentSprite from "comp/global/sprites/OpponentSprite.vue";
 import StatusBar from "comp/global/helpers/StatusBar.vue";
 
-const props = defineProps<{
+defineProps<{
   character: {
     health: number;
     energy: number;
@@ -31,22 +31,22 @@ const props = defineProps<{
         <StatusBar
           :type="'health'"
           :size="'medium'"
-          :max-status="props.character.health"
-          :current-status="props.character.currentHealth"
+          :max-status="character.health"
+          :current-status="character.currentHealth"
         />
         <StatusBar
           :type="'energy'"
           :size="'medium'"
-          :max-status="props.character.energy"
-          :current-status="props.character.currentEnergy"
+          :max-status="character.energy"
+          :current-status="character.currentEnergy"
         />
       </span>
     </div>
 
     <div>
       <OpponentSprite
-        :name="props.opponent.name"
-        :level="props.opponent.level"
+        :name="opponent.name"
+        :level="opponent.level"
         :rotate-y="false"
       />
 
@@ -54,14 +54,14 @@ const props = defineProps<{
         <StatusBar
           :type="'health'"
           :size="'medium'"
-          :max-status="props.opponent.health"
-          :current-status="props.opponent.currentHealth"
+          :max-status="opponent.health"
+          :current-status="opponent.currentHealth"
         />
         <StatusBar
           :type="'energy'"
           :size="'medium'"
-          :max-status="props.opponent.energy"
-          :current-status="props.opponent.currentEnergy"
+          :max-status="opponent.energy"
+          :current-status="opponent.currentEnergy"
         />
       </span>
     </div>
@@ -75,11 +75,6 @@ const props = defineProps<{
   padding-block: 1rem;
   justify-items: center;
   grid-template-columns: 1fr 1fr;
-
-  background-image: linear-gradient(#222222b6, #22222281, #18002775),
-    url("assets/pictures/img1.webp");
-  background-size: cover;
-  background-position: bottom;
 }
 .statusBar-container {
   display: grid;
