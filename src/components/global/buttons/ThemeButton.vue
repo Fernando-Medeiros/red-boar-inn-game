@@ -17,7 +17,7 @@ function toggleTheme() {
 </script>
 
 <template>
-  <button class="button" @click="toggleTheme()">
+  <button class="theme-btn" @click="toggleTheme()">
     <img
       :src="
         isDark
@@ -30,17 +30,17 @@ function toggleTheme() {
 </template>
 
 <style scoped>
-.button {
+.theme-btn {
   padding-inline: 10px;
   border: none;
   cursor: pointer;
   background-color: transparent;
 }
-.button > img {
+.theme-btn > img {
   width: 1.8rem;
   border-radius: 1rem;
 }
-.button:hover {
+.theme-btn:hover {
   filter: brightness(1.2);
   transform: scale(1.1);
 }

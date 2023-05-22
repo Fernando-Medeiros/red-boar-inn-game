@@ -1,57 +1,58 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from "vue";
+import { defineProps, ref, onMounted } from "vue";
 
-const emit = defineEmits(["changeAction"]);
+const props = defineProps<{ name: string; label: string; toRoute?: string }>();
 
-defineProps<{ name: string; label: string; toRoute?: string }>();
+const sprite = ref();
+
+onMounted(() => {
+  Object.assign(sprite.value, {
+    alt: props.name,
+    src: require(`assets/icons/${props.name}.svg`),
+    style: props.toRoute ? "" : "filter: grayscale()",
+  });
+});
 </script>
 
 <template>
-  <router-link :to="toRoute || ''" class="IconButton-link">
-    <div class="container">
-      <img
-        class="IconButton"
-        :alt="name"
-        :style="!toRoute ? 'filter: grayscale()' : ''"
-        :src="require(`assets/icons/${name}.svg`)"
-        @click="emit('changeAction')"
-      />
-      <span class="IconButton-label">
-        <p :for="label">{{ label }}</p>
-      </span>
+  <router-link class="Icon-btn-link" :to="toRoute || ''">
+    <div class="icon-btn-container">
+      <img ref="sprite" />
+      <p>{{ label }}</p>
     </div>
   </router-link>
 </template>
 
 <style scoped>
-.IconButton-link {
+.Icon-btn-link {
   text-decoration: none;
 }
-.IconButton-link:hover {
+.Icon-btn-link:hover {
   filter: brightness(1.3);
 }
-.container {
+
+.icon-btn-container {
   display: grid;
   gap: 10px;
   min-width: 86px;
   justify-content: center;
   text-align: center;
 }
-.IconButton {
+.icon-btn-container img {
   width: 3rem;
   height: 3rem;
   margin: auto;
   cursor: pointer;
 }
-.IconButton-label {
+.icon-btn-container p {
   color: white;
 }
 @media (max-width: 780px) {
-  .IconButton {
+  .icon-btn-container img {
     width: 2rem;
     height: 2rem;
   }
-  .IconButton-label {
+  .icon-btn-container p {
     font-size: 14px;
   }
 }

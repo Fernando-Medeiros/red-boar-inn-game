@@ -1,37 +1,43 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, PropType } from "vue";
+import { defineProps, defineEmits, ref, onMounted } from "vue";
 
-type Options = "increment" | "decrement";
+const props = defineProps<{
+  attrName: string;
+  maxValue: number;
+  type: "increment" | "decrement";
+}>();
 
-defineEmits(["updateValue"]);
+const emit = defineEmits(["updateValue"]);
 
-defineProps({
-  attrName: { type: String, required: true },
-  maxValue: { type: Number, required: true },
-  type: { type: String as PropType<Options>, required: true },
+const sprite = ref();
+
+onMounted(() => {
+  Object.assign(sprite.value, {
+    alt: props.type,
+    src: require(`assets/icons/${props.type}.svg`),
+  });
 });
 </script>
 
 <template>
-  <div class="container">
+  <div class="incr-decr-btn-container">
     <img
-      :class="maxValue <= 1 && type === 'increment' ? 'disabled' : 'IconButton'"
-      :alt="type"
-      :src="require(`assets/icons/${type}.svg`)"
-      @click="$emit('updateValue', attrName)"
+      ref="sprite"
+      :class="maxValue <= 1 && type === 'increment' ? 'disabled' : 'enable'"
+      @click="emit('updateValue', attrName)"
     />
   </div>
 </template>
 
 <style scoped>
-.container {
+.incr-decr-btn-container {
   display: grid;
   gap: 5px;
   width: min-content;
   justify-content: center;
   text-align: center;
 }
-.IconButton,
+.enable,
 .disabled {
   width: 2rem;
   height: 2rem;
