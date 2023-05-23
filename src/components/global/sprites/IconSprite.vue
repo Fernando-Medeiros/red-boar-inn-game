@@ -5,21 +5,15 @@ defineProps<{ name: string }>();
 </script>
 
 <template>
-  <span>
-    <img
-      class="iconSprite"
-      :alt="name"
-      :src="require(`assets/icons/${name}.svg`)"
-    />
-  </span>
+  <img :alt="name" :src="require(`assets/icons/${name}.svg`)" />
 </template>
 
 <style scoped>
-.iconSprite {
+img {
   width: 2rem;
   height: 2rem;
 }
-.iconSprite:hover {
+img:hover {
   filter: brightness(1.3);
 }
 </style>

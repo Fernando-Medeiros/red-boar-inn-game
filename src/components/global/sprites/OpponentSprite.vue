@@ -1,56 +1,56 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps, ref, watch } from "vue";
 
-defineProps<{ name: string; level: number; rotateY: boolean }>();
+const props = defineProps<{ name: string; level: number; rotateY: boolean }>();
+
+const sprite = ref();
+
+watch(props, () => {
+  sprite.value.alt = props.name;
+  sprite.value.style.transform = props.rotateY ? "rotateY(180deg)" : "";
+  sprite.value.src = require(`assets/opponents/${props.name}.svg`);
+});
 </script>
 
 <template>
-  <div class="container">
-    <img
-      class="sprite"
-      :alt="name"
-      :style="rotateY ? 'transform: rotateY(180deg)' : ''"
-      :src="require(`assets/opponents/${name}.svg`)"
-    />
+  <div>
+    <img ref="sprite" />
 
-    <span class="label">
+    <span>
       <strong>{{ name }}</strong>
-      <span>
-        <p>level - {{ level }}</p>
-      </span>
+      <p>Level - {{ level }}</p>
     </span>
   </div>
 </template>
 
 <style scoped>
-.container {
+div {
   display: grid;
   gap: 1rem;
   justify-content: center;
-
   align-items: center;
   margin-top: 2rem;
   margin-bottom: auto;
 }
-.sprite {
+img {
   z-index: 1;
   position: relative;
   width: 118px;
   height: 113.28px;
   border-radius: 11px;
 }
-.label {
+span {
   display: flex;
   gap: 1rem;
   text-align: center;
   color: white;
 }
 @media (max-width: 780px) {
-  .sprite {
+  img {
     width: 4rem;
     height: 4rem;
   }
-  .label {
+  span {
     display: grid;
     font-size: 14px;
   }

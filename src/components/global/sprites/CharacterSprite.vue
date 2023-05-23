@@ -5,33 +5,33 @@ defineProps<{ name: string; gender: string; rotateY: boolean }>();
 </script>
 
 <template>
-  <div class="container">
+  <div>
     <img
-      class="sprite"
       :alt="name"
       :style="rotateY ? 'transform: rotateY(180deg)' : ''"
       :src="require(`assets/sprites/${gender}/${name}.svg`)"
     />
-    <span class="sprite-background"></span>
+
+    <span></span>
   </div>
 </template>
 
 <style scoped>
-.container {
+div {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 2rem;
   margin-bottom: auto;
 }
-.sprite {
+img {
   z-index: 1;
   position: relative;
   width: 118px;
   height: 113.28px;
   border-radius: 11px;
 }
-.sprite-background {
+span {
   position: absolute;
   width: 80px;
   height: 80px;
@@ -41,11 +41,11 @@ defineProps<{ name: string; gender: string; rotateY: boolean }>();
 }
 
 @media (max-width: 780px) {
-  .sprite {
+  img {
     width: 4rem;
     height: 4rem;
   }
-  .sprite-background {
+  span {
     width: 3rem;
     height: 2.5rem;
   }

@@ -5,17 +5,11 @@ defineProps<{ name: string }>();
 </script>
 
 <template>
-  <span>
-    <img
-      class="item-sprite"
-      :alt="name"
-      :src="require(`assets/items/${name}.png`)"
-    />
-  </span>
+  <img :alt="name" :src="require(`assets/items/${name}.png`)" />
 </template>
 
 <style scoped>
-.item-sprite {
+img {
   width: 2rem;
   height: 2rem;
 }
