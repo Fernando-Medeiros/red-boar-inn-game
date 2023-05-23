@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import type { CharacterProps } from 'core/domain/props/character/character-props'
-import { reactive } from 'vue'
+import { ref } from 'vue'
 import CharacterPreview from 'comp/game/Partials/CharacterPreview.vue'
 import StatusOverview from 'comp/game/Partials/StatusOverview.vue'
 
-const character = reactive({} as CharacterProps)
+const character = ref()
 </script>
 
 <template>
     <div class="main-background">
         <div class="main-container">
             <div class="status-container">
-                <CharacterPreview @emitCharacter="(data) => (character = data)" />
-
-                <StatusOverview :level="character?.level" />
+                <CharacterPreview ref="character" />
+                <StatusOverview :level="character?.value?.level" />
             </div>
         </div>
     </div>

@@ -12,8 +12,6 @@ onBeforeMount(async () => {
 
 defineProps<{ rotateY?: boolean }>()
 
-const emit = defineEmits(['emitCharacter'])
-
 const { sprite: spriteInfo } = SetupProfile[Helpers.translate()]
 
 const character = reactive({
@@ -23,7 +21,7 @@ const character = reactive({
     className: 'peasant'
 })
 
-emit('emitCharacter', character)
+defineExpose(character)
 </script>
 
 <template>
