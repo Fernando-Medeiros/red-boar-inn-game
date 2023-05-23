@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, ref, watch, reactive } from "vue";
+import { defineProps, defineEmits, ref, watch, onMounted } from "vue";
 import {
   CharacterNameRegex,
   EmailRegex,
@@ -18,132 +18,121 @@ const props = defineProps<{
   isRequired?: boolean;
 }>();
 
-const content = ref("");
-
-const alert = ref(false);
-
-const regex = reactive({
+const regex = {
   charName: CharacterNameRegex,
   email: EmailRegex,
   name: NameRegex,
   password: PasswordRegex,
-});
+};
 
+const content = ref("");
+const alert = ref(false);
+const input = ref();
 const inputType = ref(props.type);
 
+onMounted(() => {
+  Object.assign(input.value, {
+    type: props.type,
+    autocomplete: props.type,
+    placeholder: props.placeholder,
+    required: props.isRequired || true,
+  });
+});
+
 watch(content, () => {
-  regex[props.regex].test(content.value)
-    ? [emit("emitContent", content.value), (alert.value = false)]
-    : (alert.value = true);
+  if (regex[props.regex].test(content.value)) {
+    emit("emitContent", content.value);
+    alert.value = false;
+  } else {
+    alert.value = true;
+  }
+
+  const borderColor = !content.value ? "white" : alert.value ? "red" : "green";
+
+  input.value.style.borderColor = borderColor;
 });
 
 function showPassword() {
-  inputType.value = inputType.value === "password" ? "text" : "password";
+  inputType.value = isType("password") ? "text" : "password";
+}
+
+function isType(type: string) {
+  return inputType.value.match(type);
 }
 </script>
 
 <template>
-  <div class="input-comp-container">
-    <label :for="label">{{ label }}</label>
+  <div class="input-container">
+    <span>
+      <label :for="label">{{ label }}</label>
 
-    <div class="input-button-container">
-      <input
-        :class="['input', type === 'password' ? 'input-password' : '']"
-        v-model="content"
-        :autocomplete="type"
-        :type="inputType"
-        :placeholder="placeholder"
-        :required="isRequired || true"
-        :style="
-          !content
-            ? 'border-color: white'
-            : alert
-            ? 'border-color: red'
-            : 'border-color: green'
+      <img
+        v-if="type.match('password')"
+        @click="showPassword"
+        :src="
+          isType('password')
+            ? require('assets/icons/show-password.svg')
+            : require('assets/icons/hide-password.svg')
         "
       />
+    </span>
 
-      <div v-if="type === 'password'">
-        <img
-          class="btn-password"
-          alt="show-password"
-          @click="showPassword"
-          :src="
-            inputType === 'password'
-              ? require('assets/icons/show-password.svg')
-              : require('assets/icons/hide-password.svg')
-          "
-        />
-      </div>
-    </div>
+    <input ref="input" :type="inputType" v-model="content" />
 
-    <p class="description" v-if="alert && content">
-      {{ description }}
-    </p>
+    <p v-if="alert && content">{{ description }}</p>
   </div>
 </template>
 
 <style scoped>
-.input-comp-container {
+.input-container {
   max-width: 500px;
   display: grid;
   margin: auto;
   margin-top: 10px;
   color: var(--cor-font-color);
 }
-
-.input-comp-container label {
+.input-container span {
+  display: flex;
   margin-bottom: 1rem;
+  justify-content: space-between;
 }
-
-.description {
-  font-size: 14px;
-  margin-top: 1rem;
-}
-.input {
+.input-container input {
   font-size: 1.1rem;
   width: 500px;
   height: 20px;
   padding: 6px 5px;
   color: var(--cor-font-color);
 }
-.input:focus {
+.input-container input:focus {
   color: black;
   background-color: #d9d9d9;
 }
-
-/* password */
-.input-password {
-  width: 465px;
-}
-.input-button-container {
-  display: flex;
-}
-.btn-password {
+.input-container img {
   width: min-content;
   height: 2rem;
   align-self: center;
   border: none;
   cursor: pointer;
 }
+.input-container p {
+  font-size: 14px;
+  margin-top: 1rem;
+}
 
 @media (max-width: 780px) {
-  .input-comp-container {
+  .input-container {
     max-width: 100%;
     justify-self: center;
   }
-  .description {
-    font-size: 10px;
-  }
-  .input {
+  .input-container input {
     font-size: 14px;
     width: 300px;
   }
-  .input-password {
-    width: 275px;
-  }
-  .btn-password {
+  .input-container img {
     height: 1.5rem;
+  }
+  .input-container p {
+    font-size: 10px;
   }
 }
 </style>
