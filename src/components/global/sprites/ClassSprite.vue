@@ -7,7 +7,7 @@ defineProps<{ name: string; gender: string; isActive: boolean }>()
     <div>
         <img
             :alt="name"
-            :src="`../assets/sprites/${gender}/${name}.svg`"
+            :src="`../resources/sprites/${gender}/${name}.svg`"
             @click="$emit('activeClass', name)"
         />
     </div>

@@ -18,7 +18,7 @@ defineProps<{
         </div>
 
         <div>
-            <img class="template-image" :alt="image" :src="'../assets/templates/' + image" />
+            <img class="template-image" :alt="image" :src="'../resources/templates/' + image" />
         </div>
     </div>
 </template>

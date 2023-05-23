@@ -3,7 +3,7 @@ defineProps<{ name: string }>()
 </script>
 
 <template>
-    <img :alt="name" :src="`../assets/items/${name}.png`" />
+    <img :alt="name" :src="`../resources/items/${name}.png`" />
 </template>
 
 <style scoped>

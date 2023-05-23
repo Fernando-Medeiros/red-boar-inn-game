@@ -7,12 +7,12 @@
         "composite": true,
         "baseUrl": ".",
         "paths": {
-            "setup/*": ["setup/*"],
-            "assets/*": ["assets/*"],
             "core/*": ["src/core/*"],
-            "router/*": ["src/router/*"],
             "comp/*": ["src/components/*"],
             "composable/*": ["src/composables/*"],
+            "router/*": ["src/router/*"],
+            "resources/*": ["resources/*"],
+            "setup/*": ["setup/*"],
             "view/*": ["src/views/*"]
         }
     }

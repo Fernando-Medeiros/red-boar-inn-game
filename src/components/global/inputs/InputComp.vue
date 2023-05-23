@@ -66,8 +66,8 @@ function isType(type: string) {
                 @click="showPassword"
                 :src="
                     isType('password')
-                        ? '../assets/icons/show-password.svg'
-                        : '../assets/icons/hide-password.svg'
+                        ? '../resources/icons/show-password.svg'
+                        : '../resources/icons/hide-password.svg'
                 "
             />
         </span>

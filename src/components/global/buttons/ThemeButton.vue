@@ -18,7 +18,10 @@ function toggleTheme() {
 
 <template>
     <button @click="toggleTheme()">
-        <img alt="theme" :src="isDark ? '../assets/icons/dark.svg' : '../assets/icons/light.svg'" />
+        <img
+            alt="theme"
+            :src="isDark ? '../resources/icons/dark.svg' : '../resources/icons/light.svg'"
+        />
     </button>
 </template>
 

@@ -7,7 +7,7 @@ defineProps<{ name: string; gender: string; rotateY: boolean }>()
         <img
             :alt="name"
             :style="rotateY ? 'transform: rotateY(180deg)' : ''"
-            :src="`../assets/sprites/${gender}/${name}.svg`"
+            :src="`../resources/sprites/${gender}/${name}.svg`"
         />
 
         <span></span>

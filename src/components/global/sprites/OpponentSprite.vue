@@ -8,7 +8,7 @@ const sprite = ref()
 watch(props, () => {
     sprite.value.alt = props.name
     sprite.value.style.transform = props.rotateY ? 'rotateY(180deg)' : ''
-    sprite.value.src = `../assets/opponents/${props.name}.svg`
+    sprite.value.src = `../resources/opponents/${props.name}.svg`
 })
 </script>
 

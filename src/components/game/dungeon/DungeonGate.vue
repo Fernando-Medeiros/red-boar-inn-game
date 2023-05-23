@@ -7,7 +7,7 @@ defineEmits(['emitAction'])
 
 <template>
     <div class="dungeon-gate-container">
-        <img :src="`../assets/dungeons/${template}.webp`" :alt="template" />
+        <img :src="`../resources/dungeons/${template}.webp`" :alt="template" />
 
         <h3>{{ title }}</h3>
 

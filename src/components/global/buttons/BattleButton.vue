@@ -10,7 +10,7 @@ const sprite = ref()
 onMounted(() => {
     Object.assign(sprite.value, {
         alt: props.name,
-        src: `../assets/icons/${props.name}.svg`
+        src: `../resources/icons/${props.name}.svg`
     })
 })
 </script>

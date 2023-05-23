@@ -52,7 +52,7 @@ input {
 
 #app {
     background-image: linear-gradient(#222222b6, #22222281, #22222275),
-        url('assets/pictures/img4.webp');
+        url('../resources/pictures/img4.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
