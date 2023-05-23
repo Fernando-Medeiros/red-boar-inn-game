@@ -15,13 +15,13 @@ function setLanguage(lang: string) {
 </script>
 
 <template>
-  <div class="language-btn-container">
+  <div>
     <img
       :src="require(`assets/icons/${currentLanguage}.svg`)"
       :alt="currentLanguage"
     />
 
-    <span class="options">
+    <span>
       <img
         v-for="lang in listLanguages"
         :key="lang"
@@ -34,25 +34,24 @@ function setLanguage(lang: string) {
 </template>
 
 <style scoped>
-.language-btn-container {
+div {
   padding-inline: 10px;
 }
 
-.language-btn-container img,
-.options img {
+img {
   width: 2rem;
   border-radius: 1rem;
 }
 
-.language-btn-container:hover > .options {
+div:hover > span {
   display: grid;
   position: fixed;
 }
-.options {
+span {
   display: none;
   background-color: var(--cor-background-color);
 }
-.options > img:hover {
+span > img:hover {
   cursor: pointer;
   filter: brightness(1.2);
 }

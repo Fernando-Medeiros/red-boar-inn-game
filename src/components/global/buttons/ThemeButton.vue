@@ -17,30 +17,30 @@ function toggleTheme() {
 </script>
 
 <template>
-  <button class="theme-btn" @click="toggleTheme()">
+  <button @click="toggleTheme()">
     <img
+      alt="theme"
       :src="
         isDark
           ? require('assets/icons/dark.svg')
           : require('assets/icons/light.svg')
       "
-      alt="theme"
     />
   </button>
 </template>
 
 <style scoped>
-.theme-btn {
+button {
   padding-inline: 10px;
   border: none;
   cursor: pointer;
   background-color: transparent;
 }
-.theme-btn > img {
+img {
   width: 1.8rem;
   border-radius: 1rem;
 }
-.theme-btn:hover {
+button:hover {
   filter: brightness(1.2);
   transform: scale(1.1);
 }

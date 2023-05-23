@@ -20,7 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="incr-decr-btn-container">
+  <div>
     <img
       ref="sprite"
       :class="maxValue <= 1 && type === 'increment' ? 'disabled' : 'enable'"
@@ -30,7 +30,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.incr-decr-btn-container {
+div {
   display: grid;
   gap: 5px;
   width: min-content;

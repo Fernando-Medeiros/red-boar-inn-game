@@ -62,7 +62,7 @@ function isType(type: string) {
 </script>
 
 <template>
-  <div class="input-container">
+  <div>
     <span>
       <label :for="label">{{ label }}</label>
 
@@ -79,60 +79,60 @@ function isType(type: string) {
 
     <input ref="input" :type="inputType" v-model="content" />
 
-    <p v-if="alert && content">{{ description }}</p>
+    <p v-show="alert && content">{{ description }}</p>
   </div>
 </template>
 
 <style scoped>
-.input-container {
+div {
   max-width: 500px;
   display: grid;
   margin: auto;
   margin-top: 10px;
   color: var(--cor-font-color);
 }
-.input-container span {
+span {
   display: flex;
   margin-bottom: 1rem;
   justify-content: space-between;
 }
-.input-container input {
+input {
   font-size: 1.1rem;
   width: 500px;
   height: 20px;
-  padding: 6px 5px;
+  padding: 6px 2px;
   color: var(--cor-font-color);
 }
-.input-container input:focus {
+input:focus {
   color: black;
   background-color: #d9d9d9;
 }
-.input-container img {
+img {
   width: min-content;
   height: 2rem;
   align-self: center;
   border: none;
   cursor: pointer;
 }
-.input-container p {
-  font-size: 14px;
+p {
   margin-top: 1rem;
 }
 
 @media (max-width: 780px) {
-  .input-container {
-    max-width: 100%;
+  div {
+    max-width: 95%;
     justify-self: center;
   }
-  .input-container input {
+  input {
     font-size: 14px;
-    width: 300px;
+    margin: auto;
+    width: 290px;
   }
-  .input-container img {
+  img {
     height: 1.5rem;
   }
-  .input-container p {
-    font-size: 10px;
+  p {
+    font-size: 13px;
   }
 }
 </style>

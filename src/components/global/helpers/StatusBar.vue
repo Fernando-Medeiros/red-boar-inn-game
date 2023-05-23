@@ -36,7 +36,7 @@ watch(props, () => {
 </script>
 
 <template>
-  <div class="status-bar-container" :style="'width:'.concat(width[props.size])">
+  <body :style="'width:'.concat(width[props.size])">
     <div ref="statusBar"></div>
 
     <span>
@@ -44,11 +44,11 @@ watch(props, () => {
       <strong> / </strong>
       <strong> {{ maxStatus }} </strong>
     </span>
-  </div>
+  </body>
 </template>
 
 <style scoped>
-.status-bar-container {
+body {
   position: relative;
   width: 300px;
   height: 20px;
@@ -57,14 +57,14 @@ watch(props, () => {
   background-color: #222222b2;
 }
 
-.status-bar-container div {
+div {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 5px;
   transition: width 1s linear;
 }
-.status-bar-container span {
+span {
   position: absolute;
   color: white;
   width: 100%;

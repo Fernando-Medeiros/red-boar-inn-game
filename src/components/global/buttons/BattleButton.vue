@@ -16,14 +16,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="battle-btn-container" @click="emit('changeAction', name)">
+  <div @click="emit('changeAction', name)">
     <img ref="sprite" />
     <p>{{ label }}</p>
   </div>
 </template>
 
 <style scoped>
-.battle-btn-container {
+div {
   display: grid;
   grid-template-columns: 0.5fr 1fr;
   align-items: center;
@@ -33,24 +33,24 @@ onMounted(() => {
   cursor: pointer;
   color: white;
 }
-.battle-btn-container img {
+img {
   width: 2rem;
   height: 2rem;
 }
-.battle-btn-container p {
+p {
   font-size: 1.2rem;
 }
-.battle-btn-container:hover {
+div:hover {
   background-color: #5c5c5c76;
 }
 
 @media (max-width: 780px) {
-  .battle-btn-container {
+  div {
     max-width: 150px;
     width: 100%;
     padding: 10px 0;
   }
-  .battle-btn-container p {
+  p {
     font-size: 1rem;
   }
 }

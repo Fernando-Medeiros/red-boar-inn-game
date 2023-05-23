@@ -15,8 +15,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <router-link class="Icon-btn-link" :to="toRoute || ''">
-    <div class="icon-btn-container">
+  <router-link :to="toRoute || ''">
+    <div>
       <img ref="sprite" />
       <p>{{ label }}</p>
     </div>
@@ -24,35 +24,35 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.Icon-btn-link {
+a {
   text-decoration: none;
 }
-.Icon-btn-link:hover {
+a:hover {
   filter: brightness(1.3);
 }
 
-.icon-btn-container {
+div {
   display: grid;
   gap: 10px;
   min-width: 86px;
   justify-content: center;
   text-align: center;
 }
-.icon-btn-container img {
+img {
   width: 3rem;
   height: 3rem;
   margin: auto;
   cursor: pointer;
 }
-.icon-btn-container p {
+p {
   color: white;
 }
 @media (max-width: 780px) {
-  .icon-btn-container img {
+  img {
     width: 2rem;
     height: 2rem;
   }
-  .icon-btn-container p {
+  p {
     font-size: 14px;
   }
 }

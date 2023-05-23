@@ -5,19 +5,19 @@ defineProps<{ label: string; isDisabled?: boolean }>();
 </script>
 
 <template>
-  <div class="input-submit-container">
+  <div>
     <input type="submit" :value="label" :disabled="isDisabled" />
   </div>
 </template>
 
 <style scoped>
-.input-submit-container {
+div {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.input-submit-container input {
+input {
   width: 180px;
   height: 40px;
   align-content: center;
@@ -28,16 +28,16 @@ defineProps<{ label: string; isDisabled?: boolean }>();
   align-self: center;
   padding: auto;
 }
-.input-submit-container input:hover {
+input:hover {
   background-color: white;
   transition: all 0.5s;
 }
-.input-submit-container input:disabled {
+input:disabled {
   background-color: grey;
   cursor: progress;
 }
 @media (max-width: 780px) {
-  .input-submit-container input {
+  input {
     font-size: 16px;
   }
 }

@@ -6,24 +6,24 @@ defineEmits(["emitContent"]);
 </script>
 
 <template>
-  <div class="input-checkbox-container">
+  <div>
     <input type="checkbox" @click="$emit('emitContent')" />
     <label :for="label">{{ label }}</label>
   </div>
 </template>
 
 <style scoped>
-.input-checkbox-container {
+div {
   display: flex;
   gap: 10px;
   width: max-content;
   align-items: center;
 }
-.input-checkbox-container input {
+input {
   height: 1.2rem;
   width: 1.2rem;
 }
-.input-checkbox-container label {
+label {
   color: var(--cor-font-color);
   font-size: 1rem;
   font-weight: 300;
