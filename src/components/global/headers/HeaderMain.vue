@@ -17,7 +17,7 @@ const routes = ref(SetupRoutes[Helpers.translate()].routes)
             <nav class="header-container">
                 <div class="routes">
                     <router-link to="/" style="margin: 0px">
-                        <img class="logo" alt="logo" :src="require('assets/logo.svg')" />
+                        <img class="logo" alt="logo" :src="'../assets/logo.svg'" />
                     </router-link>
 
                     <nav class="mobile-box-routes">

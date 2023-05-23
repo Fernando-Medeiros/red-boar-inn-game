@@ -1,7 +1,7 @@
 import { postMethod } from './methods/post'
 import { patchMethod } from './methods/patch'
 
-const { VUE_APP_API_ACCOUNT: API } = process.env
+const { VITE_API_ACCOUNT: API } = import.meta.env
 
 export class AccountService {
     static async create(form: object) {

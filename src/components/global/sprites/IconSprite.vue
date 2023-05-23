@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
-
 defineProps<{ name: string }>()
 </script>
 
 <template>
-    <img :alt="name" :src="require(`assets/icons/${name}.svg`)" />
+    <img :alt="name" :src="`../assets/icons/${name}.svg`" />
 </template>
 
 <style scoped>

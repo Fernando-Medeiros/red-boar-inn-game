@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, onBeforeMount, reactive, ref, watch } from 'vue'
+import { onBeforeMount, reactive, ref, watch } from 'vue'
 import { StatusService } from 'core/services/status-service'
 import Helpers from 'core/helpers/Helpers'
 import SetupStatus from 'setup/page.status.json'

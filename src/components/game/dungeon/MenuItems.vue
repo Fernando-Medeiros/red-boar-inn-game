@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, defineEmits } from 'vue'
+import { reactive } from 'vue'
 import Items from 'core/database/items.json'
 import ItemSprite from 'comp/global/sprites/ItemSprite.vue'
 

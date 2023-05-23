@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 
 const props = defineProps<{ name: string; level: number; rotateY: boolean }>()
 
@@ -8,7 +8,7 @@ const sprite = ref()
 watch(props, () => {
     sprite.value.alt = props.name
     sprite.value.style.transform = props.rotateY ? 'rotateY(180deg)' : ''
-    sprite.value.src = require(`assets/opponents/${props.name}.svg`)
+    sprite.value.src = `../assets/opponents/${props.name}.svg`
 })
 </script>
 

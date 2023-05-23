@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, onBeforeMount, reactive } from 'vue'
+import { onBeforeMount, reactive } from 'vue'
 import { CharacterService } from 'core/services/character-service'
 import Helpers from 'core/helpers/Helpers'
 import SetupProfile from 'setup/page.profile.json'

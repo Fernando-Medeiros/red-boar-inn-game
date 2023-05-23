@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, ref, watch, onMounted } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { CharacterNameRegex, EmailRegex, NameRegex, PasswordRegex } from 'core/validators/regex'
 
 const emit = defineEmits(['emitContent'])
@@ -66,8 +66,8 @@ function isType(type: string) {
                 @click="showPassword"
                 :src="
                     isType('password')
-                        ? require('assets/icons/show-password.svg')
-                        : require('assets/icons/hide-password.svg')
+                        ? '../assets/icons/show-password.svg'
+                        : '../assets/icons/hide-password.svg'
                 "
             />
         </span>

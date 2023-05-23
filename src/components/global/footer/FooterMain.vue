@@ -25,7 +25,7 @@ const routes = ref(SetupRoutes[Helpers.translate()].routes)
                             <img
                                 class="image-contact"
                                 :alt="contact.name"
-                                :src="require(`assets/icons/${contact.name}.svg`)"
+                                :src="`../assets/icons/${contact.name}.svg`"
                             />
                         </a>
                     </div>
@@ -35,7 +35,7 @@ const routes = ref(SetupRoutes[Helpers.translate()].routes)
 
         <p class="copy" translate="no">
             <router-link to="/">
-                <img class="image-logo" :src="require('assets/logo.svg')" alt="logo" />
+                <img class="image-logo" :src="'../assets/logo.svg'" alt="logo" />
             </router-link>
 
             <span>

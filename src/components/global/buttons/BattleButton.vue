@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const props = defineProps<{ name: string; label: string }>()
 
@@ -10,7 +10,7 @@ const sprite = ref()
 onMounted(() => {
     Object.assign(sprite.value, {
         alt: props.name,
-        src: require(`assets/icons/${props.name}.svg`)
+        src: `../assets/icons/${props.name}.svg`
     })
 })
 </script>

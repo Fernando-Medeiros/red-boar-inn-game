@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
-
 defineProps<{
     title: string
     content: string[]
@@ -20,7 +18,7 @@ defineProps<{
         </div>
 
         <div>
-            <img class="template-image" :alt="image" :src="require('assets/templates/' + image)" />
+            <img class="template-image" :alt="image" :src="'../assets/templates/' + image" />
         </div>
     </div>
 </template>

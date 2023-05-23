@@ -3,7 +3,7 @@ import { SessionStorage } from 'core/storage/session-storage'
 import { postMethod } from './methods/post'
 import { getMethod } from './methods/get'
 
-const { VUE_APP_API_EQUIPMENT: API } = process.env
+const { VITE_API_EQUIPMENT: API } = import.meta.env
 
 const pubId = (): string => SessionStorage.get().pubId
 

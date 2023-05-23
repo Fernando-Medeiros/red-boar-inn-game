@@ -16,14 +16,14 @@ function setLanguage(lang: string) {
 
 <template>
     <div>
-        <img :src="require(`assets/icons/${currentLanguage}.svg`)" :alt="currentLanguage" />
+        <img :src="`../assets/icons/${currentLanguage}.svg`" :alt="currentLanguage" />
 
         <span>
             <img
                 v-for="lang in listLanguages"
                 :key="lang"
                 :alt="lang"
-                :src="require(`assets/icons/${lang}.svg`)"
+                :src="`../assets/icons/${lang}.svg`"
                 @click="setLanguage(lang)"
             />
         </span>

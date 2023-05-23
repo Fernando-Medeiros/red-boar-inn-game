@@ -1,5 +1,5 @@
 export const apiTokenHeader = () => {
-    const { VUE_APP_API_TOKEN: TOKEN } = process.env
+    const { VITE_API_TOKEN: TOKEN } = import.meta.env
 
     return { secret: TOKEN }
 }

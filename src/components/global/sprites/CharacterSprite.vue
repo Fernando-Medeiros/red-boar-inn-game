@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
-
 defineProps<{ name: string; gender: string; rotateY: boolean }>()
 </script>
 
@@ -9,7 +7,7 @@ defineProps<{ name: string; gender: string; rotateY: boolean }>()
         <img
             :alt="name"
             :style="rotateY ? 'transform: rotateY(180deg)' : ''"
-            :src="require(`assets/sprites/${gender}/${name}.svg`)"
+            :src="`../assets/sprites/${gender}/${name}.svg`"
         />
 
         <span></span>

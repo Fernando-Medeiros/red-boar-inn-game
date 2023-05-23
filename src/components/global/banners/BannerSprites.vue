@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import CharacterSprite from '../sprites/CharacterSprite.vue'
 
 defineProps<{ spriteLeft: string; spriteRight: string }>()

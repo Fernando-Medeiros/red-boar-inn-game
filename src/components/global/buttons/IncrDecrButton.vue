@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const props = defineProps<{
     attrName: string
@@ -14,7 +14,7 @@ const sprite = ref()
 onMounted(() => {
     Object.assign(sprite.value, {
         alt: props.type,
-        src: require(`assets/icons/${props.type}.svg`)
+        src: `../assets/icons/${props.type}.svg`
     })
 })
 </script>

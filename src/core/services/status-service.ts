@@ -4,7 +4,7 @@ import { postMethod } from './methods/post'
 import { patchMethod } from './methods/patch'
 import { getMethod } from './methods/get'
 
-const { VUE_APP_API_STATUS: API } = process.env
+const { VITE_API_STATUS: API } = import.meta.env
 
 const pubId = (): string => SessionStorage.get().pubId
 

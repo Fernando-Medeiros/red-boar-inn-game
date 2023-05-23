@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
-
 defineProps<{
     updates: { version: number; date: string; description: string[] }[]
 }>()

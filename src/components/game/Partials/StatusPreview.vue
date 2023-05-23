@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { StatusProps } from 'core/domain/props/character/status-props'
-import { defineProps, reactive, watch } from 'vue'
+import { reactive, watch } from 'vue'
 import Helpers from 'core/helpers/Helpers'
 import SetupStatus from 'setup/page.status.json'
 

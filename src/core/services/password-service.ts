@@ -1,7 +1,7 @@
 import { postMethod } from './methods/post'
 import { patchMethod } from './methods/patch'
 
-const { VUE_APP_API_PASSWORD: API } = process.env
+const { VITE_API_PASSWORD: API } = import.meta.env
 
 export class PasswordService {
     static async recover(form: object) {

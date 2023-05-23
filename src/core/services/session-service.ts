@@ -1,7 +1,7 @@
 import type { SessionSchema } from 'core/schemas/session-schema'
 import { postMethod } from './methods/post'
 
-const { VUE_APP_API_AUTH_LOGIN: API_LOGIN, VUE_APP_API_AUTH_REFRESH: API_REFRESH } = process.env
+const { VITE_API_AUTH_LOGIN: API_LOGIN, VITE_API_AUTH_REFRESH: API_REFRESH } = import.meta.env
 
 export class SessionService {
     static async login(form: object) {

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue'
 import IconSprite from 'comp/global/sprites/IconSprite.vue'
 
 defineProps<{ title: string; template: string; description: string[] }>()
@@ -8,7 +7,7 @@ defineEmits(['emitAction'])
 
 <template>
     <div class="dungeon-gate-container">
-        <img :src="require(`assets/dungeons/${template}.webp`)" :alt="template" />
+        <img :src="`../assets/dungeons/${template}.webp`" :alt="template" />
 
         <h3>{{ title }}</h3>
 

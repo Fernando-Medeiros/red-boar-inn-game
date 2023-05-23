@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import CharacterPreview from 'comp/game/Partials/CharacterPreview.vue'
 import OpponentSprite from 'comp/global/sprites/OpponentSprite.vue'
 import StatusBar from 'comp/global/helpers/StatusBar.vue'

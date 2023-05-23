@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { defineEmits, defineProps } from 'vue'
-
 defineEmits(['activeClass'])
 defineProps<{ name: string; gender: string; isActive: boolean }>()
 </script>
@@ -9,7 +7,7 @@ defineProps<{ name: string; gender: string; isActive: boolean }>()
     <div>
         <img
             :alt="name"
-            :src="require(`assets/sprites/${gender}/${name}.svg`)"
+            :src="`../assets/sprites/${gender}/${name}.svg`"
             @click="$emit('activeClass', name)"
         />
     </div>
