@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, watch } from "vue";
+import { defineProps, onMounted, ref, watch } from "vue";
 
 const props = defineProps<{
   type: "health" | "energy" | "experience";
@@ -20,27 +20,26 @@ const width = {
   small: "100px",
 };
 
-const id = Math.random().toString();
+const statusBar = ref();
+
+onMounted(() => {
+  Object.assign(statusBar.value.style, {
+    backgroundColor: colors[props.type],
+    width: width[props.size],
+  });
+});
 
 watch(props, () => {
-  const current = document.getElementById(id) as HTMLElement;
-
-  current.style.width = (props.currentStatus / props.maxStatus) * 100 + "%";
+  statusBar.value.style.width =
+    (props.currentStatus / props.maxStatus) * 100 + "%";
 });
 </script>
 
 <template>
-  <div class="status-bar" :style="`width:${width[props.size]}`">
-    <span
-      class="current-status"
-      :id="id"
-      :style="`background-color: ${colors[props.type]}; width:${
-        width[props.size]
-      }`"
-    >
-    </span>
+  <div class="status-bar-container" :style="'width:'.concat(width[props.size])">
+    <div ref="statusBar"></div>
 
-    <span class="label-status">
+    <span>
       <strong> {{ currentStatus.toFixed(1) }} </strong>
       <strong> / </strong>
       <strong> {{ maxStatus }} </strong>
@@ -49,7 +48,7 @@ watch(props, () => {
 </template>
 
 <style scoped>
-.status-bar {
+.status-bar-container {
   position: relative;
   width: 300px;
   height: 20px;
@@ -57,14 +56,15 @@ watch(props, () => {
   border: 1px solid black;
   background-color: #222222b2;
 }
-.current-status {
+
+.status-bar-container div {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 5px;
   transition: width 1s linear;
 }
-.label-status {
+.status-bar-container span {
   position: absolute;
   color: white;
   width: 100%;
