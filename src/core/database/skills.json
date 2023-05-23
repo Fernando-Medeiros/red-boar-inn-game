@@ -1,20 +1,20 @@
 {
-  "offensive": [
-    {
-      "name": "slash",
-      "type": "melee",
-      "attack": 3,
-      "magic": 0,
-      "description": "..."
-    }
-  ],
-  "defensive": [
-    {
-      "name": "fortitude",
-      "type": "upgrade",
-      "defense": 2,
-      "resistance": 4,
-      "description": "..."
-    }
-  ]
+    "offensive": [
+        {
+            "name": "slash",
+            "type": "melee",
+            "attack": 3,
+            "magic": 0,
+            "description": "..."
+        }
+    ],
+    "defensive": [
+        {
+            "name": "fortitude",
+            "type": "upgrade",
+            "defense": 2,
+            "resistance": 4,
+            "description": "..."
+        }
+    ]
 }

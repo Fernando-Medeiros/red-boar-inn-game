@@ -1,10 +1,10 @@
 {
-  "br": {
-    "register": { "label": "Inscreva-se", "path": "/auth/register" },
-    "login": { "label": "Entrar", "path": "/auth/login" }
-  },
-  "en": {
-    "register": { "label": "Sign up", "path": "/auth/register" },
-    "login": { "label": "Sing in", "path": "/auth/login" }
-  }
+    "br": {
+        "register": { "label": "Inscreva-se", "path": "/auth/register" },
+        "login": { "label": "Entrar", "path": "/auth/login" }
+    },
+    "en": {
+        "register": { "label": "Sign up", "path": "/auth/register" },
+        "login": { "label": "Sing in", "path": "/auth/login" }
+    }
 }

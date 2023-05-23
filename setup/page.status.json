@@ -1,48 +1,48 @@
 {
-  "br": {
-    "points": { "label": "pontos" },
-    "experience": { "label": "experiência" },
-    "strength": { "label": "força" },
-    "intelligence": { "label": "inteligência" },
-    "dexterity": { "label": "destreza" },
-    "vitality": { "label": "vitalidade" },
-    "health": { "label": "saúde" },
-    "energy": { "label": "energia" },
-    "currentHealth": { "label": "saúde atual" },
-    "currentEnergy": { "label": "energia atual" },
+    "br": {
+        "points": { "label": "pontos" },
+        "experience": { "label": "experiência" },
+        "strength": { "label": "força" },
+        "intelligence": { "label": "inteligência" },
+        "dexterity": { "label": "destreza" },
+        "vitality": { "label": "vitalidade" },
+        "health": { "label": "saúde" },
+        "energy": { "label": "energia" },
+        "currentHealth": { "label": "saúde atual" },
+        "currentEnergy": { "label": "energia atual" },
 
-    "attackMelee": { "label": "ataque fisico" },
-    "attackMagic": { "label": "ataque magico" },
-    "defense": { "label": "defesa" },
-    "block": { "label": "bloqueio" },
-    "dodge": { "label": "esquiva" },
-    "critical": { "label": "critico" },
+        "attackMelee": { "label": "ataque fisico" },
+        "attackMagic": { "label": "ataque magico" },
+        "defense": { "label": "defesa" },
+        "block": { "label": "bloqueio" },
+        "dodge": { "label": "esquiva" },
+        "critical": { "label": "critico" },
 
-    "form": {
-      "submit": { "label": "atualizar" }
+        "form": {
+            "submit": { "label": "atualizar" }
+        }
+    },
+    "en": {
+        "points": { "label": "points" },
+        "experience": { "label": "experience" },
+        "strength": { "label": "strength" },
+        "intelligence": { "label": "intelligence" },
+        "dexterity": { "label": "dexterity" },
+        "vitality": { "label": "vitality" },
+        "health": { "label": "health" },
+        "energy": { "label": "energy" },
+        "currentHealth": { "label": "currentHealth" },
+        "currentEnergy": { "label": "currentEnergy" },
+
+        "attackMelee": { "label": "attackMelee" },
+        "attackMagic": { "label": "attackMagic" },
+        "defense": { "label": "defense" },
+        "block": { "label": "block" },
+        "dodge": { "label": "dodge" },
+        "critical": { "label": "critical" },
+
+        "form": {
+            "submit": { "label": "update" }
+        }
     }
-  },
-  "en": {
-    "points": { "label": "points" },
-    "experience": { "label": "experience" },
-    "strength": { "label": "strength" },
-    "intelligence": { "label": "intelligence" },
-    "dexterity": { "label": "dexterity" },
-    "vitality": { "label": "vitality" },
-    "health": { "label": "health" },
-    "energy": { "label": "energy" },
-    "currentHealth": { "label": "currentHealth" },
-    "currentEnergy": { "label": "currentEnergy" },
-
-    "attackMelee": { "label": "attackMelee" },
-    "attackMagic": { "label": "attackMagic" },
-    "defense": { "label": "defense" },
-    "block": { "label": "block" },
-    "dodge": { "label": "dodge" },
-    "critical": { "label": "critical" },
-
-    "form": {
-      "submit": { "label": "update" }
-    }
-  }
 }

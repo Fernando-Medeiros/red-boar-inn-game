@@ -1,96 +1,96 @@
 {
-  "br": {
-    "defaultClass": "peasant",
-    "defaultGender": "man",
-    "saveButton": { "label": "Salvar" },
-    "classes": {
-      "peasant": [
-        "O camponês é uma classe que não segue uma tradição específica ou possui habilidades especializadas.",
-        "Eles são a personificação daqueles que trabalham duro na terra, mas também têm uma presença social agradável e habilidade para se conectar com outros personagens.",
-        "Em termos de habilidades, o camponês tem uma maior taxa de encontro de itens durante a exploração de áreas e calabouços, tornando-os úteis para obter recursos valiosos. Eles também são capazes de equipar qualquer item, o que lhes dá uma grande flexibilidade para adaptar-se às necessidades do grupo.",
-        "No entanto, sua falta de especialização significa que eles podem não ser tão fortes em combate ou em habilidades específicas quanto outras classes mais especializadas. Em vez disso, eles contam com sua presença amigável e capacidade de se comunicar efetivamente com outros personagens para serem valiosos em situações sociais e de negociação.",
-        "Com seu carisma natural, os camponeses são conhecidos por estabelecer alianças e fazer acordos vantajosos. Eles são capazes de persuadir os outros com facilidade, além de serem um bom ouvinte e conselheiro. Sua capacidade de se adaptar a qualquer situação e de conectar-se com outros personagens torna-os um membro valioso para qualquer grupo."
-      ],
-      "mage": [
-        "O mago é uma figura fascinante e enigmática, sempre vagando pelas estradas em busca de conhecimento e aventura.",
-        "Seu poder mágico é inigualável, e ele é capaz de conjurar feitiços que deixam seus inimigos temendo o seu nome. Apesar de sua força ofensiva, o mago é vulnerável a ataques físicos, o que o torna uma presa fácil em batalhas corpo a corpo.",
-        "Mas o que realmente diferencia o mago dos outros aventureiros é sua versatilidade.",
-        "Ele é capaz de aprender novas magias e combiná-las de maneiras únicas, o que o torna um dos mais imprevisíveis combatentes no campo de batalha.",
-        "Além disso, sua capacidade de encontrar masmorras e desvendar segredos ocultos é incomparável, graças à sua habilidade em enxergar o mundo animico e espiritual."
-      ],
-      "merchant": [
-        "Os mercantes são verdadeiros empreendedores, que possuem um talento natural para os negócios e um olho aguçado para oportunidades.",
-        "Eles são muito populares e estão sempre em contato com todas as raças e culturas do mundo, o que lhes dá uma vantagem competitiva em qualquer mercado.",
-        "Mas os mercantes não são apenas comerciantes comuns. Eles são a chave para a prosperidade no mundo!",
-        "Ao escolher a classe mercante, você terá a oportunidade de acumular fortunas, gerar receita e movimentar o mercado do jogo. Você poderá seguir dois caminhos distintos: um é a carreira estável de acumular riquezas e se tornar um dos maiores empresários do jogo, enquanto o outro é se tornar um mercante aventureiro, que busca a vida na estrada em busca de artefatos raros, produzindo seus próprios itens e obtendo riquezas ainda maiores!",
-        "Os mercantes possuem vantagens que lhes permitem obter mais ouro e ganhar mais na venda de itens. Eles têm um poder de negociação invejável e geralmente levam uma vida em busca de fortunas. Eles são capazes de criar suas próprias redes de comércio, investir em melhorias em suas lojas e aprimorar seus equipamentos para aumentar ainda mais seus lucros.",
-        "Mas os mercantes não são apenas comerciantes astutos. Eles também são importantes para a progressão do jogo, podendo ser a chave para desbloquear missões ou obter informações importantes. Além disso, eles podem ser muito úteis em situações de negociação e diplomacia, já que possuem habilidades especiais para lidar com outras raças e culturas.",
-        "Se você escolher a classe mercante, esteja preparado para enfrentar perigos e desafios, como assaltos a suas caravanas ou confrontos com rivais comerciais. Mas, com sua perspicácia e habilidades empreendedoras, você pode transformar esses desafios em oportunidades e obter ainda mais riquezas e prestígio!"
-      ],
-      "thief": [
-        "Os ladinos são a escolha perfeita para jogadores que desejam ser mestres na arte da furtividade e do engano.",
-        "Eles operam nas sombras, são procurados em todos os lugares e vivem vidas perigosas e ambíguas. Sua habilidade em avaliar situações e analisar seus oponentes lhes dá uma vantagem em batalha, permitindo que eles usem táticas astutas para vencer.",
-        "Os ladinos podem ter diferentes origens e viver de maneiras distintas, seja trabalhando para organizações, cometendo roubos e assaltos, ou se aventurando em busca de tesouros escondidos.",
-        "Eles possuem um conjunto de habilidades únicas que os tornam úteis em muitas situações, desde o desarmamento de armadilhas e a abertura de fechaduras até a negociação e persuasão.",
-        "A vantagem mais notável de ser um ladino é a habilidade de se mover furtivamente e de passar despercebido, mesmo em áreas fortemente vigiadas.",
-        "Isso permite que eles espiem seus oponentes, evitem confrontos desnecessários e ajam com precisão cirúrgica quando for necessário. Sua habilidade em acertar pontos vitais e evitar ataques inimigos lhes dá uma vantagem decisiva em batalha.",
-        "Outra vantagem dos ladinos é sua habilidade em roubar e furtar itens valiosos, seja em missões ou de outras pessoas. Eles são mestres na arte do furto e podem obter muita riqueza com suas habilidades. Além disso, sua habilidade em persuadir e negociar pode ser útil em muitas situações."
-      ],
-      "warrior": [
-        "O Guerreiro é uma figura imponente, conhecido por sua coragem, força e habilidade de combate. Eles são os pilares de muitas aventuras, dispostos a assumir os maiores riscos e liderar seus companheiros em batalhas épicas.",
-        "A vida do Guerreiro é baseada na luta e na batalha, sempre buscando honra e glória. Eles podem ser encontrados lutando por suas casas, lutando pela justiça ou buscando fama e riqueza. Seu código de honra é geralmente rigoroso, e muitos deles preferem morrer a serem derrotados em batalha.",
-        "Como um Guerreiro, eles possuem habilidades e técnicas especializadas em combate. Eles são proficientes em uma variedade de armas, incluindo espadas, lanças, machados e martelos. Sua armadura é pesada e resistente, protegendo-os dos ataques inimigos enquanto eles se movem pelo campo de batalha.",
-        "Os Guerreiros são frequentemente a primeira linha de defesa em uma batalha, enfrentando os inimigos de frente e protegendo os companheiros de equipe. Eles podem usar sua experiência em combate para controlar o campo de batalha e liderar seus companheiros a vitória. Sua coragem e força são inigualáveis, tornando-os um dos membros mais valiosos de um grupo de aventureiros.",
-        "No entanto, a vida de um Guerreiro também pode ser solitária, pois eles preferem lutar sozinhos ou com outros guerreiros. Além disso, o Guerreiro é frequentemente alvo de ataques de inimigos poderosos e temíveis, que buscam desafiar sua coragem e provar sua superioridade.",
-        "No final, o Guerreiro sempre busca se tornar mais forte e habilidoso para enfrentar qualquer desafio que possa surgir."
-      ]
+    "br": {
+        "defaultClass": "peasant",
+        "defaultGender": "man",
+        "saveButton": { "label": "Salvar" },
+        "classes": {
+            "peasant": [
+                "O camponês é uma classe que não segue uma tradição específica ou possui habilidades especializadas.",
+                "Eles são a personificação daqueles que trabalham duro na terra, mas também têm uma presença social agradável e habilidade para se conectar com outros personagens.",
+                "Em termos de habilidades, o camponês tem uma maior taxa de encontro de itens durante a exploração de áreas e calabouços, tornando-os úteis para obter recursos valiosos. Eles também são capazes de equipar qualquer item, o que lhes dá uma grande flexibilidade para adaptar-se às necessidades do grupo.",
+                "No entanto, sua falta de especialização significa que eles podem não ser tão fortes em combate ou em habilidades específicas quanto outras classes mais especializadas. Em vez disso, eles contam com sua presença amigável e capacidade de se comunicar efetivamente com outros personagens para serem valiosos em situações sociais e de negociação.",
+                "Com seu carisma natural, os camponeses são conhecidos por estabelecer alianças e fazer acordos vantajosos. Eles são capazes de persuadir os outros com facilidade, além de serem um bom ouvinte e conselheiro. Sua capacidade de se adaptar a qualquer situação e de conectar-se com outros personagens torna-os um membro valioso para qualquer grupo."
+            ],
+            "mage": [
+                "O mago é uma figura fascinante e enigmática, sempre vagando pelas estradas em busca de conhecimento e aventura.",
+                "Seu poder mágico é inigualável, e ele é capaz de conjurar feitiços que deixam seus inimigos temendo o seu nome. Apesar de sua força ofensiva, o mago é vulnerável a ataques físicos, o que o torna uma presa fácil em batalhas corpo a corpo.",
+                "Mas o que realmente diferencia o mago dos outros aventureiros é sua versatilidade.",
+                "Ele é capaz de aprender novas magias e combiná-las de maneiras únicas, o que o torna um dos mais imprevisíveis combatentes no campo de batalha.",
+                "Além disso, sua capacidade de encontrar masmorras e desvendar segredos ocultos é incomparável, graças à sua habilidade em enxergar o mundo animico e espiritual."
+            ],
+            "merchant": [
+                "Os mercantes são verdadeiros empreendedores, que possuem um talento natural para os negócios e um olho aguçado para oportunidades.",
+                "Eles são muito populares e estão sempre em contato com todas as raças e culturas do mundo, o que lhes dá uma vantagem competitiva em qualquer mercado.",
+                "Mas os mercantes não são apenas comerciantes comuns. Eles são a chave para a prosperidade no mundo!",
+                "Ao escolher a classe mercante, você terá a oportunidade de acumular fortunas, gerar receita e movimentar o mercado do jogo. Você poderá seguir dois caminhos distintos: um é a carreira estável de acumular riquezas e se tornar um dos maiores empresários do jogo, enquanto o outro é se tornar um mercante aventureiro, que busca a vida na estrada em busca de artefatos raros, produzindo seus próprios itens e obtendo riquezas ainda maiores!",
+                "Os mercantes possuem vantagens que lhes permitem obter mais ouro e ganhar mais na venda de itens. Eles têm um poder de negociação invejável e geralmente levam uma vida em busca de fortunas. Eles são capazes de criar suas próprias redes de comércio, investir em melhorias em suas lojas e aprimorar seus equipamentos para aumentar ainda mais seus lucros.",
+                "Mas os mercantes não são apenas comerciantes astutos. Eles também são importantes para a progressão do jogo, podendo ser a chave para desbloquear missões ou obter informações importantes. Além disso, eles podem ser muito úteis em situações de negociação e diplomacia, já que possuem habilidades especiais para lidar com outras raças e culturas.",
+                "Se você escolher a classe mercante, esteja preparado para enfrentar perigos e desafios, como assaltos a suas caravanas ou confrontos com rivais comerciais. Mas, com sua perspicácia e habilidades empreendedoras, você pode transformar esses desafios em oportunidades e obter ainda mais riquezas e prestígio!"
+            ],
+            "thief": [
+                "Os ladinos são a escolha perfeita para jogadores que desejam ser mestres na arte da furtividade e do engano.",
+                "Eles operam nas sombras, são procurados em todos os lugares e vivem vidas perigosas e ambíguas. Sua habilidade em avaliar situações e analisar seus oponentes lhes dá uma vantagem em batalha, permitindo que eles usem táticas astutas para vencer.",
+                "Os ladinos podem ter diferentes origens e viver de maneiras distintas, seja trabalhando para organizações, cometendo roubos e assaltos, ou se aventurando em busca de tesouros escondidos.",
+                "Eles possuem um conjunto de habilidades únicas que os tornam úteis em muitas situações, desde o desarmamento de armadilhas e a abertura de fechaduras até a negociação e persuasão.",
+                "A vantagem mais notável de ser um ladino é a habilidade de se mover furtivamente e de passar despercebido, mesmo em áreas fortemente vigiadas.",
+                "Isso permite que eles espiem seus oponentes, evitem confrontos desnecessários e ajam com precisão cirúrgica quando for necessário. Sua habilidade em acertar pontos vitais e evitar ataques inimigos lhes dá uma vantagem decisiva em batalha.",
+                "Outra vantagem dos ladinos é sua habilidade em roubar e furtar itens valiosos, seja em missões ou de outras pessoas. Eles são mestres na arte do furto e podem obter muita riqueza com suas habilidades. Além disso, sua habilidade em persuadir e negociar pode ser útil em muitas situações."
+            ],
+            "warrior": [
+                "O Guerreiro é uma figura imponente, conhecido por sua coragem, força e habilidade de combate. Eles são os pilares de muitas aventuras, dispostos a assumir os maiores riscos e liderar seus companheiros em batalhas épicas.",
+                "A vida do Guerreiro é baseada na luta e na batalha, sempre buscando honra e glória. Eles podem ser encontrados lutando por suas casas, lutando pela justiça ou buscando fama e riqueza. Seu código de honra é geralmente rigoroso, e muitos deles preferem morrer a serem derrotados em batalha.",
+                "Como um Guerreiro, eles possuem habilidades e técnicas especializadas em combate. Eles são proficientes em uma variedade de armas, incluindo espadas, lanças, machados e martelos. Sua armadura é pesada e resistente, protegendo-os dos ataques inimigos enquanto eles se movem pelo campo de batalha.",
+                "Os Guerreiros são frequentemente a primeira linha de defesa em uma batalha, enfrentando os inimigos de frente e protegendo os companheiros de equipe. Eles podem usar sua experiência em combate para controlar o campo de batalha e liderar seus companheiros a vitória. Sua coragem e força são inigualáveis, tornando-os um dos membros mais valiosos de um grupo de aventureiros.",
+                "No entanto, a vida de um Guerreiro também pode ser solitária, pois eles preferem lutar sozinhos ou com outros guerreiros. Além disso, o Guerreiro é frequentemente alvo de ataques de inimigos poderosos e temíveis, que buscam desafiar sua coragem e provar sua superioridade.",
+                "No final, o Guerreiro sempre busca se tornar mais forte e habilidoso para enfrentar qualquer desafio que possa surgir."
+            ]
+        }
+    },
+    "en": {
+        "defaultClass": "peasant",
+        "defaultGender": "woman",
+        "saveButton": { "label": "Save" },
+        "classes": {
+            "peasant": [
+                "The Peasant is a class that does not follow a specific tradition or have specialized skills.",
+                "They are the embodiment of those who work hard on the land, but also have a pleasant social presence and the ability to connect with other characters.",
+                "In terms of abilities, the Peasant has a higher rate of encountering items during exploration of areas and dungeons, making them useful for obtaining valuable resources. They are also able to equip any item, giving them great flexibility to adapt to the needs of the group.",
+                "However, their lack of specialization means that they may not be as strong in combat or in specific skills as other more specialized classes. Instead, they rely on their friendly presence and ability to communicate effectively with other characters to be valuable in social and negotiation situations.",
+                "With their natural charisma, Peasants are known for establishing alliances and making advantageous deals. They are able to persuade others with ease, as well as being a good listener and counselor. Their ability to adapt to any situation and connect with other characters makes them a valuable member for any group."
+            ],
+            "mage": [
+                "The wizard is a fascinating and enigmatic figure, always wandering the roads in search of knowledge and adventure.",
+                "His magical power is unparalleled, and he is capable of casting spells that make his enemies fear his name. Despite his offensive strength, the mage is vulnerable to physical attacks, which makes him easy prey in melee battles. ",
+                "But what really sets the wizard apart from other adventurers is his versatility.",
+                "He is able to learn new spells and combine them in unique ways, making him one of the most unpredictable combatants on the battlefield.",
+                "Furthermore, his ability to find dungeons and unlock hidden secrets is unrivaled, thanks to his ability to see both the psychic and spirit worlds."
+            ],
+            "merchant": [
+                "Merchants are true entrepreneurs, with a natural talent for business and a keen eye for opportunity.",
+                "They are very popular and are always in contact with all races and cultures of the world, which gives them a competitive advantage in any market.",
+                "But merchants are not just ordinary merchants. They are the key to prosperity in the world!",
+                "By choosing the merchant class, you will have the opportunity to accumulate fortunes, generate revenue and move the game market. You will be able to follow two different paths: one is the stable career of accumulating wealth and becoming one of the greatest entrepreneurs in the game, while the other is to become an adventurous merchant, who pursues life on the road in search of rare artifacts, crafting your own items and obtaining even greater riches!",
+                "Merchants have perks that allow them to get more gold and earn more from selling items. They have enviable bargaining power and generally lead a fortune-seeking life. They are able to create their own trading networks, invest in improvements in their stores and upgrade their equipment to further increase their profits.",
+                "But merchants are not just astute traders. They are also important for game progression, and can be the key to unlocking missions or obtaining important information. Furthermore, they can be very useful in negotiation and diplomacy situations, as they have special abilities to deal with other races and cultures.",
+                "If you choose the merchant class, be prepared to face dangers and challenges, such as raids on your caravans or clashes with commercial rivals. But with your acumen and entrepreneurial skills, you can turn these challenges into opportunities and gain even more wealth and prestige. !"
+            ],
+            "thief": [
+                "Rogues are the perfect choice for players who want to master the art of stealth and deception.",
+                "They operate in the shadows, are wanted everywhere, and live dangerous and ambiguous lives. Their ability to assess situations and analyze their opponents gives them an edge in battle, allowing them to use cunning tactics to win.",
+                "Rogues can come from different backgrounds and live in different ways, whether working for organizations, committing robberies and robberies, or venturing out in search of hidden treasure.",
+                "They have a unique skill set that makes them useful in many situations, from disarming traps and picking locks to negotiating and persuasion.",
+                "The most notable advantage of being a rogue is the ability to move stealthily and remain unnoticed, even in heavily guarded areas.",
+                "This allows them to spy on their opponents, avoid unnecessary confrontation, and act with surgical precision when necessary. Their ability to hit vital points and avoid enemy attacks gives them a decisive advantage in battle.",
+                "Another advantage of rogues is their ability to steal and steal valuable items, whether on quests or from others. They are masters of the art of thievery and can gain much wealth from their skills. Additionally, their ability to persuade and negotiate can be useful in many situations."
+            ],
+            "warrior": [
+                "The Warrior is an imposing figure, known for their courage, strength and combat skill. They are the pillars of many adventures, willing to take the greatest risks and lead their companions into epic battles.",
+                "The Warrior's life is based on struggle and battle, always seeking honor and glory. They can be found fighting for their homes, fighting for justice or seeking fame and wealth. Their code of honor is generally strict, and many of them would rather die to be defeated in battle.",
+                "As a Warrior, they possess specialized skills and techniques in combat. They are proficient with a variety of weapons, including swords, spears, axes, and hammers. Their armor is heavy and tough, protecting them from enemy attacks as they move through the battle field.",
+                "Warriors are often the first line of defense in a battle, facing enemies head-on and protecting teammates. They can use their combat experience to control the battlefield and lead their teammates to victory. Their courage and strength are second to none, making them one of the most valuable members of an adventuring party.",
+                "However, a Warrior's life can also be a lonely one, as they prefer to fight alone or with other Warriors. Furthermore, the Warrior is often the target of attacks by powerful and fearsome enemies, who seek to challenge their courage and prove their superiority. ",
+                "In the end, the Warrior always seeks to become stronger and more skilled to face any challenge that may arise."
+            ]
+        }
     }
-  },
-  "en": {
-    "defaultClass": "peasant",
-    "defaultGender": "woman",
-    "saveButton": { "label": "Save" },
-    "classes": {
-      "peasant": [
-        "The Peasant is a class that does not follow a specific tradition or have specialized skills.",
-        "They are the embodiment of those who work hard on the land, but also have a pleasant social presence and the ability to connect with other characters.",
-        "In terms of abilities, the Peasant has a higher rate of encountering items during exploration of areas and dungeons, making them useful for obtaining valuable resources. They are also able to equip any item, giving them great flexibility to adapt to the needs of the group.",
-        "However, their lack of specialization means that they may not be as strong in combat or in specific skills as other more specialized classes. Instead, they rely on their friendly presence and ability to communicate effectively with other characters to be valuable in social and negotiation situations.",
-        "With their natural charisma, Peasants are known for establishing alliances and making advantageous deals. They are able to persuade others with ease, as well as being a good listener and counselor. Their ability to adapt to any situation and connect with other characters makes them a valuable member for any group."
-      ],
-      "mage": [
-        "The wizard is a fascinating and enigmatic figure, always wandering the roads in search of knowledge and adventure.",
-        "His magical power is unparalleled, and he is capable of casting spells that make his enemies fear his name. Despite his offensive strength, the mage is vulnerable to physical attacks, which makes him easy prey in melee battles. ",
-        "But what really sets the wizard apart from other adventurers is his versatility.",
-        "He is able to learn new spells and combine them in unique ways, making him one of the most unpredictable combatants on the battlefield.",
-        "Furthermore, his ability to find dungeons and unlock hidden secrets is unrivaled, thanks to his ability to see both the psychic and spirit worlds."
-      ],
-      "merchant": [
-        "Merchants are true entrepreneurs, with a natural talent for business and a keen eye for opportunity.",
-        "They are very popular and are always in contact with all races and cultures of the world, which gives them a competitive advantage in any market.",
-        "But merchants are not just ordinary merchants. They are the key to prosperity in the world!",
-        "By choosing the merchant class, you will have the opportunity to accumulate fortunes, generate revenue and move the game market. You will be able to follow two different paths: one is the stable career of accumulating wealth and becoming one of the greatest entrepreneurs in the game, while the other is to become an adventurous merchant, who pursues life on the road in search of rare artifacts, crafting your own items and obtaining even greater riches!",
-        "Merchants have perks that allow them to get more gold and earn more from selling items. They have enviable bargaining power and generally lead a fortune-seeking life. They are able to create their own trading networks, invest in improvements in their stores and upgrade their equipment to further increase their profits.",
-        "But merchants are not just astute traders. They are also important for game progression, and can be the key to unlocking missions or obtaining important information. Furthermore, they can be very useful in negotiation and diplomacy situations, as they have special abilities to deal with other races and cultures.",
-        "If you choose the merchant class, be prepared to face dangers and challenges, such as raids on your caravans or clashes with commercial rivals. But with your acumen and entrepreneurial skills, you can turn these challenges into opportunities and gain even more wealth and prestige. !"
-      ],
-      "thief": [
-        "Rogues are the perfect choice for players who want to master the art of stealth and deception.",
-        "They operate in the shadows, are wanted everywhere, and live dangerous and ambiguous lives. Their ability to assess situations and analyze their opponents gives them an edge in battle, allowing them to use cunning tactics to win.",
-        "Rogues can come from different backgrounds and live in different ways, whether working for organizations, committing robberies and robberies, or venturing out in search of hidden treasure.",
-        "They have a unique skill set that makes them useful in many situations, from disarming traps and picking locks to negotiating and persuasion.",
-        "The most notable advantage of being a rogue is the ability to move stealthily and remain unnoticed, even in heavily guarded areas.",
-        "This allows them to spy on their opponents, avoid unnecessary confrontation, and act with surgical precision when necessary. Their ability to hit vital points and avoid enemy attacks gives them a decisive advantage in battle.",
-        "Another advantage of rogues is their ability to steal and steal valuable items, whether on quests or from others. They are masters of the art of thievery and can gain much wealth from their skills. Additionally, their ability to persuade and negotiate can be useful in many situations."
-      ],
-      "warrior": [
-        "The Warrior is an imposing figure, known for their courage, strength and combat skill. They are the pillars of many adventures, willing to take the greatest risks and lead their companions into epic battles.",
-        "The Warrior's life is based on struggle and battle, always seeking honor and glory. They can be found fighting for their homes, fighting for justice or seeking fame and wealth. Their code of honor is generally strict, and many of them would rather die to be defeated in battle.",
-        "As a Warrior, they possess specialized skills and techniques in combat. They are proficient with a variety of weapons, including swords, spears, axes, and hammers. Their armor is heavy and tough, protecting them from enemy attacks as they move through the battle field.",
-        "Warriors are often the first line of defense in a battle, facing enemies head-on and protecting teammates. They can use their combat experience to control the battlefield and lead their teammates to victory. Their courage and strength are second to none, making them one of the most valuable members of an adventuring party.",
-        "However, a Warrior's life can also be a lonely one, as they prefer to fight alone or with other Warriors. Furthermore, the Warrior is often the target of attacks by powerful and fearsome enemies, who seek to challenge their courage and prove their superiority. ",
-        "In the end, the Warrior always seeks to become stronger and more skilled to face any challenge that may arise."
-      ]
-    }
-  }
 }

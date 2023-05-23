@@ -1,6 +1,1 @@
-export type ClassesSchema =
-  | "mage"
-  | "merchant"
-  | "peasant"
-  | "thief"
-  | "warrior";
+export type ClassesSchema = 'mage' | 'merchant' | 'peasant' | 'thief' | 'warrior'

@@ -1,12 +1,12 @@
 export type StatusProps = {
-  points: number;
-  experience: number;
-  strength: number;
-  intelligence: number;
-  dexterity: number;
-  vitality: number;
-  health: number;
-  energy: number;
-  currentHealth: number;
-  currentEnergy: number;
-};
+    points: number
+    experience: number
+    strength: number
+    intelligence: number
+    dexterity: number
+    vitality: number
+    health: number
+    energy: number
+    currentHealth: number
+    currentEnergy: number
+}

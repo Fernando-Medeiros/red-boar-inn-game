@@ -1,10 +1,10 @@
 export type CharacterCreateSchema = {
-  charName: string;
-};
+    charName: string
+}
 
 export type CharacterUpdateSchema = {
-  charName?: string;
-  className?: string;
-  level?: number;
-  genders?: string;
-};
+    charName?: string
+    className?: string
+    level?: number
+    genders?: string
+}

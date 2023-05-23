@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps } from 'vue'
 
-defineProps<{ name: string }>();
+defineProps<{ name: string }>()
 </script>
 
 <template>
-  <img :alt="name" :src="require(`assets/items/${name}.png`)" />
+    <img :alt="name" :src="require(`assets/items/${name}.png`)" />
 </template>
 
 <style scoped>
 img {
-  width: 2rem;
-  height: 2rem;
+    width: 2rem;
+    height: 2rem;
 }
 </style>

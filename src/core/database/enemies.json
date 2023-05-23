@@ -1,52 +1,52 @@
 {
-  "melee": [
-    {
-      "name": "thief",
-      "level": 1,
-      "loot": [
+    "melee": [
         {
-          "name": "gold",
-          "type": "trade",
-          "total": 1,
-          "value": 1,
-          "description": "..."
+            "name": "thief",
+            "level": 1,
+            "loot": [
+                {
+                    "name": "gold",
+                    "type": "trade",
+                    "total": 1,
+                    "value": 1,
+                    "description": "..."
+                }
+            ],
+            "points": 1,
+            "experience": 2,
+            "strength": 3,
+            "intelligence": 1,
+            "dexterity": 1,
+            "vitality": 3,
+            "health": 30,
+            "energy": 10,
+            "currentHealth": 30,
+            "currentEnergy": 10
         }
-      ],
-      "points": 1,
-      "experience": 2,
-      "strength": 3,
-      "intelligence": 1,
-      "dexterity": 1,
-      "vitality": 3,
-      "health": 30,
-      "energy": 10,
-      "currentHealth": 30,
-      "currentEnergy": 10
-    }
-  ],
-  "magic": [
-    {
-      "name": "merchant",
-      "level": 1,
-      "loot": [
+    ],
+    "magic": [
         {
-          "name": "gold",
-          "type": "trade",
-          "total": 1,
-          "value": 1,
-          "description": "..."
+            "name": "merchant",
+            "level": 1,
+            "loot": [
+                {
+                    "name": "gold",
+                    "type": "trade",
+                    "total": 1,
+                    "value": 1,
+                    "description": "..."
+                }
+            ],
+            "points": 1,
+            "experience": 2,
+            "strength": 1,
+            "intelligence": 3,
+            "dexterity": 1,
+            "vitality": 2,
+            "health": 20,
+            "energy": 30,
+            "currentHealth": 20,
+            "currentEnergy": 30
         }
-      ],
-      "points": 1,
-      "experience": 2,
-      "strength": 1,
-      "intelligence": 3,
-      "dexterity": 1,
-      "vitality": 2,
-      "health": 20,
-      "energy": 30,
-      "currentHealth": 20,
-      "currentEnergy": 30
-    }
-  ]
+    ]
 }

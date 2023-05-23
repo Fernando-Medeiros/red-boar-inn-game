@@ -1,24 +1,24 @@
 {
-  "br": {
-    "icons": [
-      { "label": "perfil", "name": "profile", "path": "/character/profile" },
-      {
-        "label": "notificação",
-        "name": "notification",
-        "path": ""
-      },
-      { "label": "sair", "name": "logout", "path": "/auth/logout" }
-    ]
-  },
-  "en": {
-    "icons": [
-      { "label": "profile", "name": "profile", "path": "/character/profile" },
-      {
-        "label": "notification",
-        "name": "notification",
-        "path": ""
-      },
-      { "label": "logout", "name": "logout", "path": "/auth/logout" }
-    ]
-  }
+    "br": {
+        "icons": [
+            { "label": "perfil", "name": "profile", "path": "/character/profile" },
+            {
+                "label": "notificação",
+                "name": "notification",
+                "path": ""
+            },
+            { "label": "sair", "name": "logout", "path": "/auth/logout" }
+        ]
+    },
+    "en": {
+        "icons": [
+            { "label": "profile", "name": "profile", "path": "/character/profile" },
+            {
+                "label": "notification",
+                "name": "notification",
+                "path": ""
+            },
+            { "label": "logout", "name": "logout", "path": "/auth/logout" }
+        ]
+    }
 }

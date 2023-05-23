@@ -1,78 +1,78 @@
 {
-  "br": {
-    "title": "Comece a explorar um mundo de masmorras e aventuras!",
-    "preview": [
-      {
-        "title": "Perfil",
-        "image": "profile.webp",
-        "content": [
-          "O perfil do personagem agora possui um menu geral que permite aos jogadores navegar facilmente pelo jogo.",
-          "Através do menu, os jogadores podem acessar seus status, habilidades, equipamentos, missões, arena, inventário e muito mais, oferecendo uma experiência de jogo mais organizada e intuitiva."
+    "br": {
+        "title": "Comece a explorar um mundo de masmorras e aventuras!",
+        "preview": [
+            {
+                "title": "Perfil",
+                "image": "profile.webp",
+                "content": [
+                    "O perfil do personagem agora possui um menu geral que permite aos jogadores navegar facilmente pelo jogo.",
+                    "Através do menu, os jogadores podem acessar seus status, habilidades, equipamentos, missões, arena, inventário e muito mais, oferecendo uma experiência de jogo mais organizada e intuitiva."
+                ]
+            },
+            {
+                "title": "Status",
+                "image": "status.webp",
+                "content": [
+                    "Os jogadores agora podem atribuir pontos de status para personalizar ainda mais seu personagem, melhorando seus atributos e habilidades.",
+                    "Além disso, os jogadores também podem visualizar seus atributos atualizados em tempo real, permitindo que ajustem seu personagem de acordo com suas preferências."
+                ]
+            },
+            {
+                "title": "Classes",
+                "image": "classes.webp",
+                "content": [
+                    "Escolha livremente a classe do seu personagem, podendo trocá-la a qualquer momento.",
+                    "Cada classe terá vantagens únicas, como habilidades especiais e equipamentos exclusivos, oferecendo ainda mais possibilidades de personalização."
+                ]
+            },
+            {
+                "title": "Masmorra",
+                "image": "dungeon.webp",
+                "content": [
+                    "A Masmorra apresenta oponentes e itens aleatórios, adicionando imprevisibilidade e desafio às explorações.",
+                    "Além disso, foi incluído um menu de opções com diversas funcionalidades, como visualização dos status dos personagens, uso de itens durante a batalha, verificação do log das ações tomadas, possibilidade de fugir da batalha e atacar oponentes.",
+                    "Essas adições tornam as masmorras ainda mais emocionantes e estratégicas para os jogadores."
+                ]
+            }
         ]
-      },
-      {
-        "title": "Status",
-        "image": "status.webp",
-        "content": [
-          "Os jogadores agora podem atribuir pontos de status para personalizar ainda mais seu personagem, melhorando seus atributos e habilidades.",
-          "Além disso, os jogadores também podem visualizar seus atributos atualizados em tempo real, permitindo que ajustem seu personagem de acordo com suas preferências."
+    },
+    "en": {
+        "title": "Start exploring a world of dungeons and adventures!",
+        "preview": [
+            {
+                "title": "Profile",
+                "image": "profile.webp",
+                "content": [
+                    "The character profile now has a general menu that allows players to easily navigate the game.",
+                    "Through the menu, players can access their stats, skills, equipment, quests, arena, inventory and more, offering a more organized and intuitive gaming experience."
+                ]
+            },
+            {
+                "title": "Status",
+                "image": "status.webp",
+                "content": [
+                    "Players can now assign stat points to further customize their character, improving their attributes and abilities.",
+                    "In addition, players can also view their updated attributes in real-time, allowing them to fine-tune their character to their preferences."
+                ]
+            },
+            {
+                "title": "Classes",
+                "image": "classes.webp",
+                "content": [
+                    "Freely choose your character's class, being able to change it at any time.",
+                    "Each class will have unique perks like special abilities and unique gear, offering even more customization possibilities."
+                ]
+            },
+            {
+                "title": "Dungeon",
+                "image": "dungeon.webp",
+                "content": [
+                    "Dungeons feature random opponents and items, adding unpredictability and challenge to explorations.",
+                    "In addition, an options menu was included with various features, such as viewing the status of the characters, using items during battle, checking the log of actions taken, the possibility of escaping from battle and attacking opponents.",
+                    "These additions make dungeons even more exciting and strategic for players."
+                ]
+            }
         ]
-      },
-      {
-        "title": "Classes",
-        "image": "classes.webp",
-        "content": [
-          "Escolha livremente a classe do seu personagem, podendo trocá-la a qualquer momento.",
-          "Cada classe terá vantagens únicas, como habilidades especiais e equipamentos exclusivos, oferecendo ainda mais possibilidades de personalização."
-        ]
-      },
-      {
-        "title": "Masmorra",
-        "image": "dungeon.webp",
-        "content": [
-          "A Masmorra apresenta oponentes e itens aleatórios, adicionando imprevisibilidade e desafio às explorações.",
-          "Além disso, foi incluído um menu de opções com diversas funcionalidades, como visualização dos status dos personagens, uso de itens durante a batalha, verificação do log das ações tomadas, possibilidade de fugir da batalha e atacar oponentes.",
-          "Essas adições tornam as masmorras ainda mais emocionantes e estratégicas para os jogadores."
-        ]
-      }
-    ]
-  },
-  "en": {
-    "title": "Start exploring a world of dungeons and adventures!",
-    "preview": [
-      {
-        "title": "Profile",
-        "image": "profile.webp",
-        "content": [
-          "The character profile now has a general menu that allows players to easily navigate the game.",
-          "Through the menu, players can access their stats, skills, equipment, quests, arena, inventory and more, offering a more organized and intuitive gaming experience."
-        ]
-      },
-      {
-        "title": "Status",
-        "image": "status.webp",
-        "content": [
-          "Players can now assign stat points to further customize their character, improving their attributes and abilities.",
-          "In addition, players can also view their updated attributes in real-time, allowing them to fine-tune their character to their preferences."
-        ]
-      },
-      {
-        "title": "Classes",
-        "image": "classes.webp",
-        "content": [
-          "Freely choose your character's class, being able to change it at any time.",
-          "Each class will have unique perks like special abilities and unique gear, offering even more customization possibilities."
-        ]
-      },
-      {
-        "title": "Dungeon",
-        "image": "dungeon.webp",
-        "content": [
-          "Dungeons feature random opponents and items, adding unpredictability and challenge to explorations.",
-          "In addition, an options menu was included with various features, such as viewing the status of the characters, using items during battle, checking the log of actions taken, the possibility of escaping from battle and attacking opponents.",
-          "These additions make dungeons even more exciting and strategic for players."
-        ]
-      }
-    ]
-  }
+    }
 }

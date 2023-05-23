@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
-import { SessionStorage } from "core/storage/session-storage";
+import { onMounted } from 'vue'
+import { SessionStorage } from 'core/storage/session-storage'
 
 onMounted(() => {
-  SessionStorage.remove();
-  location.reload();
-});
+    SessionStorage.remove()
+    location.reload()
+})
 </script>
 
 <template>
-  <div></div>
+    <div></div>
 </template>

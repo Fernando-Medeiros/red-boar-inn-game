@@ -1,1 +1,1 @@
-export type LanguageSchema = "br" | "en";
+export type LanguageSchema = 'br' | 'en'

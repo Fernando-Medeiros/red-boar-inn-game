@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps } from 'vue'
 
-defineProps<{ name: string }>();
+defineProps<{ name: string }>()
 </script>
 
 <template>
-  <img :alt="name" :src="require(`assets/icons/${name}.svg`)" />
+    <img :alt="name" :src="require(`assets/icons/${name}.svg`)" />
 </template>
 
 <style scoped>
 img {
-  width: 2rem;
-  height: 2rem;
+    width: 2rem;
+    height: 2rem;
 }
 img:hover {
-  filter: brightness(1.3);
+    filter: brightness(1.3);
 }
 </style>

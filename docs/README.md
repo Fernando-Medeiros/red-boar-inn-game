@@ -13,12 +13,12 @@ Este é um projeto frontend para um jogo de RPG online de código aberto, desenv
 
 O jogo possui as seguintes funcionalidades:
 
-- [x] Várias classes de personagens disponíveis para escolha;
-- [ ] Um mundo aberto para exploração, com várias missões e masmoras;
-- [x] Interface de usuário simplificada, intuitiva e fácil de usar;
-- [ ] Sistema de combate dinâmico;
-- [ ] Sistema de inventário para gerenciamento de itens;
-- [ ] Efeitos sonoros e música de fundo para tornar a experiência de jogo ainda mais envolvente.
+-   [x] Várias classes de personagens disponíveis para escolha;
+-   [ ] Um mundo aberto para exploração, com várias missões e masmoras;
+-   [x] Interface de usuário simplificada, intuitiva e fácil de usar;
+-   [ ] Sistema de combate dinâmico;
+-   [ ] Sistema de inventário para gerenciamento de itens;
+-   [ ] Efeitos sonoros e música de fundo para tornar a experiência de jogo ainda mais envolvente.
 
 ## Como rodar o projeto
 
@@ -26,10 +26,10 @@ Para rodar o projeto em seu computador local, siga os seguintes passos:
 
 > Este projeto depende de duas API'S:
 >
-> - [Api-Autenticação](https://github.com/Fernando-Medeiros/RBI-Auth-Node-API)
-> - [Api-Servidor](https://github.com/Fernando-Medeiros/RBI-Server-Node-API)
+> -   [Api-Autenticação](https://github.com/Fernando-Medeiros/RBI-Auth-Node-API)
+> -   [Api-Servidor](https://github.com/Fernando-Medeiros/RBI-Server-Node-API)
 
-- [start.md](start.md)
+-   [start.md](start.md)
 
 ## Contribuindo
 

@@ -1,39 +1,39 @@
 {
-  "br": {
-    "areaInfo": {
-      "opponents": "oponentes",
-      "turn": "turno"
+    "br": {
+        "areaInfo": {
+            "opponents": "oponentes",
+            "turn": "turno"
+        },
+        "menu": [
+            { "label": "ataque", "icon": "attack" },
+            { "label": "inventario", "icon": "inventory" },
+            { "label": "habilidades", "icon": "skills" },
+            { "label": "status", "icon": "status" },
+            { "label": "registro", "icon": "logs" },
+            { "label": "fugir", "icon": "flee" }
+        ],
+        "logs": {
+            "attack": "você acertou",
+            "defense": "acertou"
+        }
     },
-    "menu": [
-      { "label": "ataque", "icon": "attack" },
-      { "label": "inventario", "icon": "inventory" },
-      { "label": "habilidades", "icon": "skills" },
-      { "label": "status", "icon": "status" },
-      { "label": "registro", "icon": "logs" },
-      { "label": "fugir", "icon": "flee" }
-    ],
-    "logs": {
-      "attack": "você acertou",
-      "defense": "acertou"
-    }
-  },
 
-  "en": {
-    "areaInfo": {
-      "opponents": "opponents",
-      "turn": "turn"
-    },
-    "menu": [
-      { "label": "attack", "icon": "attack" },
-      { "label": "inventory", "icon": "inventory" },
-      { "label": "skills", "icon": "skills" },
-      { "label": "status", "icon": "status" },
-      { "label": "logs", "icon": "logs" },
-      { "label": "flee", "icon": "flee" }
-    ],
-    "logs": {
-      "attack": "you hit",
-      "defense": "hit"
+    "en": {
+        "areaInfo": {
+            "opponents": "opponents",
+            "turn": "turn"
+        },
+        "menu": [
+            { "label": "attack", "icon": "attack" },
+            { "label": "inventory", "icon": "inventory" },
+            { "label": "skills", "icon": "skills" },
+            { "label": "status", "icon": "status" },
+            { "label": "logs", "icon": "logs" },
+            { "label": "flee", "icon": "flee" }
+        ],
+        "logs": {
+            "attack": "you hit",
+            "defense": "hit"
+        }
     }
-  }
 }
