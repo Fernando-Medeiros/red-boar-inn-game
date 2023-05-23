@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SessionStorage } from "./core/storage/session-storage";
+import { SessionStorage } from "core/storage/session-storage";
 import HeaderMain from "comp/global/headers/HeaderMain.vue";
 import HeaderGame from "comp/global/headers/HeaderGame.vue";
 import FooterMain from "comp/global/footer/FooterMain.vue";

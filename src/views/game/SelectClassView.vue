@@ -72,13 +72,13 @@ async function saveClass() {
 
         <div>
           <IconSprite
-            :class="form.gender === 'man' ? 'iconActive' : 'iconInactive'"
+            class="icon-sprite"
             :name="'man'"
             @click="() => (form.gender = 'man')"
           />
 
           <IconSprite
-            :class="form.gender === 'woman' ? 'iconActive' : 'iconInactive'"
+            class="icon-sprite"
             :name="'woman'"
             @click="() => (form.gender = 'woman')"
           />
@@ -123,14 +123,12 @@ async function saveClass() {
   justify-content: space-between;
 }
 
-.iconInactive {
+.icon-sprite {
   cursor: pointer;
   padding-right: 1rem;
   filter: sepia();
 }
-.iconActive {
-  cursor: pointer;
-  padding-right: 1rem;
+.icon-sprite:hover {
   filter: sepia() brightness(2);
 }
 

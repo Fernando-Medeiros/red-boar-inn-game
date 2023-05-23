@@ -87,6 +87,7 @@ async function login() {
 .form-login {
   z-index: 1;
   display: grid;
+  width: 100%;
   gap: 2rem;
   justify-content: center;
 }
@@ -100,5 +101,14 @@ async function login() {
 }
 .form-options a:hover {
   color: burlywood;
+}
+
+@media (max-width: 780px) {
+  .form-login {
+    justify-content: unset;
+  }
+  .form-options {
+    padding-inline: 10px;
+  }
 }
 </style>
