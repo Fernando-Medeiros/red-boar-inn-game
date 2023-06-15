@@ -95,7 +95,7 @@ input {
     font-size: 1.1rem;
     width: 500px;
     height: 20px;
-    padding: 6px 2px;
+    padding: 16px 2px;
     color: var(--cor-font-color);
 }
 input:focus {
