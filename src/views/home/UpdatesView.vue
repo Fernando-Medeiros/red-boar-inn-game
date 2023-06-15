@@ -17,7 +17,7 @@ const { updates } = SetupUpdates[Helpers.translate()]
             <v-expansion-panels :disabled="false" multiple>
                 <v-expansion-panel v-for="update in updates.reverse()" :key="update.version">
                     <v-expansion-panel-title class="version">
-                        <p>v-{{ update.version.toFixed(1) }}</p>
+                        <strong>v-{{ update.version }}</strong>
                         <p>{{ update.date }}</p>
                     </v-expansion-panel-title>
 
