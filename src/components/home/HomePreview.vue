@@ -9,7 +9,7 @@ defineProps<{
 <template>
     <div class="home-preview-container">
         <div class="content">
-            <p class="title">{{ title }}</p>
+            <h2 class="title">{{ title }}</h2>
             <p v-for="paragraph in content" :key="paragraph">
                 <br />
                 <br />
@@ -29,13 +29,11 @@ defineProps<{
     grid-template-columns: 1fr 1fr;
     padding-block: 10px;
     margin-block: 10px;
-    margin-top: 1rem;
     color: #e8e8e8;
-
+    height: 100%;
     justify-items: center;
-    border-radius: 1rem;
     transition: all 1s;
-    background: var(--cor-background-linear-gradient);
+    border-bottom: 1px solid grey;
 }
 
 .title {
@@ -49,25 +47,20 @@ defineProps<{
 
 .template-image {
     border-radius: 1.5rem;
-    height: 30rem;
+    height: 35rem;
     transition: all 1s;
-}
-.template-image:hover {
-    transition: all 1s;
-    transform: scale(1.1);
 }
 
 @media (max-width: 780px) {
-    .title {
-        font-size: 1.5rem;
+    .home-preview-container {
+        grid-template-columns: auto;
     }
     .content {
         font-size: 0.9rem;
-        padding-inline: 5px;
+        padding-inline: 0;
     }
-    .template-image {
-        padding-right: 5px;
-        height: 25rem;
+    .content > p {
+        display: none;
     }
 }
 </style>
