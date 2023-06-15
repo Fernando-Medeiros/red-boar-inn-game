@@ -19,6 +19,7 @@ input {
     width: 180px;
     height: 40px;
     align-content: center;
+    color: black;
     background: #d9d9d9;
     cursor: pointer;
     font-size: 20px;

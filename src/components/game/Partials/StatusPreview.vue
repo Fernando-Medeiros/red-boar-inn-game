@@ -61,8 +61,8 @@ watch(props, () => {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    padding: 5px;
-    height: 30px;
+    padding: 10px;
+    height: auto;
     max-width: 300px;
     border-bottom: 1px solid var(--cor-font-color);
 }

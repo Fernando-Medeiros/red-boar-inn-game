@@ -164,7 +164,7 @@ watch(primary, () => {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     padding: 10px;
-    height: 30px;
+    height: auto;
     max-width: 300px;
     margin: auto;
     justify-content: space-between;
@@ -172,8 +172,8 @@ watch(primary, () => {
 }
 .status-secondary {
     display: grid;
-    justify-content: center;
     gap: 1.5rem;
+    justify-content: center;
 }
 .status-buttons {
     display: flex;
